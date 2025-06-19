@@ -1,0 +1,29 @@
+:root {
+  --responsive-ratio: 1;
+  --font-ratio: 1;
+  --container-size: 100%;
+
+  --bs-gutter-x: 1.875rem;
+  --bs-gutter-y: 1.875rem;
+
+  @media (max-width: to-rem(374)) {
+    --font-ratio: 0.9;
+  }
+  @include media-breakpoint-up(sm) {
+    --container-size: 540px;
+  }
+
+  @include media-breakpoint-up(md) {
+    --container-size: 720px;
+    --site-header-height: 6rem;
+  }
+  @include media-breakpoint-up(lg) {
+    --container-size: 960px;
+  }
+  @include media-breakpoint-up(xl) {
+    --container-size: 1140px;
+  }
+  @include media-breakpoint-up(xxl) {
+    --container-size: 1374px;
+  }
+}

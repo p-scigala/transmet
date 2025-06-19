@@ -1,0 +1,16 @@
+.slick {
+  &__arrow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  
+   &.slick-prev {
+    left: 60px;
+   }
+
+   &.slick-next {
+    right: 60px;
+   }
+  }
+}

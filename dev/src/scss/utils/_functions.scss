@@ -1,0 +1,24 @@
+@use 'sass:math';
+
+@function strip-unit($number) {
+  @if type-of($number) == "number" and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+@function to-rem($pxValue) {
+  @return math.div($pxValue, 16) * 1rem;
+}
+
+@function custom-clamp( $min-font-size-rem, $max-font-size-rem) {
+  $min-vw-px:576;
+  $max-vw-px:1920;
+  $minWidth: calc( $min-vw-px / 16);
+  $maxWidth: calc( $max-vw-px / 16);
+  $slope: calc(($max-font-size-rem - $min-font-size-rem) / ($maxWidth - $minWidth));
+  $yAxisIntersection : calc(-1 * $minWidth * $slope + $min-font-size-rem);
+  
+  @return clamp(#{$min-font-size-rem}rem, #{$yAxisIntersection}rem + #{($slope * 100)}vw, #{$max-font-size-rem}rem);
+}

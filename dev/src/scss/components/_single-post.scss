@@ -1,0 +1,56 @@
+.post-categories {
+  @extend .list-unstyled, .gap-1;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+
+  a {
+    @extend .link-primary;
+    text-decoration: underline;
+  }
+}
+
+.single-thumbnail-wrapper {
+  height: max(300px, calc(500 / 1920 * 100vw));
+  overflow: hidden;
+  position: relative;
+  @include rfs(1.5em, margin-bottom);
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.single-post-content {
+  line-height: 1.7;
+  @include rfs(16px);
+  & :is(h1, h2, h3, h4, h5, h6) {
+    @extend .h4;
+    @include rfs(1.5em, margin-top);
+  }
+
+  & > *:not(:last-child),
+  & > :is(h1, h2, h3, h4, h5, h6) {
+    @include rfs(0.6em, margin-bottom);
+  }
+}
+
+.single-post-tags a {
+  @extend .link-primary, .text-decoration-underline, .fs-6;
+  font-weight: 400;
+}
+.comment-list ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.comment-reply-link {
+  @extend .btn, .btn-primary, .btn-sm;
+}
+#cancel-comment-reply-link {
+  @extend .link-danger, .text-decoration-underline;
+}
+.comment-content {
+  margin-bottom: 1em;
+}

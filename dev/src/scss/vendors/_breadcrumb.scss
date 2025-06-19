@@ -1,0 +1,11 @@
+.breadcrumb-wrapper {
+    & > * {
+      font-size: to-rem(14);
+      text-transform: lowercase;
+    }
+  
+    & span.current-item {
+      font-weight: 700;
+      color: $project-primary;
+    }
+  }

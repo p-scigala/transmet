@@ -1,0 +1,16 @@
+:root {
+  --color-white: #FFFFFF;
+  --color-gray: #FBFBFB;
+  --color-primary-blue: #00A9F3;
+  --color-primary-green: #00CD97;
+  --color-secondary-blue: #84E3D6;
+  --color-secondary-green: #00CC99;
+}
+
+* {
+  font-family: sans-serif;
+}
+
+.page-not-found {
+  padding-block: max(3rem, 5vw);
+}

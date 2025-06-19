@@ -1,0 +1,19 @@
+// Styles used commonly, in all the projects
+
+.image-fill {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-min-h-100svh {
+  min-height: 100svh;
+  @media (orientation: landscape) and (max-height: 500px) {
+    min-height: calc(600 / 16 * 1rem);
+  }
+}
+
+.text-balance {
+  text-wrap: balance;
+}

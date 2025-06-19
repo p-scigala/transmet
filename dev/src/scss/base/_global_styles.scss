@@ -1,0 +1,51 @@
+html {
+  @media (max-width: to-rem(374)) {
+    font-size: calc(1rem * var(--font-ratio));
+  }
+}
+
+textarea,
+textarea.form-control {
+  min-height: 150px !important;
+}
+
+ul > li::marker {
+  color: var(--bs-primary);
+}
+
+ol,
+ul {
+  padding-left: 2em;
+}
+
+a {
+  color: inherit;
+  transition: color 0.3s ease-in-out;
+}
+
+img,
+svg,
+iframe,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: $white;
+}
+
+// MaxMegaMenu styles overrides
+@include media-breakpoint-up(md) {
+  #mega-menu-wrap-navbar #mega-menu-navbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(1.25rem, 1.0983rem + 0.6472vw, 1.875rem);
+    justify-content: end;
+  }
+}

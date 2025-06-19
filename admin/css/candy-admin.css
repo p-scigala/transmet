@@ -1,0 +1,108 @@
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --candy-admin-color-primary: #1a1922;
+  --candy-admin-color-secondary: #f1522f;
+  --candy-login-logo-url: url("/wp-content/themes/candyweb-new/images/logo.png");
+}
+
+body.login {
+  background-color: var(--white);
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: var(--black);
+  background-color: rgba(245, 247, 250, 1);
+}
+
+body.login #login_error,
+body.login .message,
+body.login .success,
+body.login form,
+body.login form .input,
+body.login form input[type="checkbox"],
+body.login input[type="text"] {
+  border: 1px solid var(--black);
+  background-color: transparent;
+}
+
+body.login form .input,
+.login form input[type="checkbox"],
+.login input[type="text"] {
+  color: var(--candy-admin-color-primary);
+}
+
+body.login form {
+  border: none;
+  background-color: var(--white);
+  border-radius: 2rem;
+}
+
+body.login input[type="password"],
+body.login input[type="text"] {
+  background: rgba(245, 247, 250, 1);
+  border-radius: 20px;
+  border: none;
+}
+
+body.login .button,
+body.login #login input[type="submit"] {
+  color: var(--white);
+  background: var(--candy-admin-color-secondary);
+  border-color: var(--candy-admin-color-secondary);
+}
+
+#login h1 a,
+body.login h1 a {
+  background-image: var(--candy-login-logo-url);
+  height: 84px;
+  width: 100%;
+  background-size: contain;
+}
+
+body.login #login_error,
+body.login .message,
+body.login .success {
+  border-left: 4px solid var(--black);
+}
+
+body.login.wp-core-ui .button-primary,
+body.login.wp-core-ui .button-primary.active,
+body.login.wp-core-ui .button-primary.active:focus,
+body.login.wp-core-ui .button-primary.active:hover,
+body.login.wp-core-ui .button-primary:active {
+  background: var(--black);
+  border-color: var(--black);
+}
+
+body.login .dashicons-visibility:before {
+  color: var(--black);
+}
+
+body.login input[type="checkbox"]:checked::before {
+  filter: brightness(0);
+}
+
+body.login input[type="text"],
+body.login input[type="password"] {
+  border-radius: 5px;
+  padding-left: 1rem;
+  padding-right: 2rem;
+  font-size: 1rem;
+}
+
+body.login #backtoblog a:hover,
+body.login #nav a:hover,
+body.login h1 a:hover {
+  color: var(--black);
+}
+
+body.login #backtoblog a,
+body.login #nav a {
+  color: var(--black);
+}
+
+body.login input[type="checkbox"],
+body.login input[type="radio"] {
+  border: 1px solid var(--black);
+}

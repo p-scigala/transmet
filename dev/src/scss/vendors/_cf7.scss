@@ -1,0 +1,52 @@
+// HTML label structure
+// <div class="box-anim">
+//   <label for="" class="lab-anim"></label>
+//   <input type="text">
+// </div>
+
+
+.box-anim {
+  .lab-anim {
+    position: relative;
+    z-index: 1;
+    transition: 0.4s ease;
+    transform: translateY(2em);
+    pointer-events: none;
+    transform-origin: left;
+  }
+
+  &.focused {
+    .lab-anim {
+      transform: scale(0.8);
+    }
+  }
+}
+
+.box-anim > label {
+  font-size: torem(20);
+}
+
+.wpcf7-not-valid-tip {
+  color: inherit;
+}
+
+.wpcf7 form .wpcf7-response-output {
+  margin: 2em 0 1em;
+  text-align: center;
+}
+
+.wpcf7 form.invalid .wpcf7-response-output {
+  color: var(--bs-danger);
+  background: rgba($color: var(--bs-danger), $alpha: 90%);
+  border-color: rgba($color: var(--bs-danger), $alpha: 90%);
+}
+
+.wpcf7 form.sent .wpcf7-response-output {
+  background: rgba($color: var(--bs-success), $alpha: 90%);
+  border-color: rgba($color: var(--bs-success), $alpha: 90%);
+  color: var(--bs-success);
+}
+
+.wpcf7-list-item-label {
+  font-size: 0.25rem;
+}
