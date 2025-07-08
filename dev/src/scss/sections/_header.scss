@@ -1,6 +1,23 @@
 .header {
-  padding: 15px;
-  background-color: var(--gray);
+  position: relative;
+  width: 100%;
+  height: 141px;
+  background-color: var(--color-gray);
+
+  &__wrapper {
+    gap: 25px;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  &__logo {
+    img {
+      display: block;
+      width: 143px;
+      height: 92px;
+      object-fit: contain;
+    }
+  }
 
   .main-menu {
     display: flex;
@@ -9,9 +26,23 @@
     margin: 0;
     list-style: none;
     white-space: nowrap;
+    gap: 25px;
 
     .menu-item {
-      padding: 10px;
+      display: block;
+
+      a {
+        padding: 10px;
+        transition-duration: .3s;
+
+        &:hover:not(.current-menu-item) {
+          text-shadow: 0 0 1px #000000;
+        }
+      }
+    }
+
+    .current-menu-item {
+      color: var(--color-primary-blue);
     }
   }
 }

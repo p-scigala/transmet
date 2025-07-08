@@ -5,7 +5,7 @@
         {
             "key": "field_685117e2f9bfd",
             "label": "Tytuł",
-            "name": "title_01",
+            "name": "contact_title_01",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -25,7 +25,7 @@
         {
             "key": "field_68511810f9bfe",
             "label": "Podtytuł",
-            "name": "title_02",
+            "name": "contact_title_02",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -45,7 +45,7 @@
         {
             "key": "field_68511827f9bff",
             "label": "Tekst",
-            "name": "text",
+            "name": "contact_text",
             "aria-label": "",
             "type": "wysiwyg",
             "instructions": "",
@@ -65,7 +65,7 @@
         {
             "key": "field_68511832f9c00",
             "label": "Linki",
-            "name": "links_repeater",
+            "name": "contact_links_repeater",
             "aria-label": "",
             "type": "repeater",
             "instructions": "",
@@ -87,7 +87,7 @@
                 {
                     "key": "field_68511843f9c01",
                     "label": "Ikona",
-                    "name": "icon",
+                    "name": "contact_link_icon",
                     "aria-label": "",
                     "type": "image",
                     "instructions": "",
@@ -113,7 +113,7 @@
                 {
                     "key": "field_68511854f9c02",
                     "label": "Link",
-                    "name": "link",
+                    "name": "contact_link",
                     "aria-label": "",
                     "type": "link",
                     "instructions": "",
@@ -148,5 +148,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1750145194
+    "modified": 1750406419
 }

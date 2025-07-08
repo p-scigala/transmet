@@ -5,7 +5,7 @@
         {
             "key": "field_6851175d54a0f",
             "label": "Tytuł",
-            "name": "title_01",
+            "name": "team_title_01",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -25,7 +25,7 @@
         {
             "key": "field_6851177454a10",
             "label": "Podtytuł",
-            "name": "title_02",
+            "name": "team_title_02",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -45,7 +45,7 @@
         {
             "key": "field_685117e4d85d5",
             "label": "Tekst",
-            "name": "text",
+            "name": "team_text",
             "aria-label": "",
             "type": "wysiwyg",
             "instructions": "",
@@ -56,10 +56,10 @@
                 "class": "",
                 "id": ""
             },
+            "default_value": "",
             "tabs": "all",
             "toolbar": "full",
             "media_upload": 1,
-            "default_value": "",
             "delay": 0
         },
         {
@@ -87,7 +87,7 @@
                 {
                     "key": "field_6851179754a12",
                     "label": "Zdjęcie",
-                    "name": "img",
+                    "name": "team_img",
                     "aria-label": "",
                     "type": "image",
                     "instructions": "",
@@ -113,7 +113,7 @@
                 {
                     "key": "field_685117a454a13",
                     "label": "Imię i nazwisko",
-                    "name": "name",
+                    "name": "team_name",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -139,7 +139,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "template-parts\/team.php"
+                "value": "template-about-us.php"
             }
         ]
     ],
@@ -152,5 +152,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1750148634
+    "modified": 1750406648
 }

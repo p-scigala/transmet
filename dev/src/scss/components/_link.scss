@@ -1,0 +1,26 @@
+.link {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+  font-weight: bold;
+  color: var(--color-black);
+  transition-duration: 0.3s;
+
+  &::after {
+    content: '';
+    background-color: var(--color-black);
+    width: 100%;
+    height: 2px;
+    display: block;
+    margin-top: 7px;
+    transition-duration: 0.3s;
+  }
+
+  &:hover {
+    color: var(--color-primary-blue);
+
+    &::after {
+      background-color: var(--color-primary-blue);
+    }
+  }
+}

@@ -9,4 +9,16 @@ jQuery(document).ready(function ($) {
 
   scrollAnim($);
   slickCall($);
+
+  document.querySelectorAll('.accordion__trigger').forEach(trigger => {
+    trigger.addEventListener('click', ()=> {
+      const content = trigger.nextElementSibling;
+      trigger.parentElement.classList.toggle('active');
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    });
+  });
 });

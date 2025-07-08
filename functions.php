@@ -27,3 +27,25 @@ function jk_dequeue_styles($enqueue_styles)
 // Gdyby coś nie działało w cf7 -> zakomentować
 $cf7BootstrapInputs = new CF7BootstrapInputs();
 $cf7BootstrapInputs->init();
+
+add_filter( 'woocommerce_loop_add_to_cart_link', 'custom_add_span_inside_add_to_cart', 10, 3 );
+
+function custom_add_span_inside_add_to_cart( $html, $product, $args ) {
+    // Example: insert <span class="custom-span">🔥</span> after the text inside the <a>
+    // Original $html is something like:
+    // <a href="..." class="button add_to_cart_button">Add to cart</a>
+
+    // Find the closing tag > and insert span after it
+    $custom_html = str_replace(
+        '>',
+        '><span>',
+        $html
+    );
+    $custom_html = str_replace(
+        '<',
+        '</span><',
+        $custom_html
+    );
+
+    return $custom_html;
+}

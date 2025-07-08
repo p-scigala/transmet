@@ -2,48 +2,60 @@
 
 <section class="faq">
 
-  <div class="faq__wrapper">
-    <div class="faq__content">
+  <div class="wrapper">
+    <div class="faq__wrapper">
+      <div class="faq__content">
 
-      <?php if(get_field("title_01")) { ?>
+        <?php if(get_field("faq_title_01")): ?>
         <h2 class="faq__header">
-          <?php echo get_field("title_01"); ?>
+          <?php echo get_field("faq_title_01"); ?>
         </h2>
-      <?php } ?>
+        <?php endif; ?>
 
-      <?php if(get_field("title_02")) { ?>
-	      <h3 class="faq__subheader">
-          <?php echo get_field("title_02"); ?>
+        <?php if(get_field("faq_title_02")): ?>
+        <h3 class="faq__subheader">
+          <?php echo get_field("faq_title_02"); ?>
         </h3>
-      <?php } ?>
+        <?php endif; ?>
 
-      <?php if(get_field("text")) { ?>
+        <?php if(get_field("faq_text")): ?>
         <div class="faq__text">
-          <?php echo get_field("text"); ?>
+          <?php echo get_field("faq_text"); ?>
         </div>
-      <?php } ?>
+        <?php endif; ?>
 
-    </div>
+      </div>
 
-    <?php if(have_rows('faq_repeater')):?>
       <div class="faq__items">
-        <?php while(have_rows('faq_repeater')): the_row();?>
-          <div class="faq__item <?php if(get_sub_field('active')) echo "active"; ?>">
-            <div class="faq__item-trigger">
-               <?php if(get_sub_field("title")) { ?>
-                <h4><?php echo get_sub_field("title"); ?></h4>
-              <?php } ?>
-              <div class="faq__item-content">
-                <?php if(get_sub_field("text")) { ?>
-                    <?php echo get_sub_field("text"); ?>
-                <?php } ?>
-              </div>
+        <?php
+      $args = array(
+        'post_type' => 'faq',
+        'posts_per_page' => 100,
+      );
+
+      $loop = new WP_Query( $args );
+
+      while ( $loop->have_posts() ) : $loop->the_post();
+        global $product;
+        ?>
+        <div class="faq__item accordion">
+          <div class="accordion__trigger">
+            <?php echo get_the_title(); ?>
+            <span class="accordion__icon"></span>
+          </div>
+          <div class="accordion__content">
+            <div class="accordion__text">
+              <?php echo get_the_content(); ?>
             </div>
           </div>
-        <?php endwhile;?>
+        </div>
+        <?php
+      endwhile;
+      wp_reset_query();
+      ?>
       </div>
-    <?php endif;?>
 
+    </div>
   </div>
 
 </section>

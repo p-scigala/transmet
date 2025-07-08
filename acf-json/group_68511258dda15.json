@@ -5,7 +5,7 @@
         {
             "key": "field_6851125932694",
             "label": "Tytuł",
-            "name": "title_01",
+            "name": "categories_title_01",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -25,7 +25,7 @@
         {
             "key": "field_6851127432695",
             "label": "Podtytuł",
-            "name": "title_02",
+            "name": "categories_title_02",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -45,7 +45,7 @@
         {
             "key": "field_6851128432696",
             "label": "Tekst",
-            "name": "text",
+            "name": "categories_text",
             "aria-label": "",
             "type": "wysiwyg",
             "instructions": "",
@@ -81,5 +81,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1750166133
+    "modified": 1750406354
 }

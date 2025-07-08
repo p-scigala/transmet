@@ -38,7 +38,7 @@
           <?php echo esc_html($link_title); ?>
         </a>
       <?php }
-          endwhile
+          endwhile;
         endif;
       ?>
       

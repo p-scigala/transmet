@@ -1,0 +1,55 @@
+.accordion {
+  background: var(--color-white);
+  transition-duration: 0.3s;
+  border-bottom: solid 1px var(--color-border);
+  position: relative;
+
+  &__trigger {
+    padding: 18px 30px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-size: 17px;
+  }
+
+  &__content {
+    max-height: 0px;
+    width: 100%;
+    font-size: 15px;
+    overflow: hidden;
+    transition-duration: 0.3s;
+  }
+
+  &__text {
+    width: 100%;
+    padding: 14px 30px 20px 30px;
+    opacity: 1;
+    transition-duration: 0.3s;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 10px;
+    background-image: url('../../assets/imgs/arrow-down.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition-duration: 0.3s;
+  }
+
+  &.active {
+    background-color: var(--color-gray);
+    border-bottom-color: transparent;
+
+    .accordion {
+      &__text {
+        opacity: 1;
+      }
+
+      &__icon {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

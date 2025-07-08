@@ -1,18 +1,14 @@
-import { arrow } from '@popperjs/core';
-
 const slickCall = ($) => {
-  const prevArrow = `<button type="button" class="slick__arrow slick-prev btn btn--arrow">
-            <span class="btn__inner">
-                <img src="/wp-content/themes/candyweb-new/assets/img/arrow-prev.svg" alt="Poprzedni">
-            </span>
+  const prevArrow = `
+        <button type="button" class="slick__arrow slick-prev btn btn--arrow btn--arrow-left" title="Poprzedni">
+            <span></span>
         </button>`;
-  const nextArrow = `<button type="button" class="slick__arrow slick-next btn btn--arrow">
-            <span class="btn__inner">
-                <img src="/wp-content/themes/candyweb-new/assets/img/arrow-next.svg" alt="Następny">
-            </span>
+  const nextArrow = `
+        <button type="button" class="slick__arrow slick-next btn btn--arrow btn--arrow-right" title="Następny">
+            <span></span>
         </button>`;
 
-  $('.home-hero').slick({
+  $('.hero__slick').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: false,
@@ -42,111 +38,117 @@ const slickCall = ($) => {
     ],
   });
 
-  $('.categories__items').slick({
-    // slidesToShow: 4,
-    slidesToScroll: 4,
-    autoplay: false,
-    autoplaySpeed: 5000,
-    arrows: true,
+  $('.categories__slick').slick({
+    arrows: false,
     dots: false,
-    prevArrow: prevArrow,
-    nextArrow: nextArrow,
-    variableWidth: false,
-    centerMode: true,
-    fade: true,
-    cssEase: 'linear',
-    responsive: [
-      {
-        breakpoint: 1199,
-        settings: {
-          arrows: true,
-        },
-      },
-    ],
+    infinite: false,
+    speed: 300,
+    slidesToShow: 1,
+    centerMode: false,
+    variableWidth: true,
+  });
+  
+  $('.newest-products__slick').slick({
+    arrows: false,
+    dots: false,
+    infinite: false,
+    speed: 300,
+    slidesToShow: 1,
+    centerMode: false,
+    variableWidth: true,
+  });  
+  $('.bestsellers__slick').slick({
+    arrows: false,
+    dots: false,
+    infinite: false,
+    speed: 300,
+    slidesToShow: 1,
+    centerMode: false,
+    variableWidth: true,
   });
 
-  $('.home-hero').on('setPosition', function (event, slick) {
+  $('.slick-carousel').on('setPosition', function (event, slick) {
     var maxHeight = 0;
 
     // Iteruj przez każdy .offer_job_item, znajdź najwyższy .offer-list-title w każdym elemencie
-    $('.home-hero__item').each(function () {
-      var currentHeight = $(this).find('.home-hero__same-h').height();
+    $('.slick-carousel__item').each(function () {
+      var currentHeight = $(this).find('.slick-carousel__same-h').height();
       if (currentHeight > maxHeight) {
         maxHeight = currentHeight;
       }
     });
 
     // Ustaw wysokość wszystkich .offer-list-title na największą wysokość
-    $('.home-hero__same-h').height(maxHeight);
+    $('.slick-carousel__same-h').height(maxHeight);
   });
 
-  $('.home-hero').on(
+  $('.slick-carousel').on(
     'beforeChange',
     function (event, slick, currentSlide, nextSlide) {
       // Usuń klasy animacji dla wszystkich elementów przed zmianą slajdu
-      $('.home-hero__title').removeClass('animated');
-      $('.home-hero__text').removeClass('animated');
-      $('.home-hero__btn').removeClass('animated');
-      $('.home-hero__img-01').removeClass('animated');
-      $('.home-hero__img-02').removeClass('animated');
-      $('.home-hero__img-03').removeClass('animated');
-      $('.home-hero__bg').removeClass('animated');
+      $('.slick-carousel__title').removeClass('animated');
+      $('.slick-carousel__text').removeClass('animated');
+      $('.slick-carousel__btn').removeClass('animated');
+      $('.slick-carousel__img-01').removeClass('animated');
+      $('.slick-carousel__img-02').removeClass('animated');
+      $('.slick-carousel__img-03').removeClass('animated');
+      $('.slick-carousel__bg').removeClass('animated');
 
-      $('.home-hero__product-bg').removeClass('animated');
-      $('.home-hero__img-product').removeClass('animated');
-      $('.home-hero__product').removeClass('animated');
+      $('.slick-carousel__product-bg').removeClass('animated');
+      $('.slick-carousel__img-product').removeClass('animated');
+      $('.slick-carousel__product').removeClass('animated');
     }
   );
 
-  $('.home-hero').on(
+  $('.slick-carousel').on(
     'afterChange',
     function (event, slick, currentSlide, nextSlide) {
       // Dodaj klasy animacji tylko dla bieżącego slajdu po zmianie
       var $currentSlide = $(slick.$slides[currentSlide]);
 
-      $currentSlide.find('.home-hero__title').addClass('animated');
-      $currentSlide.find('.home-hero__bg').addClass('animated');
+      $currentSlide.find('.slick-carousel__title').addClass('animated');
+      $currentSlide.find('.slick-carousel__bg').addClass('animated');
 
       setTimeout(function () {
-        $currentSlide.find('.home-hero__img-03').addClass('animated');
-        $currentSlide.find('.home-hero__text').addClass('animated');
-        $currentSlide.find('.home-hero__product-bg').addClass('animated');
+        $currentSlide.find('.slick-carousel__img-03').addClass('animated');
+        $currentSlide.find('.slick-carousel__text').addClass('animated');
+        $currentSlide.find('.slick-carousel__product-bg').addClass('animated');
       }, 300);
 
       setTimeout(function () {
-        $currentSlide.find('.home-hero__btn').addClass('animated');
-        $currentSlide.find('.home-hero__img-02').addClass('animated');
-        $currentSlide.find('.home-hero__img-product').addClass('animated');
+        $currentSlide.find('.slick-carousel__btn').addClass('animated');
+        $currentSlide.find('.slick-carousel__img-02').addClass('animated');
+        $currentSlide.find('.slick-carousel__img-product').addClass('animated');
       }, 600);
       setTimeout(function () {
-        $currentSlide.find('.home-hero__img-01').addClass('animated');
-        $currentSlide.find('.home-hero__product').addClass('animated');
+        $currentSlide.find('.slick-carousel__img-01').addClass('animated');
+        $currentSlide.find('.slick-carousel__product').addClass('animated');
       }, 900);
       setTimeout(function () {}, 1500);
       setTimeout(function () {}, 700);
     }
   );
 
-  $('.home-hero__title').addClass('animated');
-  $('.home-hero__bg').addClass('animated');
+  $('.slick-carousel__title').addClass('animated');
+  $('.slick-carousel__bg').addClass('animated');
   setTimeout(function () {
-    $('.home-hero__img-03').addClass('animated');
-    $('.home-hero__text').addClass('animated');
-    $('.home-hero__product-bg').addClass('animated');
+    $('.slick-carousel__img-03').addClass('animated');
+    $('.slick-carousel__text').addClass('animated');
+    $('.slick-carousel__product-bg').addClass('animated');
   }, 300);
   setTimeout(function () {
-    $('.home-hero__btn').addClass('animated');
-    $('.home-hero__img-02').addClass('animated');
-    $('.home-hero__img-product').addClass('animated');
+    $('.slick-carousel__btn').addClass('animated');
+    $('.slick-carousel__img-02').addClass('animated');
+    $('.slick-carousel__img-product').addClass('animated');
   }, 600);
   setTimeout(function () {
-    $('.home-hero__img-01').addClass('animated');
-    $('.home-hero__product').addClass('animated');
+    $('.slick-carousel__img-01').addClass('animated');
+    $('.slick-carousel__product').addClass('animated');
   }, 900);
 
   $(document).ready(function () {
-    var $slider = $('.home-hero');
-    var $progressBar = $('.home-hero__progress-bar');
+    var $slider = $('.slick-carousel');
+    var $progressBar = $('.slick-carousel__progress-bar');
     var progressTrackWidth = 200;
     var progressBarWidth = 87;
     var maxOffset = progressTrackWidth - progressBarWidth;

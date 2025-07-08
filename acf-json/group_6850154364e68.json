@@ -1,11 +1,11 @@
 {
     "key": "group_6850154364e68",
-    "title": "Home - Hero",
+    "title": "Sekcja - Hero",
     "fields": [
         {
             "key": "field_6850154524108",
             "label": "",
-            "name": "home_hero_repeater",
+            "name": "hero_repeater",
             "aria-label": "",
             "type": "repeater",
             "instructions": "",
@@ -27,7 +27,7 @@
                 {
                     "key": "field_6850157224109",
                     "label": "Nagłówek - Pierwsza linia",
-                    "name": "title_01",
+                    "name": "hero_title_01",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -48,7 +48,7 @@
                 {
                     "key": "field_685015de2410a",
                     "label": "Nagłówek - Druga linia",
-                    "name": "title_02",
+                    "name": "hero_title_02",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -69,12 +69,25 @@
                 {
                     "key": "field_685016112410c",
                     "label": "Przycisk",
-                    "name": "btn",
+                    "name": "hero_btn",
                     "aria-label": "",
                     "type": "link",
                     "instructions": "",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6850154524108",
+                                "operator": "!=empty"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_6850154524108",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -86,7 +99,7 @@
                 {
                     "key": "field_685015f42410b",
                     "label": "Tekst",
-                    "name": "text",
+                    "name": "hero_text",
                     "aria-label": "",
                     "type": "wysiwyg",
                     "instructions": "",
@@ -107,11 +120,11 @@
                 {
                     "key": "field_685016322410d",
                     "label": "Zdjęcie",
-                    "name": "img",
+                    "name": "hero_img",
                     "aria-label": "",
                     "type": "image",
                     "instructions": "",
-                    "required": 0,
+                    "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "50",
@@ -151,5 +164,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1750165955
+    "modified": 1750406335
 }

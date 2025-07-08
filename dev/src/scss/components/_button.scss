@@ -3,20 +3,24 @@
   height: 50px;
   width: fit-content;
   min-width: 200px;
-  padding: 0;
+  padding: 3px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: none;
   border-radius: 25px;
-  background: var(--color-secondary-blue);
-  border: solid 3px var(--color-secondary-blue);
+  background: linear-gradient(
+      to right,
+      var(--color-secondary-blue-30),
+      var(--color-primary-blue)
+    )
+    0% no-repeat padding-box;
   font-weight: bold;
   overflow: hidden;
   z-index: 1;
 
-  &__text {
+  & > span {
     position: relative;
-    display: block;
     width: 100%;
     height: 100%;
     display: flex;
@@ -27,56 +31,84 @@
     border-radius: 25px;
     color: var(--color-white);
     z-index: 3;
+    transition-duration: 0.3s;
+    // background: linear-gradient(
+    //       var(--color-primary-blue),
+    //       var(--color-primary-blue)
+    //     )
+    //     padding-box,
+    //   linear-gradient(
+    //       var(--angle),
+    //       #ffffff,
+    //       #ffffff00,
+    //       #ffffff,
+    //       #ffffff00,
+    //       #ffffff
+    //     )
+    //     border-box;
+  }
 
-    &::before {
-      content: '';
-      position: absolute;
-      display: block;
-      width: 200%;
-      height: 100%;
-      left: -100%;
-      z-index: -1;
-      border-radius: 25px;
-      background: linear-gradient(
-        90deg,
-        var(--color-primary-blue),
-        var(--color-secondary-green)
-      );
-      animation: btnAnim2 3s linear infinite reverse;
-    }
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    height: calc(100% - 6px);
+    width: calc(100% - 6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: solid 3px transparent;
+    transition-duration: 0.3s;
+    border-radius: 25px;
   }
 
   &::before {
-    content: '';
-    position: absolute;
-    display: block;
-    left: -100%;
-    width: 200%;
-    height: 100%;
-    z-index: 2;
+    animation: 8s rotateAnimation linear infinite;
     background: linear-gradient(
-      90deg,
-      var(--color-white),
-      var(--color-primary-blue),
-      var(--color-white),
-      var(--color-secondary-green),
-      var(--color-white),
-      var(--color-primary-blue),
-      var(--color-white),
-      var(--color-secondary-green),
-      var(--color-white)
-    );
+          var(--color-primary-blue),
+          var(--color-primary-blue)
+        )
+        padding-box,
+      linear-gradient(
+          var(--angle),
+          var(--color-primary-blue),
+          #ffffff,
+          var(--color-primary-blue),
+          #ffffff,
+          var(--color-primary-blue),
+          #ffffff
+        )
+        border-box;
+  }
+
+  &::after {
+    opacity: 1;
+    background: linear-gradient(
+          var(--color-primary-blue),
+          var(--color-primary-blue)
+        )
+        padding-box,
+      linear-gradient(
+          90deg,
+          #73d0f7,
+          #ffffff,
+          var(--color-primary-blue),
+          #ffffff,
+          var(--color-primary-blue),
+          #ffffff
+        )
+        border-box;
   }
 
   &:hover {
-    &::before {
-      animation: btnAnim 5s linear infinite;
+    & > span {
+      transform: scale(1.2);
     }
-
-    &__text {
-      &::before {
-        animation: btnAnim2 5s linear infinite;
-      }
+    &::after {
+      opacity: 0;
     }
   }
 
@@ -84,18 +116,34 @@
     width: 50px;
     height: 50px;
     min-width: unset;
+
+    span {
+      height: 22px;
+    }
+
+    &-left {
+      span {
+        content: url('../../assets/imgs/arrow-left-white.svg');
+      }
+    }
+
+    &-right {
+      span {
+        content: url('../../assets/imgs/arrow-right-white.svg');
+      }
+    }
   }
 
   &--panel {
-    width: 300px;
-    height: 300px;
+    width: 202px;
+    height: 202px;
     min-width: unset;
     border-radius: 0;
 
     &::before {
       border-radius: 0;
     }
-    &__text {
+    &__inner {
       border-radius: 0;
 
       &::before {
@@ -105,26 +153,14 @@
   }
 }
 
-@keyframes btnAnim {
-  0% {
-    left: -100%;
-  }
-
-  100% {
-    left: 0%;
+@keyframes rotateAnimation {
+  to {
+    --angle: 360deg;
   }
 }
 
-@keyframes btnAnim2 {
-  0% {
-    left: -100%;
-  }
-
-  50% {
-    left: 0%;
-  }
-
-  100% {
-    left: -100%;
-  }
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
 }

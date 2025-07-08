@@ -1,0 +1,69 @@
+.product {
+  border: solid 1px var(--color-border);
+  width: 320px;
+  height: 528px;
+  list-style: none;
+  padding: 60px 10px 10px 10px;
+  position: relative;
+
+  .onsale {
+    display: none;
+  }
+
+  .woocommerce-loop-product__link {
+    text-align: center;
+
+    img {
+      width: 239px;
+      height: 239px;
+      margin: 0 auto 10px auto;
+      display: block;
+    }
+  }
+
+  h2 {
+    font-size: 17px;
+    text-align: center;
+  }
+
+  .price {
+    display: flex;
+    flex-direction: row-reverse;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    bdi {
+      font-size: 22px;
+      font-weight: bolder;
+    }
+
+    del {
+      bdi {
+        font-size: 17px;
+      }
+    }
+
+    ins {
+      text-decoration: none;
+      color: var(--color-red);
+    }
+  }
+
+  &__quantity,
+  &__add-to-cart {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__add-to-cart {
+    .btn {
+      width: 100%;
+      max-width: 204px;
+    }
+  }
+}

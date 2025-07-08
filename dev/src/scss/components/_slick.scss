@@ -1,4 +1,8 @@
 .slick {
+  &-track {
+    display: flex;
+  }
+
   &__arrow {
     position: absolute;
     top: 0;

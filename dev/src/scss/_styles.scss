@@ -1,14 +1,63 @@
 :root {
-  --color-white: #FFFFFF;
-  --color-gray: #FBFBFB;
-  --color-primary-blue: #00A9F3;
-  --color-primary-green: #00CD97;
-  --color-secondary-blue: #84E3D6;
-  --color-secondary-green: #00CC99;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-gray: #fbfbfb;
+  --color-primary-blue: #00aaf1;
+  --color-primary-green: #00cd97;
+  --color-secondary-blue: #84e3d6;
+  --color-secondary-blue-30: #00a9f433;
+  --color-secondary-green: #00cc99;
+  --color-border: #d9d9d9;
+  --color-red: #ec0028;
 }
 
 * {
-  font-family: sans-serif;
+  font-family: 'Mulish', sans-serif;
+  font-optical-sizing: auto;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 57px;
+  margin-bottom: 13px;
+}
+
+h3 {
+  font-size: 31px;
+  line-height: 39px;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 15px;
+}
+
+img {
+  object-fit: contain;
+  display: block;
+}
+
+section {
+  position: relative;
+  width: 100%;
+  margin: 90px auto;
+}
+
+.wrapper {
+  max-width: 1310px;
+  width: 100%;
+  margin: auto;
+  padding: 0 15px;
 }
 
 .page-not-found {

@@ -5,7 +5,7 @@
         {
             "key": "field_68511660f0a75",
             "label": "Tytuł",
-            "name": "title_01",
+            "name": "about_title_01",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -25,7 +25,7 @@
         {
             "key": "field_6851167df0a76",
             "label": "Podtytuł",
-            "name": "title_02",
+            "name": "about_title_02",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -45,7 +45,7 @@
         {
             "key": "field_6851168ef0a77",
             "label": "Tekst",
-            "name": "text",
+            "name": "about_text",
             "aria-label": "",
             "type": "wysiwyg",
             "instructions": "",
@@ -65,7 +65,7 @@
         {
             "key": "field_6851169df0a78",
             "label": "Lista",
-            "name": "list_repeater",
+            "name": "about_list_repeater",
             "aria-label": "",
             "type": "repeater",
             "instructions": "",
@@ -87,7 +87,7 @@
                 {
                     "key": "field_685116d5f0a79",
                     "label": "Ikona",
-                    "name": "icon",
+                    "name": "about_list_icon",
                     "aria-label": "",
                     "type": "image",
                     "instructions": "",
@@ -113,7 +113,7 @@
                 {
                     "key": "field_685116e7f0a7a",
                     "label": "Tytuł",
-                    "name": "title",
+                    "name": "about_list_title",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -134,7 +134,7 @@
                 {
                     "key": "field_685116f2f0a7b",
                     "label": "Tekst",
-                    "name": "text",
+                    "name": "about_list_text",
                     "aria-label": "",
                     "type": "wysiwyg",
                     "instructions": "",
@@ -160,7 +160,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "template-home.php"
+                "value": "default"
             }
         ]
     ],
@@ -173,5 +173,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1750166007
+    "modified": 1750407795
 }

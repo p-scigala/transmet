@@ -1,0 +1,46 @@
+.bestsellers {
+  &__text {
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  &__header {
+    text-align: center;
+  }
+
+  &__subheader {
+    text-align: center;
+  }
+
+  &__items {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: nowrap;
+    margin-top: 40px;
+  }
+
+  &__link {
+    margin-top: 50px;
+  }
+
+  .product {
+    &::after {
+      content: 'Bestseller';
+      display: block;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: var(--color-red);
+      color: var(--color-white);
+      padding: 10px;
+      text-transform: uppercase;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+
+  .slick-track {
+    gap: 32px;
+  }
+}
