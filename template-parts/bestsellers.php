@@ -27,7 +27,7 @@
       </div>
     </div>
 
-    <div class="bestsellers__items bestsellers__slick slick-carousel d-flex row">
+    <div class="bestsellers__items bestsellers__slick slick-carousel">
       <?php
       $quantity = get_field("bestsellers_text");
 
@@ -48,7 +48,9 @@
       $products = wc_get_products( $args );
 
       while ( $loop->have_posts() ) : $loop->the_post();
-        echo wc_get_template('content-product.php');
+        echo wc_get_template('content-product.php', array(
+          'category' => 'bestsellers'
+        ));
       endwhile;
       wp_reset_query();
     ?>

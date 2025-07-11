@@ -69,6 +69,11 @@
                 "param": "page_template",
                 "operator": "==",
                 "value": "template-home.php"
+            },
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-parts\/faq.php"
             }
         ]
     ],
@@ -81,5 +86,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1750406303
+    "modified": 1752050592
 }

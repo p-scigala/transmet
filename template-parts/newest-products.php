@@ -33,7 +33,7 @@
       </div>
     </div>
 
-    <div class="newest-products__items newest-products__slick slick-carousel d-flex row">
+    <div class="newest-products__items newest-products__slick slick-carousel">
       <?php
       $quantity = get_field("newest_products_quantity");
    
@@ -46,7 +46,9 @@
       $products = wc_get_products( $args );
 
       while ( $loop->have_posts() ) : $loop->the_post();
-        echo wc_get_template('content-product.php');
+        echo wc_get_template('content-product.php', array(
+          'category' => 'newest-products',
+        ));
       endwhile;
       wp_reset_query();
     ?>

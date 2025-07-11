@@ -56,7 +56,8 @@ const slickCall = ($) => {
     slidesToShow: 1,
     centerMode: false,
     variableWidth: true,
-  });  
+  });
+  
   $('.bestsellers__slick').slick({
     arrows: false,
     dots: false,

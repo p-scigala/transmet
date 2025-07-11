@@ -25,6 +25,15 @@ input {
     width: 100%;
     max-width: 204px;
 
+    input[type='number'] {
+      &:active,
+      &:focus,
+      &:focus-visible {
+        outline-color: var(--color-primary-blue);
+        z-index: 1;
+      }
+    }
+
     &-text,
     &-plus,
     &-minus {
@@ -53,10 +62,21 @@ input {
       min-width: 60px;
       padding: 0;
       display: block;
+      transition-duration: 0.15s;
+
+      &:hover {
+        background-color: var(--color-primary-blue);
+        color: #ffffff;
+
+        span {
+          transform: scale(1.2);
+        }
+      }
 
       span {
         font-size: 10px;
         line-height: 20px;
+        transition-duration: 0.15s;
       }
     }
 

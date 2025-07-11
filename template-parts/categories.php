@@ -40,7 +40,7 @@
 
       $all_categories = get_categories($args);
       foreach ($all_categories as $cat) {
-        if($cat -> category_parent === 0) {
+        if($cat -> category_parent === 0 && $cat->slug !== "uncategorized" && $cat->slug !== "brak-kategorii") {
           $category_id = $cat->term_id;
           $thumbnail_id = get_woocommerce_term_meta($category_id, "thumbnail_id", true);
           $image = wp_get_attachment_url($thumbnail_id);

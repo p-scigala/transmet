@@ -63,32 +63,30 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_template_loop_add_to_cart - 10
 	 */
 	// do_action( 'woocommerce_after_shop_loop_item' );
-  ?>
 
+  $idAttr = $args['category'] . "-" . esc_attr($product->get_id());
+  $idJS = $args['category'] . "-" . esc_js($product->get_id());
+  ?>
+  </a>
   <div class="product__quantity">
     <div class="input__number">
 
-      <!-- <label for="quantity-<?php echo esc_attr( $product->get_id() ); ?>">
-      <?php esc_html_e( 'Quantity', 'woocommerce' ); ?>
-    </label> -->
-
       <button type="button" class="input__number-minus"
         aria-label="<?php esc_attr_e( 'Decrease quantity', 'woocommerce' ); ?>">
-        <span class="dashicons dashicons-minus"></span>
+        -
       </button>
 
-      <input type="number" id="quantity-<?php echo esc_attr( $product->get_id() ); ?>" class="input__number-text"
-        name="quantity" value="1" min="1" step="1"
-        aria-labelledby="quantity-<?php echo esc_attr( $product->get_id() ); ?>-label" />
+      <input type="number" id="quantity-<?php echo $idAttr; ?>" class="input__number-text" name="quantity" value="1"
+        min="1" step="1" aria-labelledby="quantity-<?php echo $idAttr; ?>-label" />
 
       <button type="button" class="input__number-plus"
         aria-label="<?php esc_attr_e( 'Increase quantity', 'woocommerce' ); ?>">
-        <span class="dashicons dashicons-plus"></span>
+        +
       </button>
 
       <script>
       document.addEventListener('DOMContentLoaded', function() {
-        const quantityInput = document.querySelector('#quantity-<?php echo esc_js( $product->get_id() ); ?>');
+        const quantityInput = document.querySelector('#quantity-<?php echo $idJS; ?>');
         const minusButton = quantityInput.previousElementSibling;
         const plusButton = quantityInput.nextElementSibling;
 

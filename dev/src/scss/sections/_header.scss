@@ -1,10 +1,18 @@
 .header {
-  position: relative;
+  position: fixed;
   width: 100%;
   height: 141px;
   background-color: var(--color-gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+  transition-duration: 0.3s;
 
   &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     gap: 25px;
     flex-wrap: nowrap;
     align-items: center;
@@ -13,10 +21,17 @@
   &__logo {
     img {
       display: block;
-      width: 143px;
+      width: auto;
       height: 92px;
+      max-height: 100%;
       object-fit: contain;
+      transition-duration: 0.3s;
     }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
   }
 
   .main-menu {
@@ -27,22 +42,211 @@
     list-style: none;
     white-space: nowrap;
     gap: 25px;
+    position: relative;
 
     .menu-item {
       display: block;
 
+      &-has-children {
+        & > a::after {
+          content: url('../imgs/arrow-down.svg');
+          width: 10px;
+          height: 10px;
+          display: inline-block;
+          margin-left: 5px;
+        }
+      }
+
       a {
         padding: 10px;
-        transition-duration: .3s;
+        transition-duration: 0.3s;
 
-        &:hover:not(.current-menu-item) {
+        &:hover {
           text-shadow: 0 0 1px #000000;
         }
+      }
+
+      .current-menu-item {
+        a:hover {
+          text-shadow: none;
+        }
+      }
+
+      .sub-menu {
+        position: absolute;
+        padding: 55px 20px 20px 20px;
+        width: calc(100% + 60px);
+        top: 40px;
+        left: -30px;
+        background-color: var(--color-white);
+        box-shadow: 0px 3px 6px #00000029;
+        visibility: hidden;
+        opacity: 0;
+        transition-duration: 0.3s;
+        z-index: 10;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        transform: translateY(-10px);
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: -10px;
+          left: 0;
+          width: 100%;
+          height: 10px;
+        }
+
+        .menu-item {
+          width: calc(33.33% - 30px);
+
+          a {
+            font-size: 13px;
+          }
+        }
+      }
+
+      a:hover + .sub-menu,
+      .sub-menu:hover {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
       }
     }
 
     .current-menu-item {
       color: var(--color-primary-blue);
+    }
+  }
+
+  &__icons {
+    margin-left: 50px;
+  }
+
+  &__cart {
+    height: 28px;
+    width: 28px;
+    position: relative;
+
+    &-icon {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    &-count-number {
+      object-fit: contain;
+      min-width: 19px;
+      height: 19px;
+      color: var(--color-white);
+      background-color: var(--color-primary-blue);
+      border-radius: 9.5px;
+      font-size: 12px;
+      font-weight: bold;
+      position: absolute;
+      bottom: -9px;
+      right: -9px;
+      text-align: center;
+      line-height: 19px;
+      z-index: 1;
+    }
+  }
+
+  &__search {
+    margin-right: 30px;
+  }
+
+  .dgwt-wcas-search {
+    &-wrapp {
+      width: 350px;
+      max-width: 350px;
+    }
+
+    &-input {
+      border-radius: 5px !important;
+      height: 43px !important;
+
+      &::placeholder {
+        font-style: normal !important;
+      }
+
+      &:focus {
+        border-color: var(--color-primary-blue) !important;
+        box-shadow: none !important;
+      }
+    }
+
+    &-submit {
+      border-radius: 5px !important;
+      width: 43px !important;
+      height: 43px !important;
+      padding: 0 !important;
+
+      &::before {
+        content: none;
+      }
+    }
+  }
+
+  &__menu-toggle {
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    z-index: 1002;
+    position: relative;
+    display: none;
+
+    @media (max-width: 800px) {
+      display: flex;
+    }
+
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      width: 30px;
+      border-top: solid 2px var(--color-black);
+      transition: 0.15s linear;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+
+    &::before {
+      height: 18px;
+      border-bottom: solid 2px var(--color-black);
+    }
+
+    &::after {
+      height: 0;
+    }
+
+    &:hover {
+      &::after,
+      &::before {
+        border-color: var(--color-primary-blue);
+      }
+
+      &::before {
+        height: 24px;
+      }
+    }
+  }
+
+  &--scrolled {
+    height: 80px;
+    box-shadow: 0px 3px 6px #00000029;
+
+    .header {
+      &__logo {
+        img {
+          height: 60px;
+        }
+      }
     }
   }
 }

@@ -75,4 +75,9 @@
   .slick-track {
     gap: 32px;
   }
+
+  .slick-list {
+    width: calc(320px * 4 + 32px * 3); // 4 panels & 3 gaps between them
+    padding: 0;
+  }
 }

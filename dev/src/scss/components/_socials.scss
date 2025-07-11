@@ -1,0 +1,23 @@
+.socials {
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-gray);
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 23px;
+  }
+}
