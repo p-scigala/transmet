@@ -21,21 +21,21 @@ const slickCall = ($) => {
     centerMode: false,
     fade: true,
     cssEase: 'linear',
-    responsive: [
-      {
-        breakpoint: 1199,
-        settings: {
-          arrows: true,
-        },
-      },
-      {
-        breakpoint: 991,
-        settings: {
-          slidesToShow: 1,
-          arrows: true,
-        },
-      },
-    ],
+    // responsive: [
+    //   {
+    //     breakpoint: 1199,
+    //     settings: {
+    //       arrows: true,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 991,
+    //     settings: {
+    //       slidesToShow: 1,
+    //       arrows: true,
+    //     },
+    //   },
+    // ],
   });
 
   $('.categories__slick').slick({
@@ -46,8 +46,17 @@ const slickCall = ($) => {
     slidesToShow: 1,
     centerMode: false,
     variableWidth: true,
+    // responsive: [
+    //   {
+    //     breakpoint: 1450,
+    //     settings: {
+    //       centerMode: true,
+    //       variableWidth: false,
+    //     },
+    //   },
+    // ],
   });
-  
+
   $('.newest-products__slick').slick({
     arrows: false,
     dots: false,
@@ -57,15 +66,29 @@ const slickCall = ($) => {
     centerMode: false,
     variableWidth: true,
   });
-  
+
   $('.bestsellers__slick').slick({
     arrows: false,
     dots: false,
     infinite: false,
-    speed: 300,
-    slidesToShow: 1,
+    slidesToShow: 4,
+    slidesToScroll: 1,
     centerMode: false,
-    variableWidth: true,
+    adaptiveHeight: true,
+    responsive: [
+      {
+        breakpoint: 1450,
+        settings: {
+          centerMode: true,
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          // slidesToShow: 2,
+        },
+      },
+    ],
   });
 
   $('.slick-carousel').on('setPosition', function (event, slick) {

@@ -1,4 +1,10 @@
 .categories {
+  &__content {
+    @media (max-width: 1024px) {
+      text-align: center;
+    }
+  }
+
   &__item {
     &-img {
       height: 76px;

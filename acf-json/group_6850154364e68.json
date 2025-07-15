@@ -25,6 +25,60 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
+                    "key": "field_6870df60935bb",
+                    "label": "Kolory",
+                    "name": "hero_bg",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "white": "Białe tło, czarny tekst (domyślne)",
+                        "blue": "Niebieskie tło, biały tekst"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_6850154524108"
+                },
+                {
+                    "key": "field_6870df9d935bc",
+                    "label": "Szerokość obrazu",
+                    "name": "hero_img_width",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "normal": "Normalny",
+                        "wide": "Szeroki"
+                    },
+                    "default_value": "normal",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_6850154524108"
+                },
+                {
                     "key": "field_6850157224109",
                     "label": "Nagłówek - Pierwsza linia",
                     "name": "hero_title_01",
@@ -34,7 +88,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "50",
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
@@ -55,7 +109,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "50",
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
@@ -164,5 +218,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1750406335
+    "modified": 1752493040
 }

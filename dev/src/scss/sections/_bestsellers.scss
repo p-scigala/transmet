@@ -47,5 +47,10 @@
   .slick-list {
     width: calc(320px * 4 + 32px * 3); // 4 panels & 3 gaps between them
     padding: 0;
+
+    @media (max-width: 1450px) {
+      width: 100%;
+      padding: 0 15px;
+    }
   }
 }

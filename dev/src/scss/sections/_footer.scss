@@ -8,25 +8,67 @@
     justify-content: space-between;
     gap: 30px;
     padding-bottom: 30px;
+
+    @media (max-width: 800px) {
+      flex-wrap: wrap;
+    }
   }
 
   &__col {
     &--1 {
       width: 46%;
+
+      @media (max-width: 800px) {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
     }
 
     &--2,
     &--3 {
       width: 13%;
       padding-top: 30px;
+
+      @media (max-width: 800px) {
+        width: calc(50% - 15px);
+        text-align: center;
+        padding-top: 0;
+
+        a {
+          text-align: center;
+          margin: auto;
+          display: block;
+          width: fit-content;
+          padding: 6px;
+        }
+      }
+
+      .footer__menu {
+        @media (max-width: 800px) {
+          gap: 0;
+        }
+      }
     }
 
     &--4 {
       width: 28%;
       padding-top: 30px;
 
+      @media (max-width: 800px) {
+        width: 100%;
+        padding-top: 0;
+      }
+
       .footer__menu {
-        gap: 12px;
+        @media (max-width: 800px) {
+          gap: 12px;
+          margin: auto;
+          width: fit-content;
+          text-align: center;
+        }
       }
     }
   }
@@ -41,6 +83,11 @@
     line-height: 23px;
     width: 100%;
     max-width: 440px;
+
+    @media (max-width: 800px) {
+      max-width: 100%;
+      text-align: center;
+    }
   }
 
   &__socials {
@@ -54,6 +101,10 @@
     line-height: 20px;
     margin-bottom: 20px;
     font-weight: bold;
+
+    @media (max-width: 800px) {
+      text-align: center;
+    }
   }
 
   &__menu {
@@ -79,15 +130,37 @@
     font-weight: bold;
     display: block;
     margin-right: 12px;
+
+    @media (max-width: 800px) {
+      margin: 0 0 5px 0;
+    }
   }
 
   &__menu-item {
     display: flex;
+
+    @media (max-width: 800px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+    }
   }
 
   &__bottom {
     padding: 30px 0;
     font-size: 13px;
     border-top: solid 1px var(--color-border);
+
+    @media (max-width: 800px) {
+      text-align: center;
+    }
   }
 }

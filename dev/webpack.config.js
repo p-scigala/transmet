@@ -1,19 +1,23 @@
-require('dotenv').config({path: './.env'});
+require('dotenv').config({ path: './.env' });
 
 const path = require('path');
 const FileManagerPlugin = require('filemanager-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-
 
 module.exports = {
   entry: './src/main.js',
   output: {
     filename: '[name].js',
   },
-
+  cache: true,
+  cache: {
+    type: 'filesystem',
+  },
+  watchOptions: {
+    ignored: /node_modules/,
+  },
 
   plugins: [
-
     new FileManagerPlugin({
       events: {
         onEnd: {
@@ -21,7 +25,7 @@ module.exports = {
             {
               source: './dist/',
               destination: '../assets/js',
-              options: {overwrite: true},
+              options: { overwrite: true },
             },
           ],
         },
@@ -33,8 +37,7 @@ module.exports = {
       port: process.env.PORT,
       proxy: process.env.SITE_TO_WATCH,
       files: ['../**/*.php', '../assets/css/*.css', '../**/*.js'],
-    })
-
+    }),
   ],
   module: {
     rules: [
@@ -46,7 +49,6 @@ module.exports = {
           presets: ['@babel/preset-env'],
         },
       },
-    
     ],
   },
   externals: {

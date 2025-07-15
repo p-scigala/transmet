@@ -3,12 +3,14 @@
 import slickCall from './modules/slick';
 import cf7FloatingLabels from './modules/cf7FloatingLabels';
 import scrollAnim from './modules/scrollAnim';
+// import addToCart from './modules/add-to-cart';
 
 jQuery(document).ready(function ($) {
   cf7FloatingLabels($);
 
   scrollAnim($);
   slickCall($);
+  // addToCart($);
 
   document.querySelectorAll('.accordion__trigger').forEach((trigger) => {
     trigger.addEventListener('click', () => {
@@ -31,6 +33,7 @@ jQuery(document).ready(function ($) {
   }
 
   const header = document.querySelector('.header');
+
   window.addEventListener('scroll', () => {
     if (window.scrollY > 80) {
       header.classList.add('header--scrolled');
@@ -40,20 +43,9 @@ jQuery(document).ready(function ($) {
   });
 
   const menuToggle = document.querySelector('.header__menu-toggle');
-  const menu = document.querySelector('.header__menu');
+
   menuToggle.addEventListener('click', () => {
-    menu.classList.toggle('header__menu--active');
+    header.classList.toggle('header--active');
     menuToggle.classList.toggle('header__menu-toggle--active');
-    if (menu.classList.contains('header__menu--active')) {
-      menu.style.display = 'block';
-      setTimeout(() => {
-        menu.style.opacity = '1';
-      }, 10);
-    } else {
-      menu.style.opacity = '0';
-      setTimeout(() => {
-        menu.style.display = 'none';
-      }, 300);
-    }
   });
 });
