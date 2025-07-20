@@ -27,7 +27,7 @@
 
     <?php if(have_rows('team_repeater')):?>
       <div class="team__items">
-        <?php while(have_rows('team_repeater')): the_row();?>
+        <?php while(have_rows('team_repeater')): the_row(); ?>
           <div class="team__person">
             <div class="team__person-img">
               <?php if(get_sub_field("img")) { ?>

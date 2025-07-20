@@ -1,4 +1,4 @@
-.btn {
+body main .btn, .wc-block-cart__submit-button {
   position: relative;
   height: 50px;
   width: fit-content;
@@ -14,10 +14,11 @@
       var(--color-secondary-blue-30),
       var(--color-primary-blue)
     )
-    0% no-repeat padding-box;
+    0% no-repeat padding-box !important;
   font-weight: bold;
   overflow: hidden;
   z-index: 1;
+  box-shadow: none !important;
 
   & > span {
     position: relative;

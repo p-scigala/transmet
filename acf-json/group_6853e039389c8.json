@@ -174,9 +174,9 @@
     "location": [
         [
             {
-                "param": "page_template",
+                "param": "options_page",
                 "operator": "==",
-                "value": "template-home.php"
+                "value": "theme-general-settings"
             }
         ]
     ],
@@ -189,5 +189,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1751984008
+    "modified": 1752666726
 }

@@ -56,5 +56,3 @@
       </div>
     </div>
   </header>
-
-  <?php //get_template_part("template-parts/breadcrumb"); ?>

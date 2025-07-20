@@ -3,11 +3,11 @@
     "title": "Sekcja - Tekst z obrazem",
     "fields": [
         {
-            "key": "field_685113f72e247",
-            "label": "Pozycja obrazu",
-            "name": "text_and_img_position",
+            "key": "field_68760c1aedcf0",
+            "label": "Sekcje",
+            "name": "text_and_img_repeater",
             "aria-label": "",
-            "type": "true_false",
+            "type": "repeater",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -16,87 +16,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "",
-            "default_value": 0,
-            "ui_on_text": "Po lewej",
-            "ui_off_text": "Po prawej",
-            "ui": 1
-        },
-        {
-            "key": "field_68511168bc463",
-            "label": "Tytuł",
-            "name": "text_and_img_title_01",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_685111a1bc464",
-            "label": "Podtytuł",
-            "name": "text_and_img_title_02",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_685111afbc465",
-            "label": "Tekst",
-            "name": "text_and_img_text",
-            "aria-label": "",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "delay": 0
-        },
-        {
-            "key": "field_685114438cdb5",
-            "label": "Linki z ikoną",
-            "name": "text_and_img_links_repeater",
-            "aria-label": "",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "layout": "table",
+            "layout": "block",
             "pagination": 0,
             "min": 0,
             "max": 0,
@@ -105,20 +25,185 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_685114548cdb6",
-                    "label": "Ikona",
-                    "name": "text_and_img_link_icon",
+                    "key": "field_685111afbc465",
+                    "label": "Tekst",
+                    "name": "text_and_img_text",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33.33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0,
+                    "parent_repeater": "field_68760c1aedcf0"
+                },
+                {
+                    "key": "field_68511168bc463",
+                    "label": "Tytuł",
+                    "name": "text_and_img_title_01",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33.33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_68760c1aedcf0"
+                },
+                {
+                    "key": "field_685111a1bc464",
+                    "label": "Podtytuł",
+                    "name": "text_and_img_title_02",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33.33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_68760c1aedcf0"
+                },
+                {
+                    "key": "field_685111b7bc466",
+                    "label": "Przycisk",
+                    "name": "text_and_img_btn",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33.33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "parent_repeater": "field_68760c1aedcf0"
+                },
+                {
+                    "key": "field_68760f89eb4b0",
+                    "label": "Ikona z tekstem",
+                    "name": "text_and_img_icon_group",
+                    "aria-label": "",
+                    "type": "group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33.33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_68760fc1eb4b1",
+                            "label": "Ikona",
+                            "name": "text_and_img_icon",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "url",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_68760fd5eb4b2",
+                            "label": "Tekst",
+                            "name": "text_and_img_icon_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        }
+                    ],
+                    "parent_repeater": "field_68760c1aedcf0"
+                },
+                {
+                    "key": "field_685113f72e247",
+                    "label": "Pozycja obrazu",
+                    "name": "text_and_img_position",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "66.66",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui_on_text": "Po lewej",
+                    "ui_off_text": "Po prawej",
+                    "ui": 1,
+                    "parent_repeater": "field_68760c1aedcf0"
+                },
+                {
+                    "key": "field_685111d7bc467",
+                    "label": "Obraz (tło)",
+                    "name": "text_and_img_img_bg",
                     "aria-label": "",
                     "type": "image",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "50",
+                        "width": "33.33",
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "array",
+                    "return_format": "url",
                     "library": "all",
                     "min_width": "",
                     "min_height": "",
@@ -128,117 +213,61 @@
                     "max_size": "",
                     "mime_types": "",
                     "preview_size": "medium",
-                    "parent_repeater": "field_685114438cdb5"
+                    "parent_repeater": "field_68760c1aedcf0"
                 },
                 {
-                    "key": "field_6851146a8cdb7",
-                    "label": "Link",
-                    "name": "text_and_img_link",
+                    "key": "field_686cf4fc8eebd",
+                    "label": "Obraz (front)",
+                    "name": "text_and_img_img_front",
                     "aria-label": "",
-                    "type": "link",
+                    "type": "image",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "",
+                        "width": "33.33",
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "array",
-                    "parent_repeater": "field_685114438cdb5"
+                    "return_format": "url",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium",
+                    "parent_repeater": "field_68760c1aedcf0"
+                },
+                {
+                    "key": "field_686cf5178eebe",
+                    "label": "Obraz (logo)",
+                    "name": "text_and_img_img_logo",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33.33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "url",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium",
+                    "parent_repeater": "field_68760c1aedcf0"
                 }
             ]
-        },
-        {
-            "key": "field_685111b7bc466",
-            "label": "Przycisk",
-            "name": "text_and_img_btn",
-            "aria-label": "",
-            "type": "link",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array"
-        },
-        {
-            "key": "field_685111d7bc467",
-            "label": "Obraz (tło)",
-            "name": "text_and_img_img_bg",
-            "aria-label": "",
-            "type": "image",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "33.3",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "url",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "preview_size": "medium"
-        },
-        {
-            "key": "field_686cf4fc8eebd",
-            "label": "Obraz (front)",
-            "name": "text_and_img_img_front",
-            "aria-label": "",
-            "type": "image",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "33.3",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "url",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "preview_size": "medium"
-        },
-        {
-            "key": "field_686cf5178eebe",
-            "label": "Obraz (logo)",
-            "name": "text_and_img_img_logo",
-            "aria-label": "",
-            "type": "image",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "33.3",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "url",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "preview_size": "medium"
         }
     ],
     "location": [
@@ -247,6 +276,20 @@
                 "param": "page_template",
                 "operator": "==",
                 "value": "template-home.php"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-about-us.php"
+            }
+        ],
+        [
+            {
+                "param": "page",
+                "operator": "==",
+                "value": "9"
             }
         ]
     ],
@@ -259,5 +302,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1751971616
+    "modified": 1752831997
 }

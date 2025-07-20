@@ -6,6 +6,37 @@
   padding: 60px 10px 10px 10px;
   position: relative;
 
+  &__featured {
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--color-red);
+    color: var(--color-white);
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 12px;
+    text-align: center;
+    z-index: 3;
+  }
+
+  &__variant-form {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    width: 321px;
+    max-width: 100%;
+
+    .select {
+      width: 100%;
+    }
+  }
+
+  &__tabs {
+    margin: 120px 0;
+  }
+
   .onsale {
     display: none;
   }
@@ -38,7 +69,7 @@
 
     bdi {
       font-size: 22px;
-      font-weight: bolder;
+      font-weight: bold;
     }
 
     del {
@@ -50,6 +81,37 @@
     ins {
       text-decoration: none;
       color: var(--color-red);
+    }
+  }
+
+  .price-amount {
+    font-size: 22px;
+    font-weight: bold;
+    display: flex;
+    gap: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    max-width: 300px;
+    overflow: hidden;
+  }
+
+  .no-price {
+    bdi {
+      color: var(--color-red);
+      font-weight: normal;
+      font-size: 15px;
+      height: 33px;
+      line-height: 33px;
+    }
+  }
+
+  .price-has-variants {
+    bdi {
+      font-weight: normal;
+      font-size: 15px;
+      height: 33px;
+      line-height: 33px;
     }
   }
 
@@ -66,6 +128,28 @@
     .btn {
       width: 100%;
       max-width: 204px;
+    }
+  }
+
+  &.outofstock {
+    .btn {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .input__number {
+      button,
+      input {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+    }
+  }
+
+  &.product-type-variable {
+    .btn {
+      opacity: 1;
+      pointer-events: all;
     }
   }
 }

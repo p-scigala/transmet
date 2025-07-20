@@ -1,5 +1,7 @@
 <?php if (function_exists('bcn_display')) { ?>
-  <section class="container-fluid">
+<div class="breadcrumb">
+  <div class="wrapper">
     <?php bcn_display(); ?>
-  </section>
+  </div>
+</div>
 <?php } ?>

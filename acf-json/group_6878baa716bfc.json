@@ -1,0 +1,109 @@
+{
+    "key": "group_6878baa716bfc",
+    "title": "Strona - Refundacje",
+    "fields": [
+        {
+            "key": "field_6878baa72253e",
+            "label": "Układ strony",
+            "name": "refunds_template",
+            "aria-label": "",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "layout_6878bb3c2253f": {
+                    "key": "layout_6878bb3c2253f",
+                    "name": "refunds_text_and_imgs",
+                    "label": "Tekst z obrazkiem",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6878bb5522542",
+                            "label": "Tekst z obrazem - sekcja",
+                            "name": "refunds_text_and_imgs_data",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_685111683a0b8"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_6878d433d47d3": {
+                    "key": "layout_6878d433d47d3",
+                    "name": "refunds_steps_list",
+                    "label": "Kroki",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6878d74cabecf",
+                            "label": "Kroki - sekcja",
+                            "name": "refunds_steps_list",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_6878aca7c5249"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "min": "",
+            "max": "",
+            "button_label": "Dodaj wiersz"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-refunds.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1752750116
+}

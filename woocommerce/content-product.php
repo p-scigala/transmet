@@ -23,8 +23,13 @@ global $product;
 if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 	return;
 }
+
 ?>
 <li <?php wc_product_class( '', $product ); ?>>
+  <?php if ( has_term( 'featured', 'product_visibility', $product->get_id() ) ) : ?>
+    <span class="product__featured">Bestseller</span>
+  <?php endif; ?>
+
   <?php
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.
@@ -63,10 +68,8 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_template_loop_add_to_cart - 10
 	 */
 	// do_action( 'woocommerce_after_shop_loop_item' );
-
-  $idAttr = $args['category'] . "-" . esc_attr($product->get_id());
-  $idJS = $args['category'] . "-" . esc_js($product->get_id());
   ?>
+
   </a>
   <div class="product__quantity">
     <div class="input__number">
@@ -76,8 +79,9 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
         -
       </button>
 
-      <input type="number" id="quantity-<?php echo $idAttr; ?>" class="input__number-text" name="quantity" value="1"
-        min="1" step="1" aria-labelledby="quantity-<?php echo $idAttr; ?>-label" />
+      <input type="number" id="quantity-<?php echo esc_attr($product->get_id()); ?>" class="input__number-text"
+        name="quantity" value="1" min="1" step="1"
+        aria-labelledby="quantity-<?php echo esc_attr($product->get_id()); ?>-label" />
 
       <button type="button" class="input__number-plus"
         aria-label="<?php esc_attr_e( 'Increase quantity', 'woocommerce' ); ?>">
@@ -86,7 +90,7 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 
       <script>
       document.addEventListener('DOMContentLoaded', function() {
-        const quantityInput = document.querySelector('#quantity-<?php echo $idJS; ?>');
+        const quantityInput = document.querySelector('#quantity-<?php echo esc_js($product->get_id()); ?>');
         const minusButton = quantityInput.previousElementSibling;
         const plusButton = quantityInput.nextElementSibling;
 

@@ -1,6 +1,15 @@
 .footer {
   padding: 60px 0 0 0;
   background: var(--color-gray);
+  margin-top: 180px;
+
+  @media (max-width: 1280px) {
+    margin-top: 120px;
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 90px;
+  }
 
   &__top {
     display: flex;

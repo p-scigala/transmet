@@ -3,7 +3,7 @@
   --color-black: #000000;
   --color-gray: #fbfbfb;
   --color-primary-blue: #00aaf1;
-  --color-primary-darkblue: #28166F;
+  --color-primary-darkblue: #28166f;
   --color-primary-green: #00cd97;
   --color-secondary-blue: #84e3d6;
   --color-secondary-blue-30: #00a9f433;
@@ -59,6 +59,7 @@ h3 {
 
 p {
   font-size: 15px;
+  line-height: 23px;
 }
 
 a {
@@ -79,20 +80,65 @@ img {
 section {
   position: relative;
   width: 100%;
-  margin: 90px auto;
+  margin: 120px auto;
+
+  @media (max-width: 1280px) {
+    margin: 90px auto;
+  }
 
   @media (max-width: 1024px) {
     margin: 60px auto;
   }
+
+  &:first-of-type {
+    margin-top: 40px;
+  }
 }
 
 .wrapper {
-  max-width: 1310px;
+  max-width: calc(1374px + 30px * 2);
   width: 100%;
   margin: auto;
-  padding: 0 15px;
+  padding: 0 30px;
+
+  @media (max-width: 1400px) {
+    max-width: calc(1200px + 30px * 2);
+  }
+
+  @media (max-width: 800px) {
+    padding: 0 15px;
+    max-width: 100%;
+  }
+
+  /* remove padding from nested wrappers */
+  .wrapper {
+    padding: 0;
+    width: 100%;
+  }
 }
 
 .page-not-found {
   padding-block: max(3rem, 5vw);
+}
+
+.no-desktop {
+  display: none;
+
+  @media (max-width: 1024px) {
+    display: block;
+  }
+}
+
+.no-mobile {
+  display: block;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+
+#site-main.container {
+  padding: 90px 0 0 0;
+  margin: 141px auto 0 auto;
+  max-width: 100%;
 }

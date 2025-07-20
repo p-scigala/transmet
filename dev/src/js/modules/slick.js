@@ -91,6 +91,24 @@ const slickCall = ($) => {
     ],
   });
 
+  $('.steps__slick').slick({
+    mobileFirst: true,
+    breakpoint: 1024,
+    arrows: false,
+    dots: false,
+    infinite: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    centerMode: true,
+    adaptiveHeight: true,
+    responsive: [
+      {
+        breakpoint: 1025,
+        settings: 'unslick',
+      },
+    ],
+  });
+
   $('.slick-carousel').on('setPosition', function (event, slick) {
     var maxHeight = 0;
 

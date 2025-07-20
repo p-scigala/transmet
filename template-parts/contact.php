@@ -2,52 +2,68 @@
 
 <section class="contact">
 
-  <div class="contact__wrapper">
-    <div class="contact__content">
+  <div class="wrapper">
+    <div class="contact__wrapper">
 
-      <?php if(get_field("title_01")) { ?>
-        <h2 class="contact__header">
-          <?php echo get_field("title_01"); ?>
-        </h2>
-      <?php } ?>
+      <div class="contact__content">
+        <div class="contact__content-inner">
 
-      <?php if(get_field("title_02")) { ?>
-	      <h3 class="contact__subheader">
-          <?php echo get_field("title_02"); ?>
-        </h3>
-      <?php } ?>
-
-      <?php if(get_field("text")) { ?>
-        <div class="contact__text">
-          <?php echo get_field("text"); ?>
-        </div>
-      <?php } ?>
-
-      <?php
-        if(have_rows('links_repeater')):
-          while(have_rows('links_repeater')): the_row();
-            if (get_sub_field('link')) {
-              $link_url = get_sub_field('link')['url'];
-              $link_title = get_sub_field('link')['title'];
-              $link_target = isset(get_sub_field('link')['target']) ? get_sub_field('link')['target'] : '_self';
-      ?>
-        <a class="contact__link" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
-          <?php if (get_sub_field('icon')) { ?>
-            <img src="<?php echo get_field('icon'); ?>" alt="<?php echo $link_title; ?>" />
+          <?php if(get_field("contact_title_01")) { ?>
+          <h2 class="contact__header">
+            <?php echo get_field("contact_title_01"); ?>
+          </h2>
           <?php } ?>
-          <?php echo esc_html($link_title); ?>
-        </a>
-      <?php }
-          endwhile;
-        endif;
-      ?>
-      
-    </div>
 
-    <div class="contact__form">
-      <?php do_shortcode('[contact-form-7 id="0a1df65" title="Formularz - kontakt"]'); ?>
-    </div>
+          <?php if(get_field("contact_title_02")) { ?>
+          <h3 class="contact__subheader">
+            <?php echo get_field("contact_title_02"); ?>
+          </h3>
+          <?php } ?>
 
+          <?php if(get_field("contact_text")) { ?>
+          <div class="contact__text">
+            <?php echo get_field("contact_text"); ?>
+          </div>
+          <?php } ?>
+
+          <ul class="contact__items">
+            <?php if(get_field("options_address", "option")): ?>
+            <li class="contact__item">
+              <img src="<?php echo home_url(); ?>/wp-content/themes/candyweb-new/assets/imgs/icon-pin.svg"
+                class="contact__icon" alt="Address:" />
+              <span><?php echo get_field("options_address", "option"); ?></span>
+            </li>
+            <?php endif; ?>
+
+            <?php if(get_field("options_email", "option")): ?>
+            <li class="contact__item">
+              <a href="mailto: <?php echo get_field("options_email", "option"); ?>">
+                <img src="<?php echo home_url(); ?>/wp-content/themes/candyweb-new/assets/imgs/icon-mail.svg"
+                  class="contact__icon" alt="E-mail:" />
+                <span><?php echo get_field("options_email", "option"); ?></span>
+              </a>
+            </li>
+            <?php endif; ?>
+
+            <?php if(get_field("options_phone", "option")): ?>
+            <li class="contact__item">
+              <a href="tel: <?php echo get_field("options_phone", "option"); ?>">
+                <img src="<?php echo home_url(); ?>/wp-content/themes/candyweb-new/assets/imgs/icon-phone.svg"
+                  class="contact__icon" alt="Phone:" />
+                <span><?php echo get_field("options_phone", "option"); ?></span>
+              </a>
+            </li>
+            <?php endif; ?>
+          </ul>
+
+        </div>
+      </div>
+
+      <div class="contact__form">
+        <?php echo do_shortcode('[contact-form-7 id="0a1df65" title="Formularz - kontakt"]'); ?>
+      </div>
+
+    </div>
   </div>
 
 </section>

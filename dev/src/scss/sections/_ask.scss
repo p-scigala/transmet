@@ -1,8 +1,10 @@
 .ask {
   padding: 45px 0;
+  margin-top: 120px;
 
   @media (max-width: 800px) {
     margin-bottom: 210px;
+    margin-top: 90px !important;
   }
 
   &__wrapper {
@@ -28,20 +30,19 @@
     height: 100%;
     width: 50%;
     padding: 32px 12px 32px 32px;
-    border: solid 3px var(--color-primary-blue);
-    border-left: 0;
     background: linear-gradient(var(--color-white), var(--color-white))
         padding-box,
       linear-gradient(
-          45deg,
+          -130deg,
           var(--color-primary-blue),
           #ffffff,
           var(--color-primary-blue),
           #ffffff,
           var(--color-primary-blue),
-          #ffffff
         )
         border-box;
+    border: solid 3px transparent;
+    border-left: 0;
 
     @media (max-width: 1024px) {
       width: 60%;

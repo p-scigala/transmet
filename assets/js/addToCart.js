@@ -20,7 +20,17 @@ jQuery(document).ready(function ($) {
       success: function (response) {
         button.removeClass('btn--loader');
 
+        if (response && response.error) {
+          modal(response.message || 'Error adding to cart');
+          return;
+        }
+
         if (response && !response.error) {
+          modal(
+            response.message || 'Product added to cart successfully!',
+            response.fragments['div.widget_shopping_cart_content'] || null
+          );
+
           $.ajax({
             url: AjaxCart.ajax_url,
             type: 'POST',
@@ -38,9 +48,62 @@ jQuery(document).ready(function ($) {
         }
       },
       error: function () {
+        modal('AJAX error. Please try again.');
         button.removeClass('btn--loader');
         console.log('AJAX error.');
       },
     });
   });
 });
+
+function modal(message, content = null) {
+  const wrapper = document.createElement('div');
+  wrapper.classList.add('modal__wrapper');
+  setTimeout(() => {
+    wrapper.classList.add('modal__wrapper--active');
+  }, 10);
+  wrapper.addEventListener('click', (e) => {
+    if (e.target === wrapper) {
+      removeModal();
+    }
+  });
+
+  const modal = document.createElement('div');
+  modal.classList.add('modal');
+  setTimeout(() => {
+    modal.classList.add('modal--active');
+  }, 10);
+
+  const modalHeading = document.createElement('h2');
+  modalHeading.textContent = message;
+  modal.append(modalHeading);
+
+  if (content) {
+    const contentDiv = document.createElement('div');
+    contentDiv.classList.add('modal__content');
+    contentDiv.innerHTML = content;
+    modal.append(contentDiv);
+  }
+
+  const modalClose = document.createElement('button');
+  modalClose.classList.add('modal__close');
+  modalClose.innerHTML = '&times;';
+  modalClose.addEventListener('click', () => {
+    removeModal();
+  });
+  modal.append(modalClose);
+
+  wrapper.appendChild(modal);
+
+  document.body.appendChild(wrapper);
+
+  const removeModal = () => {
+    wrapper.classList.remove('modal--active');
+    setTimeout(() => {
+      wrapper.classList.remove('modal__wrapper--active');
+    }, 300);
+    setTimeout(() => {
+      document.body.removeChild(wrapper);
+    }, 300);
+  };
+}

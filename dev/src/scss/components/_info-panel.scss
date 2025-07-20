@@ -1,0 +1,36 @@
+.info-panel {
+  width: 231px;
+  max-width: 100%;
+  height: 116px;
+  min-height: fit-content;
+  padding: 16px 20px;
+  background-color: var(--color-white);
+  display: flex;
+  gap: 11px;
+  flex-direction: column;
+
+  &__row {
+    display: flex;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__title {
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  &__logo {
+    width: 62px;
+    height: 41px;
+  }
+
+  &__description {
+    font-size: 11px;
+    line-height: 14px;
+  }
+}

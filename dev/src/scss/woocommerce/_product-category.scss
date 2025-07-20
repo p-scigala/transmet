@@ -1,0 +1,116 @@
+.product-category {
+  width: 202px;
+  height: 202px;
+  text-align: left;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  border: solid 1px var(--color-border);
+  background: var(--color-white);
+  overflow: hidden;
+  z-index: 1;
+  transition-duration: 0.3s;
+
+  * {
+    transition-duration: 0.3s;
+  }
+
+  a {
+    z-index: 10;
+  }
+
+  img {
+    height: 76px;
+    width: fit-content;
+    display: block;
+    object-fit: contain;
+    max-width: 100%;
+  }
+
+  h2 {
+    font-size: 15px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+
+  &:hover {
+    span {
+      color: var(--color-white);
+      &::after {
+        background-color: var(--color-white);
+      }
+    }
+  }
+
+  mark {
+    background: none;
+    margin: 0;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    border: solid 3px transparent;
+    transition-duration: 0.3s;
+    opacity: 0;
+    z-index: 2;
+    animation: 8s rotateAnimation linear infinite;
+    background: linear-gradient(
+          var(--color-primary-blue),
+          var(--color-primary-blue)
+        )
+        padding-box,
+      linear-gradient(
+          var(--angle),
+          var(--color-primary-blue),
+          #ffffff,
+          var(--color-primary-blue),
+          #ffffff,
+          var(--color-primary-blue)
+        )
+        border-box;
+  }
+
+  &:hover {
+    border-color: transparent;
+
+    &::before {
+      opacity: 1;
+    }
+
+    * {
+      color: var(--color-white);
+    }
+    img {
+      filter: contrast(0) brightness(2);
+    }
+  }
+}
+
+// <div class="categories__item slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="0">
+//   <a class="categories__link panel" href="//localhost:3000/orto4you2/product-category/lazienka-i-toaleta/" tabindex="0">
+//     <div class="panel__content">
+//       <div class="categories__item-img">
+//         <img src="//localhost:3000/orto4you2/wp-content/uploads/2025/07/icon-toilet.svg" alt="Łazienka i toaleta">
+//       </div>
+//       <h4>Łazienka i toaleta</h4>
+//       <span>Sprawdź</span>
+//     </div>
+//   </a>
+// </div>
+
+// <li class="product-category product first">
+// 	 <a aria-label="Przejdź do kategorii produktu Wózki specjalistyczne" href="//localhost:3000/orto4you2/product-category/wozki-inwalidzkie/wozki-specjalistyczne/"><img src="//localhost:3000/orto4you2/wp-content/uploads/woocommerce-placeholder.png" alt="Wózki specjalistyczne" width="245" height="245">		<h2 class="woocommerce-loop-category__title">
+// 			Wózki specjalistyczne <mark class="count">(1)</mark>		</h2>
+//   </a>
+// </li>

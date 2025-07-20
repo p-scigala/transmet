@@ -48,9 +48,7 @@
       $products = wc_get_products( $args );
 
       while ( $loop->have_posts() ) : $loop->the_post();
-        echo wc_get_template('content-product.php', array(
-          'category' => 'bestsellers'
-        ));
+        echo wc_get_template('content-product.php', array());
       endwhile;
       wp_reset_query();
     ?>

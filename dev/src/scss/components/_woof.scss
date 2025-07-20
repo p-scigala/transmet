@@ -1,0 +1,36 @@
+.woof {
+  label {
+    margin-left: 10px;
+  }
+
+  &_reset_button_2 {
+    
+  }
+
+  .irs {
+    &-from,
+    &-to {
+      display: none;
+    }
+
+    &-single {
+      background: var(--color-black) !important;
+    }
+
+    &-handle {
+      border: solid 1px var(--color-black) !important;
+      width: 15px !important;
+      height: 15px !important;
+      top: 30px !important;
+    }
+
+    &-bar {
+      height: 1px !important;
+      background-color: var(--color-black) !important;
+    }
+
+    &-line {
+      height: 1px !important;
+    }
+  }
+}

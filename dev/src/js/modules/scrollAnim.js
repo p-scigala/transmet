@@ -82,18 +82,18 @@ const scrollAnim = ($) => {
 
 
 
-          $('.home-icons__icn-wrapper, .pobieranie__outline, .post-item-first, .post-item, .cta__outline, .product-item__img-wrapper, .product-hero__img-wrapper, .product-repeater__img-wrapper, .video__wrapper, .single-post__img-wrapper, .contact-form__wrapper').each(function () {
-            var $element = $(this);
-            var $decorators = $element.find('.corner-decor__L-T, .corner-decor__L-B, .corner-decor__R-T, .corner-decor__R-B');
-            var targetPosition = $element.offset().top + 400;
-            var targetPosition2 = $element.offset().top + 100;
+        //   $('.home-icons__icn-wrapper, .pobieranie__outline, .post-item-first, .post-item, .cta__outline, .product-item__img-wrapper, .product-hero__img-wrapper, .product-repeater__img-wrapper, .video__wrapper, .single-post__img-wrapper, .contact-form__wrapper').each(function () {
+        //     var $element = $(this);
+        //     var $decorators = $element.find('.corner-decor__L-T, .corner-decor__L-B, .corner-decor__R-T, .corner-decor__R-B');
+        //     var targetPosition = $element.offset().top + 400;
+        //     var targetPosition2 = $element.offset().top + 100;
         
-            if (scrollPosition + windowHeight >= targetPosition && scrollPosition <= targetPosition + $element.outerHeight() - $element.outerHeight() * 1.5) {
-                $decorators.addClass('anim');
-            } else if (scrollPosition + windowHeight <= targetPosition2) {
-                $decorators.removeClass('anim');
-            }
-        });
+        //     if (scrollPosition + windowHeight >= targetPosition && scrollPosition <= targetPosition + $element.outerHeight() - $element.outerHeight() * 1.5) {
+        //         $decorators.addClass('anim');
+        //     } else if (scrollPosition + windowHeight <= targetPosition2) {
+        //         $decorators.removeClass('anim');
+        //     }
+        // });
         
         
 

@@ -3,6 +3,26 @@
     "title": "Sekcja - Co nas wyróżnia",
     "fields": [
         {
+            "key": "field_6851168ef0a77",
+            "label": "Tekst",
+            "name": "about_text",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
             "key": "field_68511660f0a75",
             "label": "Tytuł",
             "name": "about_title_01",
@@ -43,26 +63,6 @@
             "append": ""
         },
         {
-            "key": "field_6851168ef0a77",
-            "label": "Tekst",
-            "name": "about_text",
-            "aria-label": "",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "delay": 0
-        },
-        {
             "key": "field_6851169df0a78",
             "label": "Lista",
             "name": "about_list_repeater",
@@ -94,7 +94,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "",
+                        "width": "33.33",
                         "class": "",
                         "id": ""
                     },
@@ -120,7 +120,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "",
+                        "width": "33.33",
                         "class": "",
                         "id": ""
                     },
@@ -141,7 +141,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "",
+                        "width": "33.33",
                         "class": "",
                         "id": ""
                     },
@@ -160,7 +160,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "default"
+                "value": "template-about-us.php"
             }
         ]
     ],
@@ -173,5 +173,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1750407795
+    "modified": 1752568877
 }

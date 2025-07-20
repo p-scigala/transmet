@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 0;
+  margin-top: 0 !important;
 
   @media (max-width: 800px) {
     height: calc(100vh - 80px);
@@ -222,6 +222,7 @@
 
     &-arrow {
       z-index: 2;
+      position: absolute;
 
       &.slick-prev {
         @media (max-width: 1450px) {
