@@ -11,7 +11,7 @@
   padding: 0 10px;
   top: 0;
 
-  & > wrapper {
+  &>wrapper {
     height: 100%;
   }
 
@@ -101,7 +101,7 @@
       display: block;
 
       &-has-children {
-        & > a::after {
+        &>a::after {
           content: url('../imgs/arrow-down.svg');
           width: 10px;
           height: 10px;
@@ -113,15 +113,19 @@
       a {
         padding: 10px;
         transition-duration: 0.3s;
+        color: var(--color-black);
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0);
 
         &:hover {
-          text-shadow: 0 0 1px #000000;
+          color: var(--color-primary-blue);
+          text-shadow: 0 0 1px var(--color-primary-blue);
         }
       }
 
       .current-menu-item {
-        a:hover {
-          text-shadow: none;
+        a {
+          color: var(--color-primary-blue);
+          text-shadow: 0 0 1px var(--color-primary-blue);
         }
       }
 
@@ -160,7 +164,7 @@
         }
       }
 
-      a:hover + .sub-menu,
+      a:hover+.sub-menu,
       .sub-menu:hover {
         visibility: visible;
         opacity: 1;
@@ -305,6 +309,7 @@
     }
 
     &:hover {
+
       &::after,
       &::before {
         border-color: var(--color-primary-blue);

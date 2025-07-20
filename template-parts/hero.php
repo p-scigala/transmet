@@ -62,7 +62,7 @@
   <div class="wrapper">
     <div class="hero__scroll">
       <div>Zjedź niżej</div>
-      <img src="http://127.0.0.1:3000/orto4you2/wp-content/themes/candyweb-new/assets/imgs/arrow-down.svg"
+      <img src="./wp-content/themes/candyweb-new/assets/imgs/arrow-down.svg"
         alt="Zjedź niżej" />
     </div>
   </div>

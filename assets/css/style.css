@@ -9753,6 +9753,12 @@ input[type=search], input[type=text], input[type=email] {
   background-color: transparent;
   border-color: var(--color-border);
 }
+input:focus input:focus-visible, input:focus-within {
+  box-shadow: none;
+  outline-width: 2px;
+  border-color: var(--color-primary-blue);
+  outline-color: var(--color-primary-blue);
+}
 
 .dgwt-wcas-no-submit .dgwt-wcas-sf-wrapp input[type=search] {
   width: 350px;
@@ -10966,12 +10972,16 @@ body main .wc-block-checkout__form .is-active label {
 .header .main-menu .menu-item a {
   padding: 10px;
   transition-duration: 0.3s;
+  color: var(--color-black);
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0);
 }
 .header .main-menu .menu-item a:hover {
-  text-shadow: 0 0 1px #000000;
+  color: var(--color-primary-blue);
+  text-shadow: 0 0 1px var(--color-primary-blue);
 }
-.header .main-menu .menu-item .current-menu-item a:hover {
-  text-shadow: none;
+.header .main-menu .menu-item .current-menu-item a {
+  color: var(--color-primary-blue);
+  text-shadow: 0 0 1px var(--color-primary-blue);
 }
 .header .main-menu .menu-item .sub-menu {
   position: absolute;

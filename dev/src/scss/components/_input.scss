@@ -1,4 +1,5 @@
 input {
+
   &[type='search'],
   &[type='text'],
   &[type='email'] {
@@ -8,6 +9,14 @@ input {
     border-radius: 5px;
     background-color: transparent;
     border-color: var(--color-border);
+  }
+
+  &:focus &:focus-visible,
+  &:focus-within {
+    box-shadow: none;
+    outline-width: 2px;
+    border-color: var(--color-primary-blue);
+    outline-color: var(--color-primary-blue);
   }
 }
 
@@ -27,6 +36,7 @@ input {
     max-width: 204px;
 
     input[type='number'] {
+
       &:active,
       &:focus,
       &:focus-visible {
@@ -95,6 +105,7 @@ input {
 
 form {
   input {
+
     &[type='search'],
     &[type='text'],
     &[type='email'] {
@@ -147,7 +158,7 @@ form {
       cursor: pointer;
     }
 
-    .form-check-input + span {
+    .form-check-input+span {
       font-size: 13px;
       line-height: 16px;
       margin: 0;
