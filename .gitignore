@@ -1,2 +1,29 @@
 node_modules
 dev/node_modules
+
+# WordPress files to ignore
+wp-config.php
+wp-config-local.php
+.htaccess
+error_log
+*.log
+
+# Build files
+dev/dist/
+*.map
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Database dumps (optional - remove if you want to track them)
+*.sql
+db/database.sql
+db/database_*.sql
+
+# Sync scripts
+sync-scripts/config.ini

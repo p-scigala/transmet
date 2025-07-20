@@ -1,0 +1,46 @@
+# ===========================================
+# PRZYKŁAD KONFIGURACJI PROJEKTU WORDPRESS
+# ===========================================
+# Skopiuj ten plik jako config.ini i edytuj wartości
+
+[DATABASE]
+# Nazwa bazy danych MySQL
+DB_NAME=nazwa_twojej_bazy
+
+# Dane logowania do MySQL
+DB_USER=root
+DB_PASSWORD=
+
+# Host bazy danych (zazwyczaj localhost dla XAMPP)
+DB_HOST=localhost
+DB_PORT=3306
+
+[PATHS]
+# Ścieżka do instalacji XAMPP (zostaw puste dla auto-wykrywania)
+# Przykłady: C:\xampp, D:\Programy\XAMPP
+XAMPP_PATH=
+
+# Ścieżka do projektu na serwerze (np. /nazwa-projektu)
+PROJECT_PATH=/nazwa-projektu
+
+[URLS]
+# URL strony na komputerze 1 (źródłowym)
+SOURCE_URL=http://localhost/nazwa-projektu
+
+# URL strony na komputerze 2 (docelowym)  
+TARGET_URL=http://localhost/nazwa-projektu
+
+[GIT]
+# Repozytorium Git (opcjonalne)
+REPO_URL=https://github.com/uzytkownik/repozytorium.git
+BRANCH=master
+
+[SETTINGS]
+# Czy tworzyć backupy z datą (true/false)
+CREATE_BACKUPS=true
+
+# Czy automatycznie commitować zmiany (true/false)
+AUTO_COMMIT=false
+
+# Prefix dla wiadomości commit
+COMMIT_PREFIX=[SYNC]
