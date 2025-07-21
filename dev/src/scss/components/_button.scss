@@ -175,6 +175,12 @@ body main .btn, .wc-block-cart__submit-button {
       }
     }
   }
+
+  &.disabled {
+    pointer-events: none !important;
+    user-select: none !important;
+    opacity: 0.5 !important;
+  }
 }
 
 @keyframes rotateAnimation {
