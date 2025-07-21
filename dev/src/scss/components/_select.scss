@@ -1,9 +1,18 @@
-select {
+select,
+.wc-blocks-components-select .wc-blocks-components-select__select {
   background-color: var(--color-white);
   font-size: 17px;
   border: solid 1px var(--color-border);
   border-radius: 5px;
   height: 43px;
+}
+
+.wc-block-components-checkout-step__content {
+  .wc-blocks-components-select__select {
+    .select {
+      width: 100%;
+    }
+  }
 }
 
 .select {

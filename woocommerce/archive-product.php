@@ -79,19 +79,19 @@ do_action( 'woocommerce_before_main_content' );
     <?php $shop_id = get_option('woocommerce_shop_page_id'); ?>
 
     <?php if(get_field("shop_heading", $shop_id)) : ?>
-    <h2 class="products-desc__heading">
+    <h2 class="products-desc__heading scroll-anim">
       <?php echo get_field("shop_heading", $shop_id); ?>
     </h2>
     <?php endif; ?>
 
     <?php if(get_field("shop_subheading", $shop_id)) : ?>
-    <h3 class="products-desc__subheading">
+    <h3 class="products-desc__subheading scroll-anim">
       <?php echo get_field("shop_subheading", $shop_id); ?>
     </h3>
     <?php endif; ?>
 
     <?php if(get_field("shop_description", $shop_id)) : ?>
-    <div class="products-desc__description">
+    <div class="products-desc__description scroll-anim">
       <?php echo get_field("shop_description", $shop_id); ?>
     </div>
     <?php endif; ?>

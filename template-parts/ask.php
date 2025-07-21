@@ -6,25 +6,25 @@
     <div class="ask__wrapper">
       <div class="ask__img">
         <?php if(get_field("ask_img", "option")): ?>
-        <img src="<?php echo get_field("ask_img", "option"); ?>" alt="Zapytaj o pomoc" />
+        <img src="<?php echo get_field("ask_img", "option"); ?>" alt="Zapytaj o pomoc" class="scroll-anim" />
         <?php endif; ?>
       </div>
       <div class="ask__content">
 
         <?php if(get_field("ask_title_01", "option")): ?>
-        <h2 class="ask__header">
+        <h2 class="ask__header scroll-anim">
           <?php echo get_field("ask_title_01", "option"); ?>
         </h2>
         <?php endif; ?>
 
         <?php if(get_field("ask_title_02", "option")): ?>
-        <h3 class="ask__subheader">
+        <h3 class="ask__subheader scroll-anim">
           <?php echo get_field("ask_title_02", "option"); ?>
         </h3>
         <?php endif; ?>
 
         <?php if(get_field("ask_text", "option")): ?>
-        <div class="ask__text">
+        <div class="ask__text scroll-anim">
           <?php echo get_field("ask_text", "option"); ?>
         </div>
         <?php endif; ?>
@@ -48,7 +48,7 @@
         endif;
       ?>
 
-        <div>
+        <div class="ask__btn-wrapper scroll-anim">
           <?php if (get_field("ask_btn", "option")) {
           $link_url = get_field("ask_btn", "option")["url"];
           $link_title = get_field("ask_btn", "option")["title"];

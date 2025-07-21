@@ -7,19 +7,19 @@
       <div class="about__content">
 
         <?php if(get_field("about_title_01")) { ?>
-        <h2 class="about__header">
+        <h2 class="about__header scroll-anim">
           <?php echo get_field("about_title_01"); ?>
         </h2>
         <?php } ?>
 
         <?php if(get_field("about_title_02")) { ?>
-        <h3 class="about__subheader">
+        <h3 class="about__subheader scroll-anim">
           <?php echo get_field("about_title_02"); ?>
         </h3>
         <?php } ?>
 
         <?php if(get_field("about_text")) { ?>
-        <div class="about__text">
+        <div class="about__text scroll-anim">
           <?php echo get_field("about_text"); ?>
         </div>
         <?php } ?>
@@ -29,7 +29,7 @@
       <?php if(have_rows("about_list_repeater")): ?>
       <div class="about__items">
         <?php while(have_rows("about_list_repeater")): the_row(); ?>
-        <div class="about__item">
+        <div class="about__item scroll-anim">
 
           <div class="about__item-name">
 

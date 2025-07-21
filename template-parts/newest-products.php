@@ -25,7 +25,7 @@
         <?php endif; ?>
 
         <?php if(get_field("newest_products_text")): ?>
-        <div class="newest-products__text">
+        <div class="newest-products__text scroll-anim">
           <?php echo get_field("newest_products_text"); ?>
         </div>
         <?php endif; ?>
@@ -33,7 +33,7 @@
       </div>
     </div>
 
-    <div class="newest-products__items newest-products__slick slick-carousel">
+    <div class="newest-products__items newest-products__slick slick-carousel scroll-anim">
       <?php
       $quantity = get_field("newest_products_quantity");
    

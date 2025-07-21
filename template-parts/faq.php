@@ -7,19 +7,19 @@
       <div class="faq__content">
 
         <?php if(get_field("faq_title_01")): ?>
-        <h2 class="faq__header">
+        <h2 class="faq__header scroll-anim">
           <?php echo get_field("faq_title_01"); ?>
         </h2>
         <?php endif; ?>
 
         <?php if(get_field("faq_title_02")): ?>
-        <h3 class="faq__subheader">
+        <h3 class="faq__subheader scroll-anim">
           <?php echo get_field("faq_title_02"); ?>
         </h3>
         <?php endif; ?>
 
         <?php if(get_field("faq_text")): ?>
-        <div class="faq__text">
+        <div class="faq__text scroll-anim">
           <?php echo get_field("faq_text"); ?>
         </div>
         <?php endif; ?>
@@ -38,7 +38,7 @@
       while ( $loop->have_posts() ) : $loop->the_post();
         global $product;
         ?>
-        <div class="faq__item accordion">
+        <div class="faq__item accordion scroll-anim">
           <div class="accordion__trigger">
             <?php echo get_the_title(); ?>
             <span class="accordion__icon"></span>

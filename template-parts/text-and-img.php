@@ -32,7 +32,7 @@ if (!$page_id) {
         <?php } ?>
 
         <?php if(get_sub_field("text_and_img_text")) { ?>
-        <div class="text-and-image__text">
+        <div class="text-and-image__text scroll-anim">
           <?php echo get_sub_field("text_and_img_text"); ?>
         </div>
         <?php } ?>
@@ -43,7 +43,7 @@ if (!$page_id) {
         <?php if(get_sub_field("text_and_img_icon")): ?>
 
         <div class="text-and-image__icon">
-          <span class="text-and-image__icon-img">
+          <span class="text-and-image__icon-img scroll-anim">
             <?php if (get_sub_field("text_and_img_icon")): ?>
             <img src="<?php echo get_sub_field("text_and_img_icon"); ?>" alt="Icon" />
             <?php endif; ?>
@@ -79,16 +79,18 @@ if (!$page_id) {
 
       <div class="text-and-image__img">
         <div class="text-and-image__img-wrapper">
-          <div class="text-and-image__img-inner">
+          <div class="text-and-image__img-inner scroll-anim">
             <?php if(get_sub_field("text_and_img_img_bg")): ?>
             <img class="text-and-image__img-bg" src="<?php echo get_sub_field("text_and_img_img_bg"); ?>" />
             <?php endif; ?>
             <?php if(get_sub_field("text_and_img_img_front")): ?>
-            <img class="text-and-image__img-front" src="<?php echo get_sub_field("text_and_img_img_front"); ?>" />
+            <img class="text-and-image__img-front mouse-move-anim" src="<?php echo get_sub_field("text_and_img_img_front"); ?>" />
             <?php endif; ?>
           </div>
           <?php if(get_sub_field("text_and_img_img_logo")): ?>
-          <img class="text-and-image__img-logo no-mobile" src="<?php echo get_sub_field("text_and_img_img_logo"); ?>" />
+            <div class="text-and-image__img-logo-wrapper scroll-anim">
+              <img class="text-and-image__img-logo no-mobile" src="<?php echo get_sub_field("text_and_img_img_logo"); ?>" />
+            </div>
           <?php endif; ?>
         </div>
       </div>

@@ -7,19 +7,19 @@
       <div class="bestsellers__content">
 
         <?php if(get_field("bestsellers_title_01")) { ?>
-        <h2 class="bestsellers__header">
+        <h2 class="bestsellers__header scroll-anim">
           <?php echo get_field("bestsellers_title_01"); ?>
         </h2>
         <?php } ?>
 
         <?php if(get_field("bestsellers_title_02")) { ?>
-        <h3 class="bestsellers__subheader">
+        <h3 class="bestsellers__subheader scroll-anim">
           <?php echo get_field("bestsellers_title_02"); ?>
         </h3>
         <?php } ?>
 
         <?php if(get_field("bestsellers_text")) { ?>
-        <div class="bestsellers__text">
+        <div class="bestsellers__text scroll-anim">
           <?php echo get_field("bestsellers_text"); ?>
         </div>
         <?php } ?>
@@ -27,7 +27,7 @@
       </div>
     </div>
 
-    <div class="bestsellers__items bestsellers__slick slick-carousel">
+    <div class="bestsellers__items bestsellers__slick slick-carousel scroll-anim">
       <?php
       $quantity = get_field("bestsellers_text");
 

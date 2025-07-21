@@ -9877,12 +9877,17 @@ form .acceptance a {
   text-decoration: underline;
 }
 
-select {
+select,
+.wc-blocks-components-select .wc-blocks-components-select__select {
   background-color: var(--color-white);
   font-size: 17px;
   border: solid 1px var(--color-border);
   border-radius: 5px;
   height: 43px;
+}
+
+.wc-block-components-checkout-step__content .wc-blocks-components-select__select .select {
+  width: 100%;
 }
 
 .select {
@@ -11931,6 +11936,11 @@ body main .wc-block-checkout__form .is-active label {
   position: absolute;
   top: 0;
   left: 0;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 .text-and-image__img-logo {
   position: absolute;
@@ -12812,7 +12822,8 @@ body {
 }
 
 main {
-  padding-top: 141px; /* Adjusted for fixed header */
+  padding-top: 141px;
+  /* Adjusted for fixed header */
 }
 @media (max-width: 1024px) {
   main {
@@ -12934,6 +12945,18 @@ section:first-of-type {
   padding: 90px 0 0 0;
   margin: 141px auto 0 auto;
   max-width: 100%;
+}
+
+.scroll-anim-delay,
+.scroll-anim {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.scroll-anim-delay.anim,
+.scroll-anim.anim {
+  opacity: 1;
+  transform: none;
 }
 
 /*# sourceMappingURL=style.css.map */

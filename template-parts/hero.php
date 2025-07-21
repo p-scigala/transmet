@@ -14,25 +14,25 @@
           <div class="hero__content col">
 
             <?php if(get_sub_field("hero_title_01")) { ?>
-            <h2 class="hero__header">
+            <h2 class="hero__header scroll-anim-delay">
               <?php echo get_sub_field("hero_title_01"); ?>
             </h2>
             <?php } ?>
 
             <?php if(get_sub_field("hero_title_02")) { ?>
-            <h3 class="hero__subheader">
+            <h3 class="hero__subheader scroll-anim-delay">
               <?php echo get_sub_field("hero_title_02"); ?>
             </h3>
             <?php } ?>
 
             <?php if(get_sub_field("hero_text")) { ?>
-            <div class="hero__text">
+            <div class="hero__text scroll-anim-delay">
               <?php echo get_sub_field("hero_text"); ?>
             </div>
             <?php } ?>
 
             <?php if (get_sub_field("hero_btn")) { ?>
-            <div>
+            <div class="scroll-anim-delay">
               <?php
           $link_url = get_sub_field("hero_btn")["url"];
           $link_title = get_sub_field("hero_btn")["title"];

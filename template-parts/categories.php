@@ -7,19 +7,19 @@
       <div class="categories__content">
 
         <?php if(get_field("categories_title_01")) { ?>
-        <h2 class="categories__header">
+        <h2 class="categories__header scroll-anim">
           <?php echo get_field("categories_title_01"); ?>
         </h2>
         <?php } ?>
 
         <?php if(get_field("categories_title_02")) { ?>
-        <h3 class="categories__subheader">
+        <h3 class="categories__subheader scroll-anim">
           <?php echo get_field("categories_title_02"); ?>
         </h3>
         <?php } ?>
 
         <?php if(get_field("categories_text")) { ?>
-        <div class="categories__text">
+        <div class="categories__text scroll-anim">
           <?php echo get_field("categories_text"); ?>
         </div>
         <?php } ?>
@@ -46,7 +46,7 @@
           $image = wp_get_attachment_url($thumbnail_id);
           ?>
 
-        <div class="categories__item">
+        <div class="categories__item scroll-anim">
           <a class="categories__link panel" href="<?php echo get_term_link($cat->slug, "product_cat"); ?>">
             <div class="panel__content">
               <div class="categories__item-img">

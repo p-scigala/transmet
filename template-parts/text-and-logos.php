@@ -20,13 +20,13 @@
           <?php } ?>
 
           <?php if(get_field("text_and_logos_text")) { ?>
-          <div class="text-and-logos__text">
+          <div class="text-and-logos__text scroll-anim">
             <?php echo get_field("text_and_logos_text"); ?>
           </div>
           <?php } ?>
 
           <?php if (get_field("text_and_logos_btn")) { ?>
-          <div>
+          <div class="scroll-anim">
             <?php
           $link_url = get_field("text_and_logos_btn")["url"];
           $link_title = get_field("text_and_logos_btn")["title"];
@@ -45,7 +45,7 @@
         <div class="text-and-logos__logos">
           <?php if(have_rows("text_and_logos_logos_repeater")):?>
           <?php while(have_rows("text_and_logos_logos_repeater")): the_row(); ?>
-          <div class="text-and-logos__logo">
+          <div class="text-and-logos__logo scroll-anim">
             <?php if(get_sub_field("text_and_logos_logo")) { ?>
             <img src="<?php echo get_sub_field("text_and_logos_logo")["url"]; ?>"
               alt="<?php echo get_sub_field("text_and_logos_logo")["title"]; ?>" />

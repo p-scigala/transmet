@@ -25,7 +25,8 @@ body {
 }
 
 main {
-  padding-top: 141px; /* Adjusted for fixed header */
+  padding-top: 141px;
+  /* Adjusted for fixed header */
 
   @media (max-width: 1024px) {
     padding-top: 80px;
@@ -141,4 +142,16 @@ section {
   padding: 90px 0 0 0;
   margin: 141px auto 0 auto;
   max-width: 100%;
+}
+
+.scroll-anim-delay,
+.scroll-anim {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+
+  &.anim {
+    opacity: 1;
+    transform: none;
+  }
 }

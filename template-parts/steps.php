@@ -18,7 +18,7 @@
         <?php endif; ?>
 
         <?php if(get_sub_field("steps_description")): ?>
-        <div class="steps__description">
+        <div class="steps__description scroll-anim">
           <?php echo get_sub_field("steps_description"); ?>
         </div>
         <?php endif; ?>
@@ -44,7 +44,7 @@
           <?php endif; ?>
 
           <?php if(get_sub_field("steps_list_description")): ?>
-          <div class="steps__item-description">
+          <div class="steps__item-description scroll-anim">
             <?php echo get_sub_field("steps_list_description"); ?>
           </div>
           <?php endif; ?>

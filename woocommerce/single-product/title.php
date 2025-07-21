@@ -19,4 +19,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-the_title( '<h1 class="single-product__title no-mobile">', '</h1>' );
+the_title( '<h2 class="single-product__title no-mobile">', '</h2>' );
