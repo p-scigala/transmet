@@ -6,6 +6,10 @@
   padding: 60px 10px 10px 10px;
   position: relative;
 
+  @media (max-width: 1280px) {
+    min-width: 320px !important;
+  }
+
   &__featured {
     display: block;
     position: absolute;
@@ -138,6 +142,7 @@
     }
 
     .input__number {
+
       button,
       input {
         opacity: 0.5;

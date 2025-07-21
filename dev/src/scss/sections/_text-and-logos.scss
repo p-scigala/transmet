@@ -33,6 +33,14 @@
 
   &__btn {
     margin-top: 50px;
+
+    @media (max-width: 1280px) {
+      margin-top: 30px;
+    }
+
+    @media (max-width: 800px) {
+      margin-top: 15px;
+    }
   }
 
   &__content,
@@ -75,5 +83,10 @@
     height: 203px;
     border: solid 1px var(--color-border);
     display: block;
+
+    @media (max-width: 600px) {
+      width: 160px;
+      height: 160px;
+    }
   }
 }

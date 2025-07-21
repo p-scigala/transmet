@@ -32,7 +32,11 @@
               <?php echo do_shortcode('[fibosearch]'); ?>
             </div>
 
-            <?php wp_nav_menu(array("theme_location" => "navbar", "menu_class" => "main-menu")); ?>
+            <?php wp_nav_menu(array(
+                "theme_location" => "navbar", 
+                "menu_class" => "main-menu",
+                "walker" => new Custom_Nav_Walker()
+            )); ?>
 
             <div class="header__icons">
               <?php global $woocommerce; ?>

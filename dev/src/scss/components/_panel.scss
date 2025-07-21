@@ -12,6 +12,11 @@
   min-width: unset;
   transition-duration: 0.3s;
 
+  @media (max-width: 800px) {
+    width: 160px;
+    height: 160px;
+  }
+
   * {
     transition-duration: 0.3s;
   }
@@ -36,20 +41,15 @@
     opacity: 0;
     z-index: 2;
     animation: 8s rotateAnimation linear infinite;
-    background: linear-gradient(
-          var(--color-primary-blue),
-          var(--color-primary-blue)
-        )
-        padding-box,
-      linear-gradient(
-          var(--angle),
-          var(--color-primary-blue),
-          #ffffff,
-          var(--color-primary-blue),
-          #ffffff,
-          var(--color-primary-blue),
-        )
-        border-box;
+    background: linear-gradient(var(--color-primary-blue),
+        var(--color-primary-blue)) padding-box,
+      linear-gradient(var(--angle),
+        var(--color-primary-blue),
+        #ffffff,
+        var(--color-primary-blue),
+        #ffffff,
+        var(--color-primary-blue),
+      ) border-box;
   }
 
   &:hover {
@@ -63,6 +63,7 @@
       * {
         color: var(--color-white);
       }
+
       img {
         filter: contrast(0) brightness(2);
       }

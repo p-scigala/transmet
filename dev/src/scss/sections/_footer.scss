@@ -85,6 +85,13 @@
   &__logo {
     width: 160px;
     margin-bottom: 20px;
+
+    img {
+      @media (max-width: 600px) {
+        width: 120px;
+        margin: auto;
+      }
+    }
   }
 
   &__desc {

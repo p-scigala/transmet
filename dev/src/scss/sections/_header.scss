@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1001;
+  z-index: 999999;
   transition-duration: 0.3s;
   padding: 0 10px;
   top: 0;
@@ -95,18 +95,42 @@
     @media (max-width: 1024px) {
       flex-direction: column;
       font-size: 20px;
+      width: 400px;
+      max-width: 100%;
+      gap: 0;
     }
 
     .menu-item {
       display: block;
 
+      @media (max-width: 1024px) {
+        text-align: center;
+        width: 100%;
+        border-bottom: solid 1px var(--color-border);
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+      }
+
+
       &-has-children {
-        &>a::after {
-          content: url('../imgs/arrow-down.svg');
+        .menu-arrow {
+          display: inline-block;
           width: 10px;
           height: 10px;
-          display: inline-block;
           margin-left: 5px;
+          background-image: url('../imgs/arrow-down.svg');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          transition-duration: 0.3s;
+
+          @media (max-width: 1024px) {
+            position: absolute;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            background-size: 10px;
+          }
         }
       }
 
@@ -115,6 +139,12 @@
         transition-duration: 0.3s;
         color: var(--color-black);
         text-shadow: 0 0 1px rgba(0, 0, 0, 0);
+
+        @media (max-width: 1024px) {
+          width: 100%;
+          display: block;
+          position: relative;
+        }
 
         &:hover {
           color: var(--color-primary-blue);
@@ -146,6 +176,36 @@
         gap: 15px;
         transform: translateY(-10px);
 
+        @media (max-width: 1024px) {
+          padding-top: 10px;
+          position: relative;
+          box-shadow: none;
+          flex-direction: column;
+          padding: 0;
+          width: 100%;
+          gap: 5px;
+          top: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
+          overflow: hidden;
+          height: 0;
+          transition-duration: .3s;
+          transform: translateY(0);
+
+          .menu-item {
+            border-bottom: none;
+            margin: 0;
+            padding: 0;
+          }
+
+          &.active {
+            visibility: visible;
+            opacity: 1;
+            height: fit-content;
+          }
+        }
+
         &::before {
           content: '';
           position: absolute;
@@ -157,6 +217,11 @@
 
         .menu-item {
           width: calc(33.33% - 30px);
+
+          @media (max-width: 1024px) {
+            width: 100%;
+            text-align: center;
+          }
 
           a {
             font-size: 13px;
@@ -191,6 +256,10 @@
     @media (max-width: 1024px) {
       position: fixed;
       top: 25px;
+      right: 95px;
+    }
+
+    @media (max-width: 800px) {
       right: 80px;
     }
   }
@@ -243,6 +312,11 @@
       @media (max-width: 1400px) {
         width: 280px;
         max-width: 280px;
+      }
+
+      @media (max-width: 800px) {
+        width: 400px;
+        max-width: 100%;
       }
     }
 

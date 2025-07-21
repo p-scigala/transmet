@@ -30,58 +30,27 @@ do_action( 'woocommerce_before_main_content' );
 
 ?>
 
-<div class="container">
-  <?php if (is_shop()) :?>
-  <div class="row">
-    <div class="col-12 col-lg-5">
-      <?php if(!empty(get_field('product_archive_title_01', 'option'))): ?>
-      <h1 class="fs-2 text-start">
-        <span class="">
-          <?php echo get_field('product_archive_title_01', 'option');?>
-        </span></br>
-        <?php if(!empty(get_field('product_archive_title_02', 'option'))): ?>
-        <span class="second-heading">
-          <?php echo get_field('product_archive_title_02', 'option');?>
-        </span>
-        <?php endif;?>
-      </h1>
-      <?php endif;?>
-      <?php if(!empty(get_field('product_archive_text', 'option'))): ?>
-      <div class="styled-wysiwyg text-start  mt-15 mt-lg-30">
-        <?php echo get_field('product_archive_text', 'option');?>
-      </div>
-      <?php endif;?>
-    </div>
-  </div>
-  <?php elseif (is_product_category()) : ?>
-  <div class="row">
-    <div class="col-12 col-lg-5">
-      <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-      <h1 class="fs-2 text-start">
-        <span class="">
-          <?php woocommerce_page_title(); ?>
-        </span></br>
-      </h1>
-      <?php endif;?>
-
-      <div class="styled-wysiwyg text-start  mt-15 mt-lg-30">
-        <?php echo strip_tags(get_the_archive_description());?>
-      </div>
-    </div>
-  </div>
-  <?php endif;?>
-</div>
-
-
 <div class="products-desc">
   <div class="wrapper">
 
     <?php $shop_id = get_option('woocommerce_shop_page_id'); ?>
 
+    <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
+    <h2 class="products-desc__heading scroll-anim">
+      <?php woocommerce_page_title(); ?>
+    </h2>
+    <?php else : ?>
+
     <?php if(get_field("shop_heading", $shop_id)) : ?>
     <h2 class="products-desc__heading scroll-anim">
       <?php echo get_field("shop_heading", $shop_id); ?>
     </h2>
+    <?php endif; ?>
+
+    <?php if(!empty(get_field('product_archive_title_02', 'option'))): ?>
+    <h3 class="products-desc__subheading scroll-anim">
+      <?php echo get_field('product_archive_title_02', 'option');?>
+    </h3>
     <?php endif; ?>
 
     <?php if(get_field("shop_subheading", $shop_id)) : ?>
@@ -90,11 +59,19 @@ do_action( 'woocommerce_before_main_content' );
     </h3>
     <?php endif; ?>
 
+    <?php if(get_the_archive_description()) : ?>
+    <div class="styled-wysiwyg text-start  mt-15 mt-lg-30">
+      <?php echo strip_tags(get_the_archive_description());?>
+    </div>
+    <?php endif; ?>
+
     <?php if(get_field("shop_description", $shop_id)) : ?>
     <div class="products-desc__description scroll-anim">
       <?php echo get_field("shop_description", $shop_id); ?>
     </div>
     <?php endif; ?>
+
+    <?php endif;?>
 
   </div>
 </div>
@@ -111,6 +88,7 @@ do_action( 'woocommerce_before_main_content' );
 <div class="products">
   <div class="products__wrapper">
     <div class="products__filters">
+			<button class="products__filters-toggle"><?php _e('Filtry', 'candyweb'); ?></button>
       <!-- <span class="close-filter-button"></span> -->
       <div class="products__filters-category">
         <h3 class="products__filters-heading"><?php _e('Kategorie', 'candyweb'); ?></h3>
@@ -189,33 +167,35 @@ do_action( 'woocommerce_before_main_content' );
 						?>
         </ul>
       </div>
-      <span class="products__filters-heading">Filtry</span>
-      <div class="products__filters-box">
-        <?php echo do_shortcode('[woof]'); ?>
+      <div>
+        <span class="products__filters-heading"><?php _e('Filtry', 'candyweb'); ?></span>
+        <div class="products__filters-box">
+          <?php echo do_shortcode('[woof]'); ?>
+        </div>
       </div>
 
 
     </div>
-    <div class="products__list-wrapper">
-      <div class="products__list-interface">
-        <!-- <div class="slider-button d-flex align-items-center justify-content-center flex-column">
-        <img class="lazy-loaded" src="<?php echo get_template_directory_uri();?>/assets/img/filtruj.svg"
-          data-lazy-type="image" alt="">
-        <div class="slider-button__info">Filtruj</div>
-      </div> -->
-        <?php
-			if ( woocommerce_product_loop() ) {
+    <div class="products__list-interface">
+      <!-- <div class="slider-button d-flex align-items-center justify-content-center flex-column">
+			<img class="lazy-loaded" src="<?php echo get_template_directory_uri();?>/assets/img/filtruj.svg"
+				data-lazy-type="image" alt="">
+			<div class="slider-button__info">Filtruj</div>
+		</div> -->
+      <?php
+		if ( woocommerce_product_loop() ) {
 
-				/**
-				 * Hook: woocommerce_before_shop_loop.
-				 *
-				 * @hooked woocommerce_output_all_notices - 10
-				 * @hooked woocommerce_result_count - 20
-				 * @hooked woocommerce_catalog_ordering - 30
-				 */
-				do_action( 'woocommerce_before_shop_loop' );
-			?>
-      </div>
+			/**
+			 * Hook: woocommerce_before_shop_loop.
+			 *
+			 * @hooked woocommerce_output_all_notices - 10
+			 * @hooked woocommerce_result_count - 20
+			 * @hooked woocommerce_catalog_ordering - 30
+			 */
+			do_action( 'woocommerce_before_shop_loop' );
+		?>
+    </div>
+    <div class="products__list-wrapper">
 
       <?php
 				woocommerce_product_loop_start();

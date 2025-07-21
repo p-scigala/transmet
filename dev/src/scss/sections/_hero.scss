@@ -17,7 +17,7 @@
     @media (max-width: 800px) {
       height: calc(100vh - 80px - 60px);
 
-      & + .wrapper {
+      &+.wrapper {
         height: 60px;
       }
     }
@@ -45,6 +45,7 @@
 
     &--wide {
       .hero {
+
         &__content,
         &__img {
           padding: 0;
@@ -178,6 +179,10 @@
 
   &__btn {
     margin-top: 32px;
+
+    @media (max-width: 800px) {
+      margin-top: 15px;
+    }
   }
 
   &__scroll {
@@ -228,11 +233,19 @@
         @media (max-width: 1450px) {
           left: 30px;
         }
+
+        @media (max-width: 800px) {
+          left: 15px;
+        }
       }
 
       &.slick-next {
         @media (max-width: 1450px) {
           right: 30px;
+        }
+
+        @media (max-width: 800px) {
+          right: 15px;
         }
       }
     }
@@ -243,9 +256,11 @@
   0% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.3;
   }
+
   100% {
     opacity: 1;
   }

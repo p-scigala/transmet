@@ -3,7 +3,7 @@ body main .btn, .wc-block-cart__submit-button {
   height: 50px;
   width: fit-content;
   min-width: 200px;
-  padding: 3px;
+  padding: 3px 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,6 +103,7 @@ body main .btn, .wc-block-cart__submit-button {
     width: 50px;
     height: 50px;
     min-width: unset;
+    padding: 3px;
 
     span {
       height: 22px;

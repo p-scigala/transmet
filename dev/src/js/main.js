@@ -69,6 +69,52 @@ jQuery(document).ready(function ($) {
       });
     }
   });
+
+  const headerNav = document.querySelector('.header__nav');
+
+  if (headerNav) {
+    const menuItems = headerNav.querySelectorAll('.menu-item-has-children');
+
+    if (menuItems) {
+      menuItems.forEach((item) => {
+        const btn = item.querySelector('.menu-arrow');
+
+        if (btn) {
+          btn.addEventListener('click', (e) => {
+            if (window.innerWidth < 1024) {
+              e.preventDefault();
+              const subMenu = item.querySelector('.sub-menu');
+              subMenu.classList.toggle('active');
+              item.classList.toggle('active');
+            }
+          });
+        }
+      });
+    }
+  }
+
+  const filterToggle = document.querySelectorAll('.products__filters-toggle');
+  if (filterToggle.length > 1) {
+    filterToggle.forEach((toggle) => {
+      if (toggle) {
+        toggle.addEventListener('click', () => {
+          const filters = document.querySelector('.products__filters');
+          filters.classList.toggle('active');
+          toggle.classList.toggle('active');
+        });
+
+        const closeFilterButton = document.querySelector('.close-filter-button');
+
+        if (closeFilterButton) {
+          closeFilterButton.addEventListener('click', () => {
+            const filters = document.querySelector('.products__filters');
+            filters.classList.remove('active');
+            toggle.classList.remove('active');
+          });
+        }
+      }
+    });
+  }
 });
 
 function updateCheckoutButton() {
