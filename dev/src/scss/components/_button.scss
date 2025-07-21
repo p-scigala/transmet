@@ -1,4 +1,5 @@
-body main .btn, .wc-block-cart__submit-button {
+body main .btn,
+.wc-block-cart__submit-button {
   position: relative;
   height: 50px;
   width: fit-content;
@@ -9,18 +10,15 @@ body main .btn, .wc-block-cart__submit-button {
   justify-content: center;
   border: none;
   border-radius: 25px;
-  background: linear-gradient(
-      to right,
+  background: linear-gradient(to right,
       var(--color-secondary-blue-30),
-      var(--color-primary-blue)
-    )
-    0% no-repeat padding-box !important;
+      var(--color-primary-blue)) 0% no-repeat padding-box !important;
   font-weight: bold;
   overflow: hidden;
   z-index: 1;
   box-shadow: none !important;
 
-  & > span {
+  &>span {
     position: relative;
     width: 100%;
     height: 100%;
@@ -54,43 +52,32 @@ body main .btn, .wc-block-cart__submit-button {
 
   &::before {
     animation: 8s rotateAnimation linear infinite;
-    background: linear-gradient(
-          var(--color-primary-blue),
-          var(--color-primary-blue)
-        )
-        padding-box,
-      linear-gradient(
-          var(--angle),
-          var(--color-primary-blue),
-          #ffffff,
-          var(--color-primary-blue),
-          #ffffff,
-          var(--color-primary-blue),
-          #ffffff
-        )
-        border-box;
+    background: linear-gradient(var(--color-primary-blue),
+        var(--color-primary-blue)) padding-box,
+      linear-gradient(var(--angle),
+        var(--color-primary-blue),
+        #ffffff,
+        var(--color-primary-blue),
+        #ffffff,
+        var(--color-primary-blue),
+        #ffffff) border-box;
   }
 
   &::after {
     opacity: 1;
-    background: linear-gradient(
-          var(--color-primary-blue),
-          var(--color-primary-blue)
-        )
-        padding-box,
-      linear-gradient(
-          90deg,
-          #73d0f7,
-          #ffffff,
-          var(--color-primary-blue),
-          #ffffff,
-          var(--color-primary-blue),
-          #ffffff
-        )
-        border-box;
+    background: linear-gradient(var(--color-primary-blue),
+        var(--color-primary-blue)) padding-box,
+      linear-gradient(90deg,
+        #73d0f7,
+        #ffffff,
+        var(--color-primary-blue),
+        #ffffff,
+        var(--color-primary-blue),
+        #ffffff) border-box;
   }
 
   &:hover {
+
     // & > span {
     //   transform: scale(1.2);
     // }
@@ -131,6 +118,7 @@ body main .btn, .wc-block-cart__submit-button {
     &::before {
       border-radius: 0;
     }
+
     &__inner {
       border-radius: 0;
 
@@ -152,6 +140,7 @@ body main .btn, .wc-block-cart__submit-button {
     }
   }
 
+  &.loading,
   &--loader {
     user-select: none;
     pointer-events: none;
@@ -193,4 +182,10 @@ body main .btn, .wc-block-cart__submit-button {
   syntax: '<angle>';
   initial-value: 0deg;
   inherits: false;
+}
+
+.single_add_to_cart_button {
+  &+added_to_cart {
+    display: none;
+  }
 }

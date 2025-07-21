@@ -55,10 +55,13 @@ jQuery(document).ready(function ($) {
     });
   });
 
-  // Exclude variation forms from AJAX handling to allow normal form submission
-  $('body').on('click', '.variations_form .single_add_to_cart_button', function (e) {
-    // Don't prevent default for variation forms - let them submit normally
-    // This will be handled by WooCommerce's own variation form logic
+  $('body').on('added_to_cart', function (event, fragments, cart_hash, $button) {
+    // console.log('AJAX add to cart triggered!');
+    // console.log('Cart fragments:', fragments); // DOM fragments to update cart contents
+    // console.log('Cart hash:', cart_hash);     // Unique cart hash
+    // console.log('Button clicked:', $button);  // The button that triggered the event
+
+    modal("Product added to cart successfully!", fragments['div.widget_shopping_cart_content'] || null);
   });
 });
 

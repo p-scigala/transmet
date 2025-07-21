@@ -17,12 +17,12 @@ jQuery(document).ready(function ($) {
   // Initialize WooCommerce variation forms after custom selects are created
   setTimeout(() => {
     if ($('.variations_form').length > 0) {
-      console.log('Initializing WooCommerce variation forms...');
+      // console.log('Initializing WooCommerce variation forms...');
       $('.variations_form').each(function() {
         const $form = $(this);
         if (!$form.data('wc_variation_form')) {
           $form.wc_variation_form();
-          console.log('Initialized variation form for product:', $form.data('product_id'));
+          // console.log('Initialized variation form for product:', $form.data('product_id'));
         }
       });
     }

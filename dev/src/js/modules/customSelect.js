@@ -40,7 +40,7 @@ export default function customSelect(exceptions = []) {
           option.selected = true;
           realSelect.selectedIndex = Array.from(realSelect.options).indexOf(option);
 
-          console.log('Custom select changed:', realSelect.name, 'to', option.value, 'index:', realSelect.selectedIndex);
+          // console.log('Custom select changed:', realSelect.name, 'to', option.value, 'index:', realSelect.selectedIndex);
 
           // Force change event in vanilla JS as well
           const changeEvent = new Event('change', { bubbles: true });
@@ -51,7 +51,7 @@ export default function customSelect(exceptions = []) {
             const $form = window.jQuery(variationForm);
             const $realSelect = window.jQuery(realSelect);
 
-            console.log('WooCommerce attribute selected:', realSelect.name, '=', option.value);
+            // console.log('WooCommerce attribute selected:', realSelect.name, '=', option.value);
 
             // Najpierw trigger change event
             $realSelect.trigger('change');
@@ -63,13 +63,13 @@ export default function customSelect(exceptions = []) {
               $form.trigger('woocommerce_variation_select_change');
 
               if ($form.data('wc_variation_form')) {
-                console.log('Calling check_variations via wc_variation_form');
+                // console.log('Calling check_variations via wc_variation_form');
                 $form.data('wc_variation_form').check_variations();
               }
 
               // Check current variation ID immediately
               const currentVariationId = $form.find('input[name="variation_id"]').val();
-              console.log('Variation ID after initial check:', currentVariationId);
+              // console.log('Variation ID after initial check:', currentVariationId);
 
               // Dodatkowe sprawdzenie czy wszystkie selects mają wartości
               setTimeout(() => {
@@ -86,23 +86,23 @@ export default function customSelect(exceptions = []) {
                   }
                 });
 
-                console.log('All attributes selected:', allHaveValues);
-                console.log('Selected attributes:', selectedValues);
+                // console.log('All attributes selected:', allHaveValues);
+                // console.log('Selected attributes:', selectedValues);
 
                 if (allHaveValues) {
                   // Sprawdź czy variation_id zostało ustawione
                   const variationId = $form.find('input[name="variation_id"]').val();
-                  console.log('Final variation ID check:', variationId);
+                  // console.log('Final variation ID check:', variationId);
 
                   if (variationId && variationId !== '0' && selectedValues.length > 0) {
                     // Usuń klasy blokujące przycisk
                     const $button = $form.find('.single_add_to_cart_button');
                     $button.removeClass('wc-variation-selection-needed disabled');
                     $button.prop('disabled', false);
-                    console.log('Button enabled, variation ID:', variationId);
+                    // console.log('Button enabled, variation ID:', variationId);
                   } else {
                     // Jeśli variation_id nadal 0, wywołaj ponownie check_variations
-                    console.log('Variation ID still 0, retrying...');
+                    // console.log('Variation ID still 0, retrying...');
                     $form.trigger('check_variations');
                     if ($form.data('wc_variation_form')) {
                       $form.data('wc_variation_form').check_variations();
@@ -111,22 +111,22 @@ export default function customSelect(exceptions = []) {
                     // Final check after retry
                     setTimeout(() => {
                       const finalVariationId = $form.find('input[name="variation_id"]').val();
-                      console.log('Final retry variation ID:', finalVariationId);
+                      // console.log('Final retry variation ID:', finalVariationId);
                       if (finalVariationId && finalVariationId !== '0') {
                         const $button = $form.find('.single_add_to_cart_button');
                         $button.removeClass('wc-variation-selection-needed disabled');
                         $button.prop('disabled', false);
-                        console.log('Button enabled after retry, variation ID:', finalVariationId);
+                        // console.log('Button enabled after retry, variation ID:', finalVariationId);
                       } else {
                         // Last resort: try manual variation matching
-                        console.log('Attempting manual variation matching...');
+                        // console.log('Attempting manual variation matching...');
                         const manualVariationId = findVariationManually($form, selectedValues);
                         if (manualVariationId) {
                           $form.find('input[name="variation_id"]').val(manualVariationId);
                           const $button = $form.find('.single_add_to_cart_button');
                           $button.removeClass('wc-variation-selection-needed disabled');
                           $button.prop('disabled', false);
-                          console.log('Manual variation match successful:', manualVariationId);
+                          // console.log('Manual variation match successful:', manualVariationId);
                         }
                       }
                     }, 100);
@@ -182,25 +182,25 @@ function findVariationManually($form, selectedAttributes) {
   const variationsData = $form.data('product_variations');
 
   if (!variationsData || !Array.isArray(variationsData)) {
-    console.log('No variations data available');
+    // console.log('No variations data available');
     return null;
   }
 
-  console.log('Manual search in variations:', variationsData.length, 'variations');
-  console.log('Looking for attributes:', selectedAttributes);
+  // console.log('Manual search in variations:', variationsData.length, 'variations');
+  // console.log('Looking for attributes:', selectedAttributes);
 
   for (let i = 0; i < variationsData.length; i++) {
     const variation = variationsData[i];
     let matches = true;
 
-    console.log(`Checking variation ${variation.variation_id}:`, variation.attributes);
+    // console.log(`Checking variation ${variation.variation_id}:`, variation.attributes);
 
     // Check if all selected attributes match this variation
     for (const attrName in selectedAttributes) {
       const selectedValue = selectedAttributes[attrName];
       const variationValue = variation.attributes[attrName];
 
-      console.log(`  ${attrName}: "${selectedValue}" === "${variationValue}" ?`, selectedValue === variationValue);
+      // console.log(`  ${attrName}: "${selectedValue}" === "${variationValue}" ?`, selectedValue === variationValue);
 
       if (selectedValue !== variationValue) {
         matches = false;
@@ -209,11 +209,11 @@ function findVariationManually($form, selectedAttributes) {
     }
 
     if (matches) {
-      console.log('Found matching variation:', variation.variation_id);
+      // console.log('Found matching variation:', variation.variation_id);
       return variation.variation_id;
     }
   }
 
-  console.log('No matching variation found');
+  // console.log('No matching variation found');
   return null;
 }

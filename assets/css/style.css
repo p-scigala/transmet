@@ -9976,7 +9976,8 @@ select,
   top: unset;
 }
 
-body main .btn, body main .comment-reply-link, .wc-block-cart__submit-button {
+body main .btn, body main .comment-reply-link,
+.wc-block-cart__submit-button {
   position: relative;
   height: 50px;
   width: fit-content;
@@ -9993,7 +9994,8 @@ body main .btn, body main .comment-reply-link, .wc-block-cart__submit-button {
   z-index: 1;
   box-shadow: none !important;
 }
-body main .btn > span, body main .comment-reply-link > span, .wc-block-cart__submit-button > span {
+body main .btn > span, body main .comment-reply-link > span,
+.wc-block-cart__submit-button > span {
   position: relative;
   width: 100%;
   height: 100%;
@@ -10007,7 +10009,9 @@ body main .btn > span, body main .comment-reply-link > span, .wc-block-cart__sub
   z-index: 3;
   transition-duration: 0.3s;
 }
-body main .btn::before, body main .comment-reply-link::before, body main .btn::after, body main .comment-reply-link::after, .wc-block-cart__submit-button::before, .wc-block-cart__submit-button::after {
+body main .btn::before, body main .comment-reply-link::before, body main .btn::after, body main .comment-reply-link::after,
+.wc-block-cart__submit-button::before,
+.wc-block-cart__submit-button::after {
   content: "";
   position: absolute;
   top: 3px;
@@ -10022,63 +10026,86 @@ body main .btn::before, body main .comment-reply-link::before, body main .btn::a
   transition-duration: 0.3s;
   border-radius: 25px;
 }
-body main .btn::before, body main .comment-reply-link::before, .wc-block-cart__submit-button::before {
+body main .btn::before, body main .comment-reply-link::before,
+.wc-block-cart__submit-button::before {
   animation: 8s rotateAnimation linear infinite;
   background: linear-gradient(var(--color-primary-blue), var(--color-primary-blue)) padding-box, linear-gradient(var(--angle), var(--color-primary-blue), #ffffff, var(--color-primary-blue), #ffffff, var(--color-primary-blue), #ffffff) border-box;
 }
-body main .btn::after, body main .comment-reply-link::after, .wc-block-cart__submit-button::after {
+body main .btn::after, body main .comment-reply-link::after,
+.wc-block-cart__submit-button::after {
   opacity: 1;
   background: linear-gradient(var(--color-primary-blue), var(--color-primary-blue)) padding-box, linear-gradient(90deg, #73d0f7, #ffffff, var(--color-primary-blue), #ffffff, var(--color-primary-blue), #ffffff) border-box;
 }
-body main .btn:hover::after, body main .comment-reply-link:hover::after, .wc-block-cart__submit-button:hover::after {
+body main .btn:hover::after, body main .comment-reply-link:hover::after,
+.wc-block-cart__submit-button:hover::after {
   opacity: 0;
 }
-body main .btn--arrow, .wc-block-cart__submit-button--arrow {
+body main .btn--arrow,
+.wc-block-cart__submit-button--arrow {
   width: 50px;
   height: 50px;
   min-width: unset;
   padding: 3px;
 }
-body main .btn--arrow span, .wc-block-cart__submit-button--arrow span {
+body main .btn--arrow span,
+.wc-block-cart__submit-button--arrow span {
   height: 22px;
 }
-body main .btn--arrow-left span, .wc-block-cart__submit-button--arrow-left span {
+body main .btn--arrow-left span,
+.wc-block-cart__submit-button--arrow-left span {
   content: url("../../assets/imgs/arrow-left-white.svg");
 }
-body main .btn--arrow-right span, .wc-block-cart__submit-button--arrow-right span {
+body main .btn--arrow-right span,
+.wc-block-cart__submit-button--arrow-right span {
   content: url("../../assets/imgs/arrow-right-white.svg");
 }
-body main .btn--panel, .wc-block-cart__submit-button--panel {
+body main .btn--panel,
+.wc-block-cart__submit-button--panel {
   width: 202px;
   height: 202px;
   min-width: unset;
   border-radius: 0;
 }
-body main .btn--panel::before, .wc-block-cart__submit-button--panel::before {
+body main .btn--panel::before,
+.wc-block-cart__submit-button--panel::before {
   border-radius: 0;
 }
-body main .btn--panel__inner, .wc-block-cart__submit-button--panel__inner {
+body main .btn--panel__inner,
+.wc-block-cart__submit-button--panel__inner {
   border-radius: 0;
 }
-body main .btn--panel__inner::before, .wc-block-cart__submit-button--panel__inner::before {
+body main .btn--panel__inner::before,
+.wc-block-cart__submit-button--panel__inner::before {
   border-radius: 0;
 }
-body main .btn--alternative, body main .btn--alternative span, .wc-block-cart__submit-button--alternative, .wc-block-cart__submit-button--alternative span {
+body main .btn--alternative, body main .btn--alternative span,
+.wc-block-cart__submit-button--alternative,
+.wc-block-cart__submit-button--alternative span {
   background-color: var(--color-primary-darkblue);
   border: none;
   padding: 0;
 }
-body main .btn--alternative::before, body main .btn--alternative::after, body main .btn--alternative span::before, body main .btn--alternative span::after, .wc-block-cart__submit-button--alternative::before, .wc-block-cart__submit-button--alternative::after, .wc-block-cart__submit-button--alternative span::before, .wc-block-cart__submit-button--alternative span::after {
+body main .btn--alternative::before, body main .btn--alternative::after, body main .btn--alternative span::before, body main .btn--alternative span::after,
+.wc-block-cart__submit-button--alternative::before,
+.wc-block-cart__submit-button--alternative::after,
+.wc-block-cart__submit-button--alternative span::before,
+.wc-block-cart__submit-button--alternative span::after {
   content: none !important;
 }
-body main .btn--loader, .wc-block-cart__submit-button--loader {
+body main .btn.loading, body main .loading.comment-reply-link, body main .btn--loader,
+.wc-block-cart__submit-button.loading,
+.wc-block-cart__submit-button--loader {
   user-select: none;
   pointer-events: none;
 }
-body main .btn--loader span, .wc-block-cart__submit-button--loader span {
+body main .btn.loading span, body main .loading.comment-reply-link span, body main .btn--loader span,
+.wc-block-cart__submit-button.loading span,
+.wc-block-cart__submit-button--loader span {
   transform: none !important;
 }
-body main .btn--loader span::after, .wc-block-cart__submit-button--loader span::after {
+body main .btn.loading span::after, body main .loading.comment-reply-link span::after, body main .btn--loader span::after,
+.wc-block-cart__submit-button.loading span::after,
+.wc-block-cart__submit-button--loader span::after {
   content: "";
   display: block;
   background-color: var(--color-primary-blue);
@@ -10092,7 +10119,8 @@ body main .btn--loader span::after, .wc-block-cart__submit-button--loader span::
   width: 100%;
   height: 100%;
 }
-body main .btn.disabled, body main .disabled.comment-reply-link, .wc-block-cart__submit-button.disabled {
+body main .btn.disabled, body main .disabled.comment-reply-link,
+.wc-block-cart__submit-button.disabled {
   pointer-events: none !important;
   user-select: none !important;
   opacity: 0.5 !important;
@@ -10108,6 +10136,10 @@ body main .btn.disabled, body main .disabled.comment-reply-link, .wc-block-cart_
   initial-value: 0deg;
   inherits: false;
 }
+.single_add_to_cart_button + added_to_cart {
+  display: none;
+}
+
 .panel {
   position: relative;
   padding: 12px;
