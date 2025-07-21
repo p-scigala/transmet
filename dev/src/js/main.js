@@ -14,6 +14,94 @@ jQuery(document).ready(function ($) {
   customSelect(['.woof_acf_select']);
   // addToCart($);
 
+  // Initialize WooCommerce variation forms after custom selects are created
+  setTimeout(() => {
+    if ($('.variations_form').length > 0) {
+      console.log('Initializing WooCommerce variation forms...');
+      $('.variations_form').each(function() {
+        const $form = $(this);
+        if (!$form.data('wc_variation_form')) {
+          $form.wc_variation_form();
+          console.log('Initialized variation form for product:', $form.data('product_id'));
+        }
+      });
+    }
+  }, 500);
+
+  // Add manual variation check button for debugging
+  if ($('.variations_form').length > 0) {
+    const checkButton = $('<button type="button" style="margin:10px; padding:5px;" id="manual-variation-check">Manual Check Variations</button>');
+    $('.variations_form').before(checkButton);
+    
+    checkButton.on('click', function() {
+      const $form = $('.variations_form');
+      console.log('Manual variation check triggered');
+      
+      // Get all selected values
+      const selectedAttributes = {};
+      $form.find('.variations select').each(function() {
+        const $select = $(this);
+        const value = $select.val();
+        const name = $select.attr('name');
+        selectedAttributes[name] = value;
+        console.log('Attribute:', name, '=', value, 'selectedIndex:', $select[0].selectedIndex);
+      });
+      
+      // Get available variations from form data
+      const variationsData = $form.data('product_variations');
+      console.log('Available variations:', variationsData);
+      
+      // Try to find matching variation manually
+      if (variationsData && Array.isArray(variationsData)) {
+        const matchingVariation = variationsData.find(variation => {
+          console.log('Checking variation:', variation.variation_id, variation.attributes);
+          
+          // Check if all attributes match
+          for (const attrName in selectedAttributes) {
+            const selectedValue = selectedAttributes[attrName];
+            const variationValue = variation.attributes[attrName];
+            console.log(`  ${attrName}: selected="${selectedValue}" vs variation="${variationValue}"`);
+            
+            if (selectedValue !== variationValue) {
+              return false;
+            }
+          }
+          return true;
+        });
+        
+        if (matchingVariation) {
+          console.log('Found matching variation:', matchingVariation);
+          // Manually set the variation ID
+          $form.find('input[name="variation_id"]').val(matchingVariation.variation_id);
+          const $button = $form.find('.single_add_to_cart_button');
+          $button.removeClass('wc-variation-selection-needed disabled');
+          $button.prop('disabled', false);
+          console.log('Manually set variation ID:', matchingVariation.variation_id);
+        } else {
+          console.log('No matching variation found');
+        }
+      }
+      
+      // Force variation check
+      $form.trigger('check_variations');
+      if ($form.data('wc_variation_form')) {
+        $form.data('wc_variation_form').check_variations();
+      }
+      
+      setTimeout(() => {
+        const variationId = $form.find('input[name="variation_id"]').val();
+        console.log('Variation ID after manual check:', variationId);
+        
+        if (variationId && variationId !== '0') {
+          const $button = $form.find('.single_add_to_cart_button');
+          $button.removeClass('wc-variation-selection-needed disabled');
+          $button.prop('disabled', false);
+          console.log('Button manually enabled');
+        }
+      }, 200);
+    });
+  }
+
   document.querySelectorAll('.accordion__trigger').forEach((trigger) => {
     trigger.addEventListener('click', () => {
       const content = trigger.nextElementSibling;

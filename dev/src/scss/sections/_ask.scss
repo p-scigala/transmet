@@ -109,6 +109,20 @@
     margin-bottom: 32px;
   }
 
+  &__link {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    font-size: 25px;
+    line-height: 31px;
+    font-weight: bold;
+    margin-bottom: 18px;
+  }
+
+  &__link:last-child {
+    margin-bottom: 0;
+  }
+
   &__btn {
     @media (max-width: 800px) {
       margin-left: auto;

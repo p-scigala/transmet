@@ -13,6 +13,12 @@ require_once get_template_directory() . '/functions/helpers.php';
 require_once get_template_directory() . '/functions/custom_functions.php';
 require_once get_template_directory() . '/lib/CF7BootstrapInputs.php';
 
+// Add WooCommerce theme support
+add_action('after_setup_theme', 'add_woocommerce_support');
+function add_woocommerce_support() {
+    add_theme_support('woocommerce');
+}
+
 add_filter('woocommerce_enqueue_styles', 'jk_dequeue_styles');
 function jk_dequeue_styles($enqueue_styles)
 {
@@ -62,9 +68,26 @@ function add_to_cart_callback() {
 
     $product_id = absint($_POST['product_id'] ?? 0);
     $quantity = absint($_POST['quantity'] ?? 1);
+    $variation_id = absint($_POST['variation_id'] ?? 0);
+    
+    // Get variation attributes if present
+    $variation_data = array();
+    if ($variation_id > 0) {
+        foreach ($_POST as $key => $value) {
+            if (substr($key, 0, 10) === 'attribute_') {
+                $variation_data[$key] = wc_clean($value);
+            }
+        }
+    }
 
     if ($product_id > 0 && WC()->cart) {
-        $added = WC()->cart->add_to_cart($product_id, $quantity);
+        if ($variation_id > 0) {
+            // Handle variable product
+            $added = WC()->cart->add_to_cart($product_id, $quantity, $variation_id, $variation_data);
+        } else {
+            // Handle simple product
+            $added = WC()->cart->add_to_cart($product_id, $quantity);
+        }
 
         if ($added) {
             // Return new cart fragments to update mini cart, etc.
@@ -86,6 +109,33 @@ function get_cart_count_callback() {
     // Get total items in cart
     $count = WC()->cart->get_cart_contents_count();
     wp_send_json_success(['count' => $count]);
+}
+
+// Handle standard WooCommerce variation form submissions
+add_action('template_redirect', 'handle_variation_form_submission');
+function handle_variation_form_submission() {
+    if (isset($_POST['add-to-cart']) && isset($_POST['variation_id']) && $_POST['variation_id'] > 0) {
+        $product_id = intval($_POST['add-to-cart']);
+        $variation_id = intval($_POST['variation_id']);
+        $quantity = isset($_POST['quantity']) ? intval($_POST['quantity']) : 1;
+        
+        // Get variation attributes
+        $variation_data = array();
+        foreach ($_POST as $key => $value) {
+            if (substr($key, 0, 10) === 'attribute_') {
+                $variation_data[$key] = wc_clean($value);
+            }
+        }
+        
+        // Add to cart
+        $cart_item_key = WC()->cart->add_to_cart($product_id, $quantity, $variation_id, $variation_data);
+        
+        if ($cart_item_key) {
+            // Redirect to same page with success parameter to prevent form resubmission
+            wp_safe_redirect(add_query_arg('added-to-cart', $product_id));
+            exit;
+        }
+    }
 }
 
 /* najniższa cena sprzed 30 dni */
@@ -336,7 +386,7 @@ function display_price_range_for_variants( $price_html, $product ) {
             if ( $min_price === $max_price ) {
                 return '<span class="price">' . wc_price( $min_price ) . '</span>';
             } else {
-                return '<span class="price"><span class="price-amount">' . wc_price( $min_price ) . '-' . wc_price( $max_price ) . '</span></span>';
+                return '<span class="price"><span class="price-amount">' . wc_price( $min_price ) . '<span class="woocommerce-Price-amount amount"><bdi>-</bdi></span>' . wc_price( $max_price ) . '</span></span>';
             }
         }
 

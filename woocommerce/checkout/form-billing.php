@@ -25,9 +25,6 @@ defined( 'ABSPATH' ) || exit;
 			<input type="radio" data-index="0" id="shipping-odbior" name="shipping-method" class="checkout-shipping__input" checked>
 			<label class="checkout-shipping__label" for="shipping-odbior">
 				<img src="<?php echo get_template_directory_uri()?>/assets/img/shipping-free.svg">
-				<div class="d-inline-block">
-					Odbiór osobisty w recepcji Hotelu Trylogia 0 zł
-				</div>
 			</label>
 		</li>
 		<li>
@@ -35,7 +32,6 @@ defined( 'ABSPATH' ) || exit;
 			<label class="checkout-shipping__label" for="shipping-dostawa">
 				<img src="<?php echo get_template_directory_uri()?>/assets/img/shipping-dostawa.svg">
 				<div class="d-inline-block">
-					Dostawa Prosimy o kontakt w celu potwierdzenia możliwości. -  
 					<span class="woocommerce-Price-amount amount">
 						<bdi>20,00&nbsp;<span class="woocommerce-Price-currencySymbol">zł</span></bdi>
 					</span>

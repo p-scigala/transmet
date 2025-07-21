@@ -60,7 +60,19 @@ body .single-product {
   }
 
   .price {
+    .price {
+      width: fit-content;
+    }
+
+    .price-amount {
+      width: fit-content;
+      display: block;
+      max-width: none;
+    }
+
     width: fit-content;
+    display: flex;
+    flex-direction: row;
     gap: 50px;
     margin: 20px 0 5px 0;
 

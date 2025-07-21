@@ -11679,6 +11679,18 @@ body main .wc-block-checkout__form .is-active label {
 .ask__text {
   margin-bottom: 32px;
 }
+.ask__link {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  font-size: 25px;
+  line-height: 31px;
+  font-weight: bold;
+  margin-bottom: 18px;
+}
+.ask__link:last-child {
+  margin-bottom: 0;
+}
 @media (max-width: 800px) {
   .ask__btn {
     margin-left: auto;
@@ -12977,8 +12989,18 @@ body .single-product__category-name {
 }
 body .single-product .price {
   width: fit-content;
+  display: flex;
+  flex-direction: row;
   gap: 50px;
   margin: 20px 0 5px 0;
+}
+body .single-product .price .price {
+  width: fit-content;
+}
+body .single-product .price .price-amount {
+  width: fit-content;
+  display: block;
+  max-width: none;
 }
 body .single-product .price bdi {
   font-size: 32px;

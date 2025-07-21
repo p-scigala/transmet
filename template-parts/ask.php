@@ -36,10 +36,11 @@
               $link_url = get_sub_field("ask_link")["url"];
               $link_title = get_sub_field("ask_link")["title"];
               $link_target = isset(get_sub_field("ask_link")["target"]) ? get_sub_field("ask_link")["target"] : "_self";
+              $link_icon = get_sub_field("ask_icon");
       ?>
-        <a class="ask__link" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+        <a class="ask__link scroll-anim" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
           <?php if (get_sub_field("ask_icon")) { ?>
-          <img src="<?php echo get_field("ask_icon"); ?>" alt="<?php echo $link_title; ?>" />
+          <img src="<?php echo $link_icon; ?>" alt="<?php echo $link_title; ?>" />
           <?php } ?>
           <?php echo esc_html($link_title); ?>
         </a>

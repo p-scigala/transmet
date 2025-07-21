@@ -54,6 +54,12 @@ jQuery(document).ready(function ($) {
       },
     });
   });
+
+  // Exclude variation forms from AJAX handling to allow normal form submission
+  $('body').on('click', '.variations_form .single_add_to_cart_button', function (e) {
+    // Don't prevent default for variation forms - let them submit normally
+    // This will be handled by WooCommerce's own variation form logic
+  });
 });
 
 function modal(message, content = null) {
