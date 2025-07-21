@@ -287,6 +287,33 @@ body .single-product {
       }
     }
   }
+
+  &.product-type-variable {
+    .price {
+      display: none !important;
+    }
+
+    .woocommerce-variation-price {
+      font-size: 22px;
+      font-weight: bold;
+      display: flex;
+      gap: 5px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      width: 100%;
+      max-width: 300px;
+      overflow: hidden;
+      width: fit-content;
+      display: block;
+      max-width: none;
+
+      bdi {
+        font-size: 32px;
+        line-height: 40px;
+        font-weight: bold;
+      }
+    }
+  }
 }
 
 .product-gallery {

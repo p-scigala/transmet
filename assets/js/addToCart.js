@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-  $('body').on('click', '.product__add-to-cart a', function (e) {
+  $('body').on('click', '.product__add-to-cart a:not(.has-variants)', function (e) {
     e.preventDefault();
 
     let button = $(this);
@@ -26,10 +26,12 @@ jQuery(document).ready(function ($) {
         }
 
         if (response && !response.error) {
-          modal(
-            response.message || 'Product added to cart successfully!',
-            response.fragments['div.widget_shopping_cart_content'] || null
-          );
+          modal("Product added to cart successfully!", `<a href="http://localhost:8080/orto4you/koszyk/" style="margin: auto;" class="added_to_cart wc-forward btn" title="Zobacz koszyk"><span>Zobacz koszyk</a>`);
+
+          // modal(
+          //   response.message || 'Product added to cart successfully!',
+          //   response.fragments['div.widget_shopping_cart_content'] || null
+          // );
 
           $.ajax({
             url: AjaxCart.ajax_url,
@@ -61,7 +63,9 @@ jQuery(document).ready(function ($) {
     // console.log('Cart hash:', cart_hash);     // Unique cart hash
     // console.log('Button clicked:', $button);  // The button that triggered the event
 
-    modal("Product added to cart successfully!", fragments['div.widget_shopping_cart_content'] || null);
+    modal("Product added to cart successfully!", `<a href="http://localhost:8080/orto4you/koszyk/" style="margin: auto;" class="added_to_cart wc-forward btn" title="Zobacz koszyk"><span>Zobacz koszyk</a>`);
+
+    // modal("Product added to cart successfully!", fragments['div.widget_shopping_cart_content'] || null);
   });
 });
 

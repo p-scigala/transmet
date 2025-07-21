@@ -1,4 +1,4 @@
-body main .btn,
+body .btn, body main .btn,
 .wc-block-cart__submit-button {
   position: relative;
   height: 50px;
@@ -185,7 +185,7 @@ body main .btn,
 }
 
 .single_add_to_cart_button {
-  &+added_to_cart {
+  &+.added_to_cart {
     display: none;
   }
 }

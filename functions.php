@@ -338,11 +338,12 @@ add_filter( 'woocommerce_loop_add_to_cart_link', 'variants_instead_of_add_to_car
 
 function variants_instead_of_add_to_cart_btn( $button, $product ) {
     if ( $product->is_type( 'variable' ) ) {
+        
         $url = get_permalink( $product->get_id() );
         $label = 'Zobacz warianty';
 
         return sprintf(
-            '<a href="%s" class="btn"><span>%s</span></a>',
+            '<a href="%s" class="btn has-variants"><span>%s</span></a>',
             esc_url( $url ),
             esc_html( $label )
         );

@@ -18,7 +18,7 @@ jQuery(document).ready(function ($) {
   setTimeout(() => {
     if ($('.variations_form').length > 0) {
       // console.log('Initializing WooCommerce variation forms...');
-      $('.variations_form').each(function() {
+      $('.variations_form').each(function () {
         const $form = $(this);
         if (!$form.data('wc_variation_form')) {
           $form.wc_variation_form();
@@ -129,6 +129,7 @@ jQuery(document).ready(function ($) {
       }
     });
   }
+
 });
 
 function updateCheckoutButton() {

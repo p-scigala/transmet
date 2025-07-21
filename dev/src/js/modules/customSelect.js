@@ -86,10 +86,22 @@ export default function customSelect(exceptions = []) {
                   }
                 });
 
+                const list = allSelects.prevObject[0].querySelectorAll("select");
+
+                list.forEach((select) => {
+                  const selectValue = select.value;
+                  const selectName = select.name;
+                  selectedValues[selectName] = selectValue;
+                  if (!selectValue) {
+                    allHaveValues = false;
+                  }
+                });
+
                 // console.log('All attributes selected:', allHaveValues);
                 // console.log('Selected attributes:', selectedValues);
 
                 if (allHaveValues) {
+
                   // Sprawdź czy variation_id zostało ustawione
                   const variationId = $form.find('input[name="variation_id"]').val();
                   // console.log('Final variation ID check:', variationId);
@@ -128,6 +140,16 @@ export default function customSelect(exceptions = []) {
                           $button.prop('disabled', false);
                           // console.log('Manual variation match successful:', manualVariationId);
                         }
+                      }
+                      // console.log('Final variation ID after all checks:', $form.find('input[name="variation_id"]').val());
+                      // display variation price
+                      const variationPrice = document.querySelector('.woocommerce-variation-price');
+                      const formData = $form.data('product_variations');
+                      console.log(variationPrice, formData, selectedValues);
+                      if (formData) {
+                        formData.filter(variation => variation.variation_id == $form.find('input[name="variation_id"]').val()).forEach(variation => {
+                          variationPrice.innerHTML = `<span class="woocommerce-Price-amount amount"><bdi>${variation.display_price} zł</bdi></span>`;
+                        });
                       }
                     }, 100);
                   }
