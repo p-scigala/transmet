@@ -49,6 +49,7 @@
     gap: 32px;
     flex-wrap: nowrap;
     margin-top: 40px;
+    position: relative;
   }
 
   &__link {
@@ -74,6 +75,10 @@
 
   .product__featured {
     display: none;
+  }
+
+  .slick__arrow {
+    position: absolute;
   }
 
   .slick-track {

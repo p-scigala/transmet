@@ -82,7 +82,10 @@
     width: 203px;
     height: 203px;
     border: solid 1px var(--color-border);
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
 
     @media (max-width: 600px) {
       width: 160px;

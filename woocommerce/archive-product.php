@@ -88,7 +88,7 @@ do_action( 'woocommerce_before_main_content' );
 <div class="products">
   <div class="products__wrapper">
     <div class="products__filters">
-			<button class="products__filters-toggle"><?php _e('Filtry', 'candyweb'); ?></button>
+      <button class="products__filters-toggle"><?php _e('Filtry', 'candyweb'); ?></button>
       <!-- <span class="close-filter-button"></span> -->
       <div class="products__filters-category">
         <h3 class="products__filters-heading"><?php _e('Kategorie', 'candyweb'); ?></h3>
@@ -124,8 +124,20 @@ do_action( 'woocommerce_before_main_content' );
 
 								$hasSubCategoryClass = $subcategories ? ' products__filters-category-has-items' : '';
 
+								if(is_tax('product_cat', $category->slug)) {
+									$isActive = ' products__filters-category--active';
+								} else {
+									$isActive = '';
+								}
+
+								if($isCategoryActive && $subcategories) {
+									$subcategory_collapse = 1;
+								} else {
+									$subcategory_collapse = 0;
+								}
+
 								if (!is_wp_error($category_link)) {
-									echo '<li class="products__filters-category' . $hasSubCategoryClass . '"><div class="products__filter-category-wrap"><a class="products__filter-category-link" href="' . esc_url($category_link) . '" class="' . $active_class . '">' . $category->name . '</a>';
+									echo '<li class="products__filters-category' . $hasSubCategoryClass . $isActive . '"><div class="products__filter-category-wrap"><a class="products__filter-category-link" href="' . esc_url($category_link) . '" class="' . $active_class . '">' . $category->name . '</a>';
 							
 									if ($subcategories) {
 
@@ -137,8 +149,8 @@ do_action( 'woocommerce_before_main_content' );
 										}
 										
 										if (is_tax('product_cat', $category->slug)) {
-											echo '<i class="cursor-pointer categories-collapse collapsed" data-bs-toggle="collapse" data-bs-target="#' . $category->slug . '" aria-expanded="true" aria-controls="collapseExample"></i></div>';
-											echo '<ul class="archive-products__category-second collapse" id="' . $category->slug . '">';
+											echo '<i class="cursor-pointer categories-collapse active" data-bs-toggle="collapse" data-bs-target="#' . $category->slug . '" aria-expanded="true" aria-controls="collapseExample"></i></div>';
+											echo '<ul class="archive-products__category-second show" id="' . $category->slug . '">';
 										} elseif (isset($subcategory_collapse)) {
 											echo '<i class="cursor-pointer categories-collapse collapsed" data-bs-toggle="collapse" data-bs-target="#' . $category->slug . '" aria-expanded="true" aria-controls="collapseExample"></i></div>';
 											echo '<ul class="archive-products__category-second collapse" id="' . $category->slug . '">';
@@ -151,6 +163,13 @@ do_action( 'woocommerce_before_main_content' );
 											$subcategory_link = get_term_link($subcategory);
 											$active_class_sub = is_tax('product_cat', $subcategory->slug) ? 'active-cat' : '';
 							
+											$isSubcategoryActive = is_tax('product_cat', $subcategory->slug);
+											if ($isSubcategoryActive) {
+												$active_class_sub = ' products__filters-category--active';
+											} else {
+												$active_class_sub = '';
+											}
+
 											if (!is_wp_error($subcategory_link)) {
 												echo '<li><a href="' . esc_url($subcategory_link) . '" class="' . $active_class_sub . '">' . $subcategory->name . '</a></li>';
 											}

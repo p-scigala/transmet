@@ -19,7 +19,7 @@ select,
   position: relative;
   width: 300px;
   user-select: none;
-  z-index: 99999;
+  z-index: 99998;
 
   &-selected {
     background-color: var(--color-white);
@@ -42,6 +42,10 @@ select,
       margin-left: 5px;
       line-height: 10px;
     }
+  }
+
+  &.active {
+    z-index: 99999;
   }
 
   &-placeholder {

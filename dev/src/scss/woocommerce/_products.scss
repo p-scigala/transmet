@@ -119,6 +119,10 @@
       line-height: 21px;
       font-weight: bold;
 
+      &--active {
+        color: var(--color-primary-blue);
+      }
+
       .products__filters-toggle {
         display: block;
       }
@@ -297,6 +301,44 @@
     .woocommerce-notices-wrapper {
       height: fit-content;
     }
+  }
+
+  .widget_price_filter {
+    .price_slider_amount {
+      .price_label {
+        font-size: 15px !important;
+        line-height: 19px !important;
+      }
+    }
+
+    .ui-slider-range {
+      height: 1px !important;
+      background-color: var(--color-black) !important;
+    }
+
+    .ui-slider-handle {
+      width: 15px !important;
+      height: 15px !important;
+      border: solid 1px var(--color-black) !important;
+      background-color: var(--color-white) !important;
+      border-radius: 50% !important;
+      top: -7px !important;
+
+      &:hover {
+        background-color: var(--color-primary-blue) !important;
+        border-color: var(--color-primary-blue) !important;
+      }
+    }
+
+    .price_slider {
+      height: 1px !important;
+      background-color: var(--color-border) !important;
+      width: 100% !important;
+    }
+  }
+
+  .woof_container {
+    border-bottom: solid 1px var(--color-border);
   }
 
   &__result-count {

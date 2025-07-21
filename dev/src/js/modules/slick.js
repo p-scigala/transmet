@@ -46,35 +46,38 @@ const slickCall = ($) => {
     slidesToShow: 1,
     centerMode: false,
     variableWidth: true,
-    // responsive: [
-    //   {
-    //     breakpoint: 1450,
-    //     settings: {
-    //       centerMode: true,
-    //       variableWidth: false,
-    //     },
-    //   },
-    // ],
   });
 
   $('.newest-products__slick').slick({
-    arrows: false,
+    arrows: true,
     dots: false,
     infinite: false,
     speed: 300,
     slidesToShow: 1,
     centerMode: false,
     variableWidth: true,
+    prevArrow: prevArrow,
+    nextArrow: nextArrow,
+    responsive: [
+      {
+        breakpoint: 800,
+        settings: {
+          arrows: false,
+        },
+      },
+    ],
   });
 
   $('.bestsellers__slick').slick({
-    arrows: false,
+    arrows: true,
     dots: false,
     infinite: false,
     slidesToShow: 4,
     slidesToScroll: 1,
     centerMode: false,
     adaptiveHeight: true,
+    prevArrow: prevArrow,
+    nextArrow: nextArrow,
     responsive: [
       {
         breakpoint: 1450,
@@ -85,6 +88,7 @@ const slickCall = ($) => {
       {
         breakpoint: 800,
         settings: {
+          arrows: false,
           // slidesToShow: 2,
         },
       },
@@ -166,8 +170,8 @@ const slickCall = ($) => {
         $currentSlide.find('.slick-carousel__img-01').addClass('animated');
         $currentSlide.find('.slick-carousel__product').addClass('animated');
       }, 900);
-      setTimeout(function () {}, 1500);
-      setTimeout(function () {}, 700);
+      setTimeout(function () { }, 1500);
+      setTimeout(function () { }, 700);
     }
   );
 

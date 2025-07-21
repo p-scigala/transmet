@@ -136,6 +136,11 @@
     a {
       display: flex;
       align-items: center;
+      transition-duration: .15s;
+
+      &:hover {
+        color: var(--color-primary-blue);
+      }
     }
   }
 

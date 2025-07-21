@@ -18,6 +18,7 @@
     gap: 32px;
     flex-wrap: nowrap;
     margin-top: 40px;
+    position: relative;
   }
 
   &__link {
@@ -42,6 +43,10 @@
 
   .slick-track {
     gap: 32px;
+  }
+
+  .slick__arrow {
+    position: absolute;
   }
 
   .slick-list {

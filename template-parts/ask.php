@@ -30,8 +30,8 @@
         <?php endif; ?>
 
         <?php
-        if(have_rows("links_repeater", "option")):
-          while(have_rows("links_repeater", "option")): the_row();
+        if(have_rows("ask_links_repeater", "option")):
+          while(have_rows("ask_links_repeater", "option")): the_row();
             if (get_sub_field("ask_link")) {
               $link_url = get_sub_field("ask_link")["url"];
               $link_title = get_sub_field("ask_link")["title"];

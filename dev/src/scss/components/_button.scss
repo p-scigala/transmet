@@ -91,9 +91,9 @@ body main .btn, .wc-block-cart__submit-button {
   }
 
   &:hover {
-    & > span {
-      transform: scale(1.2);
-    }
+    // & > span {
+    //   transform: scale(1.2);
+    // }
     &::after {
       opacity: 0;
     }

@@ -39,6 +39,28 @@
             )); ?>
 
             <div class="header__icons">
+              <?php if (is_user_logged_in()) : ?>
+              <a class="header__account"
+                href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>"
+                title="<?php _e('My Account', 'woothemes'); ?>">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/icon-avatar.svg"
+                  alt="<?php _e('My Account', 'woothemes'); ?>" class="header__account-icon" />
+                <span class="screen-reader-text">
+                  <?php _e('My Account', 'woothemes'); ?>
+                </span>
+              </a>
+              <?php else : ?>
+              <a class="header__account"
+                href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>"
+                title="<?php _e('Login', 'woothemes'); ?>">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/icon-avatar.svg"
+                  alt="<?php _e('Login', 'woothemes'); ?>" class="header__account-icon" />
+                <span class="screen-reader-text">
+                  <?php _e('Login', 'woothemes'); ?>
+                </span>
+              </a>
+              <?php endif; ?>
+
               <?php global $woocommerce; ?>
               <a class="header__cart" href="<?php echo $woocommerce->cart->get_cart_url(); ?>"
                 title="<?php _e('Cart View', 'woothemes'); ?>">
