@@ -1,20 +1,20 @@
 .modal {
+  /* structure */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  width: 800px;
-  max-width: calc(100% - 30px);
-  height: fit-content;
-  position: relative;
-  min-height: 400px;
-  background-color: var(--color-white);
-  border-radius: 5px;
-  margin: auto;
-  padding: 30px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  align-items: center;
   visibility: hidden;
   opacity: 0;
+  z-index: 99999;
+
+
+  /* design */
+  background-color: rgba(0, 0, 0, 0.5);
   transition-duration: 0.3s;
 
   &--active {
@@ -22,20 +22,27 @@
     opacity: 1;
   }
 
-  &__wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+  &__box {
+    /* structure */
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: fit-content;
+    position: relative;
+    margin: auto;
     visibility: hidden;
     opacity: 0;
+
+    /* design */
+    width: 800px;
+    max-width: calc(100% - 30px);
+    min-height: 400px;
+    padding: 30px;
+    border-radius: 5px;
+    background-color: var(--color-white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition-duration: 0.3s;
-    z-index: 99999;
 
     &--active {
       visibility: visible;
@@ -43,36 +50,67 @@
     }
   }
 
-  h2 {
+  &__heading {
+    /* design */
     margin-bottom: 30px;
     font-size: 24px;
     text-align: center;
   }
 
   &__content {
+    /* struncture */
     width: 100%;
     height: 100%;
     position: relative;
     text-align: center;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   &__close {
+    /* structure */
     position: absolute;
+    display: block;
     top: 20px;
     right: 20px;
     cursor: pointer;
-    font-size: 20px;
-    border: none;
-    display: block;
     background: none;
+    border: none;
+
+    /* design */
     width: 30px;
     height: 30px;
     color: var(--color-black);
-    transition-duration: 0.3s;
     font-size: 30px;
+    transition-duration: 0.3s;
 
     &:hover {
       color: var(--color-primary-blue);
+    }
+  }
+
+  &--side {
+    .modal {
+      &__box {
+        position: absolute;
+        right: -800px;
+        top: 80px;
+        border-radius: 0;
+        height: calc(100vh - 80px);
+        max-width: 100%;
+        justify-content: flex-start;
+
+        &--active {
+          right: 0;
+        }
+      }
+
+      &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 30px;
+      }
     }
   }
 }

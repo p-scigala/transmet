@@ -405,3 +405,8 @@ function change_pagination_arrows( $args ) {
     $args['next_text'] = '<button type="button" class="btn btn--arrow btn--arrow-right next" title="Następna strona"><span></span></button>';
     return $args;
 }
+
+/* add modules scripts to main.js */
+add_action('wp_enqueue_scripts', function() {
+    wp_enqueue_script('modal', get_template_directory_uri() . '/dev/src/js/modules/modal.js', array('jquery'), null, true);
+});

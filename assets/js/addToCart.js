@@ -26,8 +26,11 @@ jQuery(document).ready(function ($) {
         }
 
         if (response && !response.error) {
-          modal("Product added to cart successfully!", `<a href="http://localhost:8080/orto4you/koszyk/" style="margin: auto;" class="added_to_cart wc-forward btn" title="Zobacz koszyk"><span>Zobacz koszyk</a>`);
+          // modal("Product added to cart successfully!", modalContent, 'side');
 
+          modal('Product added to cart successfully!', createModalContent(response.fragments['div.widget_shopping_cart_content']), 'side');
+
+          // console.log(response.fragments['div.widget_shopping_cart_content'] || null);
           // modal(
           //   response.message || 'Product added to cart successfully!',
           //   response.fragments['div.widget_shopping_cart_content'] || null
@@ -63,60 +66,33 @@ jQuery(document).ready(function ($) {
     // console.log('Cart hash:', cart_hash);     // Unique cart hash
     // console.log('Button clicked:', $button);  // The button that triggered the event
 
-    modal("Product added to cart successfully!", `<a href="http://localhost:8080/orto4you/koszyk/" style="margin: auto;" class="added_to_cart wc-forward btn" title="Zobacz koszyk"><span>Zobacz koszyk</a>`);
+    modal("Product added to cart successfully!", `<a href="/orto4you/koszyk/" style="margin: auto;" class="added_to_cart wc-forward btn" title="Zobacz koszyk"><span>Zobacz koszyk</a>`);
 
     // modal("Product added to cart successfully!", fragments['div.widget_shopping_cart_content'] || null);
   });
 });
 
-function modal(message, content = null) {
+function createModalContent(content) {
   const wrapper = document.createElement('div');
-  wrapper.classList.add('modal__wrapper');
-  setTimeout(() => {
-    wrapper.classList.add('modal__wrapper--active');
-  }, 10);
-  wrapper.addEventListener('click', (e) => {
-    if (e.target === wrapper) {
-      removeModal();
-    }
-  });
+  wrapper.innerHTML = content;
 
-  const modal = document.createElement('div');
-  modal.classList.add('modal');
-  setTimeout(() => {
-    modal.classList.add('modal--active');
-  }, 10);
+  const items = wrapper.querySelectorAll('li.woocommerce-mini-cart-item.mini_cart_item');
+  const itemContents = Array.from(items).map(item => item.outerHTML).join('');
 
-  const modalHeading = document.createElement('h2');
-  modalHeading.textContent = message;
-  modal.append(modalHeading);
+  const buttons = `<div class="modal__custom-buttons">
+        <button class="btn modal__custom-btn" onclick="closeModal()">
+          <span>Kontynuuj zakupy</span>
+        </button>
+        <button href="koszyk/" class="added_to_cart wc-forward btn modal__custom-btn" title="Zobacz koszyk">
+          <span>Zobacz koszyk</span>
+        </button>
+        <button class="btn modal__custom-btn" onclick="window.location.href='zamowienie/'">
+          <span>Przejdź do zamówienia</span>
+        </button>
+      </div>`;
 
-  if (content) {
-    const contentDiv = document.createElement('div');
-    contentDiv.classList.add('modal__content');
-    contentDiv.innerHTML = content;
-    modal.append(contentDiv);
-  }
-
-  const modalClose = document.createElement('button');
-  modalClose.classList.add('modal__close');
-  modalClose.innerHTML = '&times;';
-  modalClose.addEventListener('click', () => {
-    removeModal();
-  });
-  modal.append(modalClose);
-
-  wrapper.appendChild(modal);
-
-  document.body.appendChild(wrapper);
-
-  const removeModal = () => {
-    wrapper.classList.remove('modal--active');
-    setTimeout(() => {
-      wrapper.classList.remove('modal__wrapper--active');
-    }, 300);
-    setTimeout(() => {
-      document.body.removeChild(wrapper);
-    }, 300);
-  };
+  const modalContent = document.createElement('div');
+  modalContent.innerHTML = '<div class="modal__custom-items">' + itemContents + '</div>' + buttons;
+  return modalContent.innerHTML;
+  // return 'test'
 }

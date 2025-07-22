@@ -8,7 +8,6 @@ import customSelect from './modules/customSelect';
 
 jQuery(document).ready(function ($) {
   cf7FloatingLabels($);
-
   scrollAnim($);
   slickCall($);
   customSelect(['.woof_acf_select']);
