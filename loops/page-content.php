@@ -7,7 +7,7 @@
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <article role="article" id="post_<?php the_ID() ?>" <?php post_class("wrapper") ?>>
 
-  <h1 class="mt-60"><?php the_title() ?></h1>
+  <!-- <h1 class="mt-60"><?php the_title() ?></h1> -->
 
   <section>
     <?php the_content() ?>

@@ -29,7 +29,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 
       <?php endif; ?>
 
-      <!-- <h2 class="my-account-title"><?php esc_html_e( 'Login', 'woocommerce' ); ?></h2> -->
+      <h2 class="my-account-title"><?php esc_html_e( 'Login', 'woocommerce' ); ?></h2>
 
       <form class="woocommerce-form woocommerce-form-login login" method="post">
 

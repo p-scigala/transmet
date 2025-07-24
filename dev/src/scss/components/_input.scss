@@ -1,5 +1,4 @@
 input {
-
   &[type='search'],
   &[type='text'],
   &[type='password'],
@@ -29,6 +28,11 @@ input {
   border: solid 1px var(--color-border);
 }
 
+.dgwt-wcas-search-input::placeholder {
+  color: #888888 !important;
+  opacity: 1 !important;
+}
+
 .input {
   &__number {
     display: flex;
@@ -36,8 +40,11 @@ input {
     width: 100%;
     max-width: 204px;
 
-    input[type='number'] {
+    @media (max-width: 500px) {
+      height: 33px;
+    }
 
+    input[type='number'] {
       &:active,
       &:focus,
       &:focus-visible {
@@ -76,15 +83,6 @@ input {
       display: block;
       transition-duration: 0.15s;
 
-      &:hover {
-        background-color: var(--color-primary-blue);
-        color: var(--color-white);
-
-        // span {
-        //   transform: scale(1.2);
-        // }
-      }
-
       span {
         font-size: 10px;
         line-height: 20px;
@@ -106,7 +104,6 @@ input {
 
 form {
   input {
-
     &[type='search'],
     &[type='text'],
     &[type='password'],
@@ -160,7 +157,7 @@ form {
       cursor: pointer;
     }
 
-    .form-check-input+span {
+    .form-check-input + span {
       font-size: 13px;
       line-height: 16px;
       margin: 0;

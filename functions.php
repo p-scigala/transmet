@@ -274,6 +274,22 @@ function display_product_additional_data() {
 
   echo '<table class="single-product__table">';
 
+ if ( ! $product->is_taxable() ) {
+        return; // Produkt nieopodatkowany
+    }
+
+    // Pobierz stawki podatku dla klasy podatkowej produktu
+    $tax_class = $product->get_tax_class();
+    $tax_rates = WC_Tax::get_rates( $tax_class );
+
+    // Wyciągnij pierwszą stawkę (zakładamy jedną stawkę VAT na produkt)
+    if ( ! empty( $tax_rates ) ) {
+        $rate = reset( $tax_rates );
+        $vat_percent = $rate['rate']; // Np. 23.0000
+
+        echo '<tr><th>Podatek VAT</th><td>' . number_format( $vat_percent, 2, '.', '' ) . '%</td></tr>';
+    }
+
   if($ean_code) echo '<tr><th>Kod EAN</th><td>' . $ean_code . '</td></tr>';
   if($quality) echo '<tr><th>Klasa wyrobu</th><td>' . $quality . '</td></tr>';
   if($nfz_code) echo '<tr><th>Kod NFZ</th><td>' . $nfz_code . '</td></tr>';

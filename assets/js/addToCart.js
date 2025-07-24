@@ -21,18 +21,18 @@ jQuery(document).ready(function ($) {
         button.removeClass('btn--loader');
 
         if (response && response.error) {
-          modal(response.message || 'Error adding to cart');
+          modal(response.message || 'Wystąpił błąd podczas dodawania do koszyka.');
           return;
         }
 
         if (response && !response.error) {
-          // modal("Product added to cart successfully!", modalContent, 'side');
+          // modal("Produkt został dodany do koszyka.", modalContent, 'side');
 
-          modal('Product added to cart successfully!', createModalContent(response.fragments['div.widget_shopping_cart_content']), 'side');
+          modal('Produkt został dodany do koszyka.', createModalContent(response.fragments['div.widget_shopping_cart_content']), 'side');
 
           // console.log(response.fragments['div.widget_shopping_cart_content'] || null);
           // modal(
-          //   response.message || 'Product added to cart successfully!',
+          //   response.message || 'Produkt został dodany do koszyka.',
           //   response.fragments['div.widget_shopping_cart_content'] || null
           // );
 
@@ -49,11 +49,11 @@ jQuery(document).ready(function ($) {
             },
           });
         } else {
-          console.log(response.message || 'Error adding to cart');
+          console.log(response.message || 'Wystąpił błąd podczas dodawania do koszyka.');
         }
       },
       error: function () {
-        modal('AJAX error. Please try again.');
+        modal('Błąd zapytania: Nie udało się dodać produktu do koszyka.');
         button.removeClass('btn--loader');
         console.log('AJAX error.');
       },
@@ -66,9 +66,9 @@ jQuery(document).ready(function ($) {
     // console.log('Cart hash:', cart_hash);     // Unique cart hash
     // console.log('Button clicked:', $button);  // The button that triggered the event
 
-    modal("Product added to cart successfully!", `<a href="/orto4you/koszyk/" style="margin: auto;" class="added_to_cart wc-forward btn" title="Zobacz koszyk"><span>Zobacz koszyk</a>`);
+    modal("Produkt został dodany do koszyka.", `<a href="/orto4you/koszyk/" style="margin: auto;" class="added_to_cart wc-forward btn" title="Zobacz koszyk"><span>Zobacz koszyk</a>`);
 
-    // modal("Product added to cart successfully!", fragments['div.widget_shopping_cart_content'] || null);
+    // modal("Produkt został dodany do koszyka.", fragments['div.widget_shopping_cart_content'] || null);
   });
 });
 

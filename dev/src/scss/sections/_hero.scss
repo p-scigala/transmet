@@ -10,6 +10,12 @@
     height: calc(100vh - 80px);
   }
 
+  .wrapper {
+    @media (max-width: 800px) {
+      gap: 15px;
+    }
+  }
+
   &__slider-wrapper {
     position: relative;
     width: 100%;
@@ -17,7 +23,7 @@
     @media (max-width: 800px) {
       height: calc(100vh - 80px - 60px);
 
-      &+.wrapper {
+      & + .wrapper {
         height: 60px;
       }
     }
@@ -26,6 +32,52 @@
   &__slick {
     @media (max-width: 800px) {
       height: 100%;
+
+      .slick__arrow {
+        top: 25%;
+        bottom: auto;
+      }
+    }
+  }
+
+  &__header {
+    font-size: 57px;
+    line-height: 71px;
+
+    @media (max-width: 1280px) {
+      font-size: 42px;
+      line-height: 50px;
+    }
+
+    @media (max-width: 800px) {
+      font-size: 32px;
+      line-height: 40px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__subheader {
+    font-size: 31px;
+    line-height: 39px;
+    font-weight: normal;
+
+    @media (max-width: 1280px) {
+      font-size: 24px;
+      line-height: 30px;
+    }
+
+    @media (max-width: 800px) {
+      font-size: 16px;
+      line-height: 20px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__text * {
+    @media (max-width: 800px) {
+      font-size: 13px;
+      line-height: 21px;
+      text-align: center;
     }
   }
 
@@ -45,7 +97,6 @@
 
     &--wide {
       .hero {
-
         &__content,
         &__img {
           padding: 0;
@@ -55,6 +106,102 @@
           @media (max-width: 800px) {
             z-index: 4;
             position: absolute;
+            height: 100%;
+            padding: 10px 40px;
+          }
+        }
+
+        &__header {
+          font-size: 83px;
+          line-height: 104px;
+          font-weight: bold;
+
+          @media (max-width: 1280px) {
+            font-size: 60px;
+            line-height: 68px;
+          }
+
+          @media (max-width: 800px) {
+            font-size: 40px;
+            line-height: 48px;
+            text-align: center;
+          }
+
+          b {
+            color: #02bf1b;
+            font-size: 57px;
+            line-height: 71px;
+            display: block;
+            padding: 28px 42px 28px 28px;
+            background-color: var(--color-white);
+            border-radius: 5px;
+            font-weight: bold;
+            width: fit-content;
+            text-transform: uppercase;
+            text-shadow: none;
+            margin: 33px 0 17px 0;
+            box-shadow: 0 0 20px var(--color-primary-blue);
+
+            @media (max-width: 1280px) {
+              font-size: 42px;
+              line-height: 50px;
+              padding: 15px 30px 15px 15px;
+              margin: 15px 0 8px 0;
+            }
+
+            @media (max-width: 800px) {
+              font-size: 32px;
+              line-height: 40px;
+              text-align: center;
+            }
+          }
+        }
+
+        &__subheader {
+          font-size: 57px;
+          line-height: 71px;
+          font-weight: bold;
+
+          @media (max-width: 1280px) {
+            font-size: 42px;
+            line-height: 50px;
+          }
+
+          @media (max-width: 800px) {
+            font-size: 32px;
+            line-height: 40px;
+            text-align: center;
+          }
+        }
+
+        &__text * {
+          font-size: 25px;
+          line-height: 31px;
+          font-weight: bold;
+
+          @media (max-width: 1280px) {
+            font-size: 20px;
+            line-height: 24px;
+          }
+
+          @media (max-width: 800px) {
+            font-size: 13px;
+            line-height: 21px;
+            text-align: center;
+          }
+        }
+
+        &__btn {
+          font-size: 23px;
+          line-height: 29px;
+          font-weight: bold;
+          height: 57px;
+          min-width: 235px;
+
+          @media (max-width: 800px) {
+            height: 40px;
+            font-size: 16px;
+            line-height: 20px;
           }
         }
 
@@ -166,6 +313,9 @@
 
   &__img {
     height: 100%;
+    opacity: 1;
+    visibility: visible;
+    transition-duration: 0.3s;
 
     @media (max-width: 800px) {
       height: 50%;
@@ -235,7 +385,7 @@
         }
 
         @media (max-width: 800px) {
-          left: 15px;
+          left: 5px;
         }
       }
 
@@ -245,7 +395,7 @@
         }
 
         @media (max-width: 800px) {
-          right: 15px;
+          right: 5px;
         }
       }
     }

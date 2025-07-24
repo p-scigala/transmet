@@ -9,6 +9,12 @@
   @media (max-width: 1280px) {
     min-width: 320px !important;
   }
+  @media (max-width: 500px) {
+    min-width: calc(100vw - 60px) !important;
+    max-width: calc(100vw - 60px) !important;
+    padding-top: 40px;
+    height: 420px;
+  }
 
   &__featured {
     display: block;
@@ -45,6 +51,16 @@
     display: none;
   }
 
+  &__nfz {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 87px;
+    height: auto;
+    z-index: 3;
+    object-fit: contain;
+  }
+
   .woocommerce-loop-product__link {
     text-align: center;
 
@@ -53,6 +69,11 @@
       height: 239px;
       margin: 0 auto 10px auto;
       display: block;
+
+      @media (max-width: 500px) {
+        height: 170px;
+        width: 100%;
+      }
     }
   }
 
@@ -61,6 +82,16 @@
     text-align: center;
     height: 41px;
     overflow: hidden;
+
+    @media (max-width: 500px) {
+      line-height: normal;
+    }
+  }
+
+  .input__number-text {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 28px;
   }
 
   .price {
@@ -144,7 +175,6 @@
     }
 
     .input__number {
-
       button,
       input {
         opacity: 0.5;

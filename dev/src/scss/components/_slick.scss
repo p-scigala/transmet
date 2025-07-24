@@ -8,13 +8,21 @@
     top: 0;
     bottom: 0;
     margin: auto;
-  
-   &.slick-prev {
-    left: 60px;
-   }
 
-   &.slick-next {
-    right: 60px;
-   }
+    &.slick-prev {
+      left: 60px;
+
+      @media (max-width: 1024px) {
+        left: 5px;
+      }
+    }
+
+    &.slick-next {
+      right: 60px;
+
+      @media (max-width: 1024px) {
+        right: 5px;
+      }
+    }
   }
 }

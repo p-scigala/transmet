@@ -27,7 +27,11 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 ?>
 <li <?php wc_product_class( '', $product ); ?>>
   <?php if ( has_term( 'featured', 'product_visibility', $product->get_id() ) ) : ?>
-    <span class="product__featured">Bestseller</span>
+  <span class="product__featured">Bestseller</span>
+  <?php endif; ?>
+
+  <?php if(get_field('product_nfz_code', $product->get_id())): ?>
+  <img class="product__nfz" src="./wp-content/themes/candyweb-new/assets/imgs/logo-nfz.png" alt="Dostępny na NFZ" />
   <?php endif; ?>
 
   <?php
@@ -87,27 +91,6 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
         aria-label="<?php esc_attr_e( 'Increase quantity', 'woocommerce' ); ?>">
         +
       </button>
-
-      <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const quantityInput = document.querySelector('#quantity-<?php echo esc_js($product->get_id()); ?>');
-        const minusButton = quantityInput.previousElementSibling;
-        const plusButton = quantityInput.nextElementSibling;
-
-        minusButton.addEventListener('click', function() {
-          let currentValue = parseInt(quantityInput.value, 10);
-          if (currentValue > 1) {
-            quantityInput.value = currentValue - 1;
-          }
-        });
-
-        plusButton.addEventListener('click', function() {
-          let currentValue = parseInt(quantityInput.value, 10);
-          quantityInput.value = currentValue + 1;
-        });
-      });
-      </script>
-
     </div>
   </div>
 

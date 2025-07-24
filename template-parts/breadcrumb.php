@@ -1,7 +1,7 @@
-<?php if (function_exists('bcn_display')) { ?>
+<?php if (function_exists('bcn_display')) : ?>
 <div class="breadcrumb">
   <div class="wrapper">
     <?php bcn_display(); ?>
   </div>
 </div>
-<?php } ?>
+<?php endif; ?>

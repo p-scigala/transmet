@@ -36,10 +36,10 @@ do_action( 'woocommerce_before_main_content' );
     <?php $shop_id = get_option('woocommerce_shop_page_id'); ?>
 
     <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-    <h2 class="products-desc__heading scroll-anim">
+    <!-- <h2 class="products-desc__heading scroll-anim">
       <?php woocommerce_page_title(); ?>
-    </h2>
-    <?php else : ?>
+    </h2> -->
+    <?php endif; ?>
 
     <?php if(get_field("shop_heading", $shop_id)) : ?>
     <h2 class="products-desc__heading scroll-anim">
@@ -60,9 +60,9 @@ do_action( 'woocommerce_before_main_content' );
     <?php endif; ?>
 
     <?php if(get_the_archive_description()) : ?>
-    <div class="styled-wysiwyg text-start  mt-15 mt-lg-30">
+    <!-- <div class="styled-wysiwyg text-start  mt-15 mt-lg-30">
       <?php echo strip_tags(get_the_archive_description());?>
-    </div>
+    </div> -->
     <?php endif; ?>
 
     <?php if(get_field("shop_description", $shop_id)) : ?>
@@ -70,8 +70,6 @@ do_action( 'woocommerce_before_main_content' );
       <?php echo get_field("shop_description", $shop_id); ?>
     </div>
     <?php endif; ?>
-
-    <?php endif;?>
 
   </div>
 </div>

@@ -46,7 +46,7 @@
             <?php } ?>
           </div>
 
-          <div class="hero__img col">
+          <div class="hero__img col hidden-before-load" style="opacity: 0; visibility: hidden;">
             <?php if(get_sub_field("hero_img")) { ?>
             <img src="<?php echo get_sub_field("hero_img"); ?>" alt="<?php echo get_sub_field("hero_title_01"); ?>" />
             <?php } ?>

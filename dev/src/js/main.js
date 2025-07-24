@@ -116,7 +116,9 @@ jQuery(document).ready(function ($) {
           toggle.classList.toggle('active');
         });
 
-        const closeFilterButton = document.querySelector('.close-filter-button');
+        const closeFilterButton = document.querySelector(
+          '.close-filter-button'
+        );
 
         if (closeFilterButton) {
           closeFilterButton.addEventListener('click', () => {
@@ -129,6 +131,36 @@ jQuery(document).ready(function ($) {
     });
   }
 
+  /* display items with class "hidden-before-load" */
+  const hiddenItems = document.querySelectorAll('.hidden-before-load');
+  if (hiddenItems.length > 0) {
+    console.log('Revealing hidden items...');
+    hiddenItems.forEach((item) => {
+      item.classList.remove('hidden-before-load');
+      item.style.opacity = '';
+      item.style.visibility = '';
+    });
+  }
+
+  /* quantity change */
+  const quantityInput = document.querySelectorAll("input[name='quantity']");
+
+  quantityInput.forEach((input) => {
+    const minusButton = input.previousElementSibling;
+    const plusButton = input.nextElementSibling;
+
+    minusButton.addEventListener('click', function () {
+      let currentValue = parseInt(input.value, 10);
+      if (currentValue > 1) {
+        input.value = currentValue - 1;
+      }
+    });
+
+    plusButton.addEventListener('click', function () {
+      let currentValue = parseInt(input.value, 10);
+      input.value = currentValue + 1;
+    });
+  });
 });
 
 function updateCheckoutButton() {
@@ -150,7 +182,9 @@ function updateCheckoutButton() {
 }
 
 function addClassToMiniCartButtons() {
-  const miniCartButtons = document.querySelectorAll('.woocommerce-mini-cart__buttons a, .woocommerce-mini-cart__buttons button');
+  const miniCartButtons = document.querySelectorAll(
+    '.woocommerce-mini-cart__buttons a, .woocommerce-mini-cart__buttons button'
+  );
   miniCartButtons.forEach((btn) => {
     btn.classList.add('btn');
     if (btn.textContent) {

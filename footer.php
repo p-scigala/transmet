@@ -3,22 +3,26 @@
     <div class="footer__top">
 
       <div class="footer__col footer__col--1">
+
         <div class="footer__logo">
           <a href="<?php echo home_url(); ?>" class="footer__logo-link">
             <?php echo get_custom_logo(); ?>
           </a>
         </div>
+
         <?php if(get_field("options_footer_desc", "option")): ?>
         <p class="footer__desc">
           <?php echo get_field("options_footer_desc", "option"); ?>
         </p>
         <?php endif; ?>
+
         <?php
-      get_template_part("template-parts/components/socials", null, array(
-        "class" => "footer__socials",
-        "hide_labels" => true
-      ));
-      ?>
+        get_template_part("template-parts/components/socials", null, array(
+          "class" => "footer__socials",
+          "hide_labels" => true
+        ));
+        ?>
+
       </div>
 
       <div class="footer__col footer__col--2">
@@ -50,28 +54,28 @@
 
           <?php if(get_field("options_address", "option")): ?>
           <li class="footer__menu-item">
-            <img src="<?php echo home_url(); ?>/wp-content/themes/candyweb-new/assets/imgs/icon-pin.svg" class="footer__menu-icon"
-              alt="Address:" />
+            <img src="<?php echo home_url(); ?>/wp-content/themes/candyweb-new/assets/imgs/icon-pin.svg"
+              class="footer__menu-icon" alt="Address:" />
             <span><?php echo get_field("options_address", "option"); ?></span>
-          </li>
-          <?php endif; ?>
-
-          <?php if(get_field("options_email", "option")): ?>
-          <li class="footer__menu-item">
-            <a href="mailto: <?php echo get_field("options_email", "option"); ?>">
-              <img src="<?php echo home_url(); ?>/wp-content/themes/candyweb-new/assets/imgs/icon-mail.svg" class="footer__menu-icon"
-                alt="E-mail:" />
-              <span><?php echo get_field("options_email", "option"); ?></span>
-            </a>
           </li>
           <?php endif; ?>
 
           <?php if(get_field("options_phone", "option")): ?>
           <li class="footer__menu-item">
             <a href="tel: <?php echo get_field("options_phone", "option"); ?>">
-              <img src="<?php echo home_url(); ?>/wp-content/themes/candyweb-new/assets/imgs/icon-phone.svg" class="footer__menu-icon"
-                alt="Phone:" />
+              <img src="<?php echo home_url(); ?>/wp-content/themes/candyweb-new/assets/imgs/icon-phone.svg"
+                class="footer__menu-icon" alt="Phone:" />
               <span><?php echo get_field("options_phone", "option"); ?></span>
+            </a>
+          </li>
+          <?php endif; ?>
+
+          <?php if(get_field("options_email", "option")): ?>
+          <li class="footer__menu-item">
+            <a href="mailto: <?php echo get_field("options_email", "option"); ?>">
+              <img src="<?php echo home_url(); ?>/wp-content/themes/candyweb-new/assets/imgs/icon-mail.svg"
+                class="footer__menu-icon" alt="E-mail:" />
+              <span><?php echo get_field("options_email", "option"); ?></span>
             </a>
           </li>
           <?php endif; ?>
