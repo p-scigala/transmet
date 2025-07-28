@@ -199,6 +199,8 @@ do_action( 'woocommerce_before_main_content' );
 				data-lazy-type="image" alt="">
 			<div class="slider-button__info">Filtruj</div>
 		</div> -->
+    </div>
+    <div class="products__list-wrapper">
       <?php
 		if ( woocommerce_product_loop() ) {
 
@@ -211,8 +213,7 @@ do_action( 'woocommerce_before_main_content' );
 			 */
 			do_action( 'woocommerce_before_shop_loop' );
 		?>
-    </div>
-    <div class="products__list-wrapper">
+
 
       <?php
 				woocommerce_product_loop_start();

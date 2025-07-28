@@ -1,44 +1,135 @@
-.woocommerce {
-  &-MyAccount {
-    &-navigation {
-      list-style: none;
-      margin: auto;
+.woocommerce-account {
+  .woocommerce {
+    display: flex;
 
-      ul {
-        padding: 0;
-        margin: 0 0 30px 0;
+    &-MyAccount {
+      &-navigation {
         list-style: none;
+        width: 300px;
 
-        @media (max-width: 800px) {
-          margin: auto;
-          text-align: center;
-        }
-      }
+        ul {
+          padding: 0;
+          margin: 0 0 30px 0;
+          list-style: none;
 
-      li {
-        margin: 0 0 10px 0;
-
-        a {
-          padding: 5px;
-          border: solid 1px var(--color-border);
-          width: 300px;
-          max-width: 100%;
-          display: block;
-          text-decoration: none;
-          font-weight: bold;
-          transition-duration: .3s;
-          transition-delay: 0s;
-
-          &:hover {
-            background-color: var(--color-primary-blue);
-            color: var(--color-white);
+          @media (max-width: 800px) {
+            margin: auto;
+            text-align: center;
           }
         }
 
-        @media (max-width: 800px) {
-          text-align: center;
+        li {
+          margin: 0 0 10px 0;
+
+          a {
+            padding: 5px;
+            color: var(--color-black);
+            border: solid 1px var(--color-border);
+            width: 300px;
+            max-width: 100%;
+            display: block;
+            text-decoration: none;
+            font-weight: bold;
+            transition-duration: 0s;
+            transition-delay: 0s;
+            background-color: var(--color-white);
+
+            &:hover {
+              background-color: var(--color-primary-blue);
+              color: var(--color-white);
+            }
+          }
+
+          @media (max-width: 800px) {
+            text-align: center;
+          }
+
+          &.is-active {
+            a {
+              background-color: var(--color-primary-blue);
+              color: var(--color-white);
+            }
+          }
         }
       }
+
+      &-content {
+        width: calc(100% - 300px);
+        padding-left: 60px;
+
+        @media (max-width: 1280px) {
+          padding-left: 30px;
+        }
+
+        .woocommerce-Button:not(button),
+        .woocommerce-info a {
+          text-decoration: underline;
+
+          &:hover {
+            color: var(--color-primary-blue);
+          }
+        }
+
+        .woocommerce-Address {
+          width: 100%;
+          padding: 15px;
+          border-radius: 5px;
+          border: solid 1px var(--color-border);
+          margin-bottom: 30px;
+        }
+
+        form {
+          max-width: 400px;
+        }
+
+        address {
+          margin-top: 30px;
+        }
+
+        #shipping_address_2_field,
+        #billing_address_2_field {
+          display: none !important;
+        }
+
+        .col-12,
+        .container {
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+
+        .btn {
+          margin-top: 30px;
+        }
+      }
+    }
+  }
+}
+
+.woocommerce-message {
+  background-color: var(--color-gray);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: solid 1px var(--color-border);
+  border-radius: 5px;
+
+  &::before {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    content: "i";
+    border-radius: 50%;
+    background-color: var(--color-primary-blue);
+    color: var(--color-white);
+    text-align: center;
+    line-height: 20px;
+    margin-right: 5px;
+  }
+
+  a {
+    text-decoration: underline;
+
+    &:hover {
+      color: var(--color-primary-blue);
     }
   }
 }

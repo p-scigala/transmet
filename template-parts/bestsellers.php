@@ -1,6 +1,6 @@
 <?php /* Template Name: Sekcja - Bestsellery */ ?>
 
-<section class="bestsellers">
+<section class="bestsellers" id="bestsellery">
 
   <div class="bestsellers__wrapper">
     <div class="wrapper">

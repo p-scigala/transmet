@@ -22,10 +22,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="checkout-button button alt <?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>">
-<div class="custom-button__first-wrapper">
-<div class="custom-button__second-wrapper">
-	<?php esc_html_e( 'Proceed to checkout', 'woocommerce' ); ?>
-	</div>
-	</div>
+<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>"
+  class="checkout-button btn button alt <?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>">
+  <span>
+    <?php esc_html_e( 'Proceed to checkout', 'woocommerce' ); ?>
+  </span>
 </a>

@@ -12,12 +12,12 @@ if ( apply_filters( 'woocommerce_checkout_show_terms', true ) && function_exists
 	do_action( 'woocommerce_checkout_before_terms_and_conditions' );
 
 	?>
-	<div class="d-flex flex-row align-items-center justify-content-start mb-25 gap-10">
-	<img src="<?php echo get_template_directory_uri()?>/assets/img/ssl.svg" class="" alt="<?php echo _e('Ikona SSL', 'candyweb');?>">
-		<span class="my-checkout__ssl">Bezpieczeństwo danych zapewnia certyfikat SSL.</span>
-	</div>
-	<div class="woocommerce-terms-and-conditions-wrapper">
-		<?php
+<div class="d-flex flex-row align-items-center justify-content-start mb-25 gap-10">
+  <!-- <img src="<?php echo get_template_directory_uri()?>/assets/img/ssl.svg" class="" alt="<?php echo _e('Ikona SSL', 'candyweb');?>"> -->
+  <span class="my-checkout__ssl">Bezpieczeństwo danych zapewnia certyfikat SSL.</span>
+</div>
+<div class="woocommerce-terms-and-conditions-wrapper">
+  <?php
 		/**
 		 * Terms and conditions hook used to inject content.
 		 *
@@ -28,17 +28,22 @@ if ( apply_filters( 'woocommerce_checkout_show_terms', true ) && function_exists
 		do_action( 'woocommerce_checkout_terms_and_conditions' );
 		?>
 
-		<?php if ( wc_terms_and_conditions_checkbox_enabled() ) : ?>
-			<p class="form-row validate-required">
-				<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
-				<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="terms" <?php checked( apply_filters( 'woocommerce_terms_is_checked_default', isset( $_POST['terms'] ) ), true ); // WPCS: input var ok, csrf ok. ?> id="terms" />
-					<span class="woocommerce-terms-and-conditions-checkbox-text"><?php wc_terms_and_conditions_checkbox_text(); ?></span>&nbsp;<abbr class="required" title="<?php esc_attr_e( 'required', 'woocommerce' ); ?>">*</abbr>
-				</label>
-				<input type="hidden" name="terms-field" value="1" />
-			</p>
-		<?php endif; ?>
-	</div>
-	<?php
+  <?php if ( wc_terms_and_conditions_checkbox_enabled() ) : ?>
+  <p class="form-row validate-required">
+    <label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
+      <input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox"
+        name="terms"
+        <?php checked( apply_filters( 'woocommerce_terms_is_checked_default', isset( $_POST['terms'] ) ), true ); // WPCS: input var ok, csrf ok. ?>
+        id="terms" />
+      <span
+        class="woocommerce-terms-and-conditions-checkbox-text"><?php wc_terms_and_conditions_checkbox_text(); ?></span>&nbsp;<abbr
+        class="required" title="<?php esc_attr_e( 'required', 'woocommerce' ); ?>">*</abbr>
+    </label>
+    <input type="hidden" name="terms-field" value="1" />
+  </p>
+  <?php endif; ?>
+</div>
+<?php
 
 	do_action( 'woocommerce_checkout_after_terms_and_conditions' );
 }

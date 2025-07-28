@@ -148,11 +148,11 @@ section {
   }
 }
 
-#site-main.container {
-  padding: 90px 0 0 0;
-  margin: 141px auto 0 auto;
-  max-width: 100%;
-}
+// #site-main.container {
+//   padding: 90px 0 0 0;
+//   margin: 141px auto 0 auto;
+//   max-width: 100%;
+// }
 
 .scroll-anim-delay,
 .scroll-anim {
@@ -169,6 +169,10 @@ section {
 .error-404 {
   &__link {
     margin: 30px auto 0 auto;
+
+    a {
+      margin: auto;
+    }
   }
 }
 
@@ -184,4 +188,53 @@ section {
 .hidden-before-load {
   opacity: 0;
   visibility: hidden;
+}
+
+.woocommerce-error {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  outline: none;
+
+  li {
+    background-color: var(--color-gray);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: solid 1px var(--color-border);
+    border-radius: 5px;
+    outline: none;
+  }
+}
+
+.woocommerce-remove-coupon {
+  color: var(--color-red);
+}
+
+#post_3 {
+  h1 {
+    font-size: 32px;
+    margin: 20px 0;
+  }
+
+  h2 {
+    font-size: 28px;
+    margin: 20px 0;
+  }
+
+  h3 {
+    font-size: 24px;
+    margin: 20px 0;
+  }
+
+  h4 {
+    font-size: 20px;
+    margin: 20px 0;
+  }
+
+  p {
+    font-size: 16px;
+    margin: 20px 0;
+  }
 }

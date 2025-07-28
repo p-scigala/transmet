@@ -422,7 +422,9 @@ function change_pagination_arrows( $args ) {
     return $args;
 }
 
-/* add modules scripts to main.js */
-add_action('wp_enqueue_scripts', function() {
-    wp_enqueue_script('modal', get_template_directory_uri() . '/dev/src/js/modules/modal.js', array('jquery'), null, true);
-});
+add_filter( 'gettext', function( $translated, $text, $domain ) {
+    if ( $text === 'Your cart is currently empty!' ) {
+        return 'Twój koszyk jest pusty!';
+    }
+    return $translated;
+}, 10, 3 );

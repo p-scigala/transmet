@@ -42,22 +42,102 @@ const slickCall = ($) => {
     arrows: false,
     dots: false,
     infinite: false,
-    speed: 300,
-    slidesToShow: 1,
     centerMode: false,
     variableWidth: true,
+    swipeToSlide: true,
+    slidesToShow: 6,
+    responsive: [
+      {
+        breakpoint: 1450,
+        settings: {
+          slidesToShow: 5,
+        },
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 960,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 710,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 540,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 360,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   });
+
+  // $('.categories__slick').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+  //   const maxSlide = slick.slideCount - slick.options.slidesToShow;
+
+  //   const lastSlide = slick.$slides.eq(maxSlide);
+  //   const lastSlideBox = lastSlide[0].getBoundingClientRect();
+  //   const lastSlideRight = lastSlideBox.x + lastSlideBox.width;
+
+  //   const sliderBox = $(this)[0].getBoundingClientRect();
+  //   const sliderRight = sliderBox.x + sliderBox.width;
+
+  //   console.log(lastSlideRight, sliderRight)
+
+  //   if (lastSlideRight <= sliderRight) {
+  //     event.preventDefault();
+  //     return true;
+  //   }
+  // });
 
   $('.newest-products__slick').slick({
     arrows: true,
     dots: false,
     infinite: false,
-    speed: 300,
-    slidesToShow: 1,
+    slidesToShow: 4,
+    slidesToScroll: 1,
     centerMode: false,
-    variableWidth: true,
     prevArrow: prevArrow,
     nextArrow: nextArrow,
+  });
+
+  $('.newest-products__slick').on('afterChange', function (event, slick, currentSlide) {
+    const total = slick.slideCount;
+    const slidesToShow = slick.options.slidesToShow;
+
+    // When the *last item* is fully visible at the end
+    if (currentSlide >= total - slidesToShow) {
+      $('.newest-products__slick .slick-next').addClass('disabled');
+    } else {
+      $('.newest-products__slick .slick-next').removeClass('disabled');
+    }
+
+    // Optional: disable "prev" when at beginning
+    if (currentSlide <= 0) {
+      $('.newest-products__slick .slick-prev').addClass('disabled');
+    } else {
+      $('.newest-products__slick .slick-prev').removeClass('disabled');
+    }
   });
 
   $('.bestsellers__slick').slick({
@@ -67,10 +147,89 @@ const slickCall = ($) => {
     slidesToShow: 4,
     slidesToScroll: 1,
     centerMode: false,
-    adaptiveHeight: true,
     prevArrow: prevArrow,
     nextArrow: nextArrow,
   });
+
+  $('.bestsellers__slick').on('afterChange', function (event, slick, currentSlide) {
+    const total = slick.slideCount;
+    const slidesToShow = slick.options.slidesToShow;
+
+    // When the *last item* is fully visible at the end
+    if (currentSlide >= total - slidesToShow) {
+      $('.bestsellers__slick .slick-next').addClass('disabled');
+    } else {
+      $('.bestsellers__slick .slick-next').removeClass('disabled');
+    }
+
+    // Optional: disable "prev" when at beginning
+    if (currentSlide <= 0) {
+      $('.bestsellers__slick .slick-prev').addClass('disabled');
+    } else {
+      $('.bestsellers__slick .slick-prev').removeClass('disabled');
+    }
+  });
+
+  $('.cross-sells .products__list').slick({
+    arrows: true,
+    dots: false,
+    infinite: false,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    centerMode: false,
+    prevArrow: prevArrow,
+    nextArrow: nextArrow,
+  });
+
+  $('.cross-sells .products__list').on('afterChange', function (event, slick, currentSlide) {
+    const total = slick.slideCount;
+    const slidesToShow = slick.options.slidesToShow;
+
+    // When the *last item* is fully visible at the end
+    if (currentSlide >= total - slidesToShow) {
+      $('.cross-sells .slick-next').addClass('disabled');
+    } else {
+      $('.cross-sells .slick-next').removeClass('disabled');
+    }
+
+    // Optional: disable "prev" when at beginning
+    if (currentSlide <= 0) {
+      $('.cross-sells .slick-prev').addClass('disabled');
+    } else {
+      $('.cross-sells .slick-prev').removeClass('disabled');
+    }
+  });
+
+  $('.wc-block-grid__products').slick({
+    arrows: true,
+    dots: false,
+    infinite: false,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    centerMode: false,
+    prevArrow: prevArrow,
+    nextArrow: nextArrow,
+  });
+
+  $('.wc-block-grid__products').on('afterChange', function (event, slick, currentSlide) {
+    const total = slick.slideCount;
+    const slidesToShow = slick.options.slidesToShow;
+
+    // When the *last item* is fully visible at the end
+    if (currentSlide >= total - slidesToShow) {
+      $('.wc-block-grid__products .slick-next').addClass('disabled');
+    } else {
+      $('.wc-block-grid__products .slick-next').removeClass('disabled');
+    }
+
+    // Optional: disable "prev" when at beginning
+    if (currentSlide <= 0) {
+      $('.wc-block-grid__products .slick-prev').addClass('disabled');
+    } else {
+      $('.wc-block-grid__products .slick-prev').removeClass('disabled');
+    }
+  });
+
 
   $('.steps__slick').slick({
     mobileFirst: true,
@@ -89,6 +248,7 @@ const slickCall = ($) => {
       },
     ],
   });
+
 
   $('.slick-carousel').on('setPosition', function (event, slick) {
     var maxHeight = 0;
@@ -147,8 +307,8 @@ const slickCall = ($) => {
         $currentSlide.find('.slick-carousel__img-01').addClass('animated');
         $currentSlide.find('.slick-carousel__product').addClass('animated');
       }, 900);
-      setTimeout(function () {}, 1500);
-      setTimeout(function () {}, 700);
+      setTimeout(function () { }, 1500);
+      setTimeout(function () { }, 700);
     }
   );
 

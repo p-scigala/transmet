@@ -1,6 +1,6 @@
 <?php /* Template Name: Sekcja - Ostatnio dodane produkty */ ?>
 
-<section class="newest-products">
+<section class="newest-products" id="ostatnio-dodane">
 
   <div class="newest-products__wrapper">
 

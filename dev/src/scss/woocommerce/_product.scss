@@ -1,19 +1,30 @@
-.product {
+.product,
+.cross-sells-product,
+.wc-block-grid__product,
+.wc-block-grid.has-4-columns:not(.alignwide):not(.alignfull) .wc-block-grid__product {
   border: solid 1px var(--color-border);
   max-width: 320px;
   height: 528px;
   list-style: none;
   padding: 60px 10px 10px 10px;
   position: relative;
+  background-color: var(--color-white);
+  transition-duration: .3s;
 
   @media (max-width: 1280px) {
     min-width: 320px !important;
   }
+
   @media (max-width: 500px) {
     min-width: calc(100vw - 60px) !important;
     max-width: calc(100vw - 60px) !important;
     padding-top: 40px;
     height: 420px;
+  }
+
+  &:hover {
+    border-color: var(--color-primary-blue);
+    box-shadow: 0 0 0 2px var(--color-primary-blue) inset;
   }
 
   &__featured {
@@ -61,7 +72,8 @@
     object-fit: contain;
   }
 
-  .woocommerce-loop-product__link {
+  .woocommerce-loop-product__link,
+  .wc-block-grid__product-link {
     text-align: center;
 
     img {
@@ -69,6 +81,8 @@
       height: 239px;
       margin: 0 auto 10px auto;
       display: block;
+      user-select: none;
+      ;
 
       @media (max-width: 500px) {
         height: 170px;
@@ -77,7 +91,8 @@
     }
   }
 
-  h2 {
+  h2,
+  .wc-block-grid__product-title {
     font-size: 17px;
     text-align: center;
     height: 41px;
@@ -175,6 +190,7 @@
     }
 
     .input__number {
+
       button,
       input {
         opacity: 0.5;
@@ -188,5 +204,53 @@
       opacity: 1;
       pointer-events: all;
     }
+  }
+}
+
+.wc-block-grid__products {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: nowrap !important;
+  margin: 40px auto 0 auto !important;
+  position: relative;
+  width: 100%;
+
+  .woocommerce-Price-amount {
+    display: block;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  .slick-track {
+    gap: 32px;
+
+    @media (max-width: 500px) {
+      gap: 10px;
+    }
+  }
+
+  .slick__arrow {
+    position: absolute;
+  }
+
+  .slick-list {
+    width: calc(320px * 4 + 32px * 3); // 4 panels & 3 gaps between them
+    padding: 0;
+
+    @media (max-width: 1450px) {
+      width: 100%;
+      padding: 0 15px;
+    }
+
+    @media (max-width: 500px) {
+      width: 100%;
+      padding: 0 30px;
+    }
+  }
+
+  .wc-block-grid__product-onsale {
+    display: none !important;
   }
 }

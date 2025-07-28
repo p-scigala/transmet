@@ -31,7 +31,7 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
   <?php endif; ?>
 
   <?php if(get_field('product_nfz_code', $product->get_id())): ?>
-  <img class="product__nfz" src="./wp-content/themes/candyweb-new/assets/imgs/logo-nfz.png" alt="Dostępny na NFZ" />
+  <img class="product__nfz" src="../wp-content/themes/candyweb-new/assets/imgs/logo-nfz.png" alt="Dostępny na NFZ" />
   <?php endif; ?>
 
   <?php

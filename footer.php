@@ -40,10 +40,10 @@
         <h4 class="footer__menu-label">Produkty</h4>
         <ul class="footer__menu">
           <li>
-            <a href="">Bestsellery</a>
+            <a href="<?php echo get_home_url(); ?>/#bestsellery">Bestsellery</a>
           </li>
           <li>
-            <a href="">Ostatnio dodane</a>
+            <a href="<?php echo get_home_url(); ?>/#ostatnio-dodane">Ostatnio dodane</a>
           </li>
         </ul>
       </div>

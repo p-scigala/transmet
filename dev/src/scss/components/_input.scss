@@ -1,23 +1,32 @@
-input {
-  &[type='search'],
-  &[type='text'],
-  &[type='password'],
-  &[type='email'] {
-    width: 350px;
-    max-width: 100%;
-    height: 33px;
-    border-radius: 5px;
-    background-color: transparent;
-    border: solid 1px var(--color-border);
-  }
+input[type='search'],
+input[type='text'],
+input[type='tel'],
+input[type='password'],
+input[type='email'],
+textarea {
+  width: 350px;
+  max-width: 100% !important;
+  border-radius: 5px !important;
+  background-color: var(--color-white) !important;
+  border: solid 1px var(--color-border) !important;
+  padding: 0 10px !important;
+  font-size: 13px !important;
 
   &:focus &:focus-visible,
   &:focus-within {
-    box-shadow: none;
-    outline-width: 2px;
-    border-color: var(--color-primary-blue);
-    outline-color: var(--color-primary-blue);
+    box-shadow: none !important;
+    outline-width: 2px !important;
+    border-color: var(--color-primary-blue) !important;
+    outline-color: var(--color-primary-blue) !important;
   }
+}
+
+input[type='search'],
+input[type='text'],
+input[type='tel'],
+input[type='password'],
+input[type='email'] {
+  height: 33px !important;
 }
 
 .dgwt-wcas-no-submit .dgwt-wcas-sf-wrapp input[type='search'] {
@@ -40,11 +49,18 @@ input {
     width: 100%;
     max-width: 204px;
 
+    &-text {
+      font-weight: bold;
+      font-size: 22px;
+      line-height: 28px;
+    }
+
     @media (max-width: 500px) {
       height: 33px;
     }
 
     input[type='number'] {
+
       &:active,
       &:focus,
       &:focus-visible {
@@ -102,10 +118,12 @@ input {
   }
 }
 
-form {
+#page-contact form {
   input {
+
     &[type='search'],
     &[type='text'],
+    &[type='tel'],
     &[type='password'],
     &[type='email'] {
       height: 43px;
@@ -157,7 +175,7 @@ form {
       cursor: pointer;
     }
 
-    .form-check-input + span {
+    .form-check-input+span {
       font-size: 13px;
       line-height: 16px;
       margin: 0;
@@ -171,6 +189,11 @@ form {
 
     a {
       text-decoration: underline;
+      margin-left: 4px;
+
+      &:hover {
+        color: var(--color-primary-blue);
+      }
     }
   }
 }
@@ -209,5 +232,145 @@ form {
 
   .btn {
     margin-top: 20px;
+  }
+}
+
+input+label {
+  outline: none !important;
+}
+
+.wc-block-components-text-input.is-active label {
+  transform: translateY(3px) scale(.6) !important;
+}
+
+#wc-block-components-totals-coupon__input-coupon,
+.wc-block-components-textarea {
+  border-color: var(--color-border) !important;
+  outline-color: var(--color-primary-blue) !important;
+  border-radius: 5px !important;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+
+  a {
+    text-decoration: underline;
+    margin-left: 4px;
+
+    &:hover {
+      color: var(--color-primary-blue);
+    }
+  }
+}
+
+.woocommerce-form__label-for-checkbox,
+.wpcf7-acceptance .wpcf7-list-item-label,
+.form-row-checkbox label {
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--color-black);
+  display: flex;
+  align-items: flex-start;
+
+  &::before {
+    content: '';
+    display: block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: solid 1px var(--color-border);
+    border-radius: 2px;
+    background-color: var(--color-white);
+    border-radius: 2px;
+    margin-right: 10px;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    background-image: url(../../assets/imgs/icon-check.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px;
+    background-color: var(--color-primary-blue);
+    border: solid 1px var(--color-primary-blue);
+    border-radius: 2px;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    transition-duration: .3s;
+    opacity: 0;
+  }
+}
+
+.woocommerce-form__label-for-checkbox,
+.wpcf7-acceptance,
+.form-row-checkbox {
+  input[type="checkbox"] {
+    display: none;
+  }
+}
+
+.woocommerce-form__label-for-checkbox,
+.wpcf7-acceptance {
+  span {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  input[type="checkbox"]:checked+span {
+    border-color: var(--color-primary-blue);
+
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+.woocommerce-shipping-fields,
+.form-row-checkbox {
+  position: relative;
+
+  label.checked {
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+#billing_address_2_field {
+  display: none !important;
+}
+
+#place_order {
+
+  &::before,
+  &::after {
+    content: "Kupuję i płacę";
+    color: var(--color-white);
+  }
+}
+
+.checkout-inline-error-message {
+  color: var(--color-red);
+  font-size: 13px;
+  line-height: 16px;
+  margin: 3px 0;
+  position: relative;
+  left: 160px;
+  top: -15px;
+  margin-bottom: -20px;
+}
+
+.form-row-checkbox {
+  .checkout-inline-error-message {
+    position: static;
+    margin: 5px 0 0 30px;
   }
 }

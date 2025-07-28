@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-  $('body').on('click', '.product__add-to-cart a:not(.has-variants)', function (e) {
+  $('body').on('click', '.product__add-to-cart a:not(.has-variants), .single_add_to_cart_button', function (e) {
     e.preventDefault();
 
     let button = $(this);
@@ -26,15 +26,13 @@ jQuery(document).ready(function ($) {
         }
 
         if (response && !response.error) {
-          // modal("Produkt został dodany do koszyka.", modalContent, 'side');
-
           modal('Produkt został dodany do koszyka.', createModalContent(response.fragments['div.widget_shopping_cart_content']), 'side');
 
-          // console.log(response.fragments['div.widget_shopping_cart_content'] || null);
-          // modal(
-          //   response.message || 'Produkt został dodany do koszyka.',
-          //   response.fragments['div.widget_shopping_cart_content'] || null
-          // );
+          const cartCount = document.querySelector('.header__cart-count-number');
+          if (cartCount) {
+            let cartQuantity = parseInt(cartCount.textContent) || 0;
+            cartCount.textContent = cartQuantity + quantity;
+          }
 
           $.ajax({
             url: AjaxCart.ajax_url,
@@ -44,7 +42,8 @@ jQuery(document).ready(function ($) {
             },
             success: function (response) {
               if (response.success && response.data) {
-                $('.header__cart-count-number').text(response.data.count);
+                // check cart count from response
+                cartCount.textContent = response.data.count;
               }
             },
           });
@@ -55,7 +54,7 @@ jQuery(document).ready(function ($) {
       error: function () {
         modal('Błąd zapytania: Nie udało się dodać produktu do koszyka.');
         button.removeClass('btn--loader');
-        console.log('AJAX error.');
+        // console.log('AJAX error.');
       },
     });
   });
@@ -65,8 +64,10 @@ jQuery(document).ready(function ($) {
     // console.log('Cart fragments:', fragments); // DOM fragments to update cart contents
     // console.log('Cart hash:', cart_hash);     // Unique cart hash
     // console.log('Button clicked:', $button);  // The button that triggered the event
+    console.log(fragments)
+    // modal('Produkt został dodany do koszyka.', createModalContent(fragments['div.widget_shopping_cart_content']), 'side');
 
-    modal("Produkt został dodany do koszyka.", `<a href="/orto4you/koszyk/" style="margin: auto;" class="added_to_cart wc-forward btn" title="Zobacz koszyk"><span>Zobacz koszyk</a>`);
+    // modal("Produkt został dodany do koszyka.", `<a href="/orto4you/koszyk/" style="margin: auto;" class="added_to_cart wc-forward btn" title="Zobacz koszyk"><span>Zobacz koszyk</a>`);
 
     // modal("Produkt został dodany do koszyka.", fragments['div.widget_shopping_cart_content'] || null);
   });
@@ -92,7 +93,61 @@ function createModalContent(content) {
       </div>`;
 
   const modalContent = document.createElement('div');
-  modalContent.innerHTML = '<div class="modal__custom-items">' + itemContents + '</div>' + buttons;
+  modalContent.innerHTML = '<div class="modal__custom-items widget_shopping_cart_content">' + itemContents + '</div>' + buttons;
   return modalContent.innerHTML;
-  // return 'test'
 }
+
+function modal(message, content = null, type = "standard") {
+  const wrapper = document.createElement('div');
+  wrapper.classList.add('modal');
+  wrapper.classList.add('modal--' + type);
+  setTimeout(() => {
+    wrapper.classList.add('modal--active');
+  }, 10);
+  wrapper.addEventListener('click', (e) => {
+    if (e.target === wrapper) {
+      closeModal();
+    }
+  });
+
+  const modal = document.createElement('div');
+  modal.classList.add('modal__box');
+  setTimeout(() => {
+    modal.classList.add('modal__box--active');
+  }, 10);
+
+  const modalHeading = document.createElement('h2');
+  modalHeading.classList.add('modal__heading');
+  modalHeading.textContent = message;
+  modal.append(modalHeading);
+
+  if (content) {
+    const contentDiv = document.createElement('div');
+    contentDiv.classList.add('modal__content');
+    contentDiv.innerHTML = content;
+    modal.append(contentDiv);
+  }
+
+  const modalClose = document.createElement('button');
+  modalClose.classList.add('modal__close');
+  modalClose.innerHTML = '&times;';
+  modalClose.addEventListener('click', () => {
+    closeModal();
+  });
+  modal.append(modalClose);
+
+  wrapper.appendChild(modal);
+
+  document.body.appendChild(wrapper);
+};
+
+function closeModal() {
+  const wrapper = document.querySelector('.modal');
+  wrapper.classList.remove('modal--active');
+  setTimeout(() => {
+    wrapper.classList.remove('modal__wrapper--active');
+  }, 300);
+  setTimeout(() => {
+    document.body.removeChild(wrapper);
+  }, 300);
+};

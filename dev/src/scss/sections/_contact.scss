@@ -97,6 +97,19 @@
 
   &__item {
     display: flex;
+    margin-bottom: 12px;
+
+    a {
+      display: flex;
+
+      &:hover {
+        color: var(--color-primary-blue);
+      }
+    }
+
+    img {
+      margin-bottom: 0;
+    }
 
     @media (max-width: 800px) {
       display: flex;
@@ -106,4 +119,8 @@
       }
     }
   }
+}
+
+.wpcf7-not-valid-tip + .wpcf7-not-valid-tip {
+  display: none;
 }

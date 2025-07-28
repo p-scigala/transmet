@@ -42,32 +42,32 @@
               <?php if (is_user_logged_in()) : ?>
               <a class="header__account"
                 href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>"
-                title="<?php _e('My Account', 'woothemes'); ?>">
+                title="<?php _e('Moje konto', 'woothemes'); ?>">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/icon-avatar.svg"
-                  alt="<?php _e('My Account', 'woothemes'); ?>" class="header__account-icon" />
+                  alt="<?php _e('Moje konto', 'woothemes'); ?>" class="header__account-icon" />
                 <span class="screen-reader-text">
-                  <?php _e('My Account', 'woothemes'); ?>
+                  <?php _e('Moje konto', 'woothemes'); ?>
                 </span>
               </a>
               <?php else : ?>
               <a class="header__account"
                 href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>"
-                title="<?php _e('Login', 'woothemes'); ?>">
+                title="<?php _e('Logowanie', 'woothemes'); ?>">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/icon-avatar.svg"
-                  alt="<?php _e('Login', 'woothemes'); ?>" class="header__account-icon" />
+                  alt="<?php _e('Logowanie', 'woothemes'); ?>" class="header__account-icon" />
                 <span class="screen-reader-text">
-                  <?php _e('Login', 'woothemes'); ?>
+                  <?php _e('Logowanie', 'woothemes'); ?>
                 </span>
               </a>
               <?php endif; ?>
 
               <?php global $woocommerce; ?>
               <a class="header__cart" href="<?php echo $woocommerce->cart->get_cart_url(); ?>"
-                title="<?php _e('Cart View', 'woothemes'); ?>">
+                title="<?php _e('Koszyk', 'woothemes'); ?>">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/icon-cart.svg"
-                  alt="<?php _e('Cart', 'woothemes'); ?>" class="header__cart-icon" />
+                  alt="<?php _e('Koszyk', 'woothemes'); ?>" class="header__cart-icon" />
                 <span class="header__cart-count screen-reader-text">
-                  <?php _e('Items in your cart', 'woothemes'); ?>
+                  <?php _e('Liczba produktów w koszyku', 'woothemes'); ?>
                 </span>
                 <span class="header__cart-count-number">
                   <?php echo $woocommerce->cart->cart_contents_count; ?>
@@ -78,6 +78,8 @@
         </div>
 
         <button class="header__menu-toggle"></button>
+
+        <a href="/koszyk" class="back-to-cart">Powrót</a>
 
       </div>
     </div>

@@ -46,60 +46,24 @@ $label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 
           -
         </button>
 
-        <input type="number" id="quantity-<?php echo esc_attr($product->get_id()); ?>" class="input__number-text"
-          name="quantity" value="1" min="1" step="1"
-          aria-labelledby="quantity-<?php echo esc_attr($product->get_id()); ?>-label" />
+        <input type="<?php echo esc_attr( $type ); ?>" <?php echo $readonly ? 'readonly="readonly"' : ''; ?>
+          id="<?php echo esc_attr( $input_id ); ?>" class="<?php echo esc_attr( join( ' ', (array) $classes ) ); ?> input__number-text input--quantity"
+          name="<?php echo esc_attr( $input_name ); ?>" value="<?php echo esc_attr( $input_value ); ?>"
+          aria-label="<?php esc_attr_e( 'Product quantity', 'woocommerce' ); ?>"
+          <?php if ( in_array( $type, array( 'text', 'search', 'tel', 'url', 'email', 'password' ), true ) ) : ?>
+          size="4" <?php endif; ?> min="<?php echo esc_attr( $min_value ); ?>"
+          max="<?php echo esc_attr( 0 < $max_value ? $max_value : '' ); ?>" <?php if ( ! $readonly ) : ?>
+          step="<?php echo esc_attr( $step ); ?>" placeholder="<?php echo esc_attr( $placeholder ); ?>"
+          inputmode="<?php echo esc_attr( $inputmode ); ?>"
+          autocomplete="<?php echo esc_attr( isset( $autocomplete ) ? $autocomplete : 'on' ); ?>" <?php endif; ?> />
 
         <button type="button" class="input__number-plus"
           aria-label="<?php esc_attr_e( 'Increase quantity', 'woocommerce' ); ?>">
           +
         </button>
 
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          const quantityInput = document.querySelector('#quantity-<?php echo esc_js($product->get_id()); ?>');
-          const minusButton = quantityInput.previousElementSibling;
-          const plusButton = quantityInput.nextElementSibling;
-
-          minusButton.addEventListener('click', function() {
-            let currentValue = parseInt(quantityInput.value, 10);
-            if (currentValue > 1) {
-              quantityInput.value = currentValue - 1;
-            }
-          });
-
-          plusButton.addEventListener('click', function() {
-            let currentValue = parseInt(quantityInput.value, 10);
-            quantityInput.value = currentValue + 1;
-          });
-        });
-        </script>
-
       </div>
     </div>
-
-    <!-- <button type="button" class="qty-btn qty-minus">-</button>
-    <input
-        type="<?php echo esc_attr( $type ); ?>"
-        <?php echo $readonly ? 'readonly="readonly"' : ''; ?>
-        id="<?php echo esc_attr( $input_id ); ?>"
-        class="<?php echo esc_attr( join( ' ', (array) $classes ) ); ?>"
-        name="<?php echo esc_attr( $input_name ); ?>"
-        value="<?php echo esc_attr( $input_value ); ?>"
-        aria-label="<?php esc_attr_e( 'Product quantity', 'woocommerce' ); ?>"
-        <?php if ( in_array( $type, array( 'text', 'search', 'tel', 'url', 'email', 'password' ), true ) ) : ?>
-            size="4"
-        <?php endif; ?>
-        min="<?php echo esc_attr( $min_value ); ?>"
-        max="<?php echo esc_attr( 0 < $max_value ? $max_value : '' ); ?>"
-        <?php if ( ! $readonly ) : ?>
-            step="<?php echo esc_attr( $step ); ?>"
-            placeholder="<?php echo esc_attr( $placeholder ); ?>"
-            inputmode="<?php echo esc_attr( $inputmode ); ?>"
-            autocomplete="<?php echo esc_attr( isset( $autocomplete ) ? $autocomplete : 'on' ); ?>"
-        <?php endif; ?>
-    />
-    <button type="button" class="qty-btn qty-plus">+</button> -->
 
   </div>
 

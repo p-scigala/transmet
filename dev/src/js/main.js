@@ -143,25 +143,72 @@ jQuery(document).ready(function ($) {
   }
 
   /* quantity change */
-  const quantityInput = document.querySelectorAll("input[name='quantity']");
+  const quantityInput = document.querySelectorAll(".input--quantity");
 
   quantityInput.forEach((input) => {
     const minusButton = input.previousElementSibling;
     const plusButton = input.nextElementSibling;
 
-    minusButton.addEventListener('click', function () {
+    minusButton.addEventListener('click', () => {
       let currentValue = parseInt(input.value, 10);
       if (currentValue > 1) {
         input.value = currentValue - 1;
+        if (input.closest(".product")) {
+          input.closest(".product").querySelector(".btn").setAttribute("data-quantity", currentValue - 1);
+        }
+        checkUpdateCartButton();
       }
     });
 
-    plusButton.addEventListener('click', function () {
+    plusButton.addEventListener('click', () => {
       let currentValue = parseInt(input.value, 10);
       input.value = currentValue + 1;
+      if (input.closest(".product")) {
+        input.closest(".product").querySelector(".btn").setAttribute("data-quantity", currentValue + 1);
+      }
+      checkUpdateCartButton();
     });
+
+    input.addEventListener('change', () => checkUpdateCartButton());
   });
+
+  const checkboxes = document.querySelectorAll('.form-row-checkbox, .woocommerce-shipping-fields');
+  checkboxes.forEach((checkbox) => {
+    const input = checkbox.querySelector('input[type="checkbox"]');
+    const label = checkbox.querySelector('label');
+
+    if (input) {
+      if (input.checked) {
+        label.classList.add('checked');
+      } else {
+        label.classList.remove('checked');
+      }
+      input.addEventListener('change', () => {
+        if (input.checked) {
+          label.classList.add('checked');
+        } else {
+          label.classList.remove('checked');
+        }
+      });
+    }
+  });
+
+  /* anchor helper */
+  const url = document.URL.split('#')[1];
+  if (url) {
+    const targetElement = document.getElementById(url);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  /* end */
 });
+
+function checkUpdateCartButton() {
+  const updateCart = document.querySelector('button[name="update_cart"]');
+  if (updateCart) updateCart.disabled = false;
+}
 
 function updateCheckoutButton() {
   const checkoutButtons = document.querySelectorAll(
@@ -193,6 +240,19 @@ function addClassToMiniCartButtons() {
   });
 }
 
+function updateTranslations() {
+  const items = document.querySelectorAll('.wc-block-cart__empty-cart__title, .wp-block-heading');
+
+  items.forEach((item) => {
+    if (item.innerText === 'Your cart is currently empty!') {
+      item.innerText = 'Twój koszyk jest pusty.';
+    }
+    if (item.innerText === 'New in store') {
+      item.innerText = 'Nowości w sklepie';
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   updateCheckoutButton();
   addClassToMiniCartButtons();
@@ -201,6 +261,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const observer = new MutationObserver(() => {
     updateCheckoutButton();
     addClassToMiniCartButtons();
+    updateTranslations();
     // observer.disconnect();
   });
 

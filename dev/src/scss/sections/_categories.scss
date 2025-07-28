@@ -6,6 +6,8 @@
   }
 
   &__item {
+    user-select: none;
+
     &-img {
       height: 76px;
 
