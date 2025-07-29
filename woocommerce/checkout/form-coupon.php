@@ -38,7 +38,7 @@ if ( ! wc_coupons_enabled() ) { // @codingStandardsIgnoreLine.
 
   <p class="form-row form-row-last">
     <button type="submit"
-      class="btn button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>"
+      class="btn--link button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>"
       name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>">
       <span>
         <?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?>

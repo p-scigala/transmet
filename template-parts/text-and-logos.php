@@ -8,13 +8,13 @@
 
         <div class="text-and-logos__content">
           <?php if(get_field("text_and_logos_title_01")) { ?>
-          <h2 class="text-and-logos__header">
+          <h2 class="text-and-logos__header scroll-anim">
             <?php echo get_field("text_and_logos_title_01"); ?>
           </h2>
           <?php } ?>
 
           <?php if(get_field("text_and_logos_title_02")) { ?>
-          <h3 class="text-and-logos__subheader">
+          <h3 class="text-and-logos__subheader scroll-anim">
             <?php echo get_field("text_and_logos_title_02"); ?>
           </h3>
           <?php } ?>

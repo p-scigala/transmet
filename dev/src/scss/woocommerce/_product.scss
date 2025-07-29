@@ -4,16 +4,13 @@
 .wc-block-grid.has-4-columns:not(.alignwide):not(.alignfull) .wc-block-grid__product {
   border: solid 1px var(--color-border);
   max-width: 320px;
+  min-width: 320px;
   height: 528px;
   list-style: none;
   padding: 60px 10px 10px 10px;
   position: relative;
   background-color: var(--color-white);
   transition-duration: .3s;
-
-  @media (max-width: 1280px) {
-    min-width: 320px !important;
-  }
 
   @media (max-width: 500px) {
     min-width: calc(100vw - 60px) !important;
@@ -38,7 +35,7 @@
     text-transform: uppercase;
     font-size: 12px;
     text-align: center;
-    z-index: 3;
+    z-index: 1;
   }
 
   &__variant-form {
@@ -70,6 +67,12 @@
     height: auto;
     z-index: 3;
     object-fit: contain;
+  }
+
+  .btn {
+    @media (max-width: 500px) {
+      height: 40px;
+    }
   }
 
   .woocommerce-loop-product__link,
@@ -107,6 +110,10 @@
     font-weight: bold;
     font-size: 22px;
     line-height: 28px;
+
+    @media (max-width: 500px) {
+      width: 100%;
+    }
   }
 
   .price {

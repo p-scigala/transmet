@@ -26,7 +26,7 @@ input[type='text'],
 input[type='tel'],
 input[type='password'],
 input[type='email'] {
-  height: 33px !important;
+  height: 43px !important;
 }
 
 .dgwt-wcas-no-submit .dgwt-wcas-sf-wrapp input[type='search'] {
@@ -45,6 +45,8 @@ input[type='email'] {
 .input {
   &__number {
     display: flex;
+    align-items: center;
+    justify-content: center;
     height: 46px;
     width: 100%;
     max-width: 204px;
@@ -53,6 +55,8 @@ input[type='email'] {
       font-weight: bold;
       font-size: 22px;
       line-height: 28px;
+      margin: 0 -3px;
+      z-index: 1;
     }
 
     @media (max-width: 500px) {
@@ -98,6 +102,12 @@ input[type='email'] {
       padding: 0;
       display: block;
       transition-duration: 0.15s;
+      z-index: 2;
+
+      @media (max-width: 500px) {
+        min-width: 33px;
+        width: 33px;
+      }
 
       span {
         font-size: 10px;
@@ -119,42 +129,29 @@ input[type='email'] {
 }
 
 #page-contact form {
-  input {
-
-    &[type='search'],
-    &[type='text'],
-    &[type='tel'],
-    &[type='password'],
-    &[type='email'] {
-      height: 43px;
-      padding: 0 10px;
+  .input-custom-wrapper {
+    input {
       width: 100%;
-      font-size: 13px;
     }
   }
 
-  span:nth-of-type(1) {
+  .input-custom-wrapper:nth-of-type(1) {
     width: 100%;
   }
 
-  span:nth-of-type(2),
-  span:nth-of-type(3) {
+  .input-custom-wrapper:nth-of-type(2),
+  .input-custom-wrapper:nth-of-type(3) {
     width: calc(50% - 15px);
   }
 
-  span:nth-of-type(4) {
+  .input-custom-wrapper:nth-of-type(4) {
     width: 100%;
-  }
-
-  textarea.form-control {
-    height: 130px;
-    font-size: 13px;
   }
 
   .wpcf7-not-valid-tip {
     margin-top: 5px;
     margin-bottom: -19.5px;
-    font-size: 13px;
+    font-size: 10px;
     color: var(--color-red);
   }
 
@@ -180,6 +177,8 @@ input[type='email'] {
       line-height: 16px;
       margin: 0;
       padding: 0;
+
+      padding-left: 30px;
     }
 
     .wpcf7-list-item-label {
@@ -201,6 +200,7 @@ input[type='email'] {
 .password-input {
   position: relative;
   height: fit-content;
+  width: 100%;
   display: block;
 }
 
@@ -228,7 +228,14 @@ input[type='email'] {
   max-width: 400px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+
+  @media (max-width: 500px) {
+    max-width: unset;
+
+    .clear {
+      display: none;
+    }
+  }
 
   .btn {
     margin-top: 20px;
@@ -253,6 +260,11 @@ input+label {
 .form-row {
   display: flex;
   flex-direction: column;
+  margin-bottom: 10px;
+
+  @media (max-width: 500px) {
+    margin-bottom: 5px;
+  }
 
   a {
     text-decoration: underline;
@@ -264,6 +276,10 @@ input+label {
   }
 }
 
+.form-row-checkbox {
+  margin: 10px 0 15px 0 !important;
+}
+
 .woocommerce-form__label-for-checkbox,
 .wpcf7-acceptance .wpcf7-list-item-label,
 .form-row-checkbox label {
@@ -273,20 +289,22 @@ input+label {
   font-size: 13px;
   line-height: 16px;
   color: var(--color-black);
-  display: flex;
-  align-items: flex-start;
+  display: block;
+  padding-left: 30px;
 
   &::before {
     content: '';
-    display: block;
-    position: relative;
+    display: inline-block;
+    position: absolute;
     width: 20px;
     height: 20px;
     border: solid 1px var(--color-border);
     border-radius: 2px;
     background-color: var(--color-white);
     border-radius: 2px;
+    vertical-align: middle;
     margin-right: 10px;
+    left: 0;
   }
 
   &::after {
@@ -320,8 +338,7 @@ input+label {
 .woocommerce-form__label-for-checkbox,
 .wpcf7-acceptance {
   span {
-    display: flex;
-    align-items: flex-start;
+    display: inline-block;
   }
 
   input[type="checkbox"]:checked+span {
@@ -333,11 +350,20 @@ input+label {
   }
 }
 
+.create-account,
 .woocommerce-shipping-fields,
 .form-row-checkbox {
   position: relative;
 
   label.checked {
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+.order-agreements .woocommerce-validated {
+  label {
     &::after {
       opacity: 1;
     }
@@ -359,18 +385,98 @@ input+label {
 
 .checkout-inline-error-message {
   color: var(--color-red);
-  font-size: 13px;
+  font-size: 10px;
   line-height: 16px;
   margin: 3px 0;
-  position: relative;
-  left: 160px;
-  top: -15px;
-  margin-bottom: -20px;
 }
 
 .form-row-checkbox {
   .checkout-inline-error-message {
     position: static;
-    margin: 5px 0 0 30px;
+    margin: 5px 0 0 32px;
   }
+}
+
+.input-custom-wrapper {
+  width: 100%;
+}
+
+.input-trigger {
+  position: relative;
+
+  input {
+    width: 100%;
+  }
+
+  label {
+    width: fit-content;
+    position: absolute;
+    left: 10px;
+    top: 11px;
+    height: fit-content;
+    transition-duration: .3s;
+    transform-origin: left top;
+    cursor: text;
+    z-index: 1;
+    user-select: none;
+    font-size: 13px;
+    color: var(--color-black);
+
+  }
+
+  &.has-value,
+  &.focused {
+    label {
+      transform: translateY(-8px) scale(.6);
+    }
+  }
+
+}
+
+#billing_country_field label {
+  font-size: 13px;
+}
+
+.input--quantity {
+  @media (max-width: 500px) {
+    width: 60px;
+  }
+}
+
+/* ios fix */
+.input-trigger {
+  // transform: scale(1.23) !important;
+  // transform-origin: left center !important;
+  // display: block !important;
+
+  input[type='search'],
+  input[type='text'],
+  input[type='tel'],
+  input[type='password'],
+  input[type='email'],
+  textarea {
+    width: 123% !important;
+    font-size: 16px !important;
+    transform: scale(0.8125) !important;
+    transform-origin: left center !important;
+    max-width: unset !important;
+    height: 53px !important;
+  }
+
+  label {
+    top: 16px;
+
+    &[for="order_comments"],
+    &[for="message"] {
+      top: 24px;
+      padding-top: 14px !important;
+    }
+  }
+
+}
+
+input[type='number'] {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: textfield;
 }

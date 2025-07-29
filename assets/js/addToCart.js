@@ -1,11 +1,12 @@
 jQuery(document).ready(function ($) {
+  $(document.body).off('click', '.ajax_add_to_cart');
+
   $('body').on('click', '.product__add-to-cart a:not(.has-variants), .single_add_to_cart_button', function (e) {
     e.preventDefault();
 
     let button = $(this);
     let product_id = button.data('product_id');
     let quantity = button.data('quantity') || 1;
-
     button.addClass('btn--loader');
 
     $.ajax({
@@ -26,9 +27,12 @@ jQuery(document).ready(function ($) {
         }
 
         if (response && !response.error) {
-          modal('Produkt został dodany do koszyka.', createModalContent(response.fragments['div.widget_shopping_cart_content']), 'side');
+          if (response.fragments && response.fragments['div.widget_shopping_cart_content']) {
+            modal('Produkt został dodany do koszyka.', createModalContent(response.fragments['div.widget_shopping_cart_content']), 'side');
+          }
 
           const cartCount = document.querySelector('.header__cart-count-number');
+          cartCount.style.display = 'block';
           if (cartCount) {
             let cartQuantity = parseInt(cartCount.textContent) || 0;
             cartCount.textContent = cartQuantity + quantity;
@@ -64,27 +68,57 @@ jQuery(document).ready(function ($) {
     // console.log('Cart fragments:', fragments); // DOM fragments to update cart contents
     // console.log('Cart hash:', cart_hash);     // Unique cart hash
     // console.log('Button clicked:', $button);  // The button that triggered the event
-    console.log(fragments)
-    // modal('Produkt został dodany do koszyka.', createModalContent(fragments['div.widget_shopping_cart_content']), 'side');
+    if (fragments && fragments['div.widget_shopping_cart_content']) {
+      modal('Produkt został dodany do koszyka.', createModalContent(fragments['div.widget_shopping_cart_content']), 'side');
+      // modal("Produkt został dodany do koszyka.", `<a href="/orto4you/koszyk/" style="margin: auto;" class="added_to_cart wc-forward btn" title="Zobacz koszyk"><span>Zobacz koszyk</a>`);
+      // modal("Produkt został dodany do koszyka.", fragments['div.widget_shopping_cart_content'] || null);
+    }
+  });
 
-    // modal("Produkt został dodany do koszyka.", `<a href="/orto4you/koszyk/" style="margin: auto;" class="added_to_cart wc-forward btn" title="Zobacz koszyk"><span>Zobacz koszyk</a>`);
+  $('body').on('removed_from_cart', function (event, fragments, cart_hash, $button) {
+    const cartCount = document.querySelector('.header__cart-count-number');
+    cartCount.style.display = 'block';
+    if (cartCount) {
+      let cartQuantity = parseInt(cartCount.textContent) || 0;
+      const itemQuantity = $button[0].parentElement.querySelector('.quantity').textContent.split(' ')[0];
+      cartCount.textContent = cartQuantity - itemQuantity;
+    }
 
-    // modal("Produkt został dodany do koszyka.", fragments['div.widget_shopping_cart_content'] || null);
+    $.ajax({
+      url: AjaxCart.ajax_url,
+      type: 'POST',
+      data: {
+        action: 'get_cart_count',
+      },
+      success: function (response) {
+        if (response.success && response.data) {
+          // check cart count from response
+          cartCount.textContent = response.data.count;
+        }
+      },
+    });
+
+    $button[0].parentElement.remove();
   });
 });
 
 function createModalContent(content) {
   const wrapper = document.createElement('div');
-  wrapper.innerHTML = content;
+  let fixedContent = String(content).replaceAll('\t', '').replaceAll('\n', '').split('<li');
+  fixedContent.shift();
+  fixedContent.map((item, index) => {
+    if (item.trim() === '') return;
+    fixedContent[index] = '<li' + item;
+  });
+  fixedContent[fixedContent.length - 1] = fixedContent[fixedContent.length - 1].split('</li>')[0] + '</li>';
+  fixedContent = fixedContent.join('');
 
-  const items = wrapper.querySelectorAll('li.woocommerce-mini-cart-item.mini_cart_item');
-  const itemContents = Array.from(items).map(item => item.outerHTML).join('');
-
+  wrapper.innerHTML = fixedContent;
   const buttons = `<div class="modal__custom-buttons">
-        <button class="btn modal__custom-btn" onclick="closeModal()">
+        <button class="btn--link modal__custom-btn" onclick="closeModal()">
           <span>Kontynuuj zakupy</span>
         </button>
-        <button href="koszyk/" class="added_to_cart wc-forward btn modal__custom-btn" title="Zobacz koszyk">
+        <button  onclick="window.location.href='koszyk/'" class="added_to_cart wc-forward btn--link modal__custom-btn" title="Zobacz koszyk">
           <span>Zobacz koszyk</span>
         </button>
         <button class="btn modal__custom-btn" onclick="window.location.href='zamowienie/'">
@@ -93,7 +127,7 @@ function createModalContent(content) {
       </div>`;
 
   const modalContent = document.createElement('div');
-  modalContent.innerHTML = '<div class="modal__custom-items widget_shopping_cart_content">' + itemContents + '</div>' + buttons;
+  modalContent.innerHTML = '<ul class="modal__custom-items widget_shopping_cart_content">' + fixedContent + '</ul>' + buttons;
   return modalContent.innerHTML;
 }
 
@@ -148,6 +182,8 @@ function closeModal() {
     wrapper.classList.remove('modal__wrapper--active');
   }, 300);
   setTimeout(() => {
-    document.body.removeChild(wrapper);
+    if (wrapper) {
+      document.body.removeChild(wrapper);
+    }
   }, 300);
 };

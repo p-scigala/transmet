@@ -38,12 +38,15 @@ if ( wc_get_page_id( 'shop' ) > 0 ) : ?>
     </span></a>
 </p>
 
-<div class="cart-totals-wrapper">
-    <?php woocommerce_cart_totals(); ?>
+<div class="bestsellers-cart">
+  <?php get_template_part( 'template-parts/bestsellers', 'page', array(
+		'heading' => "Sprawdź nasze bestsellery",
+	) );
+?>
 </div>
 
-<div class="cart-cross-sells-wrapper">
-  <?php woocommerce_cross_sell_display( 4, 4 ); ?>
-</div>
+<!-- <div class="cart-cross-sells-wrapper">
+  <?php //woocommerce_cross_sell_display( 4, 4 ); ?>
+</div> -->
 
 <?php endif; ?>

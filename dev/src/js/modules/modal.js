@@ -49,6 +49,8 @@ function closeModal() {
     wrapper.classList.remove('modal__wrapper--active');
   }, 300);
   setTimeout(() => {
-    document.body.removeChild(wrapper);
+    if (wrapper) {
+      document.body.removeChild(wrapper);
+    }
   }, 300);
 };

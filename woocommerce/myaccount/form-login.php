@@ -60,8 +60,11 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
           <?php wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ); ?>
           <button type="submit"
             class="btn custom-link woocommerce-button button woocommerce-form-login__submit<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>"
-            name="login"
-            value="<?php esc_attr_e( 'Log in', 'woocommerce' ); ?>"><span><?php esc_html_e( 'Log in', 'woocommerce' ); ?></span></button>
+            name="login" value="<?php esc_attr_e( 'Log in', 'woocommerce' ); ?>">
+            <span>
+              <?php esc_html_e( 'Log in', 'woocommerce' ); ?>
+            </span>
+          </button>
         </p>
         <p class="woocommerce-LostPassword lost_password">
           <a

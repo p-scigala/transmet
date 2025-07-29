@@ -13,6 +13,18 @@ jQuery(document).ready(function ($) {
   customSelect(['.woof_acf_select']);
   // addToCart($);
 
+  const orderAgreements = document.querySelector('.order-agreements');
+  if (orderAgreements) {
+    const ag1 = document.querySelector('#order_agreement_1_field');
+    const ag2 = document.querySelector('#order_agreement_2_field');
+
+    // if (ag1) orderAgreements.append(ag1);
+    // if (ag2) orderAgreements.append(ag2);
+
+    if (ag1) ag1.remove();
+    if (ag2) ag2.remove();
+  }
+
   // Initialize WooCommerce variation forms after custom selects are created
   setTimeout(() => {
     if ($('.variations_form').length > 0) {
@@ -107,6 +119,7 @@ jQuery(document).ready(function ($) {
   }
 
   const filterToggle = document.querySelectorAll('.products__filters-toggle');
+
   if (filterToggle.length > 1) {
     filterToggle.forEach((toggle) => {
       if (toggle) {
@@ -131,10 +144,18 @@ jQuery(document).ready(function ($) {
     });
   }
 
+  const closeFilters = document.querySelector('.close-filter-button');
+
+  if (closeFilters) {
+    closeFilters.addEventListener('click', () => {
+      const filters = document.querySelector('.products__filters');
+      filters.classList.remove('active');
+    });
+  }
+
   /* display items with class "hidden-before-load" */
   const hiddenItems = document.querySelectorAll('.hidden-before-load');
   if (hiddenItems.length > 0) {
-    console.log('Revealing hidden items...');
     hiddenItems.forEach((item) => {
       item.classList.remove('hidden-before-load');
       item.style.opacity = '';
@@ -172,7 +193,7 @@ jQuery(document).ready(function ($) {
     input.addEventListener('change', () => checkUpdateCartButton());
   });
 
-  const checkboxes = document.querySelectorAll('.form-row-checkbox, .woocommerce-shipping-fields');
+  const checkboxes = document.querySelectorAll('.form-row-checkbox, .woocommerce-shipping-fields, .create-account');
   checkboxes.forEach((checkbox) => {
     const input = checkbox.querySelector('input[type="checkbox"]');
     const label = checkbox.querySelector('label');
@@ -201,6 +222,49 @@ jQuery(document).ready(function ($) {
       targetElement.scrollIntoView({ behavior: 'smooth' });
     }
   }
+
+  /* input customization */
+
+  const inputWrappers = document.querySelectorAll('.input-custom-wrapper, .form-row');
+
+  inputWrappers.forEach((wrapper) => {
+    const input = wrapper.querySelector('input[type="search"], input[type="text"], input[type="tel"], input[type="password"], input[type="email"], textarea, select');
+
+    if (input) {
+      wrapper.classList.add('input-trigger');
+
+      input.classList.add('form-control');
+      input.setAttribute('autocomplete', 'off');
+      input.removeAttribute('placeholder');
+
+      if (input.value.trim() === '') {
+        wrapper.classList.remove('has-value');
+      } else {
+        wrapper.classList.add('has-value');
+      }
+
+      if (input.tagName.toLowerCase() === 'select') {
+        input.classList.add('custom-select');
+      }
+
+      // Add focus and blur event listeners
+      input.addEventListener('focus', () => {
+        wrapper.classList.add('focused');
+      });
+
+      input.addEventListener('blur', () => {
+        wrapper.classList.remove('focused');
+      });
+
+      input.addEventListener('change', () => {
+        if (input.value.trim() === '') {
+          wrapper.classList.remove('has-value');
+        } else {
+          wrapper.classList.add('has-value');
+        }
+      });
+    }
+  });
 
   /* end */
 });

@@ -85,9 +85,9 @@ do_action( 'woocommerce_before_main_content' );
 
 <div class="products">
   <div class="products__wrapper">
+    <button class="products__filters-toggle products__filters-toggle-main"><?php _e('Filtry', 'candyweb'); ?></button>
     <div class="products__filters">
-      <button class="products__filters-toggle"><?php _e('Filtry', 'candyweb'); ?></button>
-      <!-- <span class="close-filter-button"></span> -->
+      <button class="close-filter-button">&times;</button>
       <div class="products__filters-category">
         <h3 class="products__filters-heading"><?php _e('Kategorie', 'candyweb'); ?></h3>
         <ul class="products__filters-box">
@@ -193,13 +193,7 @@ do_action( 'woocommerce_before_main_content' );
 
 
     </div>
-    <div class="products__list-interface">
-      <!-- <div class="slider-button d-flex align-items-center justify-content-center flex-column">
-			<img class="lazy-loaded" src="<?php echo get_template_directory_uri();?>/assets/img/filtruj.svg"
-				data-lazy-type="image" alt="">
-			<div class="slider-button__info">Filtruj</div>
-		</div> -->
-    </div>
+
     <div class="products__list-wrapper">
       <?php
 		if ( woocommerce_product_loop() ) {

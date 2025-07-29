@@ -21,7 +21,7 @@ if ( ! wp_doing_ajax() ) {
 	do_action( 'woocommerce_review_order_before_payment' );
 }
 ?>
-<h3 class="my-checkout__title my-checkout__title-4 mt-60 mb-30">3. Metoda płatności</h3>
+<h3 class="my-checkout__title my-checkout__title-4 mt-60 mb-30">4. Metoda płatności</h3>
 <div id="payment" class="woocommerce-checkout-payment">
   <?php if ( WC()->cart->needs_payment() ) : ?>
   <ul class="wc_payment_methods payment_methods methods">
@@ -52,7 +52,29 @@ if ( ! wp_doing_ajax() ) {
 
     <?php wc_get_template( 'checkout/terms.php' ); ?>
 
+    <div class="order-agreements">
+      <p class="form-row form-row-wide form-row-checkbox validate-required" id="order_agreement_1_field"
+        data-priority="20" data-fcf-field="order_agreement_1">
+        <label for="order_agreement_1">
+          <input type="checkbox" class="input-checkbox" name="order_agreement_1" id="order_agreement_1" value="Tak"
+            data-fcf-field-input="order_agreement_1">
+          Kontynuując zamówienie wyrażasz zgodę na naszą<a href="/polityka-prywatnosci"> politykę prywatności</a>. <abbr
+            class="required" title="Pole wymagane">*</abbr>
+        </label>
+      </p>
+      <p class="form-row form-row-wide form-row-checkbox validate-required" id="order_agreement_2_field"
+        data-priority="30" data-fcf-field="order_agreement_2">
+        <label for="order_agreement_2">
+          <input type="checkbox" class="input-checkbox" name="order_agreement_2" id="order_agreement_2" value="Tak"
+            data-fcf-field-input="order_agreement_2">
+          Kontynuując zamówienie wyrażasz zapoznanie się z naszym <a href="/regulamin"> regulaminem</a>. <abbr
+            class="required" title="Pole wymagane">*</abbr>
+        </label>
+      </p>
+    </div>
+
     <?php do_action( 'woocommerce_review_order_before_submit' ); ?>
+
 
     <?php echo apply_filters( 'woocommerce_pay_order_button_html', '<button type="submit" class="button btn alt' . esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ) . '" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '"><span>' . esc_html( $order_button_text ) . '</span></button>' ); // @codingStandardsIgnoreLine ?>
 
@@ -60,6 +82,7 @@ if ( ! wp_doing_ajax() ) {
 
     <?php wp_nonce_field( 'woocommerce-process_checkout', 'woocommerce-process-checkout-nonce' ); ?>
   </div>
+
 </div>
 <?php
 if ( ! wp_doing_ajax() ) {

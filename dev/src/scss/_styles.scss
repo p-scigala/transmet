@@ -201,10 +201,11 @@ section {
   li {
     background-color: var(--color-gray);
     padding: 10px;
-    margin-bottom: 15px;
     border: solid 1px var(--color-border);
     border-radius: 5px;
     outline: none;
+    font-size: 13px;
+    margin-bottom: 5px;
   }
 }
 
@@ -237,4 +238,8 @@ section {
     font-size: 16px;
     margin: 20px 0;
   }
+}
+
+.page-title {
+  margin-top: 60px;
 }

@@ -1,17 +1,4 @@
-.cross-sells {
-  margin-top: 60px;
-  width: 100vw;
-  position: relative;
-  left: calc((100vw - 1434px) / -2 - 23px);
-
-  @media (max-width: 1400px) {
-    left: calc((100vw - 1260px) / -2 - 23px);
-  }
-
-  @media (max-width: 1280px) {
-    width: 100%;
-    left: 0;
-  }
+.up-sells {
 
   &__heading {
     text-align: center;
@@ -44,10 +31,6 @@
     flex-wrap: nowrap;
     margin-top: 40px;
     position: relative;
-  }
-
-  &__link {
-    margin-top: 50px;
   }
 
   .slick-track {

@@ -22,13 +22,30 @@ if ( $cross_sells ) : ?>
 <div class="cross-sells">
   <div class="wrapper">
 
-	<h2 class="cross-sells__heading">Podobne produkty</h2>
+    <?php if(get_field("related_title", "option")) { ?>
+    <h2 class="cross-sells__heading scroll-anim">
+      <?php echo get_field("related_title", "option"); ?>
+    </h2>
+    <?php } ?>
 
-    <?php woocommerce_product_loop_start(); ?>
+    <?php if(get_field("related_subtitle", "option")) { ?>
+    <h3 class="cross-sells__subheading scroll-anim">
+      <?php echo get_field("related_subtitle", "option"); ?>
+    </h3>
+    <?php } ?>
 
-    <?php foreach ( $cross_sells as $cross_sell ) : ?>
+    <?php if(get_field("related_description", "option")) { ?>
+    <div class="cross-sells__description scroll-anim">
+      <?php echo get_field("related_description", "option"); ?>
+    </div>
+    <?php } ?>
+  </div>
 
-    <?php
+  <?php woocommerce_product_loop_start(); ?>
+
+  <?php foreach ( $cross_sells as $cross_sell ) : ?>
+
+  <?php
 					$post_object = get_post( $cross_sell->get_id() );
 
 					setup_postdata( $GLOBALS['post'] = $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
@@ -36,11 +53,10 @@ if ( $cross_sells ) : ?>
 					wc_get_template_part( 'content', 'product' );
 				?>
 
-    <?php endforeach; ?>
+  <?php endforeach; ?>
 
-    <?php woocommerce_product_loop_end(); ?>
+  <?php woocommerce_product_loop_end(); ?>
 
-  </div>
 </div>
 <?php
 endif;

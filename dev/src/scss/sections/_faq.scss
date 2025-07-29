@@ -28,12 +28,28 @@
   &__header {
     font-size: 44px;
     line-height: 55px;
+
+    @media (max-width: 800px) {
+      font-size: 32px;
+      line-height: 40px;
+    }
   }
 
   &__subheader {
     font-size: 24px;
     line-height: 30px;
     font-weight: normal;
+
+    @media (max-width: 800px) {
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+
+  &__text {
+    @media (max-width: 800px) {
+      text-align: center;
+    }
   }
 
   &__items {

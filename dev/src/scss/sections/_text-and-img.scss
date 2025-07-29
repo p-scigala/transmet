@@ -19,6 +19,7 @@
 
         @media (max-width: 800px) {
           flex-direction: column;
+          gap: 30px;
         }
       }
 
@@ -47,6 +48,7 @@
 
         @media (max-width: 800px) {
           flex-direction: column;
+          gap: 30px;
         }
       }
 
@@ -58,6 +60,10 @@
         }
 
         @media (max-width: 1024px) {
+          padding-left: 60px;
+        }
+
+        @media (max-width: 800px) {
           padding-left: 0;
         }
       }
@@ -71,7 +77,7 @@
     @media (max-width: 800px) {
       font-size: 32px;
       line-height: 40px;
-      text-align: center;
+      // text-align: center;
     }
   }
 
@@ -82,9 +88,9 @@
     font-weight: normal;
 
     @media (max-width: 800px) {
-      font-size: 14px;
-      line-height: 18px;
-      text-align: center;
+      font-size: 20px;
+      line-height: 24px;
+      // text-align: center;
     }
   }
 
@@ -97,6 +103,13 @@
 
     ul {
       padding-left: 20px;
+
+      @media (max-width: 800px) {
+        text-align: left;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+      }
 
       li {
         list-style: none;
@@ -120,6 +133,10 @@
 
   &__btn {
     margin-top: 32px;
+
+    @media (max-width: 800px) {
+      margin: 30px 0 15px 0;
+    }
   }
 
   &__content {
@@ -168,9 +185,9 @@
     margin: 32px 0;
     gap: 20px;
 
-    @media (max-width: 800px) {
-      justify-content: center;
-    }
+    // @media (max-width: 800px) {
+    //   justify-content: center;
+    // }
 
     &-text {
       font-weight: bold;
@@ -223,7 +240,7 @@
 
       @media (max-width: 800px) {
         position: relative;
-        margin: 30px auto 0;
+        margin: 30px 0 0;
         left: 0;
         right: 0;
         transform: none;
@@ -231,15 +248,19 @@
     }
   }
 
-  &__text {
-    @media (max-width: 800px) {
-      text-align: center;
-    }
-  }
+  // &__text {
+  //   @media (max-width: 800px) {
+  //     text-align: center;
+  //   }
+  // }
+}
 
-  &__btn {
+/* fix on home page */
+.bestsellers+.text-and-image {
+  .text-and-image__wrapper {
     @media (max-width: 800px) {
-      margin: 30px auto 15px auto;
+      gap: 60px;
+      flex-direction: column-reverse;
     }
   }
 }

@@ -20,10 +20,6 @@ body .wp-block-button__link {
   z-index: 1;
   box-shadow: none !important;
 
-  @media (max-width: 500px) {
-    height: 40px;
-  }
-
   &>span {
     position: relative;
     width: 100%;
@@ -202,8 +198,6 @@ body .wp-block-button__link {
   }
 }
 
-
-
 body .wp-block-button__link {
 
   &::before,
@@ -211,5 +205,33 @@ body .wp-block-button__link {
     content: "Dodaj do koszyka";
     color: var(--color-white);
     font-size: 16px;
+  }
+}
+
+.btn--link {
+  border: none;
+  text-align: center;
+  background: none;
+  padding: 0 5px 5px 5px;
+  font-weight: bold;
+  border-bottom: solid 2px var(--color-black);
+  transition-duration: 0.3s;
+  height: fit-content;
+  font-weight: bold;
+  color: var(--color-black);
+  font-size: 16px;
+
+  span {
+    font-weight: bold;
+    color: var(--color-black);
+    font-size: 16px;
+  }
+
+  &:disabled {
+    border-bottom: solid 2px var(--color-border);
+  }
+
+  &:hover {
+    opacity: 0.6;
   }
 }

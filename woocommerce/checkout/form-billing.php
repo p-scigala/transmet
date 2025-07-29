@@ -19,58 +19,61 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 <div class="woocommerce-billing-fields">
-	<?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
+  <?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
 
-		<h3>1. <?php esc_html_e( 'Billing &amp; Shipping', 'woocommerce' ); ?></h3>
+  <h3>1. <?php esc_html_e( 'Billing &amp; Shipping', 'woocommerce' ); ?></h3>
 
-	<?php else : ?>
+  <?php else : ?>
 
-		<h3><?php esc_html_e( 'Billing details', 'woocommerce' ); ?></h3>
+  <h3>1. <?php esc_html_e( 'Billing details', 'woocommerce' ); ?></h3>
 
-	<?php endif; ?>
+  <?php endif; ?>
 
-	<?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
+  <?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
 
-	<div class="woocommerce-billing-fields__field-wrapper">
-		<?php
+  <div class="woocommerce-billing-fields__field-wrapper">
+    <?php
 		$fields = $checkout->get_checkout_fields( 'billing' );
 
 		foreach ( $fields as $key => $field ) {
 			woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
 		}
 		?>
-	</div>
+  </div>
 
-	<?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
+  <?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
 </div>
 
 <?php if ( ! is_user_logged_in() && $checkout->is_registration_enabled() ) : ?>
-	<div class="woocommerce-account-fields">
-		<?php if ( ! $checkout->is_registration_required() ) : ?>
+<div class="woocommerce-account-fields">
+  <?php if ( ! $checkout->is_registration_required() ) : ?>
 
-			<p class="form-row form-row-wide create-account">
-				<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
-					<input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="createaccount" <?php checked( ( true === $checkout->get_value( 'createaccount' ) || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) ) ), true ); ?> type="checkbox" name="createaccount" value="1" /> <span><?php esc_html_e( 'Create an account?', 'woocommerce' ); ?></span>
-				</label>
-			</p>
+  <p class="form-row form-row-wide create-account">
+    <label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
+      <input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="createaccount"
+        <?php checked( ( true === $checkout->get_value( 'createaccount' ) || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) ) ), true ); ?>
+        type="checkbox" name="createaccount" value="1" />
+      <span><?php esc_html_e( 'Create an account?', 'woocommerce' ); ?></span>
+    </label>
+  </p>
 
-		<?php endif; ?>
+  <?php endif; ?>
 
-		<?php do_action( 'woocommerce_before_checkout_registration_form', $checkout ); ?>
+  <?php do_action( 'woocommerce_before_checkout_registration_form', $checkout ); ?>
 
-		<?php if ( $checkout->get_checkout_fields( 'account' ) ) : ?>
+  <?php if ( $checkout->get_checkout_fields( 'account' ) ) : ?>
 
-			<div class="create-account">
-				<?php foreach ( $checkout->get_checkout_fields( 'account' ) as $key => $field ) : ?>
-					<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
-				<?php endforeach; ?>
-				<div class="clear"></div>
-			</div>
+  <div class="create-account">
+    <?php foreach ( $checkout->get_checkout_fields( 'account' ) as $key => $field ) : ?>
+    <?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
+    <?php endforeach; ?>
+    <div class="clear"></div>
+  </div>
 
-		<?php endif; ?>
+  <?php endif; ?>
 
-		<?php do_action( 'woocommerce_after_checkout_registration_form', $checkout ); ?>
-	</div>
+  <?php do_action( 'woocommerce_after_checkout_registration_form', $checkout ); ?>
+</div>
 <?php endif; ?>
 
 
@@ -94,43 +97,9 @@ defined( 'ABSPATH' ) || exit;
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<div class="checkout-shipping">
-	<h3 class="my-checkout__title mb-30">1. Opcje dostawy</h3>
-	<ul class="checkout-shipping__ul">
-		<li>
-			<input type="radio" data-index="0" id="shipping-odbior" name="shipping-method" class="checkout-shipping__input" checked>
-			<label class="checkout-shipping__label" for="shipping-odbior">
-				<img src="<?php echo get_template_directory_uri()?>/assets/imgs/pin.svg">
-			</label>
-		</li>
-		<li>
-			<input type="radio" data-index="1" id="shipping-dostawa" name="shipping-method" class="checkout-shipping__input">
-			<label class="checkout-shipping__label" for="shipping-dostawa">
-				<img src="<?php echo get_template_directory_uri()?>/assets/imgs/shipping.svg">
-				<div class="d-inline-block">
-					<span class="woocommerce-Price-amount amount">
-						<bdi>20,00&nbsp;<span class="woocommerce-Price-currencySymbol">zł</span></bdi>
-					</span>
-				</div>
-			</label>
-		</li>
-	</ul>
-
-</div>
-<div class="woocommerce-billing-fields">
-	<?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
-
-		<h3 class="my-checkout__title"><?php esc_html_e( 'Billing &amp; Shipping', 'woocommerce' ); ?></h3>
-
-	<?php else : ?>
-
-		<h3 class="my-checkout__title mb-30 mb-md-60 mt-60 ">2. <?php esc_html_e( 'Billing details', 'woocommerce' ); ?></h3>
-
-	<?php endif; ?>
 
 	<?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
 
-	<div class="woocommerce-billing-fields__field-wrapper">
 		<?php
 		$fields = $checkout->get_checkout_fields( 'billing' );
 
@@ -138,20 +107,11 @@ defined( 'ABSPATH' ) || exit;
 			woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
 		}
 		?>
-	</div>
 
 	<?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
-</div>
 
 <?php if ( ! is_user_logged_in() && $checkout->is_registration_enabled() ) : ?>
-	<div class="woocommerce-account-fields">
 		<?php if ( ! $checkout->is_registration_required() ) : ?>
-
-			<p class="form-row form-row-wide create-account">
-				<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
-					<input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="createaccount" <?php checked( ( true === $checkout->get_value( 'createaccount' ) || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) ) ), true ); ?> type="checkbox" name="createaccount" value="1" /> <span><?php esc_html_e( 'Create an account?', 'woocommerce' ); ?></span>
-				</label>
-			</p>
 
 		<?php endif; ?>
 
@@ -159,15 +119,11 @@ defined( 'ABSPATH' ) || exit;
 
 		<?php if ( $checkout->get_checkout_fields( 'account' ) ) : ?>
 
-			<div class="create-account">
 				<?php foreach ( $checkout->get_checkout_fields( 'account' ) as $key => $field ) : ?>
 					<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
 				<?php endforeach; ?>
-				<div class="clear"></div>
-			</div>
 
 		<?php endif; ?>
 
 		<?php do_action( 'woocommerce_after_checkout_registration_form', $checkout ); ?>
-	</div>
 <?php endif; ?> -->

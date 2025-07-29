@@ -10,7 +10,7 @@
 
 <article role="article" id="post_<?php the_ID() ?>" <?php post_class("wrapper") ?>>
 
-  <h1><?php the_title() ?></h1>
+  <h1 class="page-title"><?php the_title() ?></h1>
 
   <section>
     <?php the_content() ?>

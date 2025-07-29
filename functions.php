@@ -428,3 +428,9 @@ add_filter( 'gettext', function( $translated, $text, $domain ) {
     }
     return $translated;
 }, 10, 3 );
+
+add_filter('woocommerce_add_error', 'candy_woocommerce_customize_error');
+function candy_woocommerce_customize_error($error)
+{
+    return str_replace('płatnika', '', $error);
+}

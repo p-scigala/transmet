@@ -31,7 +31,8 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
   <?php endif; ?>
 
   <?php if(get_field('product_nfz_code', $product->get_id())): ?>
-  <img class="product__nfz" src="../wp-content/themes/candyweb-new/assets/imgs/logo-nfz.png" alt="Dostępny na NFZ" />
+  <img class="product__nfz" src="<?php echo get_template_directory_uri(); ?>/assets/imgs/logo-nfz.png"
+    alt="Dostępny na NFZ" />
   <?php endif; ?>
 
   <?php
@@ -83,8 +84,8 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
         -
       </button>
 
-      <input type="number" id="quantity-<?php echo esc_attr($product->get_id()); ?>" class="input__number-text"
-        name="quantity" value="1" min="1" step="1"
+      <input type="number" id="quantity-<?php echo esc_attr($product->get_id()); ?>"
+        class="input__number-text input--quantity" name="quantity" value="1" min="1" step="1"
         aria-labelledby="quantity-<?php echo esc_attr($product->get_id()); ?>-label" />
 
       <button type="button" class="input__number-plus"

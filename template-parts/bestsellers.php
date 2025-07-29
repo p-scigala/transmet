@@ -12,6 +12,12 @@
         </h2>
         <?php } ?>
 
+        <?php if($args['heading']) { ?>
+        <h2 class="bestsellers__header scroll-anim">
+          <?php echo $args['heading']; ?>
+        </h2>
+        <?php } ?>
+
         <?php if(get_field("bestsellers_title_02")) { ?>
         <h3 class="bestsellers__subheader scroll-anim">
           <?php echo get_field("bestsellers_title_02"); ?>

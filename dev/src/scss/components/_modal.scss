@@ -93,12 +93,14 @@
     .modal {
       &__box {
         position: absolute;
-        right: -800px;
+        right: -860px;
+        width: 860px;
         top: 80px;
         border-radius: 0;
         height: calc(100vh - 80px);
         max-width: 100%;
         justify-content: flex-start;
+        padding-bottom: 0;
 
         &--active {
           right: 0;
@@ -110,6 +112,16 @@
         flex-direction: column;
         justify-content: space-between;
         gap: 30px;
+        padding-bottom: 20px;
+      }
+
+      &__heading {
+        @media (max-width: 600px) {
+          font-size: 20px;
+          width: 100%;
+          text-align: left;
+          line-height: normal;
+        }
       }
     }
   }

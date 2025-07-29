@@ -1,0 +1,114 @@
+.woocommerce-order {
+
+  .woocommerce-thankyou-order-received {
+    padding: 15px;
+    background-color: var(--color-primary-green);
+    border-radius: 5px;
+    font-weight: bold;
+    color: var(--color-white);
+  }
+
+  .woocommerce-thankyou-order-details {
+    list-style: none;
+    border-bottom: solid 1px var(--color-border);
+  }
+
+  .woocommerce-order-details {
+    border-bottom: solid 1px var(--color-border);
+  }
+
+  .woocommerce-customer-details,
+  .woocommerce-order-details,
+  .woocommerce-thankyou-order-details {
+    padding: 30px 0;
+    margin: 30px 0;
+  }
+
+  .woocommerce-thankyou-order-details {
+    padding: 15px;
+    border-radius: 5px;
+    background-color: var(--color-gray);
+    border: solid 1px var(--color-border);
+    width: 50%;
+    max-width: 100%;
+    min-width: 555px;
+
+    li {
+      font-size: 20px;
+      padding: 5px 0;
+    }
+  }
+
+  .woocommerce-customer-details {
+    .addresses {
+      margin: 0 !important;
+      display: flex;
+      gap: 30px;
+      width: 100%;
+
+      @media (max-width: 800px) {
+        flex-direction: column;
+      }
+
+      &>div {
+        min-width: fit-content;
+        width: calc(50% - 15px);
+        max-width: 100%;
+        min-width: 300px;
+        padding: 15px;
+        border-radius: 5px;
+        background-color: var(--color-gray);
+        border: solid 1px var(--color-border);
+
+        @media (max-width: 800px) {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .woocommerce-table--order-details {
+
+    th,
+    td {
+      border-bottom: solid 1px var(--color-border);
+      padding: 10px 15px;
+      vertical-align: top;
+    }
+
+    tr {
+
+      td:first-child,
+      th:first-child {
+        padding-left: 0;
+      }
+    }
+
+    tfoot {
+
+      th,
+      td {
+        border-bottom: none;
+      }
+
+      th {
+        text-align: right;
+      }
+    }
+
+    a {
+      text-decoration: underline;
+
+      &:hover {
+        color: var(--color-primary-blue);
+      }
+    }
+
+    .product-name {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+  }
+}
