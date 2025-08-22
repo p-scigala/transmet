@@ -180,6 +180,11 @@ jQuery(document).ready(function ($) {
   });
 });
 
+function checkUpdateCartButton() {
+  const updateCart = document.querySelector('button[name="update_cart"]');
+  if (updateCart) updateCart.disabled = false;
+}
+
 function updateCheckoutButton() {
   const checkoutButtons = document.querySelectorAll(
     '.wc-block-cart__submit-button, .wc-block-components-button'
@@ -210,6 +215,19 @@ function addClassToMiniCartButtons() {
   });
 }
 
+function updateTranslations() {
+  const items = document.querySelectorAll('.wc-block-cart__empty-cart__title, .wp-block-heading');
+
+  items.forEach((item) => {
+    if (item.innerText === 'Your cart is currently empty!') {
+      item.innerText = 'Twój koszyk jest pusty.';
+    }
+    if (item.innerText === 'New in store') {
+      item.innerText = 'Nowości w sklepie';
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   updateCheckoutButton();
   addClassToMiniCartButtons();
@@ -218,6 +236,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const observer = new MutationObserver(() => {
     updateCheckoutButton();
     addClassToMiniCartButtons();
+    updateTranslations();
     // observer.disconnect();
   });
 

@@ -1,4 +1,5 @@
-.product-related {
+.up-sells {
+
   &__heading {
     text-align: center;
     margin: 0 0 10px 0;
@@ -13,7 +14,14 @@
   &__description {
     padding: 0 20px;
     text-align: center;
+    max-width: 555px;
+    margin: auto;
     margin-bottom: 40px;
+    font-weight: normal;
+
+    @media (max-width: 800px) {
+      padding: 0;
+    }
   }
 
   .products__list {
@@ -45,11 +53,6 @@
     @media (max-width: 1450px) {
       width: 100%;
       padding: 0 15px;
-    }
-
-    @media (max-width: 500px) {
-      width: 100%;
-      padding: 0 30px;
     }
   }
 }

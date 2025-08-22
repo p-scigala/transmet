@@ -16,6 +16,12 @@
     }
   }
 
+  .wrapper {
+    @media (max-width: 800px) {
+      gap: 15px;
+    }
+  }
+
   &__slider-wrapper {
     position: relative;
     width: 100%;

@@ -126,6 +126,8 @@
 
         <a href="/koszyk" class="back-to-cart">Powrót</a>
 
+        <a href="/koszyk" class="back-to-cart">Powrót</a>
+
       </div>
     </div>
   </header>

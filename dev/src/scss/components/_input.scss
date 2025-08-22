@@ -31,6 +31,18 @@ input[type='email'],
     width: 100%;
     max-width: 90px;
 
+    &-text {
+      font-weight: bold;
+      font-size: 22px;
+      line-height: 28px;
+      margin: 0 -3px;
+      z-index: 1;
+    }
+
+    @media (max-width: 500px) {
+      height: 33px;
+    }
+
     input[type='number'] {
 
       font-size: 19px;
@@ -111,32 +123,26 @@ form {
       height: 43px;
       padding: 0 10px;
       width: 100%;
-      font-size: 13px;
     }
   }
 
-  span:nth-of-type(1) {
+  .input-custom-wrapper:nth-of-type(1) {
     width: 100%;
   }
 
-  span:nth-of-type(2),
-  span:nth-of-type(3) {
+  .input-custom-wrapper:nth-of-type(2),
+  .input-custom-wrapper:nth-of-type(3) {
     width: calc(50% - 15px);
   }
 
-  span:nth-of-type(4) {
+  .input-custom-wrapper:nth-of-type(4) {
     width: 100%;
-  }
-
-  textarea.form-control {
-    height: 130px;
-    font-size: 13px;
   }
 
   .wpcf7-not-valid-tip {
     margin-top: 5px;
     margin-bottom: -19.5px;
-    font-size: 13px;
+    font-size: 10px;
     color: var(--color-red);
   }
 
@@ -162,6 +168,8 @@ form {
       line-height: 16px;
       margin: 0;
       padding: 0;
+
+      padding-left: 30px;
     }
 
     .wpcf7-list-item-label {
@@ -171,6 +179,11 @@ form {
 
     a {
       text-decoration: underline;
+      margin-left: 4px;
+
+      &:hover {
+        color: var(--color-primary-blue);
+      }
     }
   }
 }

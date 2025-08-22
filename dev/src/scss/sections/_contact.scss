@@ -47,6 +47,19 @@
       display: flex;
       gap: 25px 30px;
       flex-wrap: wrap;
+
+      .wpcf7-form-control-wrap {
+        width: 100%;
+
+        input {
+          width: 100%;
+        }
+      }
+
+      .wpcf7-form-control-wrap:nth-of-type(2),
+      .wpcf7-form-control-wrap:nth-of-type(3) {
+        width: calc(50% - 15px);
+      }
     }
   }
 
@@ -79,14 +92,14 @@
       align-items: flex-start;
       gap: 11px;
     }
-  }
 
-  &__map {
-    @media (max-width: 800px) {
-      img {
-        width: 100%;
-        height: calc(100vw - 16px);
-        object-fit: cover;
+    &__map {
+      @media (max-width: 800px) {
+        img {
+          width: 100%;
+          height: calc(100vw - 16px);
+          object-fit: cover;
+        }
       }
     }
   }

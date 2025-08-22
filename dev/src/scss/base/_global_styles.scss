@@ -6,10 +6,15 @@ html {
 
 textarea,
 textarea.form-control {
-  min-height: 150px !important;
+  border-color: var(--color-border) !important;
+  padding: 10px !important;
+  min-height: 150px;
+  height: 150px;
+  font-size: 13px;
+  
 }
 
-ul > li::marker {
+ul>li::marker {
   color: var(--bs-primary);
 }
 

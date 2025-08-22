@@ -2,7 +2,7 @@ select,
 .wc-blocks-components-select .wc-blocks-components-select__select {
   background-color: var(--color-white);
   font-size: 17px;
-  border: solid 1px var(--color-border);
+  border: solid 1px var(--color-border) !important;
   border-radius: 5px;
   height: 43px;
 }
@@ -22,7 +22,6 @@ select,
   z-index: 99998;
 
   &-selected {
-    background-color: var(--color-white);
     cursor: pointer;
     font-size: 17px;
     line-height: 21px;

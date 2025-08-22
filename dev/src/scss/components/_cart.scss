@@ -22,8 +22,17 @@ body {
 
     .wc-block-cart-items {
       .wc-block-cart-item__remove-link {
-        color: var(--color-red);
+        color: var(--color-red) !important;
       }
+    }
+
+    .remove {
+      color: var(--color-red) !important;
+      text-decoration: underline;
+    }
+
+    .quantity-wrapper {
+      width: fit-content;
     }
 
     .wc-block-components-shipping-calculator-address {
@@ -228,6 +237,29 @@ body {
         height: fit-content;
       }
     }
+  }
+}
+
+.cart_totals {
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+
+  @media (max-width: 500px) {
+    h2 {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.coupon {
+  background-color: var(--color-gray);
+  border-radius: 5px;
+  border: solid 1px var(--color-border);
+  padding: 15px;
+
+  label {
+    margin-bottom: 15px;
   }
 
   .modal__custom-items {
