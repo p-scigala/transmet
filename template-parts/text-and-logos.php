@@ -1,55 +1,42 @@
 <?php /* Template Name: Sekcja - Tekst z logotypami */ ?>
 
-<section class="text-and-logos">
+<?php if( $args['id']) $id = $args['id']; ?>
 
-  <div class="text-and-logos__wrapper d-flex justify-content-center align-center row">
+<section class="text-and-logos" id="<?php echo esc_attr( $id ); ?>">
+
+  <div class="text-and-logos__wrapper">
     <div class="wrapper">
       <div class="text-and-logos__wrapper">
 
         <div class="text-and-logos__content">
-          <?php if(get_field("text_and_logos_title_01")) { ?>
-          <h2 class="text-and-logos__header">
+          <?php if(get_field("text_and_logos_title_01")): ?>
+          <h2 class="text-and-logos__heading heading animate">
             <?php echo get_field("text_and_logos_title_01"); ?>
           </h2>
-          <?php } ?>
+          <?php endif; ?>
 
-          <?php if(get_field("text_and_logos_title_02")) { ?>
-          <h3 class="text-and-logos__subheader">
+          <?php if(get_field("text_and_logos_title_02")): ?>
+          <h3 class="text-and-logos__subheading subheading animate delay-1">
             <?php echo get_field("text_and_logos_title_02"); ?>
           </h3>
-          <?php } ?>
+          <?php endif; ?>
 
-          <?php if(get_field("text_and_logos_text")) { ?>
-          <div class="text-and-logos__text scroll-anim">
+          <?php if(get_field("text_and_logos_text")): ?>
+          <div class="text-and-logos__description description animate delay-2">
             <?php echo get_field("text_and_logos_text"); ?>
           </div>
-          <?php } ?>
+          <?php endif; ?>
 
-          <?php if (get_field("text_and_logos_btn")) { ?>
-          <div class="scroll-anim">
-            <?php
-          $link_url = get_field("text_and_logos_btn")["url"];
-          $link_title = get_field("text_and_logos_btn")["title"];
-          $link_target = isset(get_field("text_and_logos_btn")["target"]) ? get_field("text_and_logos_btn")["target"] : "_self";
-        ?>
-            <a class="text-and-logos__btn btn" href="<?php echo esc_url($link_url); ?>"
-              target="<?php echo esc_attr($link_target); ?>">
-              <span class="btn__inner">
-                <?php echo esc_html($link_title); ?>
-              </span>
-            </a>
-          </div>
-          <?php } ?>
         </div>
 
-        <div class="text-and-logos__logos">
+        <div class="text-and-logos__logos slider slider--with-bar slider--with-buttons animate delay-3">
           <?php if(have_rows("text_and_logos_logos_repeater")):?>
           <?php while(have_rows("text_and_logos_logos_repeater")): the_row(); ?>
-          <div class="text-and-logos__logo scroll-anim">
-            <?php if(get_sub_field("text_and_logos_logo")) { ?>
+          <div class="text-and-logos__logo panel">
+            <?php if(get_sub_field("text_and_logos_logo")): ?>
             <img src="<?php echo get_sub_field("text_and_logos_logo")["url"]; ?>"
               alt="<?php echo get_sub_field("text_and_logos_logo")["title"]; ?>" />
-            <?php } ?>
+            <?php endif; ?>
           </div>
           <?php endwhile ;?>
           <?php endif ;?>

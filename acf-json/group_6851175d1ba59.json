@@ -86,7 +86,7 @@
             "sub_fields": [
                 {
                     "key": "field_6851179754a12",
-                    "label": "Zdjęcie",
+                    "label": "Zdj??cie",
                     "name": "team_img",
                     "aria-label": "",
                     "type": "image",
@@ -112,7 +112,7 @@
                 },
                 {
                     "key": "field_685117a454a13",
-                    "label": "Imię i nazwisko",
+                    "label": "Imi?? i nazwisko",
                     "name": "team_name",
                     "aria-label": "",
                     "type": "text",
@@ -152,5 +152,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1750406648
+    "modified": 1755681964
 }

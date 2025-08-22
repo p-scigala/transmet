@@ -30,68 +30,43 @@ do_action( 'woocommerce_before_main_content' );
 
 ?>
 
-<div class="container">
-  <?php if (is_shop()) :?>
-  <div class="row">
-    <div class="col-12 col-lg-5">
-      <?php if(!empty(get_field('product_archive_title_01', 'option'))): ?>
-      <h1 class="fs-2 text-start">
-        <span class="">
-          <?php echo get_field('product_archive_title_01', 'option');?>
-        </span></br>
-        <?php if(!empty(get_field('product_archive_title_02', 'option'))): ?>
-        <span class="second-heading">
-          <?php echo get_field('product_archive_title_02', 'option');?>
-        </span>
-        <?php endif;?>
-      </h1>
-      <?php endif;?>
-      <?php if(!empty(get_field('product_archive_text', 'option'))): ?>
-      <div class="styled-wysiwyg text-start  mt-15 mt-lg-30">
-        <?php echo get_field('product_archive_text', 'option');?>
-      </div>
-      <?php endif;?>
-    </div>
-  </div>
-  <?php elseif (is_product_category()) : ?>
-  <div class="row">
-    <div class="col-12 col-lg-5">
-      <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-      <h1 class="fs-2 text-start">
-        <span class="">
-          <?php woocommerce_page_title(); ?>
-        </span></br>
-      </h1>
-      <?php endif;?>
-
-      <div class="styled-wysiwyg text-start  mt-15 mt-lg-30">
-        <?php echo strip_tags(get_the_archive_description());?>
-      </div>
-    </div>
-  </div>
-  <?php endif;?>
-</div>
-
-
 <div class="products-desc">
   <div class="wrapper">
 
     <?php $shop_id = get_option('woocommerce_shop_page_id'); ?>
 
+    <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
+    <!-- <h2 class="products-desc__heading animate">
+      <?php woocommerce_page_title(); ?>
+    </h2> -->
+    <?php endif; ?>
+
     <?php if(get_field("shop_heading", $shop_id)) : ?>
-    <h2 class="products-desc__heading scroll-anim">
+    <h2 class="products-desc__heading animate">
       <?php echo get_field("shop_heading", $shop_id); ?>
     </h2>
     <?php endif; ?>
 
+    <?php if(!empty(get_field('product_archive_title_02', 'option'))): ?>
+    <h3 class="products-desc__subheading animate">
+      <?php echo get_field('product_archive_title_02', 'option');?>
+    </h3>
+    <?php endif; ?>
+
     <?php if(get_field("shop_subheading", $shop_id)) : ?>
-    <h3 class="products-desc__subheading scroll-anim">
+    <h3 class="products-desc__subheading animate">
       <?php echo get_field("shop_subheading", $shop_id); ?>
     </h3>
     <?php endif; ?>
 
+    <?php if(get_the_archive_description()) : ?>
+    <!-- <div class="styled-wysiwyg text-start  mt-15 mt-lg-30">
+      <?php echo strip_tags(get_the_archive_description());?>
+    </div> -->
+    <?php endif; ?>
+
     <?php if(get_field("shop_description", $shop_id)) : ?>
-    <div class="products-desc__description scroll-anim">
+    <div class="products-desc__description animate">
       <?php echo get_field("shop_description", $shop_id); ?>
     </div>
     <?php endif; ?>
@@ -110,8 +85,9 @@ do_action( 'woocommerce_before_main_content' );
 
 <div class="products">
   <div class="products__wrapper">
+    <button class="products__filters-toggle products__filters-toggle-main"><?php _e('Filtry', 'candyweb'); ?></button>
     <div class="products__filters">
-      <!-- <span class="close-filter-button"></span> -->
+      <button class="close-filter-button">&times;</button>
       <div class="products__filters-category">
         <h3 class="products__filters-heading"><?php _e('Kategorie', 'candyweb'); ?></h3>
         <ul class="products__filters-box">
@@ -146,8 +122,20 @@ do_action( 'woocommerce_before_main_content' );
 
 								$hasSubCategoryClass = $subcategories ? ' products__filters-category-has-items' : '';
 
+								if(is_tax('product_cat', $category->slug)) {
+									$isActive = ' products__filters-category--active';
+								} else {
+									$isActive = '';
+								}
+
+								if($isCategoryActive && $subcategories) {
+									$subcategory_collapse = 1;
+								} else {
+									$subcategory_collapse = 0;
+								}
+
 								if (!is_wp_error($category_link)) {
-									echo '<li class="products__filters-category' . $hasSubCategoryClass . '"><div class="products__filter-category-wrap"><a class="products__filter-category-link" href="' . esc_url($category_link) . '" class="' . $active_class . '">' . $category->name . '</a>';
+									echo '<li class="products__filters-category' . $hasSubCategoryClass . $isActive . '"><div class="products__filter-category-wrap"><a class="products__filter-category-link" href="' . esc_url($category_link) . '" class="' . $active_class . '">' . $category->name . '</a>';
 							
 									if ($subcategories) {
 
@@ -159,8 +147,8 @@ do_action( 'woocommerce_before_main_content' );
 										}
 										
 										if (is_tax('product_cat', $category->slug)) {
-											echo '<i class="cursor-pointer categories-collapse collapsed" data-bs-toggle="collapse" data-bs-target="#' . $category->slug . '" aria-expanded="true" aria-controls="collapseExample"></i></div>';
-											echo '<ul class="archive-products__category-second collapse" id="' . $category->slug . '">';
+											echo '<i class="cursor-pointer categories-collapse active" data-bs-toggle="collapse" data-bs-target="#' . $category->slug . '" aria-expanded="true" aria-controls="collapseExample"></i></div>';
+											echo '<ul class="archive-products__category-second show" id="' . $category->slug . '">';
 										} elseif (isset($subcategory_collapse)) {
 											echo '<i class="cursor-pointer categories-collapse collapsed" data-bs-toggle="collapse" data-bs-target="#' . $category->slug . '" aria-expanded="true" aria-controls="collapseExample"></i></div>';
 											echo '<ul class="archive-products__category-second collapse" id="' . $category->slug . '">';
@@ -173,6 +161,13 @@ do_action( 'woocommerce_before_main_content' );
 											$subcategory_link = get_term_link($subcategory);
 											$active_class_sub = is_tax('product_cat', $subcategory->slug) ? 'active-cat' : '';
 							
+											$isSubcategoryActive = is_tax('product_cat', $subcategory->slug);
+											if ($isSubcategoryActive) {
+												$active_class_sub = ' products__filters-category--active';
+											} else {
+												$active_class_sub = '';
+											}
+
 											if (!is_wp_error($subcategory_link)) {
 												echo '<li><a href="' . esc_url($subcategory_link) . '" class="' . $active_class_sub . '">' . $subcategory->name . '</a></li>';
 											}
@@ -189,33 +184,30 @@ do_action( 'woocommerce_before_main_content' );
 						?>
         </ul>
       </div>
-      <span class="products__filters-heading">Filtry</span>
-      <div class="products__filters-box">
-        <?php echo do_shortcode('[woof]'); ?>
+      <div>
+        <span class="products__filters-heading"><?php _e('Filtry', 'candyweb'); ?></span>
+        <div class="products__filters-box">
+          <?php echo do_shortcode('[woof]'); ?>
+        </div>
       </div>
 
 
     </div>
-    <div class="products__list-wrapper">
-      <div class="products__list-interface">
-        <!-- <div class="slider-button d-flex align-items-center justify-content-center flex-column">
-        <img class="lazy-loaded" src="<?php echo get_template_directory_uri();?>/assets/img/filtruj.svg"
-          data-lazy-type="image" alt="">
-        <div class="slider-button__info">Filtruj</div>
-      </div> -->
-        <?php
-			if ( woocommerce_product_loop() ) {
 
-				/**
-				 * Hook: woocommerce_before_shop_loop.
-				 *
-				 * @hooked woocommerce_output_all_notices - 10
-				 * @hooked woocommerce_result_count - 20
-				 * @hooked woocommerce_catalog_ordering - 30
-				 */
-				do_action( 'woocommerce_before_shop_loop' );
-			?>
-      </div>
+    <div class="products__list-wrapper">
+      <?php
+		if ( woocommerce_product_loop() ) {
+
+			/**
+			 * Hook: woocommerce_before_shop_loop.
+			 *
+			 * @hooked woocommerce_output_all_notices - 10
+			 * @hooked woocommerce_result_count - 20
+			 * @hooked woocommerce_catalog_ordering - 30
+			 */
+			do_action( 'woocommerce_before_shop_loop' );
+		?>
+
 
       <?php
 				woocommerce_product_loop_start();
@@ -264,7 +256,7 @@ do_action( 'woocommerce_after_main_content' );
 
 $shop_id = wc_get_page_id( 'shop' );
 set_query_var( 'acf_page_id', $shop_id );
-get_template_part( 'template-parts/text-and-img', 'page' );
+get_template_part( 'template-parts/text-and-image', 'page' );
 
 get_template_part( 'template-parts/call-to-action', 'page' );
 get_template_part( 'template-parts/seo-text', 'page' );

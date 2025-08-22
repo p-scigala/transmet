@@ -25,27 +25,6 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_685111afbc465",
-                    "label": "Tekst",
-                    "name": "text_and_img_text",
-                    "aria-label": "",
-                    "type": "wysiwyg",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "33.33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "tabs": "all",
-                    "toolbar": "full",
-                    "media_upload": 1,
-                    "delay": 0,
-                    "parent_repeater": "field_68760c1aedcf0"
-                },
-                {
                     "key": "field_68511168bc463",
                     "label": "Tytuł",
                     "name": "text_and_img_title_01",
@@ -55,7 +34,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "33.33",
+                        "width": "33",
                         "class": "",
                         "id": ""
                     },
@@ -76,7 +55,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "33.33",
+                        "width": "33",
                         "class": "",
                         "id": ""
                     },
@@ -85,87 +64,6 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_68760c1aedcf0"
-                },
-                {
-                    "key": "field_685111b7bc466",
-                    "label": "Przycisk",
-                    "name": "text_and_img_btn",
-                    "aria-label": "",
-                    "type": "link",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "33.33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "parent_repeater": "field_68760c1aedcf0"
-                },
-                {
-                    "key": "field_68760f89eb4b0",
-                    "label": "Ikona z tekstem",
-                    "name": "text_and_img_icon_group",
-                    "aria-label": "",
-                    "type": "group",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "33.33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "layout": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_68760fc1eb4b1",
-                            "label": "Ikona",
-                            "name": "text_and_img_icon",
-                            "aria-label": "",
-                            "type": "image",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "50",
-                                "class": "",
-                                "id": ""
-                            },
-                            "return_format": "url",
-                            "library": "all",
-                            "min_width": "",
-                            "min_height": "",
-                            "min_size": "",
-                            "max_width": "",
-                            "max_height": "",
-                            "max_size": "",
-                            "mime_types": "",
-                            "preview_size": "medium"
-                        },
-                        {
-                            "key": "field_68760fd5eb4b2",
-                            "label": "Tekst",
-                            "name": "text_and_img_icon_text",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "50",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        }
-                    ],
                     "parent_repeater": "field_68760c1aedcf0"
                 },
                 {
@@ -178,7 +76,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "66.66",
+                        "width": "33",
                         "class": "",
                         "id": ""
                     },
@@ -190,16 +88,54 @@
                     "parent_repeater": "field_68760c1aedcf0"
                 },
                 {
-                    "key": "field_685111d7bc467",
-                    "label": "Obraz (tło)",
-                    "name": "text_and_img_img_bg",
+                    "key": "field_685111afbc465",
+                    "label": "Tekst",
+                    "name": "text_and_img_text",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0,
+                    "parent_repeater": "field_68760c1aedcf0"
+                },
+                {
+                    "key": "field_685111b7bc466",
+                    "label": "Przycisk",
+                    "name": "text_and_img_btn",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "parent_repeater": "field_68760c1aedcf0"
+                },
+                {
+                    "key": "field_686cf5178eebe",
+                    "label": "Logo",
+                    "name": "text_and_img_img_logo",
                     "aria-label": "",
                     "type": "image",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "33.33",
+                        "width": "33",
                         "class": "",
                         "id": ""
                     },
@@ -217,7 +153,7 @@
                 },
                 {
                     "key": "field_686cf4fc8eebd",
-                    "label": "Obraz (front)",
+                    "label": "Nakładka",
                     "name": "text_and_img_img_front",
                     "aria-label": "",
                     "type": "image",
@@ -225,7 +161,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "33.33",
+                        "width": "33",
                         "class": "",
                         "id": ""
                     },
@@ -242,21 +178,23 @@
                     "parent_repeater": "field_68760c1aedcf0"
                 },
                 {
-                    "key": "field_686cf5178eebe",
-                    "label": "Obraz (logo)",
-                    "name": "text_and_img_img_logo",
+                    "key": "field_685111d7bc467",
+                    "label": "Obrazy",
+                    "name": "text_and_img_img_bg",
                     "aria-label": "",
-                    "type": "image",
+                    "type": "gallery",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "33.33",
+                        "width": "",
                         "class": "",
                         "id": ""
                     },
                     "return_format": "url",
                     "library": "all",
+                    "min": "",
+                    "max": "",
                     "min_width": "",
                     "min_height": "",
                     "min_size": "",
@@ -264,6 +202,7 @@
                     "max_height": "",
                     "max_size": "",
                     "mime_types": "",
+                    "insert": "append",
                     "preview_size": "medium",
                     "parent_repeater": "field_68760c1aedcf0"
                 }
@@ -302,5 +241,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1752831997
+    "modified": 1755766886
 }

@@ -13,6 +13,12 @@ require_once get_template_directory() . '/functions/helpers.php';
 require_once get_template_directory() . '/functions/custom_functions.php';
 require_once get_template_directory() . '/lib/CF7BootstrapInputs.php';
 
+// Add WooCommerce theme support
+add_action('after_setup_theme', 'add_woocommerce_support');
+function add_woocommerce_support() {
+    add_theme_support('woocommerce');
+}
+
 add_filter('woocommerce_enqueue_styles', 'jk_dequeue_styles');
 function jk_dequeue_styles($enqueue_styles)
 {
@@ -26,19 +32,19 @@ function jk_dequeue_styles($enqueue_styles)
 $cf7BootstrapInputs = new CF7BootstrapInputs();
 $cf7BootstrapInputs->init();
 
-add_filter( 'woocommerce_loop_add_to_cart_link', 'custom_add_span_inside_add_to_cart', 10, 3 );
+// add_filter( 'woocommerce_loop_add_to_cart_link', 'custom_add_span_inside_add_to_cart', 10, 3 );
 
-function custom_add_span_inside_add_to_cart( $html, $product, $args ) {
-    // Example: insert <span class="custom-span">text</span> after the text inside the <a>
-    // Original $html is something like:
-    // <a href="..." class="button add_to_cart_button">Add to cart</a>
+// function custom_add_span_inside_add_to_cart( $html, $product, $args ) {
+//     // Example: insert <span class="custom-span">text</span> after the text inside the <a>
+//     // Original $html is something like:
+//     // <a href="..." class="button add_to_cart_button">Add to cart</a>
 
-    // Find the closing tag > and insert span after it
-    $custom_html = str_replace('>', '><span>', $html);
-    $custom_html = str_replace('<', '</span><', $custom_html);
+//     // Find the closing tag > and insert span after it
+//     $custom_html = str_replace('>', '><span>', $html);
+//     $custom_html = str_replace('<', '</span><', $custom_html);
 
-    return $custom_html;
-}
+//     return $custom_html;
+// }
 
 add_action('wp_enqueue_scripts', function() {
     wp_enqueue_script(
@@ -62,9 +68,26 @@ function add_to_cart_callback() {
 
     $product_id = absint($_POST['product_id'] ?? 0);
     $quantity = absint($_POST['quantity'] ?? 1);
+    $variation_id = absint($_POST['variation_id'] ?? 0);
+    
+    // Get variation attributes if present
+    $variation_data = array();
+    if ($variation_id > 0) {
+        foreach ($_POST as $key => $value) {
+            if (substr($key, 0, 10) === 'attribute_') {
+                $variation_data[$key] = wc_clean($value);
+            }
+        }
+    }
 
     if ($product_id > 0 && WC()->cart) {
-        $added = WC()->cart->add_to_cart($product_id, $quantity);
+        if ($variation_id > 0) {
+            // Handle variable product
+            $added = WC()->cart->add_to_cart($product_id, $quantity, $variation_id, $variation_data);
+        } else {
+            // Handle simple product
+            $added = WC()->cart->add_to_cart($product_id, $quantity);
+        }
 
         if ($added) {
             // Return new cart fragments to update mini cart, etc.
@@ -86,6 +109,33 @@ function get_cart_count_callback() {
     // Get total items in cart
     $count = WC()->cart->get_cart_contents_count();
     wp_send_json_success(['count' => $count]);
+}
+
+// Handle standard WooCommerce variation form submissions
+add_action('template_redirect', 'handle_variation_form_submission');
+function handle_variation_form_submission() {
+    if (isset($_POST['add-to-cart']) && isset($_POST['variation_id']) && $_POST['variation_id'] > 0) {
+        $product_id = intval($_POST['add-to-cart']);
+        $variation_id = intval($_POST['variation_id']);
+        $quantity = isset($_POST['quantity']) ? intval($_POST['quantity']) : 1;
+        
+        // Get variation attributes
+        $variation_data = array();
+        foreach ($_POST as $key => $value) {
+            if (substr($key, 0, 10) === 'attribute_') {
+                $variation_data[$key] = wc_clean($value);
+            }
+        }
+        
+        // Add to cart
+        $cart_item_key = WC()->cart->add_to_cart($product_id, $quantity, $variation_id, $variation_data);
+        
+        if ($cart_item_key) {
+            // Redirect to same page with success parameter to prevent form resubmission
+            wp_safe_redirect(add_query_arg('added-to-cart', $product_id));
+            exit;
+        }
+    }
 }
 
 /* najniższa cena sprzed 30 dni */
@@ -224,6 +274,22 @@ function display_product_additional_data() {
 
   echo '<table class="single-product__table">';
 
+ if ( ! $product->is_taxable() ) {
+        return; // Produkt nieopodatkowany
+    }
+
+    // Pobierz stawki podatku dla klasy podatkowej produktu
+    $tax_class = $product->get_tax_class();
+    $tax_rates = WC_Tax::get_rates( $tax_class );
+
+    // Wyciągnij pierwszą stawkę (zakładamy jedną stawkę VAT na produkt)
+    if ( ! empty( $tax_rates ) ) {
+        $rate = reset( $tax_rates );
+        $vat_percent = $rate['rate']; // Np. 23.0000
+
+        echo '<tr><th>Podatek VAT</th><td>' . number_format( $vat_percent, 2, '.', '' ) . '%</td></tr>';
+    }
+
   if($ean_code) echo '<tr><th>Kod EAN</th><td>' . $ean_code . '</td></tr>';
   if($quality) echo '<tr><th>Klasa wyrobu</th><td>' . $quality . '</td></tr>';
   if($nfz_code) echo '<tr><th>Kod NFZ</th><td>' . $nfz_code . '</td></tr>';
@@ -284,22 +350,23 @@ function show_unavailable_instead_of_price( $price_html, $product ) {
     return $price_html;
 }
 
-add_filter( 'woocommerce_loop_add_to_cart_link', 'variants_instead_of_add_to_cart_btn', 10, 2 );
+// add_filter( 'woocommerce_loop_add_to_cart_link', 'variants_instead_of_add_to_cart_btn', 10, 2 );
 
-function variants_instead_of_add_to_cart_btn( $button, $product ) {
-    if ( $product->is_type( 'variable' ) ) {
-        $url = get_permalink( $product->get_id() );
-        $label = 'Zobacz warianty';
+// function variants_instead_of_add_to_cart_btn( $button, $product ) {
+//     if ( $product->is_type( 'variable' ) ) {
+        
+//         $url = get_permalink( $product->get_id() );
+//         $label = 'Zobacz warianty';
 
-        return sprintf(
-            '<a href="%s" class="btn"><span>%s</span></a>',
-            esc_url( $url ),
-            esc_html( $label )
-        );
-    }
+//         return sprintf(
+//             '<a href="%s" class="btn has-variants"><span>%s</span></a>',
+//             esc_url( $url ),
+//             esc_html( $label )
+//         );
+//     }
 
-    return $button;
-}
+//     return $button;
+// }
 
 // add_filter( 'woocommerce_get_price_html', 'show_variants_instead_of_price', 20, 2 );
 
@@ -336,7 +403,7 @@ function display_price_range_for_variants( $price_html, $product ) {
             if ( $min_price === $max_price ) {
                 return '<span class="price">' . wc_price( $min_price ) . '</span>';
             } else {
-                return '<span class="price"><span class="price-amount">' . wc_price( $min_price ) . '-' . wc_price( $max_price ) . '</span></span>';
+                return '<span class="price"><span class="price-amount">' . wc_price( $min_price ) . '<span class="woocommerce-Price-amount amount"><bdi>-</bdi></span>' . wc_price( $max_price ) . '</span></span>';
             }
         }
 
@@ -354,3 +421,19 @@ function change_pagination_arrows( $args ) {
     $args['next_text'] = '<button type="button" class="btn btn--arrow btn--arrow-right next" title="Następna strona"><span></span></button>';
     return $args;
 }
+
+add_filter( 'gettext', function( $translated, $text, $domain ) {
+    if ( $text === 'Your cart is currently empty!' ) {
+        return 'Twój koszyk jest pusty!';
+    }
+    return $translated;
+}, 10, 3 );
+
+add_filter('woocommerce_add_error', 'candy_woocommerce_customize_error');
+function candy_woocommerce_customize_error($error)
+{
+    return str_replace('płatnika', '', $error);
+}
+
+// Remove default position
+remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );

@@ -21,11 +21,11 @@ if ( ! wp_doing_ajax() ) {
 	do_action( 'woocommerce_review_order_before_payment' );
 }
 ?>
-<h3 class="my-checkout__title my-checkout__title-4 mt-60 mb-30">5. Metoda płatności</h3>
+<h3 class="my-checkout__title my-checkout__title-4 mt-60 mb-30">4. Metoda płatności</h3>
 <div id="payment" class="woocommerce-checkout-payment">
-	<?php if ( WC()->cart->needs_payment() ) : ?>
-		<ul class="wc_payment_methods payment_methods methods">
-			<?php
+  <?php if ( WC()->cart->needs_payment() ) : ?>
+  <ul class="wc_payment_methods payment_methods methods">
+    <?php
 			if ( ! empty( $available_gateways ) ) {
 				foreach ( $available_gateways as $gateway ) {
 					wc_get_template( 'checkout/payment-method.php', array( 'gateway' => $gateway ) );
@@ -36,27 +36,53 @@ if ( ! wp_doing_ajax() ) {
 				echo '</li>';
 			}
 			?>
-		</ul>
-	<?php endif; ?>
-	<div class="form-row place-order">
-		<noscript>
-			<?php
+  </ul>
+  <?php endif; ?>
+  <div class="form-row place-order">
+    <noscript>
+      <?php
 			/* translators: $1 and $2 opening and closing emphasis tags respectively */
 			printf( esc_html__( 'Since your browser does not support JavaScript, or it is disabled, please ensure you click the %1$sUpdate Totals%2$s button before placing your order. You may be charged more than the amount stated above if you fail to do so.', 'woocommerce' ), '<em>', '</em>' );
 			?>
-			<br/><button type="submit" class="button alt<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="woocommerce_checkout_update_totals" value="<?php esc_attr_e( 'Update totals', 'woocommerce' ); ?>"><?php esc_html_e( 'Update totals', 'woocommerce' ); ?></button>
-		</noscript>
+      <br /><button type="submit"
+        class="button alt<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>"
+        name="woocommerce_checkout_update_totals"
+        value="<?php esc_attr_e( 'Update totals', 'woocommerce' ); ?>"><?php esc_html_e( 'Update totals', 'woocommerce' ); ?></button>
+    </noscript>
 
-		<?php wc_get_template( 'checkout/terms.php' ); ?>
+    <?php wc_get_template( 'checkout/terms.php' ); ?>
 
-		<?php do_action( 'woocommerce_review_order_before_submit' ); ?>
+    <div class="order-agreements">
+      <p class="form-row form-row-wide form-row-checkbox validate-required" id="order_agreement_1_field"
+        data-priority="20" data-fcf-field="order_agreement_1">
+        <label for="order_agreement_1">
+          <input type="checkbox" class="input-checkbox" name="order_agreement_1" id="order_agreement_1" value="Tak"
+            data-fcf-field-input="order_agreement_1">
+          Kontynuując zamówienie wyrażasz zgodę na naszą<a href="/polityka-prywatnosci"> politykę prywatności</a>. <abbr
+            class="required" title="Pole wymagane">*</abbr>
+        </label>
+      </p>
+      <p class="form-row form-row-wide form-row-checkbox validate-required" id="order_agreement_2_field"
+        data-priority="30" data-fcf-field="order_agreement_2">
+        <label for="order_agreement_2">
+          <input type="checkbox" class="input-checkbox" name="order_agreement_2" id="order_agreement_2" value="Tak"
+            data-fcf-field-input="order_agreement_2">
+          Kontynuując zamówienie wyrażasz zapoznanie się z naszym <a href="/regulamin"> regulaminem</a>. <abbr
+            class="required" title="Pole wymagane">*</abbr>
+        </label>
+      </p>
+    </div>
 
-		<?php echo apply_filters( 'woocommerce_pay_order_button_html', '<button type="submit" class="button alt' . esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ) . '" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '"><div class="custom-button__first-wrapper"><div class="custom-button__second-wrapper">' . esc_html( $order_button_text ) . '</div></div></button>' ); // @codingStandardsIgnoreLine ?>
+    <?php do_action( 'woocommerce_review_order_before_submit' ); ?>
 
-		<?php do_action( 'woocommerce_review_order_after_submit' ); ?>
 
-		<?php wp_nonce_field( 'woocommerce-process_checkout', 'woocommerce-process-checkout-nonce' ); ?>
-	</div>
+    <?php echo apply_filters( 'woocommerce_pay_order_button_html', '<button type="submit" class="button btn alt' . esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ) . '" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '"><span>' . esc_html( $order_button_text ) . '</span></button>' ); // @codingStandardsIgnoreLine ?>
+
+    <?php do_action( 'woocommerce_review_order_after_submit' ); ?>
+
+    <?php wp_nonce_field( 'woocommerce-process_checkout', 'woocommerce-process-checkout-nonce' ); ?>
+  </div>
+
 </div>
 <?php
 if ( ! wp_doing_ajax() ) {

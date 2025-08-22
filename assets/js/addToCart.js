@@ -1,11 +1,12 @@
 jQuery(document).ready(function ($) {
-  $('body').on('click', '.product__add-to-cart a', function (e) {
+  $(document.body).off('click', '.ajax_add_to_cart');
+
+  $('body').on('click', '.product__add-to-cart a:not(.has-variants), .single_add_to_cart_button', function (e) {
     e.preventDefault();
 
     let button = $(this);
     let product_id = button.data('product_id');
     let quantity = button.data('quantity') || 1;
-
     button.addClass('btn--loader');
 
     $.ajax({
@@ -21,15 +22,21 @@ jQuery(document).ready(function ($) {
         button.removeClass('btn--loader');
 
         if (response && response.error) {
-          modal(response.message || 'Error adding to cart');
+          modal(response.message || 'Wystąpił błąd podczas dodawania do koszyka.');
           return;
         }
 
         if (response && !response.error) {
-          modal(
-            response.message || 'Product added to cart successfully!',
-            response.fragments['div.widget_shopping_cart_content'] || null
-          );
+          if (response.fragments && response.fragments['div.widget_shopping_cart_content']) {
+            modal('Produkt został dodany do koszyka.', createModalContent(response.fragments['div.widget_shopping_cart_content']), 'side');
+          }
+
+          const cartCount = document.querySelector('.header__cart-count-number');
+          cartCount.style.display = 'block';
+          if (cartCount) {
+            let cartQuantity = parseInt(cartCount.textContent) || 0;
+            cartCount.textContent = cartQuantity + quantity;
+          }
 
           $.ajax({
             url: AjaxCart.ajax_url,
@@ -39,42 +46,112 @@ jQuery(document).ready(function ($) {
             },
             success: function (response) {
               if (response.success && response.data) {
-                $('.header__cart-count-number').text(response.data.count);
+                // check cart count from response
+                cartCount.textContent = response.data.count;
               }
             },
           });
         } else {
-          console.log(response.message || 'Error adding to cart');
+          console.log(response.message || 'Wystąpił błąd podczas dodawania do koszyka.');
         }
       },
       error: function () {
-        modal('AJAX error. Please try again.');
+        modal('Błąd zapytania: Nie udało się dodać produktu do koszyka.');
         button.removeClass('btn--loader');
-        console.log('AJAX error.');
+        // console.log('AJAX error.');
       },
     });
   });
+
+  $('body').on('added_to_cart', function (event, fragments, cart_hash, $button) {
+    // console.log('AJAX add to cart triggered!');
+    // console.log('Cart fragments:', fragments); // DOM fragments to update cart contents
+    // console.log('Cart hash:', cart_hash);     // Unique cart hash
+    // console.log('Button clicked:', $button);  // The button that triggered the event
+    if (fragments && fragments['div.widget_shopping_cart_content']) {
+      modal('Produkt został dodany do koszyka.', createModalContent(fragments['div.widget_shopping_cart_content']), 'side');
+      // modal("Produkt został dodany do koszyka.", `<a href="/transmet/koszyk/" style="margin: auto;" class="added_to_cart wc-forward btn" title="Zobacz koszyk"><span>Zobacz koszyk</a>`);
+      // modal("Produkt został dodany do koszyka.", fragments['div.widget_shopping_cart_content'] || null);
+    }
+  });
+
+  $('body').on('removed_from_cart', function (event, fragments, cart_hash, $button) {
+    const cartCount = document.querySelector('.header__cart-count-number');
+    cartCount.style.display = 'block';
+    if (cartCount) {
+      let cartQuantity = parseInt(cartCount.textContent) || 0;
+      const itemQuantity = $button[0].parentElement.querySelector('.quantity').textContent.split(' ')[0];
+      cartCount.textContent = cartQuantity - itemQuantity;
+    }
+
+    $.ajax({
+      url: AjaxCart.ajax_url,
+      type: 'POST',
+      data: {
+        action: 'get_cart_count',
+      },
+      success: function (response) {
+        if (response.success && response.data) {
+          // check cart count from response
+          cartCount.textContent = response.data.count;
+        }
+      },
+    });
+
+    $button[0].parentElement.remove();
+  });
 });
 
-function modal(message, content = null) {
+function createModalContent(content) {
   const wrapper = document.createElement('div');
-  wrapper.classList.add('modal__wrapper');
+  let fixedContent = String(content).replaceAll('\t', '').replaceAll('\n', '').split('<li');
+  fixedContent.shift();
+  fixedContent.map((item, index) => {
+    if (item.trim() === '') return;
+    fixedContent[index] = '<li' + item;
+  });
+  fixedContent[fixedContent.length - 1] = fixedContent[fixedContent.length - 1].split('</li>')[0] + '</li>';
+  fixedContent = fixedContent.join('');
+
+  wrapper.innerHTML = fixedContent;
+  const buttons = `<div class="modal__custom-buttons">
+        <button class="btn--link modal__custom-btn" onclick="closeModal()">
+          <span>Kontynuuj zakupy</span>
+        </button>
+        <button  onclick="window.location.href='koszyk/'" class="added_to_cart wc-forward btn--link modal__custom-btn" title="Zobacz koszyk">
+          <span>Zobacz koszyk</span>
+        </button>
+        <button class="btn modal__custom-btn" onclick="window.location.href='zamowienie/'">
+          <span>Przejdź do zamówienia</span>
+        </button>
+      </div>`;
+
+  const modalContent = document.createElement('div');
+  modalContent.innerHTML = '<ul class="modal__custom-items widget_shopping_cart_content">' + fixedContent + '</ul>' + buttons;
+  return modalContent.innerHTML;
+}
+
+function modal(message, content = null, type = "standard") {
+  const wrapper = document.createElement('div');
+  wrapper.classList.add('modal');
+  wrapper.classList.add('modal--' + type);
   setTimeout(() => {
-    wrapper.classList.add('modal__wrapper--active');
+    wrapper.classList.add('modal--active');
   }, 10);
   wrapper.addEventListener('click', (e) => {
     if (e.target === wrapper) {
-      removeModal();
+      closeModal();
     }
   });
 
   const modal = document.createElement('div');
-  modal.classList.add('modal');
+  modal.classList.add('modal__box');
   setTimeout(() => {
-    modal.classList.add('modal--active');
+    modal.classList.add('modal__box--active');
   }, 10);
 
   const modalHeading = document.createElement('h2');
+  modalHeading.classList.add('modal__heading');
   modalHeading.textContent = message;
   modal.append(modalHeading);
 
@@ -89,21 +166,24 @@ function modal(message, content = null) {
   modalClose.classList.add('modal__close');
   modalClose.innerHTML = '&times;';
   modalClose.addEventListener('click', () => {
-    removeModal();
+    closeModal();
   });
   modal.append(modalClose);
 
   wrapper.appendChild(modal);
 
   document.body.appendChild(wrapper);
+};
 
-  const removeModal = () => {
-    wrapper.classList.remove('modal--active');
-    setTimeout(() => {
-      wrapper.classList.remove('modal__wrapper--active');
-    }, 300);
-    setTimeout(() => {
+function closeModal() {
+  const wrapper = document.querySelector('.modal');
+  wrapper.classList.remove('modal--active');
+  setTimeout(() => {
+    wrapper.classList.remove('modal__wrapper--active');
+  }, 300);
+  setTimeout(() => {
+    if (wrapper) {
       document.body.removeChild(wrapper);
-    }, 300);
-  };
-}
+    }
+  }, 300);
+};

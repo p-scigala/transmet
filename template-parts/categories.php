@@ -7,26 +7,26 @@
       <div class="categories__content">
 
         <?php if(get_field("categories_title_01")) { ?>
-        <h2 class="categories__header scroll-anim">
+        <h2 class="categories__heading heading animate">
           <?php echo get_field("categories_title_01"); ?>
         </h2>
         <?php } ?>
 
         <?php if(get_field("categories_title_02")) { ?>
-        <h3 class="categories__subheader scroll-anim">
+        <h3 class="categories__subheading subheading animate delay-1">
           <?php echo get_field("categories_title_02"); ?>
         </h3>
         <?php } ?>
 
         <?php if(get_field("categories_text")) { ?>
-        <div class="categories__text scroll-anim">
+        <div class="categories__description description animate delay-2">
           <?php echo get_field("categories_text"); ?>
         </div>
         <?php } ?>
 
       </div>
 
-      <div class="categories__items categories__slick slick-carousel">
+      <div class="categories__items slider slider--with-bar slider--with-buttons animate delay-3">
         <?php
       $args = array(
         "taxonomy"     => "product_cat",
@@ -46,14 +46,13 @@
           $image = wp_get_attachment_url($thumbnail_id);
           ?>
 
-        <div class="categories__item scroll-anim">
+        <div class="categories__item animate">
           <a class="categories__link panel" href="<?php echo get_term_link($cat->slug, "product_cat"); ?>">
             <div class="panel__content">
               <div class="categories__item-img">
                 <img src="<?php echo $image; ?>" alt="<?php echo $cat->name; ?>" />
               </div>
               <h4><?php echo $cat->name; ?></h4>
-              <span>Sprawdź</span>
             </div>
           </a>
         </div>

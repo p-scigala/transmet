@@ -10,6 +10,11 @@ body .single-product {
     margin-top: 30px;
   }
 
+  @media (max-width: 500px) {
+    max-width: unset !important;
+    min-width: unset !important;
+  }
+
   &__main {
     display: flex;
     gap: 30px;
@@ -46,9 +51,17 @@ body .single-product {
     font-size: 39px;
     line-height: 42px;
     margin: 0 0 20px 0;
+    text-align: left;
+    height: fit-content;
+    overflow: unset;
 
     @media (max-width: 1024px) {
       max-width: unset;
+    }
+
+    @media (max-width: 800px) {
+      font-size: 24px;
+      line-height: normal;
     }
   }
 
@@ -59,7 +72,19 @@ body .single-product {
   }
 
   .price {
+    .price {
+      width: fit-content;
+    }
+
+    .price-amount {
+      width: fit-content;
+      display: block;
+      max-width: none;
+    }
+
     width: fit-content;
+    display: flex;
+    flex-direction: row-reverse;
     gap: 50px;
     margin: 20px 0 5px 0;
 
@@ -71,6 +96,13 @@ body .single-product {
     del bdi {
       font-size: 25px;
       line-height: 31px;
+    }
+  }
+
+  .woocommerce-product-details__short-description {
+    .price {
+      width: 100%;
+      justify-content: flex-end;
     }
   }
 
@@ -191,7 +223,7 @@ body .single-product {
     margin-bottom: 20px;
 
     a {
-      color: var(--color-primary-blue);
+      color: var(--color-blue);
       font-weight: bold;
       font-size: 15px;
       line-height: 16px;
@@ -206,6 +238,99 @@ body .single-product {
       display: block;
     }
   }
+
+  &__info-panel-wrapper {
+    display: flex;
+    gap: 30px 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+
+    @media (max-width: 800px) {
+      flex-direction: column;
+    }
+  }
+
+  &__info-panel {
+    border: solid 1px var(--color-border);
+    padding: 16px;
+    border-radius: 5px;
+    width: calc(50% - 15px);
+    min-height: 116px;
+
+    @media (max-width: 800px) {
+      width: 321px;
+      max-width: 100%;
+    }
+
+    &-icon {
+      height: 40px;
+      max-width: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &-img {
+        object-fit: contain;
+        display: block;
+        max-height: 56px;
+      }
+    }
+
+    &-heading {
+      font-size: 12px;
+      line-height: 15px;
+    }
+
+    &-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    &-text,
+    &-text * {
+      font-size: 11px;
+      line-height: 14px;
+      margin: 0;
+
+      a {
+        font-weight: bold;
+        text-decoration: underline;
+
+        &:hover {
+          color: var(--color-blue);
+        }
+      }
+    }
+  }
+
+  &.product-type-variable {
+    .price {
+      display: none !important;
+    }
+
+    .woocommerce-variation-price {
+      font-size: 22px;
+      font-weight: bold;
+      display: flex;
+      gap: 5px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      width: 100%;
+      max-width: 300px;
+      overflow: hidden;
+      width: fit-content;
+      display: block;
+      max-width: none;
+
+      bdi {
+        font-size: 32px;
+        line-height: 40px;
+        font-weight: bold;
+      }
+    }
+  }
 }
 
 .product-gallery {
@@ -215,6 +340,11 @@ body .single-product {
     position: relative;
     overflow-x: hidden;
 
+    @media (max-width: 800px) {
+      height: calc(100vw - 30px);
+      max-height: 60vw;
+    }
+
     .slick-list,
     .slick-track {
       height: 100%;
@@ -222,14 +352,17 @@ body .single-product {
 
     .slick-prev {
       left: 20px;
+      position: absolute;
     }
 
     .slick-next {
       right: 20px;
+      position: absolute;
     }
   }
 
   &__item {
+
     a,
     img {
       height: 100%;
@@ -257,6 +390,10 @@ body .single-product {
     .slick-track {
       height: 100%;
     }
+
+    @media(max-width: 500px) {
+      gap: 10px;
+    }
   }
 
   &__nav {
@@ -273,6 +410,7 @@ body .single-product {
 
       @media (max-width: 800px) {
         width: 120px;
+        margin-left: 10px;
       }
 
       a,

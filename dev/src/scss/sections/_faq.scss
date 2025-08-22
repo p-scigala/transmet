@@ -1,43 +1,39 @@
 .faq {
   &__wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
+    gap: 30px;
 
     @media (max-width: 1024px) {
       flex-direction: column;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 800px) {
+      gap: 10px;
     }
   }
 
   &__content {
-    // width: calc(100% - 702px);
     width: 50%;
-    padding-right: 32px;
 
     @media (max-width: 1024px) {
-      padding-left: 0;
-      padding-bottom: 32px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      @include flex-column;
+      width: fit-content;
+    }
+
+    &-inner {
       width: 100%;
+      max-width: var(--grid-4);
     }
   }
 
-  &__header {
-    font-size: 44px;
-    line-height: 55px;
-  }
-
-  &__subheader {
-    font-size: 24px;
-    line-height: 30px;
-  }
-
   &__items {
-    // width: 702px;
     width: 50%;
+
+    &-inner {
+      width: 100%;
+      max-width: var(--grid-5);
+    }
 
     @media (max-width: 1024px) {
       width: 100%;

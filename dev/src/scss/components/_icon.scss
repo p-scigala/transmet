@@ -1,0 +1,15 @@
+.icon {
+  @include flex-center;
+  width: 87px;
+  height: 87px;
+  min-width: 87px;
+  min-height: 87px;
+  border-radius: 50%;
+  background-color: var(--color-darkblue);
+
+  img {
+    max-width: 45px;
+    max-height: 45px;
+    object-fit: contain;
+  }
+}

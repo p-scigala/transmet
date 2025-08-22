@@ -1,7 +1,6 @@
 <?php if(have_rows('options_socials_repeater', 'option')): ?>
 <div class="socials <?php echo $args['class']; ?>">
-
-  <?php while(have_rows('options_socials_repeater')): the_row();?>
+  <?php while(have_rows('options_socials_repeater', 'option')): the_row();?>
 
   <div class="socials__item">
     <a class="socials__link" href="<?php echo get_sub_field("options_socials_url"); ?>" target="_blank">

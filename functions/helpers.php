@@ -166,7 +166,9 @@ function handle_after_theme_setup()
 
   // Menus
   register_nav_menu('navbar', __('Menu główne', 'candyweb'));
-  register_nav_menu('footer', __('Menu stopka', 'candyweb'));
+  register_nav_menu('footer-1', __('Menu stopka (kolumna 1)', 'candyweb'));
+  register_nav_menu('footer-2', __('Menu stopka (kolumna 2)', 'candyweb'));
+  register_nav_menu('topbar', __('Menu górne', 'candyweb'));
 }
 
 

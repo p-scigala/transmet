@@ -24,40 +24,34 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 $show_shipping_calculator = ! empty( $show_shipping_calculator );
 $calculator_text          = '';
 ?>
+<tr class="woocommerce-shipping-totals-title">
+  <th colspan="2">
+		<?php echo wp_kses_post( $package_name ); ?>
+	</th>
+</tr>
+
 <tr class="woocommerce-shipping-totals shipping">
-
-	<th><?php echo _e('Odbiór/Dostawa', 'candyweb'); ?></th>
-	<td data-title="<?php echo esc_attr( $package_name ); ?>">
-		<?php if ( ! empty( $available_methods ) && is_array( $available_methods ) ) : ?>
-			<div class="woocommerce-shipping-totals__top"></div>
-<div class="woocommerce-shipping-totals__bottom"></div>
-			<ul id="shipping_method" class="woocommerce-shipping-methods">
-				<?php foreach ( $available_methods as $method ) : ?>
-					<li>
-						<?php
-						if ($method->get_instance_id() == '1') {
-							$method_image = get_template_directory_uri() . '/assets/img/shipping-free.svg';
-						}elseif ($method->get_instance_id() == '2') {
-							$method_image = get_template_directory_uri() . '/assets/img/shipping-dostawa.svg';
-						}
-
-
+  <td colspan="2"data-title="<?php echo esc_attr( $package_name ); ?>">
+    <?php if ( ! empty( $available_methods ) && is_array( $available_methods ) ) : ?>
+    <ul id="shipping_method" class="woocommerce-shipping-methods">
+      <?php foreach ( $available_methods as $method ) : ?>
+      <li>
+        <?php
 						if ( 1 < count( $available_methods ) ) {
 							printf( '<input type="radio" name="shipping_method[%1$d]" data-index="%1$d" id="shipping_method_%1$d_%2$s" value="%3$s" class="shipping_method" %4$s />', $index, esc_attr( sanitize_title( $method->id ) ), esc_attr( $method->id ), checked( $method->id, $chosen_method, false ) ); // WPCS: XSS ok.
 						} else {
 							printf( '<input type="hidden" name="shipping_method[%1$d]" data-index="%1$d" id="shipping_method_%1$d_%2$s" value="%3$s" class="shipping_method" />', $index, esc_attr( sanitize_title( $method->id ) ), esc_attr( $method->id ) ); // WPCS: XSS ok.
 						}
-						printf( '<label for="shipping_method_%1$s_%2$s">
-						<img class="lazy-loaded" src="' . $method_image . '" data-lazy-type="image" data-src="' . $method_image . '"><div class="d-inline-block">
-						%3$s</div></label>', $index, esc_attr( sanitize_title( $method->id ) ), str_replace(':', ' - ', wc_cart_totals_shipping_method_label( $method ) ) ); // WPCS: XSS ok.
+						//printf( '<img src="%1$s" alt="%2$s" class="shipping-method-icon" />', esc_url( $method->get_icon() ), esc_attr( $method->get_label() ) );
+						printf( '<label for="shipping_method_%1$s_%2$s">%3$s</label>', $index, esc_attr( sanitize_title( $method->id ) ), wc_cart_totals_shipping_method_label( $method ) ); // WPCS: XSS ok.
 						do_action( 'woocommerce_after_shipping_rate', $method, $index );
 						?>
-					</li>
-				<?php endforeach; ?>
-			</ul>
-			<?php if ( is_cart() ) : ?>
-				<p class="woocommerce-shipping-destination">
-					<?php
+      </li>
+      <?php endforeach; ?>
+    </ul>
+    <?php if ( is_cart() ) : ?>
+    <p class="woocommerce-shipping-destination">
+      <?php
 					if ( $formatted_destination ) {
 						// Translators: $s shipping destination.
 						printf( esc_html__( 'Shipping to %s.', 'woocommerce' ) . ' ', '<strong>' . esc_html( $formatted_destination ) . '</strong>' );
@@ -66,9 +60,9 @@ $calculator_text          = '';
 						echo wp_kses_post( apply_filters( 'woocommerce_shipping_estimate_html', __( 'Shipping options will be updated during checkout.', 'woocommerce' ) ) );
 					}
 					?>
-				</p>
-			<?php endif; ?>
-			<?php
+    </p>
+    <?php endif; ?>
+    <?php
 		elseif ( ! $has_calculated_shipping || ! $formatted_destination ) :
 			if ( is_cart() && 'no' === get_option( 'woocommerce_enable_shipping_calc' ) ) {
 				echo wp_kses_post( apply_filters( 'woocommerce_shipping_not_enabled_on_cart_html', __( 'Shipping costs are calculated during checkout.', 'woocommerce' ) ) );
@@ -98,12 +92,12 @@ $calculator_text          = '';
 		endif;
 		?>
 
-		<?php if ( $show_package_details ) : ?>
-			<?php echo '<p class="woocommerce-shipping-contents"><small>' . esc_html( $package_details ) . '</small></p>'; ?>
-		<?php endif; ?>
+    <?php if ( $show_package_details ) : ?>
+    <?php echo '<p class="woocommerce-shipping-contents"><small>' . esc_html( $package_details ) . '</small></p>'; ?>
+    <?php endif; ?>
 
-		<?php if ( $show_shipping_calculator ) : ?>
-			<?php woocommerce_shipping_calculator( $calculator_text ); ?>
-		<?php endif; ?>
-	</td>
+    <?php if ( $show_shipping_calculator ) : ?>
+    <?php woocommerce_shipping_calculator( $calculator_text ); ?>
+    <?php endif; ?>
+  </td>
 </tr>

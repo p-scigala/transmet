@@ -1,11 +1,11 @@
 {
     "key": "group_6851166019d1d",
-    "title": "Sekcja - Co nas wyróżnia",
+    "title": "Sekcja - Dlaczego warto",
     "fields": [
         {
             "key": "field_6851168ef0a77",
             "label": "Tekst",
-            "name": "about_text",
+            "name": "why_text",
             "aria-label": "",
             "type": "wysiwyg",
             "instructions": "",
@@ -25,7 +25,7 @@
         {
             "key": "field_68511660f0a75",
             "label": "Tytuł",
-            "name": "about_title_01",
+            "name": "why_title_01",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -45,7 +45,7 @@
         {
             "key": "field_6851167df0a76",
             "label": "Podtytuł",
-            "name": "about_title_02",
+            "name": "why_title_02",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -65,7 +65,7 @@
         {
             "key": "field_6851169df0a78",
             "label": "Lista",
-            "name": "about_list_repeater",
+            "name": "why_list_repeater",
             "aria-label": "",
             "type": "repeater",
             "instructions": "",
@@ -79,7 +79,7 @@
             "layout": "table",
             "pagination": 0,
             "min": 0,
-            "max": 4,
+            "max": 0,
             "collapsed": "",
             "button_label": "Dodaj wiersz",
             "rows_per_page": 20,
@@ -87,7 +87,7 @@
                 {
                     "key": "field_685116d5f0a79",
                     "label": "Ikona",
-                    "name": "about_list_icon",
+                    "name": "why_list_icon",
                     "aria-label": "",
                     "type": "image",
                     "instructions": "",
@@ -113,7 +113,7 @@
                 {
                     "key": "field_685116e7f0a7a",
                     "label": "Tytuł",
-                    "name": "about_list_title",
+                    "name": "why_list_title",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -134,9 +134,9 @@
                 {
                     "key": "field_685116f2f0a7b",
                     "label": "Tekst",
-                    "name": "about_list_text",
+                    "name": "why_list_text",
                     "aria-label": "",
-                    "type": "wysiwyg",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -146,13 +146,63 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "tabs": "all",
-                    "toolbar": "full",
-                    "media_upload": 1,
-                    "delay": 0,
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
                     "parent_repeater": "field_6851169df0a78"
                 }
             ]
+        },
+        {
+            "key": "field_68a704f49a067",
+            "label": "Tło",
+            "name": "why_bg",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_68a7054b9a068",
+            "label": "Nakładka",
+            "name": "why_front",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
         }
     ],
     "location": [
@@ -160,7 +210,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "template-about-us.php"
+                "value": "template-home.php"
             }
         ]
     ],
@@ -173,5 +223,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1752568877
+    "modified": 1755777513
 }

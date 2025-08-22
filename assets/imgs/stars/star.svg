@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Group_1928" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="17.447px" height="16.576px" viewBox="0 0 17.447 16.576" enable-background="new 0 0 17.447 16.576" xml:space="preserve">
+<linearGradient id="Icon_material-star_1_" gradientUnits="userSpaceOnUse" x1="-884.1702" y1="531.166" x2="-884.8702" y2="530.394" gradientTransform="matrix(17.447 0 0 -16.576 15440.9453 8807.9063)">
+	<stop  offset="0" style="stop-color:#FFF703"/>
+	<stop  offset="1" style="stop-color:#F2B437"/>
+</linearGradient>
+<path id="Icon_material-star" fill="url(#Icon_material-star_1_)" d="M8.724,13.321l5.392,3.255l-1.432-6.134l4.764-4.125
+	l-6.273-0.532L8.724,0L6.273,5.784L0,6.316l4.763,4.126l-1.43,6.134L8.724,13.321z"/>
+</svg>

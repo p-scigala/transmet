@@ -1,17 +1,23 @@
 .accordion {
-  background: var(--color-white);
-  transition-duration: 0.3s;
+  @include transition;
   border-bottom: solid 1px var(--color-border);
   position: relative;
 
   &__trigger {
-    padding: 18px 30px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flex-center;
+    @include flex-space-between;
+    gap: 10px;
+    padding: 25px 30px 25px 0;
+    font-size: 16px;
+    line-height: 25px;
+    font-weight: 600;
     cursor: pointer;
-    font-size: 17px;
+
+    @media (max-width: 800px) {
+      padding: 20px 15px 20px 0;
+      font-size: 14px;
+      line-height: 22px;
+    }
   }
 
   &__content {
@@ -19,29 +25,37 @@
     width: 100%;
     font-size: 15px;
     overflow: hidden;
-    transition-duration: 0.3s;
+    @include transition;
   }
 
   &__text {
     width: 100%;
-    padding: 14px 30px 20px 30px;
+    padding: 0 30px 20px 0;
     opacity: 1;
-    transition-duration: 0.3s;
+    @include transition;
+
+    @media (max-width: 800px) {
+      padding: 0 15px 10px 0;
+      font-size: 12px;
+      line-height: 22px;
+    }
+
+    *:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &__icon {
-    width: 16px;
+    width: 18px;
+    min-width: 18px;
     height: 10px;
     background-image: url('../../assets/imgs/arrow-down.svg');
     background-repeat: no-repeat;
     background-size: contain;
-    transition-duration: 0.3s;
+    @include transition;
   }
 
   &.active {
-    background-color: var(--color-gray);
-    border-bottom-color: transparent;
-
     .accordion {
       &__text {
         opacity: 1;

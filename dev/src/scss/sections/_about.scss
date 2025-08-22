@@ -17,8 +17,8 @@
   }
 
   &__text {
-   max-width: 555px;
-   margin: auto;
+    max-width: 555px;
+    margin: auto;
   }
 
   &__items {
@@ -28,6 +28,8 @@
 
     @media (max-width: 1024px) {
       margin-top: 60px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     @media (max-width: 800px) {

@@ -1,34 +1,41 @@
 <?php /* Template Name: Sekcja - Bestsellery */ ?>
 
-<section class="bestsellers">
+<?php if( $args['id']) $id = $args['id']; ?>
+
+<section class="bestsellers" id="<?php echo esc_attr( $id ); ?>">
 
   <div class="bestsellers__wrapper">
     <div class="wrapper">
       <div class="bestsellers__content">
 
         <?php if(get_field("bestsellers_title_01")) { ?>
-        <h2 class="bestsellers__header scroll-anim">
+        <h2 class="bestsellers__heading heading animate">
           <?php echo get_field("bestsellers_title_01"); ?>
         </h2>
         <?php } ?>
 
+        <?php if($args['heading']) { ?>
+        <h2 class="bestsellers__heading heading animate">
+          <?php echo $args['heading']; ?>
+        </h2>
+        <?php } ?>
+
         <?php if(get_field("bestsellers_title_02")) { ?>
-        <h3 class="bestsellers__subheader scroll-anim">
+        <h3 class="bestsellers__subheading subheading animate delay-1">
           <?php echo get_field("bestsellers_title_02"); ?>
         </h3>
         <?php } ?>
 
         <?php if(get_field("bestsellers_text")) { ?>
-        <div class="bestsellers__text scroll-anim">
+        <div class="bestsellers__description description animate delay-2">
           <?php echo get_field("bestsellers_text"); ?>
         </div>
         <?php } ?>
 
       </div>
-    </div>
 
-    <div class="bestsellers__items bestsellers__slick slick-carousel scroll-anim">
-      <?php
+      <div class="bestsellers__items slider slider--with-bar slider--with-buttons animate delay-3">
+        <?php
       $quantity = get_field("bestsellers_text");
 
       $args = array(
@@ -52,10 +59,7 @@
       endwhile;
       wp_reset_query();
     ?>
-    </div>
-
-    <div class="bestsellers__link text-center">
-      <a class="link" href="<?php echo get_permalink( wc_get_page_id( 'shop' ) ); ?>">Wszystkie produkty</a>
+      </div>
     </div>
   </div>
 

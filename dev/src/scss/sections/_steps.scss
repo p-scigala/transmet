@@ -78,6 +78,11 @@
 
     .slick-track {
       // width: calc(300vw - 60px * 3) !important;
+      gap: 30px;
+
+      @media(max-width: 500px) {
+        gap: 10px;
+      }
     }
   }
 

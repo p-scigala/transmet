@@ -63,22 +63,6 @@
             "append": ""
         },
         {
-            "key": "field_685114e357afc",
-            "label": "Przycisk",
-            "name": "text_and_logos_btn",
-            "aria-label": "",
-            "type": "link",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array"
-        },
-        {
             "key": "field_685114f957afd",
             "label": "Logotypy",
             "name": "text_and_logos_logos_repeater",
@@ -154,5 +138,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1752568967
+    "modified": 1755766574
 }

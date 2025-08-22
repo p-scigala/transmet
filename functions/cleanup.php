@@ -59,7 +59,7 @@ add_action( 'init', function () {
 if (!function_exists('show_less_login_info')) {
   function show_less_login_info(): string
   {
-    return "<strong>ERROR</strong>: Stop guessing!";
+    return "Hasło do konta jest nieprawidłowe lub konto nie istnieje.";
   }
 }
 add_filter('login_errors', 'show_less_login_info');

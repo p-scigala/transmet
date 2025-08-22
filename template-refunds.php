@@ -11,7 +11,7 @@
   $layout = get_row_layout();
 
   if ( $layout === 'refunds_text_and_imgs' ) {
-    get_template_part( 'template-parts/text-and-img', 'text-and-img' );
+    get_template_part( 'template-parts/text-and-image', 'text-and-image' );
   }
   
   if ( $layout === 'refunds_steps_list' ) {

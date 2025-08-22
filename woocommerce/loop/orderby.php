@@ -19,6 +19,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
+
+<button class="products__filters-toggle products__filters-toggle--fixed" title="<?php esc_attr_e( 'Filter products', 'woocommerce' ); ?>">
+  <?php include( get_template_directory() . '/assets/imgs/icon-filter.svg' ); ?>
+</button>
+
 <div class="products__orderby">
   <form class="products__orderby-form" method="get">
 
@@ -31,19 +36,6 @@ if ( ! defined( 'ABSPATH' ) ) {
     </select>
 
     <input type="hidden" name="paged" value="1" />
-
-    <script>
-      // document.addEventListener('DOMContentLoaded', function() {
-      //   const select = document.querySelector('.products__orderby-select');
-      
-      //   if (select) {
-      //     select.addEventListener('change', function() {
-      //       const form = select.closest('form');
-      //       if (form) form.submit();
-      //     });
-      //   }
-      // });
-    </script>
 
     <?php wc_query_string_form_fields( null, array( 'orderby', 'submit', 'paged', 'product-page' ) ); ?>
 

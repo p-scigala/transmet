@@ -20,29 +20,41 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <li class="wc_payment_method payment_method_<?php echo esc_attr( $gateway->id ); ?>">
-	<input id="payment_method_<?php echo esc_attr( $gateway->id ); ?>" type="radio" class="input-radio" name="payment_method" value="<?php echo esc_attr( $gateway->id ); ?>" <?php checked( $gateway->chosen, true ); ?> data-order_button_text="<?php echo esc_attr( $gateway->order_button_text ); ?>" />
-	<div>
-	<?php if ($gateway->id == "bluemedia"): ?>
-		<label for="payment_method_<?php echo esc_attr( $gateway->id ); ?>">
-			<span class="payment_method_name">Blue Media</span>
-			<img class="lazy-loaded payment-image-bacs bluemedia-przelewy-checkout" src="<?php echo get_template_directory_uri(); ?>/assets/img/bacs.svg" data-lazy-type="image" data-src="<?php echo get_template_directory_uri(); ?>/assets/img/bacs.svg">
-		</label>
-	<?php else:?>
-	<label for="payment_method_<?php echo esc_attr( $gateway->id ); ?>">
-		<span class="payment_method_name"><?php echo $gateway->get_title();
-		/* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?> </span>
-		
+  <input id="payment_method_<?php echo esc_attr( $gateway->id ); ?>" type="radio" class="input-radio"
+    name="payment_method" value="<?php echo esc_attr( $gateway->id ); ?>" <?php checked( $gateway->chosen, true ); ?>
+    data-order_button_text="<?php echo esc_attr( $gateway->order_button_text ); ?>" />
 
+  <label for="payment_method_<?php echo esc_attr( $gateway->id ); ?>">
 
-		<?php if( $gateway->get_icon()):?>
-			<?php echo $gateway->get_icon(); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?>
-		<?php elseif ($gateway->id == "cod"):?>
-			<img class="lazy-loaded payment-image-bacs" src="<?php echo get_template_directory_uri(); ?>/assets/img/bacs.svg" data-lazy-type="image" data-src="<?php echo get_template_directory_uri(); ?>/assets/img/bacs.svg">
-		<?php else:?>
-		<img class="lazy-loaded payment-image-bacs" src="<?php echo get_template_directory_uri(); ?>/assets/img/bacs.svg" data-lazy-type="image" data-src="<?php echo get_template_directory_uri(); ?>/assets/img/bacs.svg">
-		<?php endif;?>
-	</label>
-	<?php endif;?>
-		</div>
-	
+    <?php if( $gateway->get_icon()): ?>
+    <?php echo $gateway->get_icon(); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?>
+
+    <?php else: ?>
+
+    <?php if ($gateway->id === "cod"): ?>
+    <?php include( get_template_directory() . '/assets/imgs/icon-cod.svg' ); ?>
+    <?php endif; ?>
+
+    <?php if ($gateway->id === "bacs"): ?>
+    <?php include( get_template_directory() . '/assets/imgs/icon-bank.svg' ); ?>
+    <?php endif; ?>
+
+    <?php if ($gateway->id === "paypal"):?>
+    <img class="lazy-loaded payment-image-paypal"
+      src="<?php echo get_template_directory_uri(); ?>/assets/imgs/icon-paypal.svg" data-lazy-type="image"
+      data-src="<?php echo get_template_directory_uri(); ?>/assets/imgs/icon-paypal.svg">
+    <?php endif; ?>
+
+    <?php endif; ?>
+
+    <?php echo $gateway->get_title(); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?>
+    <?php echo $gateway->get_icon(); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?>
+  </label>
+  <?php if ( $gateway->has_fields() || $gateway->get_description() ) : ?>
+  <div class="payment_box payment_method_<?php echo esc_attr( $gateway->id ); ?>"
+    <?php if ( ! $gateway->chosen ) : /* phpcs:ignore Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace */ ?>style="display:none;"
+    <?php endif; /* phpcs:ignore Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace */ ?>>
+    <?php $gateway->payment_fields(); ?>
+  </div>
+  <?php endif; ?>
 </li>

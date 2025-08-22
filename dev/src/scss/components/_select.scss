@@ -19,7 +19,7 @@ select,
   position: relative;
   width: 300px;
   user-select: none;
-  z-index: 99999;
+  z-index: 99998;
 
   &-selected {
     background-color: var(--color-white);
@@ -40,8 +40,12 @@ select,
       height: 10px;
       display: inline-block;
       margin-left: 5px;
-      margin-top: -14px;
+      line-height: 10px;
     }
+  }
+
+  &.active {
+    z-index: 99999;
   }
 
   &-placeholder {
@@ -70,7 +74,7 @@ select,
       cursor: pointer;
 
       &:hover {
-        background-color: var(--color-primary-blue);
+        background-color: var(--color-blue);
         color: var(--color-white);
       }
     }
@@ -91,7 +95,6 @@ select,
 
       &-selected:after {
         border-color: transparent transparent #3498db transparent;
-        top: 12px;
       }
     }
   }

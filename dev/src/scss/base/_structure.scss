@@ -1,0 +1,140 @@
+@mixin size-full {
+  width: 100%;
+  height: 100%;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@mixin flex-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@mixin flex-nowrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@mixin gap($size) {
+  @if $size ==xs {
+    gap: var(--p-xs);
+  }
+
+  @else if $size ==s {
+    gap: var(--p-s);
+  }
+
+  @else if $size ==m {
+    gap: var(--p-m);
+  }
+
+  @else if $size ==l {
+    gap: var(--p-l);
+  }
+
+  @else if $size ==xl {
+    gap: var(--p-xl);
+  }
+}
+
+@mixin list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+}
+
+@mixin absolute {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+@mixin half-width($padding) {
+  width: calc(50% - $padding / 2);
+}
+
+@mixin transition {
+  transition-duration: var(--t-normal);
+}
+
+@mixin transition-short {
+  transition-duration: var(--t-short);
+}
+
+@mixin transition-long {
+  transition-duration: var(--t-long);
+}
+
+@mixin transition-very-long {
+  transition-duration: var(--t-xlong);
+}
+
+section {
+  width: 100%;
+  margin: var(--m-l) auto;
+}
+
+.wrapper {
+  width: var(--c-l);
+  max-width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 var(--p-l);
+  @include flex-center;
+
+  @media (max-width: 1400px) {
+    width: var(--c-m);
+  }
+
+  @media (max-width: 1280px) {
+    width: var(--c-s);
+  }
+
+  @media (max-width: 1024px) {
+    padding: 0 var(--p-m);
+  }
+
+  @media (max-width: 800px) {
+    padding: 0 var(--p-s);
+  }
+}

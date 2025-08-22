@@ -26,4 +26,10 @@
   @include media-breakpoint-up(xxl) {
     --container-size: 1374px;
   }
+
+  --p-m: 32px;
+  --p-l: 64px;
+  --p-xl: 128px;
+  --p-s: 16px;
+  --p-xs: 8px;
 }

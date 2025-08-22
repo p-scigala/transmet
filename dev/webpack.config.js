@@ -8,8 +8,8 @@ module.exports = {
   entry: './src/main.js',
   output: {
     filename: '[name].js',
+    path: path.resolve(__dirname, 'dist'),
   },
-  cache: true,
   cache: {
     type: 'filesystem',
   },
@@ -32,13 +32,23 @@ module.exports = {
       },
     }),
 
-    new BrowserSyncPlugin({
-      host: process.env.HOST,
-      port: process.env.PORT,
-      proxy: process.env.SITE_TO_WATCH,
-      files: ['../**/*.php', '../assets/css/*.css', '../**/*.js'],
-    }),
+    new BrowserSyncPlugin(
+      {
+        host: process.env.HOST,
+        port: process.env.PORT,
+        proxy: process.env.SITE_TO_WATCH, // 👈 points to WP
+        files: [
+          '../**/*.php',
+          '../assets/css/*.css',
+          '../**/*.js',
+        ],
+        open: true, // auto-open browser
+        notify: false, // remove BS notification popup
+      },
+      { reload: true }
+    ),
   ],
+
   module: {
     rules: [
       {
@@ -51,6 +61,7 @@ module.exports = {
       },
     ],
   },
+
   externals: {
     jquery: 'jQuery',
   },

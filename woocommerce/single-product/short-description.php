@@ -28,6 +28,8 @@ if ( ! $short_description ) {
 }
 
 ?>
-<div class="woocommerce-product-details__short-description scroll-anim">
-	<?php echo $short_description; // WPCS: XSS ok. ?>
+<div class="woocommerce-product-details__short-description animate">
+  <?php echo $short_description; // WPCS: XSS ok. ?>
 </div>
+
+<div class="woocommerce-variation-price"></div>

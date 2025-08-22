@@ -86,7 +86,7 @@
             "sub_fields": [
                 {
                     "key": "field_6878ad29549a9",
-                    "label": "Tytuł",
+                    "label": "Tytu+?",
                     "name": "steps_list_heading",
                     "aria-label": "",
                     "type": "text",
@@ -107,7 +107,7 @@
                 },
                 {
                     "key": "field_6878ad3e549aa",
-                    "label": "Podtytuł",
+                    "label": "Podtytu+?",
                     "name": "steps_list_subheading",
                     "aria-label": "",
                     "type": "text",
@@ -178,9 +178,9 @@
     "location": [
         [
             {
-                "param": "post_template",
+                "param": "page_template",
                 "operator": "==",
-                "value": "default"
+                "value": "template-refunds.php"
             }
         ]
     ],
@@ -193,5 +193,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1752752230
+    "modified": 1755681945
 }

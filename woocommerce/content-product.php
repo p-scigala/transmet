@@ -26,9 +26,36 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 
 ?>
 <li <?php wc_product_class( '', $product ); ?>>
-  <?php if ( has_term( 'featured', 'product_visibility', $product->get_id() ) ) : ?>
+  <div class="product__statuses">
+
+    <?php
+    // New product badge (published in last 30 days)
+    $days = 30;
+    $postdate = get_the_time( 'U', $product->get_id() );
+    $now = strtotime( 'now' );
+    $diff = ( $now - $postdate ) / DAY_IN_SECONDS;
+    if ( $diff < $days ) : ?>
+    <span class="product__new">Nowość</span>
+    <?php endif; ?>
+
+    <?php
+      // also display it in newest products section if it match x newest items even if they are older than 30 days
+      $category = isset($args['category']) ? $args['category'] : '';
+      if ( $category ): ?>
+    <span class="product__new">Nowość</span>
+    <?php endif; ?>
+
+    <?php // Bestseller badge ?>
+    <?php if ( has_term( 'featured', 'product_visibility', $product->get_id() ) ) : ?>
     <span class="product__featured">Bestseller</span>
-  <?php endif; ?>
+    <?php endif; ?>
+
+    <?php // On sale badge ?>
+    <?php if ( $product && $product->is_on_sale() ) : ?>
+    <?php wc_get_template( 'loop/sale-flash.php' ); ?>
+    <?php endif; ?>
+
+  </div>
 
   <?php
 	/**
@@ -70,49 +97,36 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 	// do_action( 'woocommerce_after_shop_loop_item' );
   ?>
 
-  </a>
-  <div class="product__quantity">
-    <div class="input__number">
-
-      <button type="button" class="input__number-minus"
-        aria-label="<?php esc_attr_e( 'Decrease quantity', 'woocommerce' ); ?>">
-        -
-      </button>
-
-      <input type="number" id="quantity-<?php echo esc_attr($product->get_id()); ?>" class="input__number-text"
-        name="quantity" value="1" min="1" step="1"
-        aria-labelledby="quantity-<?php echo esc_attr($product->get_id()); ?>-label" />
-
-      <button type="button" class="input__number-plus"
-        aria-label="<?php esc_attr_e( 'Increase quantity', 'woocommerce' ); ?>">
-        +
-      </button>
-
-      <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const quantityInput = document.querySelector('#quantity-<?php echo esc_js($product->get_id()); ?>');
-        const minusButton = quantityInput.previousElementSibling;
-        const plusButton = quantityInput.nextElementSibling;
-
-        minusButton.addEventListener('click', function() {
-          let currentValue = parseInt(quantityInput.value, 10);
-          if (currentValue > 1) {
-            quantityInput.value = currentValue - 1;
-          }
-        });
-
-        plusButton.addEventListener('click', function() {
-          let currentValue = parseInt(quantityInput.value, 10);
-          quantityInput.value = currentValue + 1;
-        });
-      });
-      </script>
-
-    </div>
+  <?php if ( shortcode_exists( 'wc_price_history' ) ) : ?>
+  <div class="product__lowest-price">
+    Najniższa cena sprzed 30 dni:&nbsp;<?php echo do_shortcode('[wc_price_history]'); ?>
   </div>
+  <?php endif; ?>
+  </a>
 
-  <div class="product__add-to-cart">
-    <?php
+  <div class="product__bottom">
+
+    <div class="product__quantity">
+      <div class="input__number">
+
+        <button type="button" class="input__number-minus"
+          aria-label="<?php esc_attr_e( 'Decrease quantity', 'woocommerce' ); ?>">
+          -
+        </button>
+
+        <input type="number" id="quantity-<?php echo esc_attr($product->get_id()); ?>"
+          class="input__number-text input--quantity" name="quantity" value="1" min="1" step="1"
+          aria-labelledby="quantity-<?php echo esc_attr($product->get_id()); ?>-label" />
+
+        <button type="button" class="input__number-plus"
+          aria-label="<?php esc_attr_e( 'Increase quantity', 'woocommerce' ); ?>">
+          +
+        </button>
+      </div>
+    </div>
+
+    <div class="product__add-to-cart">
+      <?php
     woocommerce_template_loop_add_to_cart(
       array(
         'class' => 'btn',
@@ -139,5 +153,7 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
       )
     );
     ?>
+    </div>
   </div>
+
 </li>

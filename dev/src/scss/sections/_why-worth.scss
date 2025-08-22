@@ -1,0 +1,159 @@
+.why-worth {
+  &__content {
+    position: relative;
+    width: 100%;
+    min-height: fit-content;
+    height: 100vh;
+    padding: 115px 0;
+
+    @media (max-width: 1280px) {
+      padding: 90px 0;
+    }
+
+    @media (max-width: 800px) {
+      padding: 0;
+    }
+
+    .wrapper {
+      @include flex-column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      z-index: 2;
+      position: relative;
+      height: fit-content;
+      margin-bottom: 180px;
+
+      @media (max-width: 1280px) {
+        margin-bottom: 90px;
+      }
+    }
+  }
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    object-fit: cover;
+    width: 100%;
+    min-height: 100vh;
+    height: calc(100% - 350px);
+  }
+
+  &__front {
+    position: absolute;
+    top: -100px;
+    right: 80px;
+    z-index: 1;
+    object-fit: cover;
+    width: var(--grid-5);
+
+    @media (max-width: 1280px) {
+      width: var(--grid-3);
+      top: -60px;
+      right: 60px;
+    }
+
+    @media (max-width: 800px) {
+      display: none;
+    }
+  }
+
+  & * {
+    color: var(--color-white);
+  }
+
+  &__heading,
+  &__subheading,
+  &__description {
+    max-width: var(--grid-4);
+    text-align: left;
+  }
+
+  &__items {
+    @include flex-space-between;
+    flex-wrap: wrap;
+    gap: 63px 15px;
+    margin-top: 70px;
+
+    @media (max-width: 1280px) {
+      margin-top: 50px;
+      gap: 50px 15px;
+    }
+
+    @media (max-width: 800px) {
+      margin-top: 30px;
+    }
+
+    @media (max-width: 700px) {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      gap: 30px;
+    }
+  }
+
+  &__item {
+    @include flex-left;
+    gap: 30px;
+    width: calc(33.333% - 15px);
+
+    @media (max-width: 1280px) {
+      gap: 20px;
+    }
+
+    @media (max-width: 1024px) {
+      width: calc(50% - 15px);
+    }
+
+    @media (max-width: 700px) {
+      width: 100%;
+    }
+
+    &-title {
+      text-transform: uppercase;
+      font-size: 27px;
+      line-height: 33px;
+
+      @media (max-width: 1280px) {
+        font-size: 22px;
+        line-height: 26px;
+      }
+
+      @media (max-width: 800px) {
+        font-size: 20px;
+        line-height: 24px;
+      }
+
+      @media (max-width: 700px) {
+        font-size: 23px;
+        line-height: 28px;
+      }
+    }
+
+    &-text {
+      display: block;
+      margin-top: 3px;
+      font-size: 12px;
+      line-height: 15px;
+
+      @media (max-width: 800px) {
+        font-size: 10px;
+        line-height: 13px;
+      }
+    }
+  }
+
+  .opinions {
+    .wrapper {
+      margin-bottom: 0;
+
+      @media (max-width: 800px) {
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+    }
+  }
+}

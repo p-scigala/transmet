@@ -1,83 +1,50 @@
 .panel {
   position: relative;
-  padding: 12px;
+  padding: 38px 8px;
   display: flex;
   align-items: flex-end;
-  border: solid 1px var(--color-border);
+  border: solid 1px var(--color-border-dark);
   background: var(--color-white);
   overflow: hidden;
   z-index: 1;
   width: 202px;
   height: 202px;
   min-width: unset;
-  transition-duration: 0.3s;
+  border-radius: 5px;
+  @include transition;
+
+  @media (max-width: 500px) {
+    width: 310px;
+    height: 310px;
+    max-width: calc(100vw - 32px);
+    max-height: calc(100vw - 32px);
+    padding: 30px;
+  }
 
   * {
-    transition-duration: 0.3s;
+    @include transition;
   }
 
   &__content {
+    @include transition;
     position: relative;
     z-index: 3;
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: flex-end;
-    overflow: hidden;
-    border: solid 3px transparent;
-    transition-duration: 0.3s;
-    opacity: 0;
-    z-index: 2;
-    animation: 8s rotateAnimation linear infinite;
-    background: linear-gradient(
-          var(--color-primary-blue),
-          var(--color-primary-blue)
-        )
-        padding-box,
-      linear-gradient(
-          var(--angle),
-          var(--color-primary-blue),
-          #ffffff,
-          var(--color-primary-blue),
-          #ffffff,
-          var(--color-primary-blue),
-        )
-        border-box;
+    text-align: center;
+    margin: 0 auto auto auto;
   }
 
   &:hover {
-    border-color: transparent;
-
-    &::before {
-      opacity: 1;
-    }
+    border-color: var(--color-darkblue);
+    background-color: var(--color-darkblue);
 
     .panel__content {
       * {
         color: var(--color-white);
       }
+
       img {
         filter: contrast(0) brightness(2);
       }
     }
   }
-}
-
-@keyframes rotateAnimation {
-  to {
-    --angle: 360deg;
-  }
-}
-
-@property --angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
 }
