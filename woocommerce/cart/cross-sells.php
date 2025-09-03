@@ -41,8 +41,10 @@ if ( $cross_sells ) : ?>
     <?php } ?>
   </div>
 
-  <?php woocommerce_product_loop_start(); ?>
+  <?php //woocommerce_product_loop_start(); ?>
 
+<ul class="products__list slider slider--with-bar slider--with-buttons animate delay-2">
+  
   <?php foreach ( $cross_sells as $cross_sell ) : ?>
 
   <?php

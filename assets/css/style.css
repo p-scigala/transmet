@@ -15644,6 +15644,34 @@ body .single-product .product__variant-form .select {
 .cross-sells .products__list {
   margin-top: 40px;
 }
+.cross-sells .slick-track {
+  gap: 32px;
+  width: fit-content !important;
+}
+@media (max-width: 500px) {
+  .cross-sells .slick-track {
+    gap: 10px;
+  }
+}
+.cross-sells .slick__arrow {
+  position: absolute;
+}
+.cross-sells .slick-list {
+  width: 1376px;
+  padding: 0;
+}
+@media (max-width: 1450px) {
+  .cross-sells .slick-list {
+    width: 100%;
+    padding: 0 15px;
+  }
+}
+@media (max-width: 500px) {
+  .cross-sells .slick-list {
+    width: 100%;
+    padding: 0 30px;
+  }
+}
 
 :root {
   --color-white: #ffffff;
