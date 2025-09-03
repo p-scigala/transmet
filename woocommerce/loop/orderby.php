@@ -20,15 +20,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 
-<button class="products__filters-toggle products__filters-toggle--fixed" title="<?php esc_attr_e( 'Filter products', 'woocommerce' ); ?>">
-  <?php include( get_template_directory() . '/assets/imgs/icon-filter.svg' ); ?>
-</button>
-
 <div class="products__orderby">
   <form class="products__orderby-form" method="get">
 
+    <!-- <select name="orderby" class="orderby products__orderby-select select--secondary form-submit-select" aria-label="<?php esc_attr_e( 'Shop order', 'woocommerce' ); ?>"> -->
     <select name="orderby" class="orderby products__orderby-select select--secondary form-submit-select"
-      aria-label="<?php esc_attr_e( 'Shop order', 'woocommerce' ); ?>">
+      aria-label="Sortuj">
       <?php foreach ( $catalog_orderby_options as $id => $name ) : ?>
       <option value="<?php echo esc_attr( $id ); ?>" <?php selected( $orderby, $id ); ?>>
         <?php echo esc_html( $name ); ?></option>
@@ -40,5 +37,17 @@ if ( ! defined( 'ABSPATH' ) ) {
     <?php wc_query_string_form_fields( null, array( 'orderby', 'submit', 'paged', 'product-page' ) ); ?>
 
   </form>
+
+  <div class="products__display">
+    <button class="products__display-button" data-display="block"
+      title="<?php esc_attr_e( 'Change display', 'woocommerce' ); ?>">
+      <?php include( get_template_directory() . '/assets/imgs/icons/display-block.svg' ); ?>
+    </button>
+    <button class="products__display-button" data-display="list"
+      title="<?php esc_attr_e( 'Change display', 'woocommerce' ); ?>">
+      <?php include( get_template_directory() . '/assets/imgs/icons/display-list.svg' ); ?>
+    </button>
+  </div>
+
 </div>
 </div>

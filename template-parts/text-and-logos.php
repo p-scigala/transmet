@@ -29,7 +29,8 @@
 
         </div>
 
-        <div class="text-and-logos__logos slider slider--with-bar slider--with-buttons animate delay-3">
+        <div
+          class="text-and-logos__logos <?php echo ( $args['noSlider']) ? "" : "slider slider--with-bar slider--with-buttons"; ?> animate delay-3">
           <?php if(have_rows("text_and_logos_logos_repeater")):?>
           <?php while(have_rows("text_and_logos_logos_repeater")): the_row(); ?>
           <div class="text-and-logos__logo panel">

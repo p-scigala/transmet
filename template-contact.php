@@ -2,7 +2,7 @@
 
 <?php get_header();  ?>
 
-<main id="page-contact">
+<main id="page-kontakt">
   <?php get_template_part('template-parts/breadcrumb'); ?>
 
   <?php get_template_part( 'template-parts/contact', 'page' ); ?>

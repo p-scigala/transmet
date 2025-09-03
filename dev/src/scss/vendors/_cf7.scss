@@ -22,7 +22,7 @@
   }
 }
 
-.box-anim > label {
+.box-anim>label {
   font-size: torem(20);
 }
 
@@ -45,8 +45,4 @@
   background: rgba($color: var(--bs-success), $alpha: 90%);
   border-color: rgba($color: var(--bs-success), $alpha: 90%);
   color: var(--bs-success);
-}
-
-.wpcf7-list-item-label {
-  font-size: 0.25rem;
 }

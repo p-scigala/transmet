@@ -16,12 +16,6 @@
     }
   }
 
-  .wrapper {
-    @media (max-width: 800px) {
-      gap: 15px;
-    }
-  }
-
   &__slider-wrapper {
     position: relative;
     width: 100%;
@@ -137,6 +131,7 @@
 
   &__item-wrapper {
     z-index: 2;
+    @include flex-center;
 
     @media (max-width: 800px) {
       flex-direction: column;

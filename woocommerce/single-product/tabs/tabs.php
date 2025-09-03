@@ -30,7 +30,7 @@ $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
 
 if ( ! empty( $product_tabs ) ) : ?>
 
-<div class="woocommerce-tabs wc-tabs-wrapper">
+<div class="woocommerce-tabs wc-tabs-wrapper animate">
   <div class="tabs">
     <div class="wrapper">
 
@@ -49,6 +49,12 @@ if ( ! empty( $product_tabs ) ) : ?>
 
       <?php foreach ( $product_tabs as $key => $product_tab ) : ?>
 
+      <?php
+        $hasSafetyInfo = get_field('product_safety_info');
+        $isSafetyInfoTab = ($key === 'product_safety_info');
+      ?>
+
+      <?php if(!($isSafetyInfoTab && !$hasSafetyInfo)): // Skip rendering this tab if no safety info ?>
       <div
         class="woocommerce-Tabs-panel woocommerce-Tabs-panel--<?php echo esc_attr( $key ); ?> entry-content wc-tab tab__content"
         id="tab-<?php echo esc_attr( $key ); ?>" role="tabpanel"
@@ -59,6 +65,7 @@ if ( ! empty( $product_tabs ) ) : ?>
 				}
 				?>
       </div>
+      <?php endif; ?>
 
       <?php endforeach; ?>
 

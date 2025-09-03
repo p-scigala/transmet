@@ -96,12 +96,6 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 	 */
 	// do_action( 'woocommerce_after_shop_loop_item' );
   ?>
-
-  <?php if ( shortcode_exists( 'wc_price_history' ) ) : ?>
-  <div class="product__lowest-price">
-    Najniższa cena sprzed 30 dni:&nbsp;<?php echo do_shortcode('[wc_price_history]'); ?>
-  </div>
-  <?php endif; ?>
   </a>
 
   <div class="product__bottom">

@@ -127,6 +127,13 @@
                 "operator": "==",
                 "value": "template-about-us.php"
             }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-producenci.php"
+            }
         ]
     ],
     "menu_order": 0,
@@ -138,5 +145,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1755766574
+    "modified": 1756897976
 }

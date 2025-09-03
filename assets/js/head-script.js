@@ -8,3 +8,5 @@ window.addEventListener('resize', function () {
     vh = document.body.clientHeight;
   }
 });
+
+const productsDisplay = localStorage.getItem("products_display") || "block";

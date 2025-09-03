@@ -91,13 +91,9 @@ h3 {
     font-size: 14px;
     line-height: 18px;
   }
-
-  @media (max-width: 800px) {
-    font-size: 22px;
-    line-height: 26px;
-  }
 }
 
+li,
 p {
   font-size: 14px;
   line-height: 22px;
@@ -116,6 +112,16 @@ a {
   a:hover {
     color: var(--color-darkblue);
     text-decoration: underline;
+  }
+}
+
+ul {
+  margin-bottom: 30px;
+
+  li {
+    p:last-of-type {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -147,10 +153,6 @@ section {
 
     @media (max-width: 1024px) {
       padding-bottom: 60px !important;
-    }
-
-    @media (max-width: 800px) {
-      padding-bottom: 0 !important;
     }
   }
 }
@@ -271,6 +273,16 @@ section {
 .description {
   text-align: center;
   max-width: var(--grid-4);
+}
+
+.description {
+  @media (max-width: 800px) {
+    font-size: 12px;
+  }
+
+  p:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 /* wp admin bar fix position */
@@ -398,6 +410,22 @@ main {
   }
 }
 
+.bg-gray {
+  background-color: var(--color-gray);
+}
+
+.bg-white {
+  background-color: var(--color-white);
+}
+
+.bg-white-to-gray {
+  background: var(--bg-white-to-gray);
+}
+
+.bg-gray-to-white {
+  background: var(--bg-gray-to-white);
+}
+
 .error-404 {
   &__link {
     margin: 30px auto 0 auto;
@@ -473,5 +501,9 @@ main {
 }
 
 .page-title {
-  margin-top: 60px;
+  margin-top: 0;
+}
+
+article {
+  background: linear-gradient(180deg, #f6f6f6 0%, #ffffff 15%);
 }

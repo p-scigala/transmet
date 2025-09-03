@@ -15,7 +15,11 @@
     }
 
     @media (max-width: 1024px) {
-      gap: 30px;
+      overflow-x: auto;
+      min-width: 110px;
+      white-space: nowrap;
+      gap: 36px;
+      margin-bottom: 0;
     }
 
     @media (max-width: 800px) {
@@ -32,10 +36,11 @@
     display: inline-block;
     cursor: pointer;
     text-decoration: none;
-    color: var(--color-border);
+    text-transform: uppercase;
+    color: var(--color-black);
     font-weight: bold;
-    font-size: 29px;
-    line-height: 42px;
+    font-size: 20px;
+    line-height: 24px;
 
     @media (max-width: 1024px) {
       font-size: 22px;
@@ -50,7 +55,7 @@
 
     &:hover,
     &.active {
-      color: var(--color-blue);
+      color: var(--color-darkblue);
     }
   }
 

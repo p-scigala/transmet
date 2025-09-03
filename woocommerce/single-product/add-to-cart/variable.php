@@ -99,6 +99,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
   	    "title" => $infoData['options_product_info_01']['options_product_info_01_title'],
   	    "img" => $infoData['options_product_info_01']['options_product_info_01_img'],
 				"text" => $infoData['options_product_info_01']['options_product_info_01_text'],
+				"link" => $infoData['options_product_info_01']['options_product_info_01_link'],
   	  ));
 		}
 
@@ -107,20 +108,16 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
   	    "title" => $infoData['options_product_info_02']['options_product_info_02_title'],
   	    "img" => $infoData['options_product_info_02']['options_product_info_02_img'],
 				"text" => $infoData['options_product_info_02']['options_product_info_02_text'],
+				"link" => $infoData['options_product_info_02']['options_product_info_02_link'],
   	  ));
 		}
 
 		if($prodData['product_info_03']) {
-			$months = substr($prodData['product_info_03_value'], -1);
-			if($months === 1) $value = $prodData['product_info_03_value'] . ' miesiąc';
-			if($months >= 2 && $months <= 4) $value = $prodData['product_info_03_value'] . ' miesiące';
-			if($months >= 5) $value = $prodData['product_info_03_value'] . ' miesięcy';
-
 			get_template_part("template-parts/components/info-panel", null, array(
   	    "title" => $infoData['options_product_info_03']['options_product_info_03_title'],
   	    "img" => $infoData['options_product_info_03']['options_product_info_03_img'],
 				"text" => $infoData['options_product_info_03']['options_product_info_03_text'],
-				"value" => $value
+				"link" => $infoData['options_product_info_03']['options_product_info_03_link'],
   	  ));
 		}
 
@@ -129,6 +126,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
     	  "title" => $infoData['options_product_info_04']['options_product_info_04_title'],
     	  "img" => $infoData['options_product_info_04']['options_product_info_04_img'],
 				"text" => $infoData['options_product_info_04']['options_product_info_04_text'],
+				"link" => $infoData['options_product_info_04']['options_product_info_04_link'],
     	));
 		}
 	?>

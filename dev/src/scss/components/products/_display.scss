@@ -1,0 +1,33 @@
+.products__display {
+  @include flex-row;
+  width: 100%;
+  gap: 10px;
+  margin-left: 30px;
+  min-width: fit-content;
+
+  @media (max-width: 800px) {
+    display: none;
+  }
+
+  &-button {
+    rect {
+      @include transition;
+      stroke: var(--color-border-dark);
+    }
+
+    &:hover {
+      rect {
+        stroke: var(--color-blue);
+      }
+    }
+
+    &--active {
+      pointer-events: none;
+      cursor: default;
+
+      rect {
+        stroke: var(--color-darkblue) !important;
+      }
+    }
+  }
+}

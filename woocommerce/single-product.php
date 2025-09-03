@@ -48,7 +48,7 @@ get_header( 'shop' ); ?>
 		 */
 		do_action( 'woocommerce_after_main_content' );
 
-		get_template_part( 'template-parts/ask', 'page' );
+		// get_template_part( 'template-parts/ask', 'page' );
 
 		/**
 		 * Related products hook.

@@ -1,12 +1,14 @@
 'use strict';
 
-// import slickCall from './modules/slick';
 import slickInit from './modules/slick-sliders';
 import cf7FloatingLabels from './modules/cf7FloatingLabels';
-// import scrollAnim from './modules/scrollAnim';
 import scrollAnimationInit from './modules/scroll-animation';
 import headerInit from './modules/header';
 import customSelect from './modules/customSelect';
+import displayProductsInit from './modules/display-products';
+import inputsInit from './modules/inputs';
+// import slickCall from './modules/slick';
+// import scrollAnim from './modules/scrollAnim';
 // import addToCart from './modules/add-to-cart';
 
 jQuery(document).ready(function ($) {
@@ -15,6 +17,8 @@ jQuery(document).ready(function ($) {
   customSelect(['.woof_acf_select']);
   headerInit();
   scrollAnimationInit();
+  displayProductsInit();
+  inputsInit();
   // slickCall($);
   // scrollAnim($);
   // addToCart($);

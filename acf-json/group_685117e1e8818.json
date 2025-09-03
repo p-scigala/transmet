@@ -136,6 +136,20 @@
                 "operator": "==",
                 "value": "template-contact.php"
             }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-about-us.php"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-uslugi.php"
+            }
         ]
     ],
     "menu_order": 0,
@@ -147,5 +161,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1755785554
+    "modified": 1756895353
 }

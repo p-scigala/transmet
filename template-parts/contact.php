@@ -71,6 +71,7 @@
 
       <?php if(get_field("contact_type") === "form"): ?>
       <div class="contact__form animate delay-4">
+        <h3>Formularz kontaktowy</h3>
         <?php echo do_shortcode('[contact-form-7 id="0a1df65" title="Formularz - kontakt"]'); ?>
       </div>
       <?php endif; ?>

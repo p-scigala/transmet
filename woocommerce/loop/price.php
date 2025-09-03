@@ -22,6 +22,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $product;
 ?>
 
-<?php if ( $price_html = $product->get_price_html() ) : ?>
-	<span class="price"><?php echo $price_html; ?></span>
-<?php endif; ?>
+<div class="product__price-container">
+
+  <?php if ( $price_html = $product->get_price_html() ) : ?>
+  <span class="price"><?php echo $price_html; ?></span>
+  <?php endif; ?>
+
+  <?php if ( shortcode_exists( 'wc_price_history' ) ) : ?>
+  <div class="product__lowest-price">
+    Najniższa cena sprzed 30 dni:&nbsp;<?php echo do_shortcode('[wc_price_history]'); ?>
+  </div>
+  <?php endif; ?>
+
+</div>

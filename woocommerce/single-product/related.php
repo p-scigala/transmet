@@ -31,15 +31,15 @@ if ( $related_products ) : ?>
 		?>
 
     <?php if($heading) : ?>
-    <h2 class="product-related__heading"><?php echo $heading; ?></h2>
+    <h2 class="product-related__heading heading animate"><?php echo $heading; ?></h2>
     <?php endif; ?>
 
     <?php if($subheading) : ?>
-    <h3 class="product-related__subheading"><?php echo $subheading; ?></h3>
+    <h3 class="product-related__subheading subheading animate delay-1"><?php echo $subheading; ?></h3>
     <?php endif; ?>
 
     <?php if($description) : ?>
-    <div class="product-related__description"><?php echo $description; ?></div>
+    <div class="product-related__description description animate delay-2"><?php echo $description; ?></div>
     <?php endif; ?>
 
     <?php woocommerce_product_loop_start(); ?>

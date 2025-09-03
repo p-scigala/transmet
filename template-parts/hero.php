@@ -17,29 +17,29 @@
           <div class="hero__content col">
 
             <?php if(get_sub_field("hero_logo")): ?>
-            <img class="hero__logo animate delay-10" src="<?php echo get_sub_field("hero_logo"); ?>" alt="" />
+            <img class="hero__logo animate animate-initial" src="<?php echo get_sub_field("hero_logo"); ?>" alt="" />
             <?php endif; ?>
 
             <?php if(get_sub_field("hero_title_01")): ?>
-            <h2 class="hero__heading animate delay-10">
+            <h2 class="hero__heading animate animate-initial delay-1">
               <?php echo get_sub_field("hero_title_01"); ?>
             </h2>
             <?php endif; ?>
 
             <?php if(get_sub_field("hero_title_02")): ?>
-            <h3 class="hero__subheading animate delay-11">
+            <h3 class="hero__subheading animate animate-initial delay-2">
               <?php echo get_sub_field("hero_title_02"); ?>
             </h3>
             <?php endif; ?>
 
             <?php if(get_sub_field("hero_text")): ?>
-            <div class="hero__description animate delay-12">
+            <div class="hero__description animate animate-initial delay-3">
               <?php echo get_sub_field("hero_text"); ?>
             </div>
             <?php endif; ?>
 
             <?php if (get_sub_field("hero_btn")): ?>
-            <div class="animate delay-13">
+            <div class="animate animate-initial delay-4">
               <?php
                 $link_url = get_sub_field("hero_btn")["url"];
                 $link_title = get_sub_field("hero_btn")["title"];
@@ -53,10 +53,10 @@
             <?php endif; ?>
           </div>
 
-          <div class="hero__img col hidden-before-load">
+          <div class="hero__img col">
             <?php if(get_sub_field("hero_img")): ?>
             <img src="<?php echo get_sub_field("hero_img"); ?>" alt="<?php echo get_sub_field("hero_title_01"); ?>"
-              class="animate delay-14" />
+              class="animate animate-initial delay-5" />
             <?php endif; ?>
           </div>
 

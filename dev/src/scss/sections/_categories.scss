@@ -21,7 +21,7 @@
       text-align: center;
       @include flex-center;
 
-      @media (max-width: 500px) {
+      @media (max-width: 800px) {
         width: 100%;
         height: 120px;
 
@@ -39,8 +39,8 @@
       color: var(--color-darkblue);
       text-transform: uppercase;
 
-      @media (max-width: 500px) {
-        font-size: 24px;
+      @media (max-width: 800px) {
+        font-size: 22px;
         line-height: 30px;
         margin: 20px auto 0 auto;
         word-break: break-word;
@@ -69,7 +69,7 @@
   .slick-track {
     gap: 31.25px;
 
-    @media(max-width: 500px) {
+    @media(max-width: 800px) {
       gap: 10px;
     }
   }

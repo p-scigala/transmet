@@ -3,32 +3,34 @@ const slickInit = ($) => {
   const prevArrow = `<button type='button' class='slick-prev btn--arrow btn--arrow-left'></button>`;
   const nextArrow = `<button type='button' class='slick-next btn--arrow btn--arrow-right'></button>`;
 
-  createbar($('.hero__slider')[0], 'animate delay-15');
-  createButtons($('.hero__slider')[0], 'wrapper animate delay-15');
+  if (document.querySelector('.hero__slider')) {
+    createBar($('.hero__slider')[0], '');
+    createButtons($('.hero__slider')[0], 'wrapper animate delay-15');
 
-  setTimeout(() => {
-    $('.hero__slider').slick({
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      arrows: true,
-      dots: false,
-      prevArrow: prevArrow,
-      nextArrow: nextArrow,
-      variableWidth: false,
-      centerMode: false,
-      fade: true,
-      cssEase: 'linear',
-      appendArrows: '.hero .slider__nav',
-      responsive: [
-        {
-          breakpoint: 800,
-          settings: {
-            arrows: false,
+    setTimeout(() => {
+      $('.hero__slider').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        dots: false,
+        prevArrow: prevArrow,
+        nextArrow: nextArrow,
+        variableWidth: false,
+        centerMode: false,
+        fade: true,
+        cssEase: 'linear',
+        appendArrows: '.hero .slider__nav',
+        responsive: [
+          {
+            breakpoint: 800,
+            settings: {
+              arrows: false,
+            },
           },
-        },
-      ],
-    });
-  }, 100);
+        ],
+      });
+    }, 100);
+  }
 
   let sliderCount = 1;
 
@@ -41,7 +43,7 @@ const slickInit = ($) => {
     }
 
     if (withBar) {
-      createbar($(this)[0], `pagination-bar--center animate delay-3`, sliderCount);
+      createBar($(this)[0], `pagination-bar--center animate delay-3`, sliderCount);
     }
 
     if ($(this).hasClass('categories__items') || $(this).hasClass('text-and-logos__logos')) {
@@ -188,7 +190,86 @@ const slickInit = ($) => {
       });
   }
 
-  function createbar(slider, classes, id = '') {
+
+
+
+
+  $('.product-gallery__slider').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: false,
+    arrows: true,
+    prevArrow: prevArrow,
+    nextArrow: nextArrow,
+    infinite: true,
+    asNavFor: '.product-gallery__slider-nav',
+  });
+
+  $('.product-gallery__slider-nav').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    asNavFor: '.product-gallery__slider',
+    dots: false,
+    focusOnSelect: true,
+
+    infinite: true,
+    variableWidth: true,
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 1199,
+        settings: {
+          slidesToShow: 2,
+          arrows: false,
+          //variableWidth: false,
+        },
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 2,
+          arrows: false,
+          //variableWidth: false,
+        },
+      },
+    ],
+  });
+
+  $('.product-gallery__slider').on('beforeChange', function () {
+    $('.youtube').each(function () {
+      $(this).empty().append('<div class="play-button"></div>'); // Usuwa iframe i przywraca przycisk
+    });
+  });
+
+  // Obsługa kliknięcia, aby ponownie wczytać wideo
+  $(document).on('click', '.youtube .play-button', function () {
+    var container = $(this).parent();
+    var videoId = container.data('id');
+
+    var iframe =
+      '<iframe width="560" height="315" src="https://www.youtube.com/embed/' +
+      videoId +
+      '?autoplay=1" frameborder="0" allowfullscreen></iframe>';
+
+    container.empty().append(iframe); // Dodaje iframe z autoplay
+  });
+
+  const slickNav = document.querySelector('.product-gallery__slider-nav');
+  if (slickNav) {
+    const track = slickNav.querySelector('.slick-track');
+    if (track) {
+      if (!track.hasChildNodes()) {
+        slickNav.style.display = 'none';
+        document.querySelector('.single-product__category-name').style.marginTop = '0';
+      }
+    }
+  }
+
+
+
+
+
+  function createBar(slider, classes, id = '') {
     const paginationBar = document.createElement('div');
     paginationBar.className = 'pagination-bar ' + classes;
     if (id) paginationBar.id = `pagination-bar--${id}`;
@@ -204,18 +285,18 @@ const slickInit = ($) => {
 
     slider.after(paginationBar);
   }
-}
 
-function createButtons(slider, classes, id = '') {
-  const buttonWrapper = document.createElement('div');
-  buttonWrapper.className = 'slider__nav-wrapper ' + classes;
+  function createButtons(slider, classes, id = '') {
+    const buttonWrapper = document.createElement('div');
+    buttonWrapper.className = 'slider__nav-wrapper ' + classes;
 
-  const buttonNav = document.createElement('div');
-  buttonNav.className = 'slider__nav';
-  if (id) buttonNav.id = `slider__nav--${id}`;
+    const buttonNav = document.createElement('div');
+    buttonNav.className = 'slider__nav';
+    if (id) buttonNav.id = `slider__nav--${id}`;
 
-  buttonWrapper.appendChild(buttonNav);
-  slider.after(buttonWrapper);
+    buttonWrapper.appendChild(buttonNav);
+    slider.after(buttonWrapper);
+  }
 }
 
 export default slickInit;

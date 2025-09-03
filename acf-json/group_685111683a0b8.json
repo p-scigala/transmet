@@ -34,7 +34,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "33",
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
@@ -55,7 +55,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "33",
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
@@ -76,7 +76,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "33",
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
@@ -84,6 +84,27 @@
                     "default_value": 0,
                     "ui_on_text": "Po lewej",
                     "ui_off_text": "Po prawej",
+                    "ui": 1,
+                    "parent_repeater": "field_68760c1aedcf0"
+                },
+                {
+                    "key": "field_68b7fce7581fb",
+                    "label": "Szerokość",
+                    "name": "text_and_img_size",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui_on_text": "pół na pół",
+                    "ui_off_text": "szeroki obraz",
                     "ui": 1,
                     "parent_repeater": "field_68760c1aedcf0"
                 },
@@ -226,9 +247,9 @@
         ],
         [
             {
-                "param": "page",
+                "param": "page_template",
                 "operator": "==",
-                "value": "9"
+                "value": "template-uslugi.php"
             }
         ]
     ],
@@ -241,5 +262,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1755766886
+    "modified": 1756891843
 }

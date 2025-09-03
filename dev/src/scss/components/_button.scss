@@ -18,6 +18,7 @@ body main .btn,
   z-index: 1;
   font-weight: 600;
   padding: 4px;
+  box-sizing: border-box;
 
   @media (max-width: 800px) {
     height: 43px;
@@ -110,6 +111,13 @@ body main .btn,
     border: solid 1.5px var(--color-blue);
     transition-duration: .3s;
 
+    @media (max-width: 800px) {
+      width: 24px;
+      height: 24px;
+      border-radius: 1px;
+      overflow: hidden;
+    }
+
     &:hover {
       border-color: var(--color-darkblue);
     }
@@ -125,6 +133,12 @@ body main .btn,
       position: relative;
       left: 10px;
       transition-duration: .3s;
+
+      @media (max-width: 800px) {
+        width: 10px;
+        height: 10px;
+        left: 5px;
+      }
     }
 
     &:hover::after {
@@ -135,6 +149,10 @@ body main .btn,
       &::after {
         transform: rotate(-135deg);
         left: 18px;
+
+        @media (max-width: 800px) {
+          left: 9px;
+        }
       }
     }
   }
@@ -221,6 +239,17 @@ body main .btn,
 }
 
 .single_add_to_cart_button {
+  span::before {
+    content: "";
+    background: url(../../assets/imgs/icons/cart.svg) no-repeat center;
+    background-size: contain;
+    filter: invert(1);
+    width: 19px;
+    height: 16px;
+    display: inline-block;
+    margin-right: 10px;
+  }
+
   &+.added_to_cart {
     display: none;
   }

@@ -8,29 +8,29 @@
     <div class="wrapper">
       <div class="bestsellers__content">
 
-        <?php if(get_field("bestsellers_title_01")) { ?>
+        <?php if(get_field("bestsellers_title_01")): ?>
         <h2 class="bestsellers__heading heading animate">
           <?php echo get_field("bestsellers_title_01"); ?>
         </h2>
-        <?php } ?>
+        <?php endif; ?>
 
-        <?php if($args['heading']) { ?>
+        <?php if($args['heading']): ?>
         <h2 class="bestsellers__heading heading animate">
           <?php echo $args['heading']; ?>
         </h2>
-        <?php } ?>
+        <?php endif; ?>
 
-        <?php if(get_field("bestsellers_title_02")) { ?>
+        <?php if(get_field("bestsellers_title_02")): ?>
         <h3 class="bestsellers__subheading subheading animate delay-1">
           <?php echo get_field("bestsellers_title_02"); ?>
         </h3>
-        <?php } ?>
+        <?php endif; ?>
 
-        <?php if(get_field("bestsellers_text")) { ?>
+        <?php if(get_field("bestsellers_text")): ?>
         <div class="bestsellers__description description animate delay-2">
           <?php echo get_field("bestsellers_text"); ?>
         </div>
-        <?php } ?>
+        <?php endif; ?>
 
       </div>
 

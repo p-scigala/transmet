@@ -137,9 +137,9 @@
     "location": [
         [
             {
-                "param": "page_template",
+                "param": "post_type",
                 "operator": "==",
-                "value": "template-about-us.php"
+                "value": "post"
             }
         ]
     ],
@@ -152,5 +152,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1755681964
+    "modified": 1756886860
 }

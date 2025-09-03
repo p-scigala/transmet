@@ -1,19 +1,7 @@
 .product-related {
-  &__heading {
-    text-align: center;
-    margin: 0 0 10px 0;
-  }
-
-  &__subheading {
-    text-align: center;
-    margin: 0 0 30px 0;
-    font-weight: normal;
-  }
-
-  &__description {
-    padding: 0 20px;
-    text-align: center;
-    margin-bottom: 40px;
+  &>.wrapper {
+    @include flex-column;
+    @include flex-center;
   }
 
   .products__list {

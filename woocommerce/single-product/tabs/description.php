@@ -18,9 +18,15 @@
 defined( 'ABSPATH' ) || exit;
 
 global $post;
+global $product;
 
 // $heading = apply_filters( 'woocommerce_product_description_heading', __( 'Description', 'woocommerce' ) );
 
 ?>
 
 <?php the_content(); ?>
+
+<?php
+// moved product additional information table to description tab
+do_action( 'woocommerce_product_additional_information', $product );
+?>

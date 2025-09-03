@@ -1,14 +1,36 @@
-input[type='search'],
 input[type='text'],
 input[type='password'],
 input[type='email'],
-.dgwt-wcas-search-wrapp .dgwt-wcas-sf-wrapp input[type=search].dgwt-wcas-search-input {
+textarea,
+textarea.form-control {
+  width: var(--grid-3);
+  max-width: 100%;
+  height: 47px;
+  border-radius: 5px;
+  background-color: var(--color-white);
+  border: solid 1px var(--color-border-dark);
+  padding: 15px;
+  font-size: 14px;
+
+  &:focus &:focus-visible,
+  &:focus-within {
+    box-shadow: none;
+    outline-width: 2px;
+    border-color: var(--color-blue);
+    outline-color: var(--color-blue);
+  }
+}
+
+input[type='search'],
+.dgwt-wcas-search-wrapp .dgwt-wcas-sf-wrapp input[type=search].dgwt-wcas-search-input,
+.woof_container .woof_container_inner input[type=search] {
   width: var(--grid-3);
   max-width: 100%;
   height: 42px;
   border-radius: 21px;
   background-color: var(--color-white);
   border: solid 1px var(--color-gray-dark);
+  padding: 12.5px 40px 12.5px 18px;
 
   &:focus &:focus-visible,
   &:focus-within {
@@ -39,9 +61,9 @@ input[type='email'],
       z-index: 1;
     }
 
-    @media (max-width: 500px) {
-      height: 33px;
-    }
+    // @media (max-width: 500px) {
+    //   height: 33px;
+    // }
 
     input[type='number'] {
 
@@ -120,9 +142,30 @@ form {
     &[type='text'],
     &[type='password'],
     &[type='email'] {
-      height: 43px;
-      padding: 0 10px;
+      height: 47px;
+      padding: 15px;
       width: 100%;
+    }
+  }
+
+  .input-custom-wrapper {
+    position: relative;
+
+    label {
+      font-size: 14px;
+      line-height: normal;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 1;
+      transition-duration: .3s;
+      transform-origin: left;
+    }
+
+    &.input--focused {
+      label {
+        transform: translateY(-14px) scale(0.6);
+      }
     }
   }
 
@@ -133,6 +176,10 @@ form {
   .input-custom-wrapper:nth-of-type(2),
   .input-custom-wrapper:nth-of-type(3) {
     width: calc(50% - 15px);
+
+    @media (max-width: 500px) {
+      width: 100%;
+    }
   }
 
   .input-custom-wrapper:nth-of-type(4) {
@@ -147,7 +194,7 @@ form {
   }
 
   .acceptance {
-    margin: 15px 0;
+    margin: 0;
     width: 100%;
     display: block;
 
@@ -159,17 +206,14 @@ form {
       margin: 0 10px 0 0;
       width: 20px;
       height: 20px;
-      border: solid 1px var(--color-black);
       cursor: pointer;
     }
 
     .form-check-input+span {
-      font-size: 13px;
-      line-height: 16px;
+      font-size: 12px;
+      line-height: 15px;
       margin: 0;
       padding: 0;
-
-      padding-left: 30px;
     }
 
     .wpcf7-list-item-label {
@@ -182,7 +226,7 @@ form {
       margin-left: 4px;
 
       &:hover {
-        color: var(--color-primary-blue);
+        color: var(--color-blue);
       }
     }
   }
@@ -253,4 +297,48 @@ html:not(.dgwt-wcas-overlay-mobile-on) .dgwt-wcas-style-pirx.dgwt-wcas-style-pir
 
 .dgwt-wcas-sf-wrapp {
   padding: 0 !important;
+}
+
+/* plugins override */
+
+button.dgwt-wcas-search-submit {
+  transition-duration: .3s;
+
+  &:hover {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    svg * {
+      fill: var(--color-blue) !important;
+    }
+  }
+}
+
+.woof_text_search_container .woof_text_search_go {
+  transition-duration: .3s;
+  background: url(../../assets/imgs/icons/search.svg) no-repeat center;
+  top: 0 !important;
+  bottom: 0 !important;
+  margin: auto !important;
+  right: 15px !important;
+}
+
+.woof_husky_txt-cross {
+  display: none !important;
+}
+
+textarea,
+textarea.form-control {
+  height: 93px;
+  resize: none;
+  width: 100%;
+}
+
+input[type="checkbox"] {
+  border-radius: 5px;
+  background-color: var(--color-white);
+  border: solid 1px var(--color-border-dark);
+  width: 23px;
+  height: 23px;
 }

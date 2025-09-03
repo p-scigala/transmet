@@ -30,7 +30,7 @@ do_action( 'woocommerce_before_main_content' );
 
 ?>
 
-<div class="products-desc">
+<section class="products-desc">
   <div class="wrapper">
 
     <?php $shop_id = get_option('woocommerce_shop_page_id'); ?>
@@ -42,19 +42,19 @@ do_action( 'woocommerce_before_main_content' );
     <?php endif; ?>
 
     <?php if(get_field("shop_heading", $shop_id)) : ?>
-    <h2 class="products-desc__heading animate">
+    <h2 class="products-desc__heading animate animate-initial">
       <?php echo get_field("shop_heading", $shop_id); ?>
     </h2>
     <?php endif; ?>
 
     <?php if(!empty(get_field('product_archive_title_02', 'option'))): ?>
-    <h3 class="products-desc__subheading animate">
+    <h3 class="products-desc__subheading animate animate-initial delay-1">
       <?php echo get_field('product_archive_title_02', 'option');?>
     </h3>
     <?php endif; ?>
 
     <?php if(get_field("shop_subheading", $shop_id)) : ?>
-    <h3 class="products-desc__subheading animate">
+    <h3 class="products-desc__subheading animate animate-initial delay-1">
       <?php echo get_field("shop_subheading", $shop_id); ?>
     </h3>
     <?php endif; ?>
@@ -66,13 +66,13 @@ do_action( 'woocommerce_before_main_content' );
     <?php endif; ?>
 
     <?php if(get_field("shop_description", $shop_id)) : ?>
-    <div class="products-desc__description animate">
+    <div class="products-desc__description animate animate-initial delay-2">
       <?php echo get_field("shop_description", $shop_id); ?>
     </div>
     <?php endif; ?>
 
   </div>
-</div>
+</section>
 
 <?php
 	/**
@@ -83,15 +83,17 @@ do_action( 'woocommerce_before_main_content' );
 	 */
 ?>
 
-<div class="products">
-  <div class="products__wrapper">
-    <button class="products__filters-toggle products__filters-toggle-main"><?php _e('Filtry', 'candyweb'); ?></button>
-    <div class="products__filters">
-      <button class="close-filter-button">&times;</button>
-      <div class="products__filters-category">
-        <h3 class="products__filters-heading"><?php _e('Kategorie', 'candyweb'); ?></h3>
-        <ul class="products__filters-box">
-          <?php
+<section class="products">
+  <div class="wrapper">
+    <div class="products__wrapper animate animate-initial delay-3">
+
+      <button class="products__filters-toggle products__filters-toggle-main"><?php _e('Filtry', 'candyweb'); ?></button>
+      <div class="products__filters">
+        <button class="close-filter-button">&times;</button>
+        <!-- <div class="products__filters-category">
+          <h3 class="products__filters-heading"><?php _e('Kategorie', 'candyweb'); ?></h3>
+          <ul class="products__filters-box">
+            <?php
 							$args = array(
 								'taxonomy'     => 'product_cat',
 								'orderby'      => 'name',
@@ -182,20 +184,25 @@ do_action( 'woocommerce_before_main_content' );
 								}
 							}
 						?>
-        </ul>
-      </div>
-      <div>
-        <span class="products__filters-heading"><?php _e('Filtry', 'candyweb'); ?></span>
-        <div class="products__filters-box">
-          <?php echo do_shortcode('[woof]'); ?>
+          </ul>
+        </div> -->
+        <div>
+          <!-- <span class="products__filters-heading"><?php _e('Filtry', 'candyweb'); ?></span> -->
+          <div class="products__filters-box">
+            <?php echo do_shortcode('[woof]'); ?>
+          </div>
         </div>
+
       </div>
 
+      <button class="products__filters-toggle products__filters-toggle--fixed"
+        title="<?php esc_attr_e( 'Filter products', 'woocommerce' ); ?>">
+        <?php include( get_template_directory() . '/assets/imgs/icon-filter.svg' ); ?>
+        <span>Filtruj</span>
+      </button>
 
-    </div>
-
-    <div class="products__list-wrapper">
-      <?php
+      <div class="products__list-wrapper">
+        <?php
 		if ( woocommerce_product_loop() ) {
 
 			/**
@@ -209,7 +216,7 @@ do_action( 'woocommerce_before_main_content' );
 		?>
 
 
-      <?php
+        <?php
 				woocommerce_product_loop_start();
 
 				if ( wc_get_loop_prop( 'total' ) ) {
@@ -243,21 +250,23 @@ do_action( 'woocommerce_before_main_content' );
 				do_action( 'woocommerce_no_products_found' );
 			}
 			?>
+      </div>
+
     </div>
   </div>
-</div>
+</section>
 <?php
 /**
  * Hook: woocommerce_after_main_content.
  *
  * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
  */
+
+get_template_part( 'template-parts/text-only', 'page', array( 'id' => $shop_id ) );
+
 do_action( 'woocommerce_after_main_content' );
 
 $shop_id = wc_get_page_id( 'shop' );
 set_query_var( 'acf_page_id', $shop_id );
-get_template_part( 'template-parts/text-and-image', 'page' );
-
 get_template_part( 'template-parts/call-to-action', 'page' );
-get_template_part( 'template-parts/seo-text', 'page' );
 get_footer();

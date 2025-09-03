@@ -287,7 +287,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "25",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -312,7 +312,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "25",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -321,6 +321,22 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": ""
+                        },
+                        {
+                            "key": "field_68b6fc8b7e1b1",
+                            "label": "Link",
+                            "name": "options_product_info_01_link",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "url"
                         },
                         {
                             "key": "field_687e2b8b9518c",
@@ -370,7 +386,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "25",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -395,7 +411,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "25",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -404,6 +420,22 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": ""
+                        },
+                        {
+                            "key": "field_68b6fcbb7e1b2",
+                            "label": "Link",
+                            "name": "options_product_info_02_link",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "url"
                         },
                         {
                             "key": "field_687e2bb495190",
@@ -453,7 +485,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "25",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -478,7 +510,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "25",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -487,6 +519,22 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": ""
+                        },
+                        {
+                            "key": "field_68b6fcdd7e1b3",
+                            "label": "Link",
+                            "name": "options_product_info_03_link",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "url"
                         },
                         {
                             "key": "field_687e2bde95194",
@@ -536,7 +584,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "25",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -561,7 +609,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "25",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -570,6 +618,22 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": ""
+                        },
+                        {
+                            "key": "field_68b6fd177e1b4",
+                            "label": "Link",
+                            "name": "options_product_info_04_link",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "url"
                         },
                         {
                             "key": "field_687e2bfa95198",
@@ -859,5 +923,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1755788895
+    "modified": 1756822955
 }

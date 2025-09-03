@@ -26,7 +26,6 @@ if ( ! function_exists( 'wc_get_gallery_image_html' ) ) {
 
 global $product;
 
-
 $columns           = apply_filters( 'woocommerce_product_thumbnails_columns', 4 );
 $post_thumbnail_id = $product->get_image_id();
 $wrapper_classes   = apply_filters(
@@ -40,49 +39,68 @@ $wrapper_classes   = apply_filters(
 );
 ?>
 
-<?php the_title( '<h1 class="single-product__title no-desktop">', '</h1>' ); ?>
+<div class="wrapper">
+<div class="single-product__wrapper animate">
 
-<div class="single-product__main">
+  <div class="single-product__main">
 
-  <div class="single-product__gallery">
-
-    <?php if ( has_term( 'featured', 'product_visibility', $product->get_id() ) ) : ?>
-    <span class="product__featured">Bestseller</span>
-    <?php endif; ?>
-
-    <!-- <?php if ( has_term( 41, 'product_cat', $product->get_id() ) ) : ?>
-    <div class="bestsellers-product">
-      <img src="<?php echo get_template_directory_uri()?>/assets/img/bestseller.png" class="bestseller-product__img"
-        alt="<?php echo _e('Ikona Bestsellera', 'candyweb');?>">
-    </div>
-    <?php endif;?> -->
-
-    <div class="product-gallery__slider">
-
-      <?php if (!empty(get_field('product_video'))): ?>
+    <div class="single-product__gallery">
+      
+    <div class="product__statuses">
       <?php
+      // New product badge (published in last 30 days)
+      $days = 30;
+      $postdate = get_the_time( 'U', $product->get_id() );
+      $now = strtotime( 'now' );
+      $diff = ( $now - $postdate ) / DAY_IN_SECONDS;
+      if ( $diff < $days ) : ?>
+      <span class="product__new">Nowość</span>
+      <?php endif; ?>
+
+      <?php
+        // also display it in newest products section if it match x newest items even if they are older than 30 days
+        $category = isset($args['category']) ? $args['category'] : '';
+        if ( $category ): ?>
+      <span class="product__new">Nowość</span>
+      <?php endif; ?>
+
+      <?php // Bestseller badge ?>
+      <?php // if ( has_term( 'featured', 'product_visibility', $product->get_id() ) ) : ?>
+      <!-- <span class="product__featured">Bestseller</span> -->
+      <?php // endif; ?>
+
+      <?php // On sale badge ?>
+      <?php if ( $product && $product->is_on_sale() ) : ?>
+      <?php wc_get_template( 'loop/sale-flash.php' ); ?>
+      <?php endif; ?>
+    </div>
+
+      <div class="product-gallery__slider">
+
+        <?php if (!empty(get_field('product_video'))): ?>
+        <?php
 			$iframe = get_field('product_video');
 			preg_match('/src="https:\/\/www\.youtube\.com\/embed\/([a-zA-Z0-9_-]+)(\?.+)?"/', $iframe, $matches);
 			$video_id = $matches[1];
 			?>
-      <div class="product-gallery__item d-flex align-items-center justify-content-center position-relative">
-        <div class="youtube" data-id="<?php echo esc_attr($video_id); ?>">
-          <div class="play-button"></div>
+        <div class="product-gallery__item d-flex align-items-center justify-content-center position-relative">
+          <div class="youtube" data-id="<?php echo esc_attr($video_id); ?>">
+            <div class="play-button"></div>
+          </div>
         </div>
-      </div>
-      <?php endif; ?>
+        <?php endif; ?>
 
-      <?php 
+        <?php 
 		if ( $post_thumbnail_id ) :
 			$image_url = wp_get_attachment_image_url( $post_thumbnail_id, 'full' );
 			$image_alt = get_post_meta( $post_thumbnail_id, '_wp_attachment_image_alt', true );
 			?>
-      <div class="product-gallery__item d-flex align-items-center justify-content-center position-relative">
-        <a href="<?php echo esc_url($image_url); ?>" data-lightbox="product">
-          <?php echo wp_get_attachment_image( $post_thumbnail_id, 'product-single-img', false, array( 'alt' => esc_attr( $image_alt ), 'class' => 'product-gallery__img' ) ); ?>
-        </a>
-      </div>
-      <?php
+        <div class="product-gallery__item d-flex align-items-center justify-content-center position-relative">
+          <a href="<?php echo esc_url($image_url); ?>" data-lightbox="product">
+            <?php echo wp_get_attachment_image( $post_thumbnail_id, 'product-single-img', false, array( 'alt' => esc_attr( $image_alt ), 'class' => 'product-gallery__img' ) ); ?>
+          </a>
+        </div>
+        <?php
 		endif;
 
 		if ( class_exists( 'WooCommerce' ) ) :
@@ -94,31 +112,31 @@ $wrapper_classes   = apply_filters(
 					$image_url = wp_get_attachment_image_url( $image_id, 'full' );
 					$image_alt = get_post_meta( $image_id, '_wp_attachment_image_alt', true );
 					?>
-      <div class="product-gallery__item d-flex align-items-center justify-content-center position-relative">
-        <a href="<?php echo esc_url($image_url); ?>" data-lightbox="product">
-          <?php echo wp_get_attachment_image( $image_id, 'product-single-img', false, array( 'alt' => esc_attr( $image_alt ), 'class' => 'product-gallery__img' ) ); ?>
-        </a>
-      </div>
-      <?php
+        <div class="product-gallery__item d-flex align-items-center justify-content-center position-relative">
+          <a href="<?php echo esc_url($image_url); ?>" data-lightbox="product">
+            <?php echo wp_get_attachment_image( $image_id, 'product-single-img', false, array( 'alt' => esc_attr( $image_alt ), 'class' => 'product-gallery__img' ) ); ?>
+          </a>
+        </div>
+        <?php
 				endforeach;
 			endif;
 		endif;
 		?>
-    </div>
-    <div class="product-gallery__slider-nav mt-30">
-      <?php if (!empty(get_field('product_video'))): ?>
-      <?php
+      </div>
+      <div class="product-gallery__slider-nav mt-30">
+        <?php if (!empty(get_field('product_video'))): ?>
+        <?php
 				$iframe = get_field('product_video');
 				preg_match('/src="https:\/\/www\.youtube\.com\/embed\/([a-zA-Z0-9_-]+)(\?.+)?"/', $iframe, $matches);
 				$video_id = $matches[1];
 				?>
-      <div class="product-gallery__nav-item d-flex align-items-center justify-content-center position-relative">
-        <div class="youtube-thumb" data-id="<?php echo esc_attr($video_id); ?>">
-          <div class="play-button"></div>
+        <div class="product-gallery__nav-item d-flex align-items-center justify-content-center position-relative">
+          <div class="youtube-thumb" data-id="<?php echo esc_attr($video_id); ?>">
+            <div class="play-button"></div>
+          </div>
         </div>
-      </div>
-      <?php endif; ?>
-      <?php 
+        <?php endif; ?>
+        <?php 
 			
 
 			if ( class_exists( 'WooCommerce' ) ) :
@@ -129,22 +147,23 @@ $wrapper_classes   = apply_filters(
 						$image_url = wp_get_attachment_image_url( $post_thumbnail_id, 'full' );
 						$image_alt = get_post_meta( $post_thumbnail_id, '_wp_attachment_image_alt', true );
 						?>
-      <div class="product-gallery__nav-item d-flex align-items-center justify-content-center position-relative">
-        <?php echo wp_get_attachment_image( $post_thumbnail_id, 'product-single-nav-img', false, array( 'alt' => esc_attr( $image_alt ), 'class' => 'product-gallery__nav-img' ) ); ?>
-      </div>
-      <?php
+        <div class="product-gallery__nav-item d-flex align-items-center justify-content-center position-relative">
+          <?php echo wp_get_attachment_image( $post_thumbnail_id, 'product-single-nav-img', false, array( 'alt' => esc_attr( $image_alt ), 'class' => 'product-gallery__nav-img' ) ); ?>
+        </div>
+        <?php
 					endif;
 					foreach ( $gallery_image_ids as $image_id ) :
 						$image_url = wp_get_attachment_image_url( $image_id, 'full' );
 						$image_alt = get_post_meta( $image_id, '_wp_attachment_image_alt', true );
 						?>
-      <div class="product-gallery__nav-item d-flex align-items-center justify-content-center position-relative">
-        <?php echo wp_get_attachment_image( $image_id, 'product-single-nav-img', false, array( 'alt' => esc_attr( $image_alt ), 'class' => 'product-gallery__nav-img' ) ); ?>
-      </div>
-      <?php
+        <div class="product-gallery__nav-item d-flex align-items-center justify-content-center position-relative">
+          <?php echo wp_get_attachment_image( $image_id, 'product-single-nav-img', false, array( 'alt' => esc_attr( $image_alt ), 'class' => 'product-gallery__nav-img' ) ); ?>
+        </div>
+        <?php
 					endforeach;
 				endif;
 			endif;
 			?>
+      </div>
     </div>
   </div>

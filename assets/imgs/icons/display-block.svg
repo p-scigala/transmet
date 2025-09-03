@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+  <g transform="translate(-1594 -419)">
+    <g transform="translate(1594 419)" fill="none" stroke="#003793" stroke-width="1">
+      <rect x="0.5" y="0.5" width="7" height="7" rx="0.5" fill="none" />
+    </g>
+    <g transform="translate(1594 429)" fill="none" stroke="#003793" stroke-width="1">
+      <rect x="0.5" y="0.5" width="7" height="7" rx="0.5" fill="none" />
+    </g>
+    <g transform="translate(1604 419)" fill="none" stroke="#003793" stroke-width="1">
+      <rect x="0.5" y="0.5" width="7" height="7" rx="0.5" fill="none" />
+    </g>
+    <g transform="translate(1604 429)" fill="none" stroke="#003793" stroke-width="1">
+      <rect x="0.5" y="0.5" width="7" height="7" rx="0.5" fill="none" />
+    </g>
+  </g>
+</svg>

@@ -4,6 +4,7 @@
 
   .wrapper {
     @include flex-column;
+    @include flex-center;
   }
 
   &__items {

@@ -23,19 +23,19 @@ if ( $cross_sells ) : ?>
   <div class="wrapper">
 
     <?php if(get_field("related_title", "option")) { ?>
-    <h2 class="cross-sells__heading animate">
+    <h2 class="cross-sells__heading heading animate">
       <?php echo get_field("related_title", "option"); ?>
     </h2>
     <?php } ?>
 
     <?php if(get_field("related_subtitle", "option")) { ?>
-    <h3 class="cross-sells__subheading animate">
+    <h3 class="cross-sells__subheading subheading animate delay-1">
       <?php echo get_field("related_subtitle", "option"); ?>
     </h3>
     <?php } ?>
 
     <?php if(get_field("related_description", "option")) { ?>
-    <div class="cross-sells__description animate">
+    <div class="cross-sells__description description animate delay-2">
       <?php echo get_field("related_description", "option"); ?>
     </div>
     <?php } ?>

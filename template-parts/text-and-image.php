@@ -11,7 +11,7 @@ if (!$page_id) {
 <?php while(have_rows("text_and_img_repeater", $page_id)): the_row();?>
 
 <section class="text-and-image
-  <?php if(get_sub_field("text_and_img_size")) { echo "text-and-image--wide"; } else { echo "text-and-image--thin"; } ?>
+  <?php if(get_sub_field("text_and_img_size")) { echo "text-and-image--half"; } else { echo "text-and-image--normal"; } ?>
   <?php if(get_sub_field("text_and_img_position")) { echo "text-and-image--left"; } else { echo "text-and-image--right"; } ?>
 ">
 
@@ -73,14 +73,10 @@ if (!$page_id) {
 
         <?php if(get_sub_field("text_and_img_img_logo")): ?>
         <div class="text-and-image__img-logo-wrapper">
-          <img class="text-and-image__img-logo no-mobile" src="<?php echo get_sub_field("text_and_img_img_logo"); ?>" />
+          <img class="text-and-image__img-logo" src="<?php echo get_sub_field("text_and_img_img_logo"); ?>" />
         </div>
         <?php endif; ?>
       </div>
-
-      <?php if(get_sub_field("text_and_img_img_logo")): ?>
-      <img class="text-and-image__img-logo no-desktop" src="<?php echo get_sub_field("text_and_img_img_logo"); ?>" />
-      <?php endif; ?>
 
     </div>
   </div>

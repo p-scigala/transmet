@@ -32,6 +32,12 @@
   align-items: center;
 }
 
+@mixin flex-row-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 @mixin flex-wrap {
   display: flex;
   flex-wrap: wrap;
@@ -109,32 +115,10 @@
   transition-duration: var(--t-xlong);
 }
 
-section {
-  width: 100%;
-  margin: var(--m-l) auto;
-}
+@mixin hexToRgb($color, $opacity: 1) {
+  $red: red($color);
+  $green: green($color);
+  $blue: blue($color);
 
-.wrapper {
-  width: var(--c-l);
-  max-width: 100%;
-  margin: 0 auto;
-  height: 100%;
-  padding: 0 var(--p-l);
-  @include flex-center;
-
-  @media (max-width: 1400px) {
-    width: var(--c-m);
-  }
-
-  @media (max-width: 1280px) {
-    width: var(--c-s);
-  }
-
-  @media (max-width: 1024px) {
-    padding: 0 var(--p-m);
-  }
-
-  @media (max-width: 800px) {
-    padding: 0 var(--p-s);
-  }
+  background: rgba($red, $green, $blue, $opacity);
 }

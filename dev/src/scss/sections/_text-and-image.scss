@@ -6,6 +6,7 @@
 
     @media (max-width: 800px) {
       flex-direction: column !important;
+      gap: 50px;
     }
   }
 
@@ -35,23 +36,24 @@
     }
 
     ul {
-      padding-left: 20px;
+      padding-left: 24px;
 
       li {
         list-style: none;
         position: relative;
+        margin-bottom: 7px;
 
         &:before {
           content: '';
           position: absolute;
           display: block;
-          left: -20px;
-          top: 8px;
-          width: 9px;
-          height: 9px;
-          background-color: var(--color-blue);
+          left: -24px;
+          top: 5px;
+          width: 11px;
+          height: 11px;
+          background-color: var(--color-darkblue);
           border-radius: 50%;
-          margin-right: 11px;
+          margin-right: 15px;
         }
       }
     }
@@ -249,24 +251,35 @@
       }
     }
 
-    &-logo {
+    &-logo-wrapper {
       position: absolute;
       bottom: 0;
       left: 0;
-      max-width: 234px;
-      transform: translate(-50%, 33.33%);
+      max-width: var(--grid-3);
+      transform: translate(-120px, 35px);
+      padding: 40px;
+      border-radius: 5px;
+      background-color: var(--color-darkblue);
+
+      @media (max-width: 1400px) {
+        padding: 30px;
+        transform: translate(-60px, 35px);
+      }
+
+      @media (max-width: 1280px) {
+        padding: 20px;
+        transform: translate(-15px, 15px);
+
+        img {
+          max-width: 200px;
+        }
+      }
 
       @media (max-width: 1024px) {
-        max-width: 160px;
-      }
-
-      @media (max-width: 800px) {
-        position: relative;
-        margin: 30px auto 0;
-        left: 0;
-        right: 0;
         transform: none;
       }
+
+      @media (max-width: 800px) {}
     }
   }
 
@@ -280,6 +293,50 @@
     @media (max-width: 800px) {
       margin: 30px auto 15px auto;
       font-size: 10px;
+    }
+  }
+
+
+  &--half {
+    .text-and-image {
+
+      &__img,
+      &__content {
+        max-width: calc(50% - 15px);
+        width: var(--grid-6);
+
+        @media (max-width: 800px) {
+          width: 100%;
+          max-width: unset;
+        }
+      }
+
+      &__content {
+        &>* {
+          max-width: var(--grid-5);
+        }
+      }
+
+      &__img,
+      &__img-items--1,
+      &__img-items--1 img {
+        height: 520px;
+
+        @media (max-width: 800px) {
+          height: 400px;
+        }
+      }
+    }
+  }
+
+  &--half.text-and-image--left {
+    .text-and-image {
+      &__content {
+        &>* {
+          max-width: 100%;
+          width: 100%;
+        }
+      }
     }
   }
 }

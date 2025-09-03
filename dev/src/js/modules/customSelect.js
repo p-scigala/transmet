@@ -43,15 +43,12 @@ export default function customSelect(exceptions = []) {
           // console.log('Custom select changed:', realSelect.name, 'to', option.value, 'index:', realSelect.selectedIndex);
 
           // Force change event in vanilla JS as well
-          const changeEvent = new Event('change', { bubbles: true });
-          realSelect.dispatchEvent(changeEvent);
+          realSelect.dispatchEvent(new Event('change', { bubbles: true }));
 
           // WooCommerce specific handling
           if (isWooCommerceAttribute && variationForm && window.jQuery) {
             const $form = window.jQuery(variationForm);
             const $realSelect = window.jQuery(realSelect);
-
-            // console.log('WooCommerce attribute selected:', realSelect.name, '=', option.value);
 
             // Najpierw trigger change event
             $realSelect.trigger('change');
@@ -123,7 +120,7 @@ export default function customSelect(exceptions = []) {
                     // Final check after retry
                     setTimeout(() => {
                       const finalVariationId = $form.find('input[name="variation_id"]').val();
-                      // console.log('Final retry variation ID:', finalVariationId);
+
                       if (finalVariationId && finalVariationId !== '0') {
                         const $button = $form.find('.single_add_to_cart_button');
                         $button.removeClass('wc-variation-selection-needed disabled');
@@ -133,6 +130,7 @@ export default function customSelect(exceptions = []) {
                         // Last resort: try manual variation matching
                         // console.log('Attempting manual variation matching...');
                         const manualVariationId = findVariationManually($form, selectedValues);
+
                         if (manualVariationId) {
                           $form.find('input[name="variation_id"]').val(manualVariationId);
                           const $button = $form.find('.single_add_to_cart_button');
@@ -141,15 +139,63 @@ export default function customSelect(exceptions = []) {
                           // console.log('Manual variation match successful:', manualVariationId);
                         }
                       }
-                      // console.log('Final variation ID after all checks:', $form.find('input[name="variation_id"]').val());
+
                       // display variation price
                       const variationPrice = document.querySelector('.woocommerce-variation-price');
                       const formData = $form.data('product_variations');
-                      console.log(variationPrice, formData, selectedValues);
+
                       if (formData) {
-                        formData.filter(variation => variation.variation_id == $form.find('input[name="variation_id"]').val()).forEach(variation => {
-                          variationPrice.innerHTML = `<span class="woocommerce-Price-amount amount"><bdi>${variation.display_price} zł</bdi></span>`;
+                        let currentVariation = null;
+
+                        formData.forEach(item => {
+                          if (deepEqual(item.attributes, selectedValues)) {
+                            currentVariation = item;
+                          }
                         });
+                        console.log(currentVariation)
+                        $form.find('input[name="variation_id"]').val(currentVariation.variation_id);
+
+                        let price = `<p class="price">`;
+
+                        if (currentVariation.display_regular_price) {
+                          price += `<del aria-hidden="true">
+                            <span class="woocommerce-Price-amount amount">
+                              <bdi>${currentVariation.display_regular_price}&nbsp;<span class="woocommerce-Price-currencySymbol">zł</span></bdi>
+                            </span>
+                          </del>
+                          <span class="screen-reader-text">Pierwotna cena wynosiła: ${currentVariation.display_regular_price}&nbsp;zł.</span>`;
+                        }
+
+                        if (currentVariation.display_price) {
+                          price += `<ins aria-hidden="true">
+                            <span class="woocommerce-Price-amount amount">
+                              <bdi>${currentVariation.display_price}&nbsp;<span class="woocommerce-Price-currencySymbol">zł</span></bdi>
+                            </span>
+                          </ins>
+                          <span class="screen-reader-text">Aktualna cena wynosi: ${currentVariation.display_price}&nbsp;zł.</span>`
+                        }
+
+                        price += `</p>`;
+
+                        variationPrice.innerHTML = price;
+
+                        const lowest = `<div class="wc-price-history prior-price lowest">
+                          Najniższa cena sprzed 30 dni:
+                          <span class="wc-price-history prior-price-value ">
+                            <span class="woocommerce-Price-amount amount">
+                              <bdi>
+                                <span class="wc-price-history-lowest-raw-value">${currentVariation._wc_price_history_lowest_price}</span>
+                                <span class="woocommerce-Price-currencySymbol">zł</span>
+                              </bdi>
+                            </span>
+                          </span>
+                        </div>`;
+                        variationPrice.insertAdjacentHTML('beforeend', lowest);
+
+                        // variationPrice.innerHTML = `<span class="woocommerce-Price-amount amount"><bdi>${currentVariation.display_price} zł</bdi></span>`;
+                        document.querySelector('.price-amount').style.display = 'none';
+                      } else {
+                        document.querySelector('.price-amount').style.display = '';
                       }
                     }, 100);
                   }
@@ -238,4 +284,19 @@ function findVariationManually($form, selectedAttributes) {
 
   // console.log('No matching variation found');
   return null;
+}
+
+function deepEqual(a, b) {
+  if (a === b) return true;
+
+  if (typeof a !== "object" || typeof b !== "object" || a == null || b == null) {
+    return false;
+  }
+
+  const keysA = Object.keys(a);
+  const keysB = Object.keys(b);
+
+  if (keysA.length !== keysB.length) return false;
+
+  return keysA.every(key => deepEqual(a[key], b[key]));
 }

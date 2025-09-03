@@ -47,10 +47,10 @@
             <?php endif; ?>
           </div>
 
-          <h4 class="why-worth__item-title">
+          <h4 class="why-worth__item-title icon__title">
             <?php echo get_sub_field("why_list_title"); ?>
             <?php if(get_sub_field("why_list_text")) : ?>
-            <span class="why-worth__item-text">
+            <span class="why-worth__item-text icon__subtitle">
               <?php echo get_sub_field("why_list_text"); ?>
             </span>
             <?php endif; ?>

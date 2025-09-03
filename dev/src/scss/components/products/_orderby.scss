@@ -1,0 +1,12 @@
+.products__orderby {
+  @include flex-row-end;
+  height: 18px;
+  line-height: 18px;
+
+  .select,
+  .select-selected {
+    height: 18px;
+    line-height: 18px;
+  }
+
+}

@@ -206,34 +206,36 @@ function display_product_category_name() {
 
         echo '</div>';
     }
-
 }
 
 /* change additional information tab name */
 
 add_filter( 'woocommerce_product_tabs', 'display_custom_additional_information_name', 98 );
 function display_custom_additional_information_name( $tabs ) {
+    if ( isset( $tabs['description'] ) ) {
+        $tabs['description']['title'] = 'Opis produktu';
+    }
     if ( isset( $tabs['additional_information'] ) ) {
-        $tabs['additional_information']['title'] = 'Dane techniczne';
+        $tabs['additional_information']['title'] = 'Informacje o bezpieczeństwie produktu';
     }
     return $tabs;
 }
 
-/* add new tab in product page with files to download */
+/* add new tab in product page */
 
 add_filter( 'woocommerce_product_tabs', 'add_tab_to_product_tabs' );
 function add_tab_to_product_tabs( $tabs ) {
 
-    $tabs['files_to_download'] = array(
-        'title' => 'Materiały do pobrania', // Tytuł zakładki
+    $tabs['product_instructions'] = array(
+        'title' => 'Instrukcje', // Tytuł zakładki
         'priority' => 50, // Kolejność wyświetlania
-        'callback' => 'product_files_to_download' // Funkcja, która zwróci HTML
+        'callback' => 'product_instructions' // Funkcja, która zwróci HTML
     );
 
     return $tabs;
 }
 
-function product_files_to_download() {
+function product_instructions() {
     global $product;
     $product_id = $product->get_id();
 
@@ -241,9 +243,21 @@ function product_files_to_download() {
         $files = get_field('product_files_repeater', $product_id);
         if($files) {
             echo '<ul class="single-product__files">';
-            foreach($files as $file) {
-                echo '<li class="single-product__file"><a href="' . esc_url($file['product_file']) . '" target="_blank"><img src="../../wp-content/themes/candyweb-new/assets/imgs/icon-file.svg" /><span>' . esc_html($file['product_file_name']) . '</span></a></li>';
-            }
+            foreach($files as $file):?>
+
+<li class="single-product__file">
+  <a href="<?php echo esc_url($file['product_file']); ?>" download>
+    <span><?php echo esc_html($file['product_file_name']); ?></span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="21.435" height="19.648" viewBox="0 0 21.435 19.648">
+      <path
+        d="M25.435,21.969V18.4a.893.893,0,1,0-1.786,0v3.572a.893.893,0,0,1-.893.893H6.679a.893.893,0,0,1-.893-.893V18.4A.893.893,0,1,0,4,18.4v3.572a2.679,2.679,0,0,0,2.679,2.679H22.755a2.679,2.679,0,0,0,2.679-2.679Zm-5.7-4.662-4.466,3.572a.893.893,0,0,1-1.107,0L9.7,17.307a.893.893,0,0,1,1.107-1.393l3.019,2.411V5.893a.893.893,0,1,1,1.786,0V18.325l3.019-2.411a.893.893,0,1,1,1.107,1.393Z"
+        transform="translate(-4 -5)" fill="#003793" />
+    </svg>
+  </a>
+</li>
+
+<?php endforeach; ?>
+<?php
             echo '</ul>';
         } else {
             echo '<p>Brak plików do pobrania.</p>';
@@ -252,6 +266,9 @@ function product_files_to_download() {
         echo '<p>Brak plików do pobrania.</p>';
     }
 }
+
+/* merge tab with description and data */
+
 
 /* remove reviews tab from product page */
 
@@ -272,33 +289,33 @@ function display_product_additional_data() {
   $quality = get_field('product_quality', $product_id);
   $refundation = get_field('product_nfz_refundation', $product_id);
 
-  echo '<table class="single-product__table">';
+//   echo '<table class="single-product__table">';
 
- if ( ! $product->is_taxable() ) {
-        return; // Produkt nieopodatkowany
-    }
+//  if ( ! $product->is_taxable() ) {
+//         return; // Produkt nieopodatkowany
+//     }
 
-    // Pobierz stawki podatku dla klasy podatkowej produktu
-    $tax_class = $product->get_tax_class();
-    $tax_rates = WC_Tax::get_rates( $tax_class );
+//     // Pobierz stawki podatku dla klasy podatkowej produktu
+//     $tax_class = $product->get_tax_class();
+//     $tax_rates = WC_Tax::get_rates( $tax_class );
 
-    // Wyciągnij pierwszą stawkę (zakładamy jedną stawkę VAT na produkt)
-    if ( ! empty( $tax_rates ) ) {
-        $rate = reset( $tax_rates );
-        $vat_percent = $rate['rate']; // Np. 23.0000
+//     // Wyciągnij pierwszą stawkę (zakładamy jedną stawkę VAT na produkt)
+//     if ( ! empty( $tax_rates ) ) {
+//         $rate = reset( $tax_rates );
+//         $vat_percent = $rate['rate']; // Np. 23.0000
 
-        echo '<tr><th>Podatek VAT</th><td>' . number_format( $vat_percent, 2, '.', '' ) . '%</td></tr>';
-    }
+//         echo '<tr><th>Podatek VAT</th><td>' . number_format( $vat_percent, 2, '.', '' ) . '%</td></tr>';
+//     }
 
-  if($ean_code) echo '<tr><th>Kod EAN</th><td>' . $ean_code . '</td></tr>';
-  if($quality) echo '<tr><th>Klasa wyrobu</th><td>' . $quality . '</td></tr>';
-  if($nfz_code) echo '<tr><th>Kod NFZ</th><td>' . $nfz_code . '</td></tr>';
+//     if($ean_code) echo '<tr><th>Kod EAN</th><td>' . $ean_code . '</td></tr>';
+//     if($quality) echo '<tr><th>Klasa wyrobu</th><td>' . $quality . '</td></tr>';
+//     if($nfz_code) echo '<tr><th>Kod NFZ</th><td>' . $nfz_code . '</td></tr>';
 
-  echo "</table>";
+//   echo "</table>";
 
-  if($refundation) {
-    echo '<div class="single-product__refund-info">Refundacja NFZ - ' . $refundation['label'] . '</div>';
-  }
+//   if($refundation) {
+//     echo '<div class="single-product__refund-info">Refundacja NFZ - ' . $refundation['label'] . '</div>';
+//   }
 }
 
 add_filter( 'wpcf7_form_elements', 'cf7_replace_submit_with_button' );
@@ -437,3 +454,20 @@ function candy_woocommerce_customize_error($error)
 
 // Remove default position
 remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
+
+// remove default sale status position
+add_action( 'woocommerce_before_single_product', function() {
+    remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10 );
+});
+
+// set different structure if product loop-start.php is called in related products and cross sells
+add_action( 'woocommerce_after_single_product_summary', function() {
+    add_action( 'woocommerce_product_loop_start', function() {
+        if ( did_action( 'woocommerce_after_single_product_summary' ) ) {
+            echo '<ul class="products__list slider slider--with-bar slider--with-buttons animate delay-2">';
+        }
+        if ( did_action( 'woocommerce_cart_collaterals' ) ) {
+            echo '<ul class="products__list slider slider--with-bar slider--with-buttons animate delay-2">';
+        }
+    }, 5 );
+}, 19 ); // before related products run
