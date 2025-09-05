@@ -124,10 +124,12 @@
 
         <button class="header__menu-toggle"><span></span></button>
 
-        <a href="/koszyk" class="back-to-cart">Powrót</a>
-
-        <a href="/koszyk" class="back-to-cart">Powrót</a>
-
       </div>
     </div>
   </header>
+
+  <div class="back-to-cart">
+    <div class="wrapper">
+      <a href="/koszyk">Powrót</a>
+    </div>
+  </div>

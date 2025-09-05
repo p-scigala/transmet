@@ -64,14 +64,8 @@ jQuery(document).ready(function ($) {
   });
 
   $('body').on('added_to_cart', function (event, fragments, cart_hash, $button) {
-    // console.log('AJAX add to cart triggered!');
-    // console.log('Cart fragments:', fragments); // DOM fragments to update cart contents
-    // console.log('Cart hash:', cart_hash);     // Unique cart hash
-    // console.log('Button clicked:', $button);  // The button that triggered the event
     if (fragments && fragments['div.widget_shopping_cart_content']) {
-      modal('Produkt został dodany do koszyka.', createModalContent(fragments['div.widget_shopping_cart_content']), 'side');
-      // modal("Produkt został dodany do koszyka.", `<a href="/transmet/koszyk/" style="margin: auto;" class="added_to_cart wc-forward btn" title="Zobacz koszyk"><span>Zobacz koszyk</a>`);
-      // modal("Produkt został dodany do koszyka.", fragments['div.widget_shopping_cart_content'] || null);
+      modal('Produkt został dodany do koszyka', createModalContent(fragments['div.widget_shopping_cart_content']), 'side');
     }
   });
 
@@ -115,10 +109,10 @@ function createModalContent(content) {
 
   wrapper.innerHTML = fixedContent;
   const buttons = `<div class="modal__custom-buttons">
-        <button class="btn--link modal__custom-btn" onclick="closeModal()">
+        <button class="link modal__custom-btn" onclick="closeModal()">
           <span>Kontynuuj zakupy</span>
         </button>
-        <button  onclick="window.location.href='koszyk/'" class="added_to_cart wc-forward btn--link modal__custom-btn" title="Zobacz koszyk">
+        <button  onclick="window.location.href='koszyk/'" class="added_to_cart wc-forward link modal__custom-btn" title="Zobacz koszyk">
           <span>Zobacz koszyk</span>
         </button>
         <button class="btn modal__custom-btn" onclick="window.location.href='zamowienie/'">

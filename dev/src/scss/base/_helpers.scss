@@ -26,6 +26,13 @@
   justify-content: flex-start;
 }
 
+@mixin flex-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
 @mixin flex-space-between {
   display: flex;
   justify-content: space-between;

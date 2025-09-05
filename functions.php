@@ -471,3 +471,17 @@ add_action( 'woocommerce_after_single_product_summary', function() {
         }
     }, 5 );
 }, 19 ); // before related products run
+
+// add_action( 'woocommerce_cart_is_empty', function() {
+//     echo '<p class="custom-empty-cart">Your cart is empty – but here’s a promo banner!</p>';
+// });
+
+add_filter( 'woocommerce_account_menu_items', function( $items ) {
+    $items['dashboard'] = 'Kokpit';
+    $items['orders'] = 'Zamówienia';
+    $items['downloads'] = 'Pliki';
+    $items['edit-address'] = 'Adresy';
+    $items['edit-account'] = 'Szczegóły konta';
+    $items['customer-logout']= 'Wyloguj się';
+    return $items;
+});

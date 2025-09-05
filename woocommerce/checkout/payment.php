@@ -21,7 +21,7 @@ if ( ! wp_doing_ajax() ) {
 	do_action( 'woocommerce_review_order_before_payment' );
 }
 ?>
-<h3 class="my-checkout__title my-checkout__title-4 mt-60 mb-30">4. Metoda płatności</h3>
+<h3 class="my-checkout__title my-checkout__title-4">4. Metoda płatności</h3>
 <div id="payment" class="woocommerce-checkout-payment">
   <?php if ( WC()->cart->needs_payment() ) : ?>
   <ul class="wc_payment_methods payment_methods methods">
@@ -52,7 +52,7 @@ if ( ! wp_doing_ajax() ) {
 
     <?php wc_get_template( 'checkout/terms.php' ); ?>
 
-    <div class="order-agreements">
+    <!-- <div class="order-agreements">
       <p class="form-row form-row-wide form-row-checkbox validate-required" id="order_agreement_1_field"
         data-priority="20" data-fcf-field="order_agreement_1">
         <label for="order_agreement_1">
@@ -71,7 +71,7 @@ if ( ! wp_doing_ajax() ) {
             class="required" title="Pole wymagane">*</abbr>
         </label>
       </p>
-    </div>
+    </div> -->
 
     <?php do_action( 'woocommerce_review_order_before_submit' ); ?>
 

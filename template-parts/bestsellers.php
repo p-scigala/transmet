@@ -20,7 +20,11 @@
         </h2>
         <?php endif; ?>
 
-        <?php if(get_field("bestsellers_title_02")): ?>
+        <?php if($args['subheading']): ?>
+        <h3 class="bestsellers__subheading subheading animate delay-1">
+          <?php echo $args['subheading']; ?>
+        </h3>
+        <?php elseif(get_field("bestsellers_title_02")): ?>
         <h3 class="bestsellers__subheading subheading animate delay-1">
           <?php echo get_field("bestsellers_title_02"); ?>
         </h3>

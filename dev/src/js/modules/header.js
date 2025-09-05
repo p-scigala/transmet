@@ -29,6 +29,40 @@ const headerInit = () => {
     middleMenuWrapper.appendChild(topMenu);
     nav.appendChild(topContact);
   }
+
+  const header = document.querySelector('.header');
+  const body = document.body;
+
+  //detect scroll direction
+  window.addEventListener('scroll', () => {
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (window.scrollY > 140) {
+      body.classList.add('scrolled');
+      header.classList.add('header--scrolled');
+    } else {
+      body.classList.remove('scrolled');
+      header.classList.remove('header--scrolled');
+    }
+    // check if scrolling up
+    if (currentScroll < lastScrollTop) {
+      body.classList.add('scrolled-top');
+      header.classList.add('header--scrolled-top');
+    } else {
+      body.classList.remove('scrolled-top');
+      header.classList.remove('header--scrolled-top');
+    }
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // avoid negative
+  });
+
+  const menuToggle = document.querySelector('.header__menu-toggle');
+
+  menuToggle.addEventListener('click', () => {
+    header.classList.toggle('header--active');
+    body.classList.toggle('header-active');
+    menuToggle.classList.toggle('header__menu-toggle--active');
+  });
 }
 
 export default headerInit;

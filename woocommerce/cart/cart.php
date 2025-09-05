@@ -186,7 +186,7 @@ do_action( 'woocommerce_before_cart' ); ?>
                   <input type="text" name="coupon_code" class="input-text" id="coupon_code" value=""
                     placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" />
                   <button type="submit"
-                    class="btn--link button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>"
+                    class="btn button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>"
                     name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>">
                     <span>
                       <?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?>
@@ -199,7 +199,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
               <div class="update-cart-button-wrapper">
                 <button type="submit"
-                  class="btn--link button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>"
+                  class="btn button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>"
                   name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>">
                   <span>
                     <?php esc_html_e( 'Update cart', 'woocommerce' ); ?>

@@ -26,6 +26,12 @@ if ( apply_filters( 'woocommerce_checkout_show_terms', true ) && function_exists
 		 * @hooked wc_terms_and_conditions_page_content() Shows t&c page content. Priority 30.
 		 */
 		do_action( 'woocommerce_checkout_terms_and_conditions' );
+
+    // echo `<p>
+    //     Twoje dane osobowe zostaną wykorzystane do przetworzenia Twojego zamówienia, wsparcia
+    //     Twoich doświadczeń na tej stronie internetowej oraz do innych celów opisanych w naszej
+    //     <a href="polityka-prywatnosci/" class="woocommerce-privacy-policy-link" target="_blank">polityce prywatności</a>.
+    //   </p>`;
 		?>
 
   <?php if ( wc_terms_and_conditions_checkbox_enabled() ) : ?>

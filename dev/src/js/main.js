@@ -57,34 +57,6 @@ jQuery(document).ready(function ($) {
     cartCount.style.display = 'block';
   }
 
-  const header = document.querySelector('.header');
-
-  //detect scroll direction
-  window.addEventListener('scroll', () => {
-    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (window.scrollY > 140) {
-      header.classList.add('header--scrolled');
-    } else {
-      header.classList.remove('header--scrolled');
-    }
-    // check if scrolling up
-    if (currentScroll < lastScrollTop) {
-      header.classList.add('header--scrolled-top');
-    } else {
-      header.classList.remove('header--scrolled-top');
-    }
-
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // avoid negative
-  });
-
-  const menuToggle = document.querySelector('.header__menu-toggle');
-
-  menuToggle.addEventListener('click', () => {
-    header.classList.toggle('header--active');
-    menuToggle.classList.toggle('header__menu-toggle--active');
-  });
-
   const filtersCategories = document.querySelectorAll(
     'li.products__filters-category'
   );
@@ -245,4 +217,23 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   observer.observe(document.body, { childList: true, subtree: true });
+});
+
+jQuery(function ($) {
+  // On cart page when totals (address-related) update
+  $(document.body).on('updated_cart_totals', function () {
+    customSelect();
+    inputsInit();
+  });
+
+  // rerender order button with span inside
+  function wrapOrderButton() {
+    var $btn = $('#place_order');
+    if ($btn.length && $btn.find('span').length === 0) {
+      $btn.html('<span>' + $btn.text() + '</span>');
+    }
+  }
+  wrapOrderButton();
+
+  $(document.body).on('updated_checkout', wrapOrderButton);
 });

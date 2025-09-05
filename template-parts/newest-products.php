@@ -1,6 +1,6 @@
 <?php /* Template Name: Sekcja - Ostatnio dodane produkty */ ?>
 
-<section class="newest-products" id="ostatnio-dodane">
+<section class="newest-products" id="nowosci">
   <div class="newest-products__wrapper">
 
     <?php if(get_field("newest_products_bg")): ?>

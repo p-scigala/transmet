@@ -162,6 +162,10 @@ section {
   padding: 0 32px;
   max-width: 100%;
   margin: 0 auto;
+
+  .wrapper {
+    padding: 0 !important;
+  }
 }
 
 .wrapper--small {

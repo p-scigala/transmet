@@ -1,4 +1,5 @@
 input[type='text'],
+input[type='tel'],
 input[type='password'],
 input[type='email'],
 textarea,
@@ -19,6 +20,10 @@ textarea.form-control {
     border-color: var(--color-blue);
     outline-color: var(--color-blue);
   }
+}
+
+input[type='password'] {
+  padding-right: 40px !important;
 }
 
 input[type='search'],
@@ -141,31 +146,11 @@ form {
     &[type='search'],
     &[type='text'],
     &[type='password'],
+    &[type='tel'],
     &[type='email'] {
       height: 47px;
       padding: 15px;
       width: 100%;
-    }
-  }
-
-  .input-custom-wrapper {
-    position: relative;
-
-    label {
-      font-size: 14px;
-      line-height: normal;
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      z-index: 1;
-      transition-duration: .3s;
-      transform-origin: left;
-    }
-
-    &.input--focused {
-      label {
-        transform: translateY(-14px) scale(0.6);
-      }
     }
   }
 
@@ -200,13 +185,6 @@ form {
 
     .wpcf7-list-item {
       margin: 0;
-    }
-
-    input {
-      margin: 0 10px 0 0;
-      width: 20px;
-      height: 20px;
-      cursor: pointer;
     }
 
     .form-check-input+span {
@@ -246,15 +224,14 @@ form {
   margin: auto;
   height: 30px;
   width: 30px;
-  cursor: pointer;
-  background: none;
   border: none;
   color: var(--color-black);
   font-size: 20px;
-  background-image: url(../../assets/imgs/icon-show-password.svg);
-  background-repeat: no-repeat;
-  background-position: center;
+  background: url(../../assets/imgs/icon-show-password.svg) no-repeat center;
   background-size: 20px;
+  background-color: var(--color-white);
+  z-index: 1;
+  cursor: pointer;
 }
 
 .woocommerce-form-login {
@@ -336,9 +313,50 @@ textarea.form-control {
 }
 
 input[type="checkbox"] {
-  border-radius: 5px;
-  background-color: var(--color-white);
-  border: solid 1px var(--color-border-dark);
-  width: 23px;
-  height: 23px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 5px !important;
+  background-color: var(--color-white) !important;
+  border: solid 1px var(--color-border-dark) !important;
+  width: 23px !important;
+  height: 23px !important;
+  margin: 3px 15px 0 0 !important;
+  cursor: pointer !important;
+  position: relative !important;
+  top: -3px !important;
+  transition-duration: .3s;
+  color: transparent !important;
+
+  &:checked {
+    background-color: var(--color-darkblue) !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e") !important;
+  }
+
+  &:focus {
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+.form-row,
+.input-custom-wrapper {
+  position: relative;
+
+  label {
+    font-size: 14px;
+    line-height: normal;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 1;
+    transition-duration: .3s;
+    transform-origin: left;
+  }
+
+  &.input--focused {
+    label {
+      transform: translateY(-14px) scale(0.6);
+    }
+  }
 }

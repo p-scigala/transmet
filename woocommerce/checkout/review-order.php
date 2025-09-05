@@ -42,7 +42,7 @@ defined( 'ABSPATH' ) || exit;
 					echo '<div class="product-thumbnail-checkout">';
 					echo $_product->get_image( 'woocommerce_thumbnail' );
 					echo '</div>';
-					echo '<div class="d-flex flex-column align-items-start justify-content-start">';
+					echo '<div class="">';
 					// Nazwa + ilość
 					echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) ) . '&nbsp;';
 					echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times;&nbsp;%s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key );

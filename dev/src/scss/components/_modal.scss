@@ -52,9 +52,9 @@
 
   &__heading {
     /* design */
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     font-size: 24px;
-    text-align: center;
+    text-align: left;
   }
 
   &__content {
@@ -94,11 +94,12 @@
       &__box {
         position: absolute;
         right: -800px;
-        top: 80px;
         border-radius: 0;
-        height: calc(100vh - 80px);
+        height: calc(100vh - var(--header-height));
         max-width: 100%;
         justify-content: flex-start;
+        align-items: flex-start;
+        top: var(--header-height);
 
         &--active {
           right: 0;
@@ -110,6 +111,44 @@
         flex-direction: column;
         justify-content: space-between;
         gap: 30px;
+      }
+    }
+
+    .modal__custom-items {
+      padding: 0;
+      margin: 0;
+    }
+
+    .modal__custom-buttons {
+      @include flex-center;
+      gap: 30px;
+    }
+  }
+}
+
+body.scrolled {
+  .modal--side {
+    .modal__box {
+      top: var(--header-bottom);
+      height: calc(100vh - var(--header-bottom));
+
+      @media (max-width: 1024px) {
+        top: var(--header-bottom-mobile);
+        height: calc(100vh - var(--header-bottom-mobile));
+      }
+    }
+  }
+}
+
+body.scrolled-top {
+  .modal--side {
+    .modal__box {
+      top: var(--header-height);
+      height: calc(100vh - var(--header-height));
+
+      @media (max-width: 1024px) {
+        top: var(--header-height-mobile);
+        height: calc(100vh - var(--header-height-mobile));
       }
     }
   }
