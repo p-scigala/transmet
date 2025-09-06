@@ -87,7 +87,7 @@ jQuery(document).ready(function ($) {
 
         if (btn) {
           btn.addEventListener('click', (e) => {
-            if (window.innerWidth < 1024) {
+            if (window.innerWidth <= 1024) {
               e.preventDefault();
               const subMenu = item.querySelector('.sub-menu');
               subMenu.classList.toggle('active');
@@ -134,26 +134,6 @@ jQuery(document).ready(function ($) {
       item.style.visibility = '';
     });
   }
-
-  /* quantity change */
-  const quantityInput = document.querySelectorAll("input[name='quantity']");
-
-  quantityInput.forEach((input) => {
-    const minusButton = input.previousElementSibling;
-    const plusButton = input.nextElementSibling;
-
-    minusButton.addEventListener('click', function () {
-      let currentValue = parseInt(input.value, 10);
-      if (currentValue > 1) {
-        input.value = currentValue - 1;
-      }
-    });
-
-    plusButton.addEventListener('click', function () {
-      let currentValue = parseInt(input.value, 10);
-      input.value = currentValue + 1;
-    });
-  });
 });
 
 function checkUpdateCartButton() {

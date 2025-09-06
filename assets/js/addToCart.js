@@ -9,6 +9,7 @@ jQuery(document).ready(function ($) {
     let quantity = button.data('quantity') || 1;
     button.addClass('btn--loader');
 
+
     $.ajax({
       url: AjaxCart.ajax_url,
       type: 'POST',
@@ -20,6 +21,8 @@ jQuery(document).ready(function ($) {
       },
       success: function (response) {
         button.removeClass('btn--loader');
+        // const bottomBar = button.closest(".product__bottom");
+        // bottomBar.classList.remove('product__bottom--disabled');
 
         if (response && response.error) {
           modal(response.message || 'Wystąpił błąd podczas dodawania do koszyka.');
@@ -58,6 +61,8 @@ jQuery(document).ready(function ($) {
       error: function () {
         modal('Błąd zapytania: Nie udało się dodać produktu do koszyka.');
         button.removeClass('btn--loader');
+        // const bottomBar = button.closest(".product__bottom");
+        // bottomBar.classList.remove('product__bottom--disabled');
         // console.log('AJAX error.');
       },
     });

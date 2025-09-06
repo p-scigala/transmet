@@ -287,15 +287,24 @@
     }
   }
 
+  .form-row.create-account,
   .form-row-checkbox {
     width: 100%;
 
+    span,
     label {
       @include flex-left;
       position: static;
       cursor: pointer;
       font-size: 12px;
     }
+  }
+
+  .woocommerce-form__label {
+    @include flex-left;
+    position: static;
+    cursor: pointer;
+    font-size: 12px;
   }
 }
 
@@ -430,6 +439,14 @@ body.woocommerce-checkout:not(.woocommerce-order-received) {
 
   .back-to-cart {
     display: block;
+  }
+}
+
+.woocommerce-form-login {
+  .form-row {
+    label {
+      cursor: text;
+    }
   }
 }
 

@@ -124,6 +124,12 @@
       gap: 30px;
     }
   }
+
+  &__custom-btn {
+    &.link:hover {
+      padding-left: 0;
+    }
+  }
 }
 
 body.scrolled {

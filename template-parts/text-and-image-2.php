@@ -2,9 +2,8 @@
 
 <?php 
 $page_id = get_query_var( 'acf_page_id' );
-if (!$page_id) {
-  $page_id = get_the_ID();
-}
+if (!$page_id) $page_id = get_the_ID();
+$img_aspect = $args['img_aspect'] ? $args['img_aspect'] : "";
 ?>
 
 <?php if(have_rows("text_and_img2_repeater", $page_id)): ?>
@@ -13,7 +12,10 @@ if (!$page_id) {
 <section class="text-and-image
   <?php if(get_sub_field("text_and_img2_size")) { echo "text-and-image--half"; } else { echo "text-and-image--normal"; } ?>
   <?php if(get_sub_field("text_and_img2_position")) { echo "text-and-image--left"; } else { echo "text-and-image--right"; } ?>
-">
+  <?php if($img_aspect === "17/13") { echo "text-and-image--17-13"; } ?>
+  <?php if($img_aspect === "16/9") { echo "text-and-image--16-9"; } ?>
+  <?php if($img_aspect === "4/3") { echo "text-and-image--4-3"; } ?>
+  ">
 
   <div class="wrapper">
     <div class="text-and-image__wrapper">

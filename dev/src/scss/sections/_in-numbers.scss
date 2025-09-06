@@ -14,7 +14,7 @@
       padding: 0;
     }
 
-    .wrapper {
+    &>.wrapper {
       @include flex-row;
       @include flex-center;
       z-index: 2;

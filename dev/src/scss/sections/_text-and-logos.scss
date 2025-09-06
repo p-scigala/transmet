@@ -43,4 +43,17 @@
     padding: 0;
     width: 100%;
   }
+
+  .slick-slide {
+    opacity: .2;
+  }
+
+  .slick-current,
+  .slick-current+.slick-slide,
+  .slick-current+.slick-slide+.slick-slide,
+  .slick-current+.slick-slide+.slick-slide+.slick-slide,
+  .slick-current+.slick-slide+.slick-slide+.slick-slide+.slick-slide,
+  .slick-current+.slick-slide+.slick-slide+.slick-slide+.slick-slide+.slick-slide {
+    opacity: 1;
+  }
 }

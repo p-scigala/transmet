@@ -4,6 +4,7 @@ button {
   all: unset;
 }
 
+body .tos,
 body .btn,
 body main .btn,
 .wc-block-cart__submit-button {
@@ -135,6 +136,8 @@ body main .btn,
     }
   }
 
+  &-prev,
+  &-next,
   &--arrow {
     width: 44px;
     height: 44px;
@@ -142,7 +145,8 @@ body main .btn,
     padding: 3px;
     border-radius: 2px;
     border: solid 1.5px var(--color-blue);
-    transition-duration: .3s;
+    transition: .3s;
+    box-sizing: border-box;
 
     @media (max-width: 800px) {
       width: 24px;
@@ -164,13 +168,13 @@ body main .btn,
       border-top: solid 1.5px var(--color-blue);
       transform: rotate(45deg);
       position: relative;
-      left: 10px;
+      left: 6px;
       transition-duration: .3s;
 
       @media (max-width: 800px) {
         width: 10px;
         height: 10px;
-        left: 5px;
+        left: 0;
       }
     }
 
@@ -178,13 +182,14 @@ body main .btn,
       border-color: var(--color-darkblue);
     }
 
+    &-prev,
     &-left {
       &::after {
         transform: rotate(-135deg);
-        left: 18px;
+        left: 14px;
 
         @media (max-width: 800px) {
-          left: 9px;
+          left: 5px;
         }
       }
     }

@@ -1,21 +1,22 @@
 .product-related {
   &>.wrapper {
-    @include flex-column;
     @include flex-center;
+    @include flex-column;
+    position: relative;
   }
 
   .products__list {
-    display: flex;
-    justify-content: center;
-    gap: 32px;
+    @include flex-center;
+    gap: 30px;
     flex-wrap: nowrap;
     margin-top: 40px;
     position: relative;
+    width: 100%;
   }
 
   .slick-track {
     gap: 32px;
-    width: fit-content !important;
+    // width: fit-content !important;
 
     @media (max-width: 500px) {
       gap: 10px;
@@ -27,17 +28,21 @@
   }
 
   .slick-list {
-    width: calc(320px * 4 + 32px * 3); // 4 panels & 3 gaps between them
+    // width: calc(320px * 4 + 32px * 3); // 4 panels & 3 gaps between them
     padding: 0;
+    width: 100%;
+  }
 
-    @media (max-width: 1450px) {
-      width: 100%;
-      padding: 0 15px;
-    }
+  /* slider custom styles */
 
-    @media (max-width: 500px) {
-      width: 100%;
-      padding: 0 30px;
-    }
+  .slick-slide {
+    opacity: .2;
+  }
+
+  .slick-current,
+  .slick-current+.slick-slide,
+  .slick-current+.slick-slide+.slick-slide,
+  .slick-current+.slick-slide+.slick-slide+.slick-slide {
+    opacity: 1;
   }
 }

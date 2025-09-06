@@ -176,8 +176,12 @@
       font-size: 12px;
       line-height: 15px;
 
+      * {
+        transition-duration: 0.15s;
+      }
+
       &:hover {
-        color: var(--color-blue);
+        opacity: .7;
       }
     }
   }
@@ -219,5 +223,10 @@
     padding: 20px 0;
     font-size: 12px;
     line-height: 22px;
+
+    @media (max-width: 500px) {
+      justify-content: flex-start;
+      gap: 30px;
+    }
   }
 }

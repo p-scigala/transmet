@@ -80,7 +80,7 @@ const slickInit = ($) => {
         nextArrow: nextArrow,
         variableWidth: true,
         infinite: true,
-        centerMode: true,
+        centerMode: false,
         cssEase: 'ease-in-out',
         appendArrows: `#slider__nav--${sliderCount}`,
         responsive: [

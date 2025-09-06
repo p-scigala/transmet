@@ -22,25 +22,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( $related_products ) : ?>
 
 <section class="related product-related">
+
   <div class="wrapper">
+    <div class="product-related__content">
+      <?php
+		    $heading = get_field('related_title', 'option');
+		    $subheading = get_field('related_subtitle', 'option');
+		    $description = get_field('related_description', 'option');
+		  ?>
 
-    <?php
-		$heading = get_field('related_title', 'option');
-		$subheading = get_field('related_subtitle', 'option');
-		$description = get_field('related_description', 'option');
-		?>
+      <?php if($heading) : ?>
+      <h2 class="product-related__heading heading animate"><?php echo $heading; ?></h2>
+      <?php endif; ?>
 
-    <?php if($heading) : ?>
-    <h2 class="product-related__heading heading animate"><?php echo $heading; ?></h2>
-    <?php endif; ?>
+      <?php if($subheading) : ?>
+      <h3 class="product-related__subheading subheading animate delay-1"><?php echo $subheading; ?></h3>
+      <?php endif; ?>
 
-    <?php if($subheading) : ?>
-    <h3 class="product-related__subheading subheading animate delay-1"><?php echo $subheading; ?></h3>
-    <?php endif; ?>
-
-    <?php if($description) : ?>
-    <div class="product-related__description description animate delay-2"><?php echo $description; ?></div>
-    <?php endif; ?>
+      <?php if($description) : ?>
+      <div class="product-related__description description animate delay-2"><?php echo $description; ?></div>
+      <?php endif; ?>
+    </div>
 
     <?php woocommerce_product_loop_start(); ?>
 
@@ -57,6 +59,7 @@ if ( $related_products ) : ?>
     <?php woocommerce_product_loop_end(); ?>
 
   </div>
+  
 </section>
 <?php
 endif;

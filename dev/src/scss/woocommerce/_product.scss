@@ -132,6 +132,29 @@ li.product {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
+      position: relative;
+      z-index: 1;
+
+      // &--disabled {
+
+      //   .input__number,
+      //   .btn--add {
+      //     user-select: none;
+      //     pointer-events: none;
+      //     opacity: .5;
+      //   }
+      // }
+    }
+  }
+
+  &.product-type-variable,
+  &.outofstock {
+
+    .input__number,
+    .btn--add {
+      user-select: none;
+      pointer-events: none;
+      opacity: .5;
     }
   }
 

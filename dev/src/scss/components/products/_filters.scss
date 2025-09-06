@@ -55,8 +55,7 @@
       background-color: var(--color-white);
 
       .woof_redraw_zone {
-        @include flex-row;
-        @include flex-wrap;
+        @include flex-column;
         gap: 30px;
       }
 
@@ -294,6 +293,47 @@
 
     &:last-child {
       margin-bottom: 10px;
+    }
+  }
+
+  .woof_checkbox_sales_container {
+    border-bottom: 0 !important;
+    padding-bottom: 0;
+    margin-bottom: 0;
+
+    @media (max-width: 1280px) {
+      .woof_container_inner {
+        margin-bottom: 0;
+      }
+    }
+
+    label {
+      span::before {
+        content: " ";
+      }
+    }
+  }
+
+  .woof_checkbox_featured_container {
+
+    .woof_container_inner {
+      height: 23px;
+      top: -10px;
+      position: relative;
+    }
+
+    label {
+      text-indent: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      position: relative;
+      top: 8px;
+
+      &::before {
+        content: "Polecane";
+        position: absolute;
+        left: -45%;
+      }
     }
   }
 }

@@ -1,0 +1,136 @@
+/* header searcher */
+
+html:not(.dgwt-wcas-overlay-mobile-on) .dgwt-wcas-style-pirx.dgwt-wcas-style-pirx-compact .dgwt-wcas-sf-wrapp input[type=search].dgwt-wcas-search-input {
+  background-color: transparent !important;
+}
+
+.dgwt-wcas-search-wrapp {
+  border-radius: 21px;
+  border-radius: 21px;
+  overflow: hidden;
+}
+
+.dgwt-wcas-open-pirx .dgwt-wcas-open .dgwt-wcas-suggestions-wrapp,
+.dgwt-wcas-open-pirx .dgwt-wcas-open.dgwt-wcas-nores .dgwt-wcas-suggestions-wrapp {
+  z-index: 99999999999 !important;
+  background-color: #F6F6F6;
+  border: none;
+  box-shadow: none;
+  padding-top: 0;
+}
+
+.dgwt-wcas-open-pirx .dgwt-wcas-details-inner,
+.dgwt-wcas-open-pirx .dgwt-wcas-suggestions-wrapp>.dgwt-wcas-suggestion {
+  transition: .15s !important;
+  padding: 10px;
+  height: 60px;
+
+  .dgwt-wcas-si {
+    width: 60px;
+    min-width: 60px;
+    padding-right: 10px;
+    height: 60px;
+    display: flex;
+
+    img {
+      padding: 0;
+      border: none;
+      box-shadow: none;
+      border-radius: 0;
+      height: 100%;
+      width: 100%;
+      background-color: transparent;
+    }
+  }
+
+  .dgwt-wcas-content-wrapp {
+    padding: 0;
+  }
+
+  .dgwt-wcas-st {
+    padding-right: 10px;
+  }
+
+  .price-amount {
+    .amount:first-child {
+      display: block;
+    }
+  }
+
+  * {
+    transition: .15s !important;
+  }
+
+  &-selected {
+    background-color: var(--color-darkblue);
+
+    * {
+      color: var(--color-white) !important;
+    }
+  }
+}
+
+.dgwt-wcas-content-wrapp * {
+  font-size: 12px;
+}
+
+/* shop searcher */
+
+.woof_husky_txt-container {
+  padding: 0;
+  margin: 0;
+  top: 1px;
+
+  .woof_husky_txt-option-breadcrumb {
+    transition-duration: .15s;
+  }
+
+  .woof_husky_txt-option-title {
+    font-size: 12px;
+
+    a {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  .woof_husky_txt-option-text {
+    display: none;
+  }
+
+  .woof_husky_txt-option {
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+    transition-duration: .15s;
+
+    * {
+      text-shadow: none;
+      transition-delay: 0s !important;
+      transition-duration: .15s !important;
+    }
+
+    &:hover {
+      background-color: var(--color-darkblue);
+
+      * {
+        color: var(--color-white);
+      }
+    }
+
+    &>a {
+      width: 70px;
+      height: 60px;
+      padding: 0 10px;
+      display: block;
+
+      img {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+}

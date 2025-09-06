@@ -151,6 +151,10 @@ body .single-product {
     text-transform: uppercase;
     margin-bottom: 20px;
     font-weight: bold;
+
+    @media (max-width: 800px) {
+      font-size: 12px;
+    }
   }
 
   .price {

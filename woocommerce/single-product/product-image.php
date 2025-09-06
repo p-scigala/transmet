@@ -96,7 +96,7 @@ $wrapper_classes   = apply_filters(
 			$image_alt = get_post_meta( $post_thumbnail_id, '_wp_attachment_image_alt', true );
 			?>
         <div class="product-gallery__item d-flex align-items-center justify-content-center position-relative">
-          <a href="<?php echo esc_url($image_url); ?>" data-lightbox="product">
+          <a href="<?php echo esc_url($image_url); ?>" data-lightbox="product" data-rel="lightbox[product]">
             <?php echo wp_get_attachment_image( $post_thumbnail_id, 'product-single-img', false, array( 'alt' => esc_attr( $image_alt ), 'class' => 'product-gallery__img' ) ); ?>
           </a>
         </div>
@@ -113,7 +113,7 @@ $wrapper_classes   = apply_filters(
 					$image_alt = get_post_meta( $image_id, '_wp_attachment_image_alt', true );
 					?>
         <div class="product-gallery__item d-flex align-items-center justify-content-center position-relative">
-          <a href="<?php echo esc_url($image_url); ?>" data-lightbox="product">
+          <a href="<?php echo esc_url($image_url); ?>" data-lightbox="product" data-rel="lightbox[product]">
             <?php echo wp_get_attachment_image( $image_id, 'product-single-img', false, array( 'alt' => esc_attr( $image_alt ), 'class' => 'product-gallery__img' ) ); ?>
           </a>
         </div>

@@ -4,42 +4,41 @@
 
 <section class="bestsellers" id="<?php echo esc_attr( $id ); ?>">
 
-  <div class="bestsellers__wrapper">
-    <div class="wrapper">
-      <div class="bestsellers__content">
+  <div class="wrapper">
+    <div class="bestsellers__content">
 
-        <?php if(get_field("bestsellers_title_01")): ?>
-        <h2 class="bestsellers__heading heading animate">
-          <?php echo get_field("bestsellers_title_01"); ?>
-        </h2>
-        <?php endif; ?>
+      <?php if(get_field("bestsellers_title_01")): ?>
+      <h2 class="bestsellers__heading heading animate">
+        <?php echo get_field("bestsellers_title_01"); ?>
+      </h2>
+      <?php endif; ?>
 
-        <?php if($args['heading']): ?>
-        <h2 class="bestsellers__heading heading animate">
-          <?php echo $args['heading']; ?>
-        </h2>
-        <?php endif; ?>
+      <?php if($args['heading']): ?>
+      <h2 class="bestsellers__heading heading animate">
+        <?php echo $args['heading']; ?>
+      </h2>
+      <?php endif; ?>
 
-        <?php if($args['subheading']): ?>
-        <h3 class="bestsellers__subheading subheading animate delay-1">
-          <?php echo $args['subheading']; ?>
-        </h3>
-        <?php elseif(get_field("bestsellers_title_02")): ?>
-        <h3 class="bestsellers__subheading subheading animate delay-1">
-          <?php echo get_field("bestsellers_title_02"); ?>
-        </h3>
-        <?php endif; ?>
+      <?php if($args['subheading']): ?>
+      <h3 class="bestsellers__subheading subheading animate delay-1">
+        <?php echo $args['subheading']; ?>
+      </h3>
+      <?php elseif(get_field("bestsellers_title_02")): ?>
+      <h3 class="bestsellers__subheading subheading animate delay-1">
+        <?php echo get_field("bestsellers_title_02"); ?>
+      </h3>
+      <?php endif; ?>
 
-        <?php if(get_field("bestsellers_text")): ?>
-        <div class="bestsellers__description description animate delay-2">
-          <?php echo get_field("bestsellers_text"); ?>
-        </div>
-        <?php endif; ?>
-
+      <?php if(get_field("bestsellers_text")): ?>
+      <div class="bestsellers__description description animate delay-2">
+        <?php echo get_field("bestsellers_text"); ?>
       </div>
+      <?php endif; ?>
 
-      <div class="bestsellers__items slider slider--with-bar slider--with-buttons animate delay-3">
-        <?php
+    </div>
+
+    <div class="bestsellers__items slider slider--with-bar slider--with-buttons animate delay-3">
+      <?php
       $quantity = get_field("bestsellers_text");
 
       $args = array(
@@ -63,7 +62,6 @@
       endwhile;
       wp_reset_query();
     ?>
-      </div>
     </div>
   </div>
 
